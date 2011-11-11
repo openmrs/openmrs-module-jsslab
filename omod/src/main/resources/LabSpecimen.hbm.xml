@@ -10,7 +10,8 @@
 
 		<property name="labSpecimenId" type="java.lang.String" column="lab_specimen_id" length="45" unique="true" not-null="true" />
 		<property name="clientSpecimenId" type="java.lang.String" column="client_specimen_id" length="45" unique="false" not-null="false" />
-		<many-to-one name="orderedBy" class="org.openmrs.User" not-null="true" column="orderedBy" />
+		<many-to-one name="orderedBy" class="org.openmrs.User" not-null="true" column="ordered_by" />
+		<many-to-one name="orderedByFacility" class="org.openmrs.Location" not-null="true" column="ordered_by_facility" />
 		<many-to-one name="patient" class="org.openmrs.Patient" not-null="false" column="patient_id" />
 		<many-to-one name="person" class="org.openmrs.Person" not-null="false" column="person_id" />
 		<property name="specimenDate" type="java.util.Date" not-null="true" column="specimen_date" />
@@ -33,6 +34,10 @@
         <set name="testSpecimens" inverse="true">
             <key column="test_specimen_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.LabTestSpecimen" />
+        </set>
+        <set name="orders" table="jsslab_specimen_order">
+        	<key column="specimen_id" not-null="false" />
+        	<many-to-many class="org.openmrs.orders" />
         </set>
     </class>
 </hibernate-mapping>

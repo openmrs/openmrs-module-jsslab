@@ -84,6 +84,13 @@
 			
 						
 			
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>logic</artifactId>
+				<version>0.5</version>
+				<type>jar</type>
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	

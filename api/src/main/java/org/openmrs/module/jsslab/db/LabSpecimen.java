@@ -27,6 +27,7 @@ import org.openmrs.Patient;
 import org.openmrs.Person;
 import org.openmrs.User;
 import org.openmrs.Concept;
+import org.openmrs.Location;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
@@ -51,6 +52,8 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	
 	private User orderedBy;
 	
+	private Location orderedByFacility;
+	
 	private Person person;
 	
 	private Patient patient;
@@ -71,9 +74,8 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	
 	protected Set<LabTestSpecimen> testSpecimens = new HashSet<LabTestSpecimen>();
 	
-	public LabSpecimen() {
-	}
-
+	protected Set<Order> orders = new HashSet<Order>
+	
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()
 	 */
@@ -136,6 +138,30 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	@Attribute(required = false)
 	public void setOrderedBy(User orderedBy) {
 		this.orderedBy = orderedBy;
+	}
+	
+	/**
+	 * @return Returns the ordered by Facility.
+	 */
+	@Attribute(required = false)
+	public Location getOrderedByFacility() {
+		return orderedByFacility;
+	}
+	
+	/**
+	 * @param orderedByFacility The ordered by Facility to set.
+	 */
+	@Attribute(required = false)
+	public void setOrderedByFacility(Location orderedByFacility) {
+		this.orderedByFacility = orderedByFacility;
+	}
+	
+	/**
+	 * @return Returns the patient.
+	 */
+	@Attribute(required = false)
+	public Patient getPatient() {
+		return patient;
 	}
 	
 	/**
@@ -304,6 +330,22 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	@Attribute(required = false)
 	public void setSpecimens(Set<LabTestSpecimen> TestSpecimens) {
 		this.testSpecimens = testSpecimens;
+	}
+	
+	/**
+	 * @return Returns the orders set.
+	 */
+	@Attribute(required = false)
+	public Set<Order> getOrders(){
+		return Orderss;
+	}
+	
+	/**
+	 * @param orders The set of orders to set.
+	 */
+	@Attribute(required = false)
+	public void setOrders(Set<Order> Orders) {
+		this.orders = orders;
 	}
 	
 

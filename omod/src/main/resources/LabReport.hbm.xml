@@ -9,15 +9,15 @@
         </id>
 
 		<property name="labReportId" type="java.lang.String" column="lab_report_id" length="12" unique="true" not-null="true" />
-		<many-to-one name="reportStatusConcept" type=org.openmrs.Concept column="report_status_concept" length="11" not-null="false" />
+		<many-to-one name="reportStatusConcept" class="org.openmrs.Concept" column="report_status_concept" not-null="false" />
       	<many-to-one name="approvedBy" class="org.openmrs.User" not-null="false" column="approvedBy"/>
 		<property name="approvedDate" type="java.util.Date" column="approved_date" />
 		<property name="comments" type="java.lang.String" column="comments" length="255" />
 		<property name="resultDeliveryDate" type="java.util.Date" column="result_delivery_date" />
-		<many-to-one name="resultDeliveryConcept" type=org.openmrs.Concept column="result_delivery_concept" length="11" not-null="false" />
+		<many-to-one name="resultDeliveryConcept" column="org.openmrs.Concept' column="result_delivery_concept" not-null="false" />
 				
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
-		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
+		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length=19 />
 		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
 		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
 		<property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true" />
@@ -25,13 +25,8 @@
 		<property name="voidReason" type="java.lang.String" column="void_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
 
-        <set name="orders" >
-            <key column name="order_id" not-null="true" />
-            <one-to-many class="org.openmrs.Order" />
-        </set>
-
-        <set name="specimens" >
-            <key column name="specimen_id" not-null="true" />
+        <set name="specimens" inverse="true" >
+            <key column="report_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.LabSpecimen" />
         </set>
     </class>

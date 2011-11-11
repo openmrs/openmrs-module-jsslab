@@ -63,8 +63,6 @@ public class LabReport extends BaseOpenmrsData implements Serializable {
 	
 	private Concept resultDeliveryConcept;
 	
-	protected Set<Order> orders = new HashSet<Order>();
-	
 	protected Set<LabSpecimen> specimens = new HashSet<LabSpecimen>();
 	
 	/* (non-Javadoc)
@@ -193,22 +191,6 @@ public class LabReport extends BaseOpenmrsData implements Serializable {
 	@Attribute(required = false)
 	public void setResultDeliveryConcept(Concept resultDeliveryConcept) {
 		this.resultDeliveryConcept = resultDeliveryConcept;
-	}
-	
-	/**
-	 * @return Returns the orders set.
-	 */
-	@Attribute(required = false)
-	public Set<Order> getOrders(){
-		return orders;
-	}
-	
-	/**
-	 * @param orders The set of orders to set.
-	 */
-	@Attribute(required = false)
-	public void setOrders(Set<Order> orders) {
-		this.orders = orders;
 	}
 	
 	/**
