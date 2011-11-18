@@ -10,7 +10,7 @@
 	</id>
 	
 	<one-to-one name="order" class="org.openmrs.Order" constrained="true" />
-   	<property name="urgent" type="java.lang.Boolean" column="urgent" />
+   	<property name="urgent" type="java.lang.Boolean" column="urgent" not-null="true" />
    	<many-to-one name="retestOf" class="org.openmrs.module.jsslab.LabOrder" not-null="false" column="retest_of" />
 	<property name="physicianRetest" type="java.lang.Boolean" not-null="false" column="physician_retest" />
 	<property name="retestReason" type="java.lang.String" column="retest_reason" length="255" />

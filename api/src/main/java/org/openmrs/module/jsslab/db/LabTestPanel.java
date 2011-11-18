@@ -76,7 +76,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	/**
 	 * @return Returns labLocation.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public Location getLabLocation() {
 		return labLocation;
 	}
@@ -84,7 +84,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	/**
 	 * @param labLocation.  The labLocation to set.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public void setLabLocation(Location labLocation) {
 		this.labLocation = labLocation;
 	}
@@ -92,7 +92,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	/**
 	 * @return Returns the testGroupConcept concept.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public Concept getTestGroupConcept() {
 		return testGroupConcept;
 	}
@@ -100,7 +100,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	/**
 	 * @param testGroupConcept The testGroupConcept to set.  The groups should represent lab sections or specialties
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public void setTestGroupConcept(Concept testGroupConcept) {
 		this.testGroupConcept = testGroupConcept;
 	}
@@ -108,7 +108,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	/**
 	 * @return Returns the testPanelConcept concept.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public Concept getTestPanelConcept() {
 		return testPanelConcept;
 	}
@@ -116,7 +116,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	/**
 	 * @param testPanelConcept The testPanelConcept to set.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public void setTestPanelConcept(Concept testPanelConcept) {
 		this.testPanelConcept = testPanelConcept;
 	}

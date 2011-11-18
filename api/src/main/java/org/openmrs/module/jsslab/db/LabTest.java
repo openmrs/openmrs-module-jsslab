@@ -80,7 +80,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable{
 	/**
 	 * @return Returns the testConcept concept.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public Concept getTestConcept() {
 		return testConcept;
 	}
@@ -88,7 +88,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable{
 	/**
 	 * @param testConcept The testConcept to set.  
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public void setTestConcept(Concept testConcept) {
 		this.testConcept = testConcept;
 	}

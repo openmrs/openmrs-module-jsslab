@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.openmrs.BaseOpenmrsData;
+import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Patient;
 import org.openmrs.Person;
 import org.openmrs.User;
@@ -41,7 +41,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabReport extends BaseOpenmrsData implements Serializable {
+public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 	
 	public static final long serialVersionUID = 2L;
 	
@@ -82,7 +82,7 @@ public class LabReport extends BaseOpenmrsData implements Serializable {
 	/**
 	 * @return Returns the labReportId.
 	 */
-	@Attribute(required = true)
+	@Attribute(required = false)
 	public String getLabReportId() {
 		return labReportId;
 	}
@@ -90,7 +90,7 @@ public class LabReport extends BaseOpenmrsData implements Serializable {
 	/**
 	 * @param labReportId The labReportId to set.
 	 */
-	@Attribute(required = true)
+	@Attribute(required = false)
 	public void setLabReportId(String labReportId) {
 		this.labReportId = labReportId;
 	}

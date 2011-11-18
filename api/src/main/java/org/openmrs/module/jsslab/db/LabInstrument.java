@@ -130,7 +130,7 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	/**
 	 * @return Returns the serialNumber.
 	 */
-	@Attribute(required = true)
+	@Attribute(required = false)
 	public String getSerialNumber() {
 		return serialNumber;
 	}
@@ -138,7 +138,7 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	/**
 	 * @param serialNumber The serialNumber to set.
 	 */
-	@Attribute(required = true)
+	@Attribute(required = false)
 	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}

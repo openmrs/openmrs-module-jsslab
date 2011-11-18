@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.openmrs.BaseOpenmrsData;
+import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Patient;
 import org.openmrs.Person;
 import org.openmrs.User;
@@ -27,7 +27,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabTestRun extends BaseOpenmrsData implements Serializable {
+public class LabTestRun extends BaseOpenmrsMetadata implements Serializable {
 	
 	public static final long serialVersionUID = 2L;
 	

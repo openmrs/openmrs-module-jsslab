@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.openmrs.BaseOpenmrsData;
+import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Order;
 import org.openmrs.Patient;
 import org.openmrs.Person;
@@ -38,7 +38,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabSpecimen extends BaseOpenmrsData implements Serializable {
+public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	
 	public static final long serialVersionUID = 2L;
 	
@@ -68,7 +68,9 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	
 	private LabReport report;
 	
-	private Date resultRequestedBy;
+	private Boolean urgent;
+	
+	private Boolean physicianRetest;
 	
 	private Boolean hidden;
 	
@@ -126,7 +128,7 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	 * @return Returns the ordered by user.
 	 * TODO: change to provider
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public User getOrderedBy() {
 		return orderedBy;
 	}
@@ -135,7 +137,7 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	 * @param orderedBy The ordered by user to set.
 	 * TODO: change to provider
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public void setOrderedBy(User orderedBy) {
 		this.orderedBy = orderedBy;
 	}
@@ -143,7 +145,7 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	/**
 	 * @return Returns the ordered by Facility.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public Location getOrderedByFacility() {
 		return orderedByFacility;
 	}
@@ -151,7 +153,7 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	/**
 	 * @param orderedByFacility The ordered by Facility to set.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public void setOrderedByFacility(Location orderedByFacility) {
 		this.orderedByFacility = orderedByFacility;
 	}
@@ -269,26 +271,58 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	}
 	
 	/**
-	 * @return Returns the result requested date.
+	 * @return Returns the urgent flag.
 	 */
-	@Attribute(required = false)
-	public Date getResultRequestedBy() {
-		return resultRequestedBy;
+	@Attribute(required = true)
+	public Boolean getUrgent() {
+		return urgent;
 	}
 	
 	/**
-	 * @param result requested date.  The result requested date to set.
+	 * @return Returns the urgent flag truth value.
+	 */
+	@Attribute(required = true)
+	public Boolean isUrgent() {
+		return urgent.equals(Boolean.TRUE);
+	}
+	
+	/**
+	 * @param urgent.  The urgent flag to set.
+	 */
+	@Attribute(required = true)
+	public void setUrgent(Boolean urgent) {
+		this.urgent = urgent;
+	}
+	
+	/**
+	 * @return Returns the physicianRetest flag.
 	 */
 	@Attribute(required = false)
-	public void setResultRequestedBy(Date resultRequestedBy) {
-		this.resultRequestedBy = resultRequestedBy;
+	public Boolean getPhysicianRetest() {
+		return physicianRetest;
+	}
+	
+	/**
+	 * @return Returns the physicianRetest flag truth value.
+	 */
+	@Attribute(required = false)
+	public Boolean isPhysicianRetest() {
+		return physicianRetest.equals(Boolean.TRUE);
+	}
+	
+	/**
+	 * @param physicianRetest.  The physicianRetest value to set.
+	 */
+	@Attribute(required = false)
+	public void setPhysicianRetest(Boolean physicianRetest) {
+		this.physicianRetest = physicianRetest;
 	}
 	
 	/**
 	 * @return Returns the hidden flag.
 	 */
 	@Attribute(required = false)
-	public Boolean getHidden() {
+	public Boolean getHidden() { 
 		return hidden;
 	}
 	

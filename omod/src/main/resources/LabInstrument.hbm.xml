@@ -26,9 +26,9 @@
 		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
 		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
 		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
-		<property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true" />
-		<property name="dateVoided" type="java.util.Date" column="date_voided" length="19" />
-		<property name="voidReason" type="java.lang.String" column="void_reason" length="255" />
+		<property name="retired" type="java.lang.Boolean" column="retired" length="1" not-null="true" />
+		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
+		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
 
         <set name="testRuns" inverse="true" >

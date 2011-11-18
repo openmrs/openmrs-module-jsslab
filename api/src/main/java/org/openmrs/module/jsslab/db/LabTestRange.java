@@ -68,7 +68,7 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	/**
 	 * @return Returns the test.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public LabTest getTest() {
 		return test;
 	}
@@ -76,7 +76,7 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	/**
 	 * @param test.  The test value to set.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public void setTest(LabTest test) {
 		this.test = test;
 	}
@@ -84,7 +84,7 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	/**
 	 * @return Returns sortOrder.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public Double getSortOrder() {
 		return sortOrder;
 	}
@@ -92,7 +92,7 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	/**
 	 * @param sortOrder.  The sortOrder to set.
 	 */
-	@Attribute(required = false)
+	@Attribute(required = true)
 	public void setSortOrder(Double sortOrder) {
 		this.sortOrder = sortOrder;
 	}
