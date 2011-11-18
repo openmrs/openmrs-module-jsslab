@@ -8,13 +8,13 @@
             <generator class="native" />
         </id>
 
-		<property name="labReportId" type="java.lang.String" column="lab_report_id" length="12" unique="true" not-null="true" />
+		<property name="labReportId" type="java.lang.String" column="lab_report_id" length="12" unique="true" not-null="false" />
 		<many-to-one name="reportStatusConcept" class="org.openmrs.Concept" column="report_status_concept" not-null="false" />
-      	<many-to-one name="approvedBy" class="org.openmrs.User" not-null="false" column="approvedBy"/>
-		<property name="approvedDate" type="java.util.Date" column="approved_date" />
-		<property name="comments" type="java.lang.String" column="comments" length="255" />
+      	<many-to-one name="approvedBy" class="org.openmrs.User" not-null="false" column="approved_by"/>
+		<property name="approvedDate" type="java.util.Date" not-null="false" column="approved_date" />
+		<property name="comments" type="java.lang.String" not-null="false" column="comments" length="255" />
 		<property name="resultDeliveryDate" type="java.util.Date" column="result_delivery_date" />
-		<many-to-one name="resultDeliveryConcept" column="org.openmrs.Concept' column="result_delivery_concept" not-null="false" />
+		<many-to-one name="resultDeliveryConcept" class="org.openmrs.Concept" column="result_delivery_concept" not-null="false" />
 				
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
 		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length=19 />

@@ -15,20 +15,14 @@ package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import org.openmrs.BaseOpenmrsData;
-import org.openmrs.Order;
-import org.openmrs.Patient;
-import org.openmrs.Person;
-import org.openmrs.User;
-import org.openmrs.Concept;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.BaseOpenmrsData;
+import org.openmrs.Concept;
+import org.openmrs.User;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 

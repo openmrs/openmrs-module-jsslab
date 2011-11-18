@@ -8,7 +8,7 @@
             <generator class="native" />
         </id>
 
-		<many-to-one name="labLocation" class="org.openmrs.Location" column="lab_location" not-null="true" />
+		<many-to-one name="labLocation" class="org.openmrs.Location" column="lab_location_id" not-null="true" />
 		<many-to-one name="testGroupConcept" class="org.openmrs.Concept" column="test_group_concept" not-null="true" />
 		<many-to-one name="testPanelConcept" class="org.openmrs.Concept" column="test_panel_concept" not-null="true" />
 		<property name="testPanelCode" type="java.lang.String" column="test_panel_code" length="5" not-null="false" />
@@ -28,11 +28,11 @@
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
 
         <set name="preconditions" inverse="true" >
-            <key column="test_panel_id" not-null="false" />
+            <key column="test_panel_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.LabPreconditions" />
         </set>
         <set name="tests" inverse="true" >
-            <key column="test_panel_id" not-null="false" />
+            <key column="test_panel_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.LabTest" />
         </set>
 

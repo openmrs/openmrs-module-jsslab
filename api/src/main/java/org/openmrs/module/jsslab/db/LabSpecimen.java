@@ -74,7 +74,7 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	
 	protected Set<LabTestSpecimen> testSpecimens = new HashSet<LabTestSpecimen>();
 	
-	protected Set<Order> orders = new HashSet<Order>
+	protected Set<LabOrder> orders = new HashSet<LabOrder>();
 	
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()
@@ -154,14 +154,6 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 	@Attribute(required = false)
 	public void setOrderedByFacility(Location orderedByFacility) {
 		this.orderedByFacility = orderedByFacility;
-	}
-	
-	/**
-	 * @return Returns the patient.
-	 */
-	@Attribute(required = false)
-	public Patient getPatient() {
-		return patient;
 	}
 	
 	/**
@@ -332,22 +324,5 @@ public class LabSpecimen extends BaseOpenmrsData implements Serializable {
 		this.testSpecimens = testSpecimens;
 	}
 	
-	/**
-	 * @return Returns the orders set.
-	 */
-	@Attribute(required = false)
-	public Set<Order> getOrders(){
-		return Orderss;
-	}
-	
-	/**
-	 * @param orders The set of orders to set.
-	 */
-	@Attribute(required = false)
-	public void setOrders(Set<Order> Orders) {
-		this.orders = orders;
-	}
-	
-
 
 }

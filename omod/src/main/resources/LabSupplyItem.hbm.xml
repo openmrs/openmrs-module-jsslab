@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.openmrs.module.jsslab.LabSupplyItem" table="jsslab_supply_item">
+        <id name="supplyItemId" type="int">
+            <column name="supply_item_id" />
+            <generator class="native" />
+        </id>
+
+		<property name="labStockNumber" type="java.lang.String" column="lab_stock_number" length="45" not-null="false" />
+		<property name="manufacturerStockNumber" type="java.lang.String" column="manufacturer_stock_number" length="45" not-null="false" />
+		<property name="manufacturer" type="java.lang.String" column="manufacturer" length="45" not-null="false" />
+		<property name="itemName" type="java.lang.String" column="item_name" length="45" not-null="false" />
+		<many-to-one name="itemClassConcept" class="org.openmrs.Concept" column="item_class_concept" not-null="false" />
+		<property name="lotNumber" type="java.lang.String" column="lot_number" length="45" not-null="false" />
+		<property name="expirationDate" type="java.util.Date" not-null="false" column="expiration_date" />				
+
+      	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
+		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
+		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
+		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
+		<property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true" />
+		<property name="dateVoided" type="java.util.Date" column="date_voided" length="19" />
+		<property name="voidReason" type="java.lang.String" column="void_reason" length="255" />
+		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
+
+        <set name="testSpecimens" inverse="true" >
+            <key column="supply_item_id" not-null="true" />
+            <one-to-many class="org.openmrs.module.jsslab.LabTestSpecimen" />
+        </set>
+    </class>
+</hibernate-mapping>

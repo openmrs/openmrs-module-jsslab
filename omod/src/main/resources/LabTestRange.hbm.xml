@@ -2,21 +2,22 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="org.openmrs.module.jsslab.LabTestRange" table="jsslab_test_range">
-        <id name="testPanelId" type="int">
-            <column name="test_panel_id" />
+    <class name=" not-null="false"" table="jsslab_test_range">
+        <id name="testRangeId" type="int">
+            <column name="test_range_id" />
             <generator class="native" />
         </id>
 
-		<many-to-one name="labLocation" class="org.openmrs.Location" column="lab_location" not-null="true" />
-		<many-to-one name="testGroupConcept" class="org.openmrs.Concept" column="test_group_concept" not-null="true" />
-		<many-to-one name="testPanelConcept" class="org.openmrs.Concept" column="test_panel_concept" not-null="true" />
-		<property name="testPanelCode" type="java.lang.String" column="test_panel_code" length="5" not-null="false" />
-		<many-to-one name="receivedSpecimenConcept" class="org.openmrs.Concept" column="received_specimen_concept" not-null="true" />
-		<many-to-one name="analysisSpecimenConcept" class="org.openmrs.Concept" column="analysis_specimen_concept" not-null="true" />
-		<property name="cost" type="java.math.BigDecimal" not-null="false" column="cost" />
-		<property name="turnaround" type="java.util.Double" not-null="false" column="turnaround" />
-		<property name="holdTime" type="java.util.Double" not-null="false" column="hold_time" />
+		<many-to-one name="testID" class=" not-null="false"" column="test_id" not-null="true" />
+		<property name="sortOrder" type="java.lang.Double" column="sort_order" not-null="true" />
+		<property name="rangeSex" type="java.lang.String" column="range_sex" length="1" not-null="false" />
+		<property name="rangeAgeMin" type="java.lang.Double" column="range_age_min" not-null="false" />
+		<property name="rangeAgeMax" type="java.lang.Double" column="range_age_max" not-null="false" />
+		<many-to-one name="logicRule" class="org.openmrs.logic.rule.definition.RuleDefinition" column="logic_rule_id" not-null="false" />
+		<property name="rangeNormalLow" type="java.lang.Double" column="range_normal_low" not-null="false" />
+		<property name="rangeNormalHigh" type="java.lang.Double" column="range_normal_high" not-null="false" />
+		<property name="rangeCriticalLow" type="java.lang.Double" column="range_critical_low" not-null="false" />
+		<property name="rangeCriticalHigh" type="java.lang.Double" column="range_critical_high" not-null="false" />
 
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
 		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
@@ -26,15 +27,6 @@
 		<property name="dateVoided" type="java.util.Date" column="date_voided" length="19" />
 		<property name="voidReason" type="java.lang.String" column="void_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
-
-        <set name="preconditions" inverse="true" >
-            <key column="test_panel_id" not-null="false" />
-            <one-to-many class="org.openmrs.module.jsslab.LabPreconditions" />
-        </set>
-        <set name="tests" inverse="true" >
-            <key column="test_panel_id" not-null="false" />
-            <one-to-many class="org.openmrs.module.jsslab.LabTest" />
-        </set>
 
     </class>
 </hibernate-mapping>
