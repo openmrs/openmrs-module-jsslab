@@ -11,32 +11,44 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.JSSLab.db.hibernate;
+package org.openmrs.module.jsslab.impl;
 
+import org.openmrs.api.impl.BaseOpenmrsService;
+import org.openmrs.module.JSSLab.LabService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.Criteria;
-import org.hibernate.SessionFactory;
 import org.openmrs.module.JSSLab.db.LabDAO;
 
-public class HibernateLabDAO implements LabDAO {
+public class LabOrderServiceImpl extends BaseOpenmrsService implements LabOrderService{
 	
-	
-	protected final Log log = LogFactory.getLog(this.getClass());
-	private SessionFactory sessionFactory;
-	
-	
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	  	
+	/**
+	 * default constructor
+	 */
+	private final Log log = LogFactory.getLog(this.getClass());
+	public LabOrderServiceImpl()
+	{
+		log.info("LabService");
 	}
 	
 	
+	private LabOrderDAO dao;
 	
-	public HibernateLabDAO() {
-		super();
-		// TODO Auto-generated constructor stub		
+	/**
+	 * setter for LabDAO
+	 */
+	public void setLabDAO(LabOrderDAO dao)
+	{
+		this.dao = dao;
 	}
+	
+	/**
+	 * getter for LabDAO
+	 */
+	public LabOrderDAO getLabDAO()
+	{
+		return  dao;
+	}	
+	
 	
 	
 }

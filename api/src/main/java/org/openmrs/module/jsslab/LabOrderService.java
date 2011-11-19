@@ -11,14 +11,14 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.JSSLab;
+package org.openmrs.module.jsslab;
 
 import org.openmrs.api.OpenmrsService;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Transactional
-public interface LabService extends OpenmrsService {
+public interface LabOrderService extends OpenmrsService {
      
 	/*
 	 * Service methods start from here

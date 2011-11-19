@@ -12,9 +12,9 @@
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
  
-package org.openmrs.module.JSSLab.db;
+package org.openmrs.module.jsslab.db;
 
-public interface LabDAO {
+public interface LabOrderDAO {
 	
 	
 	
