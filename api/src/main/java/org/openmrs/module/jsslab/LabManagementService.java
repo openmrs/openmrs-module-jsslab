@@ -2,13 +2,12 @@ package org.openmrs.module.jsslab;
 
 import java.util.List;
 
-import org.openmrs.OrderType;
 import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
+import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
-import org.openmrs.util.PrivilegeConstants;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface LabManagementService extends OpenmrsService {
@@ -41,7 +40,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Authorized(PrivilegeConstants.PURGE_LAB_MGMT)
-	public retire purgeLabInstrument(LabInstrument labInstrument) throws APIException;
+	public void purgeLabInstrument(LabInstrument labInstrument) throws APIException;
 	
 	/**
 	 * Mark an LabInstrument as retired. This functionally removes the LabInstrument from the system while keeping a
@@ -64,7 +63,7 @@ public interface LabManagementService extends OpenmrsService {
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
-	public List<LabInstrument> getAllLabInstruments(boolean includeRetired) throws APIException;
+	public List<LabInstrument> getAllLabInstruments(Boolean includeRetired) throws APIException;
 	
 	/**
 	 * Get the <code>LabInstrument</code> with the given propertyTag or serialNumber
@@ -84,7 +83,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * @should not save LabSupplyItem if LabSupplyItem doesn't validate
 	 */
 	@Authorized( { PrivilegeConstants.EDIT_LAB_MGMT, PrivilegeConstants.ADD_LAB_MGMT })
-	public LabSupplyItem saveLabSupplyItem(LabSupplyItem LabSupplyItem) throws APIException;
+	public LabSupplyItem saveLabSupplyItem(LabSupplyItem labSupplyItem) throws APIException;
 	
 	/**
 	 * Get the <code>LabSupplyItem</code> with the given uuid from the database
@@ -103,7 +102,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Authorized(PrivilegeConstants.PURGE_LAB_MGMT)
-	public retire purgeLabSupplyItem(LabSupplyItem labSupplyItem) throws APIException;
+	public void purgeLabSupplyItem(LabSupplyItem labSupplyItem) throws APIException;
 	
 	/**
 	 * Mark an LabSupplyItem as retired. This functionally removes the LabSupplyItem from the system while keeping a
@@ -126,7 +125,7 @@ public interface LabManagementService extends OpenmrsService {
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
-	public List<LabSupplyItem> getAllLabSupplyItems(boolean includeRetired) throws APIException;
+	public List<LabSupplyItem> getAllLabSupplyItems(Boolean includeRetired) throws APIException;
 	
 	
 	

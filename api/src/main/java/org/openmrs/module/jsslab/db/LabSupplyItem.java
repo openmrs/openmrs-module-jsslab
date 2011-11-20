@@ -49,6 +49,8 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 	
 	private Date expirationDate;
 	
+	protected Set<LabTestSpecimen> testSpecimens = new HashSet<LabTestSpecimen>();
+	
 
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()
@@ -176,4 +178,20 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 		this.expirationDate = expirationDate;
 	}
 
+	/**
+	 * @return Returns the testSpecimens set.
+	 */
+	@Attribute(required = false)
+	public Set<LabTestSpecimen> getTestSpecimens(){
+		return testSpecimens;
+	}
+	
+	/**
+	 * @param orders The set of testSpecimens to set.
+	 */
+	@Attribute(required = false)
+	public void setTestSpecimens(Set<LabTestSpecimen> testSpecimens) {
+		this.testSpecimens = testSpecimens;
+	}
+	
 }
