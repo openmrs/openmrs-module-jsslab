@@ -40,8 +40,7 @@
 			
 					    			<dependency>
 			<groupId>org.openmrs.module</groupId>
-		    			       	<artifactId>webservices.rest-api</artifactId>		       			       			       			       	<version>1.0</version>
-		       			       			       			       	<type>java-source</type>
+		    			       	<artifactId>webservices.rest-api</artifactId>		       			       			       			       	<version>0.8</version>
 		       			       			       			       	<scope>provided</scope>
 					    			</dependency>	
 	 						
@@ -97,8 +96,7 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest</artifactId>
-				<version>1.0</version>
-				<type>java-source</type>
+				<version>0.8</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>

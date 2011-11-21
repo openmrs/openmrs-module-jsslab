@@ -10,29 +10,32 @@ import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabManagementService;
 import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
-import org.openmrs.module.jsslab.db.LabManagementServiceDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabManagementServiceDAO;
+import org.openmrs.module.jsslab.db.LabInstrumentDAO;
+import org.openmrs.module.jsslab.db.hibernate.HibernateLabInstrumentDAO;
+import org.openmrs.module.jsslab.db.LabSupplyItemDAO;
+import org.openmrs.module.jsslab.db.hibernate.HibernateLabSupplyItemDAO;
 
 public class LabManagementServiceImpl extends BaseOpenmrsService implements
 		LabManagementService {
 
 	private final Log log = LogFactory.getLog(this.getClass());
 	
-	private LabManagementServiceDAO dao = new HibernateLabManagementServiceDAO();
+	private LabInstrumentDAO daoLabInstrument = new HibernateLabInstrumentDAO();
+	private LabSupplyItemDAO daoSupplyItem = new HibernateLabSupplyItemDAO();
 
 	public LabInstrument saveLabInstrument(LabInstrument labInstrument)
 			throws APIException {
-		return dao.saveLabInstrument(labInstrument);
+		return daoLabInstrument.saveLabInstrument(labInstrument);
 		
 	}
 
 	public LabInstrument getLabInstrumentByUuid(String uuid) {
-		return dao.getLabInstrumentByUuid(uuid);
+		return daoLabInstrument.getLabInstrumentByUuid(uuid);
 	}
 
 	public void purgeLabInstrument(LabInstrument labInstrument)
 			throws APIException {
-		dao.deleteLabInstrument(labInstrument);
+		daoLabInstrument.deleteLabInstrument(labInstrument);
 		
 	}
 
@@ -41,30 +44,30 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 		labInstrument.setRetired(true);
 		labInstrument.setDateRetired(new Date());
 		labInstrument.setRetireReason(retireReason);
-		return dao.saveLabInstrument(labInstrument);
+		return daoLabInstrument.saveLabInstrument(labInstrument);
 	}
 
 	public List<LabInstrument> getAllLabInstruments(Boolean includeRetired)
 			throws APIException {
-		return dao.getAllLabInstruments(includeRetired);
+		return daoLabInstrument.getAllLabInstruments(includeRetired);
 	}
 
 	public LabInstrument getLabInstrument(String idNumber) {
-		return dao.getLabInstrument(idNumber);
+		return daoLabInstrument.getLabInstrument(idNumber);
 	}
 
 	public LabSupplyItem saveLabSupplyItem(LabSupplyItem labSupplyItem)
 			throws APIException {
-		return dao.saveLabSupplyItem(labSupplyItem);
+		return daoSupplyItem.saveLabSupplyItem(labSupplyItem);
 	}
 
 	public LabSupplyItem getLabSupplyItemByUUID(String uuid) {
-		return dao.getLabSupplyItemByUuid(uuid);
+		return daoSupplyItem.getLabSupplyItemByUuid(uuid);
 	}
 
 	public void purgeLabSupplyItem(LabSupplyItem labSupplyItem)
 			throws APIException {
-		dao.deleteLabSupplyItem(labSupplyItem);
+		daoSupplyItem.deleteLabSupplyItem(labSupplyItem);
 	}
 
 	public LabSupplyItem retireLabSupplyItem(LabSupplyItem labSupplyItem,
@@ -72,12 +75,12 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 		labSupplyItem.setRetired(true);
 		labSupplyItem.setDateRetired(new Date());
 		labSupplyItem.setRetireReason(retireReason);
-		return dao.saveLabSupplyItem(labSupplyItem);
+		return daoSupplyItem.saveLabSupplyItem(labSupplyItem);
 	}
 
 	public List<LabSupplyItem> getAllLabSupplyItems(Boolean includeRetired)
 			throws APIException {
-		return dao.getAllLabSupplyItems(includeRetired);
+		return daoSupplyItem.getAllLabSupplyItems(includeRetired);
 	}
 
 

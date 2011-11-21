@@ -18,7 +18,7 @@
 	<dependencies>
 	   <dependency>
 			<groupId>org.openmrs.module</groupId>
-			<artifactId>JSSLab-api</artifactId>
+			<artifactId>jsslab-api</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		
@@ -125,16 +125,16 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-api</artifactId>
-				<version>1.0</version>
-				<type>java-source</type>
 				<scope>provided</scope>
+				<version>0.8</version>
+				<type>jar</type>
 			</dependency>
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest</artifactId>
-				<version>1.0</version>
-				<type>java-source</type>
+				<version>0.8</version>
 				<scope>provided</scope>
+				<type>jar</type>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
