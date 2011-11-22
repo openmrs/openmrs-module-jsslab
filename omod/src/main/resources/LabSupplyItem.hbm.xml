@@ -29,5 +29,9 @@
             <key column="supply_item_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.LabTestSpecimen" />
         </set>
+	    <property name="name" type="java.lang.String" insert="false" update="false" lazy="true">
+	    	<formula>concat(manufacturer," ",item_name)</formula> 
+	    </property>
+	    		
     </class>
 </hibernate-mapping>

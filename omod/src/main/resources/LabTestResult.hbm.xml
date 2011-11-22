@@ -9,6 +9,7 @@
         </id>
 
 		<many-to-one name="testSpecimen" class="org.openmrs.module.jsslab.LabTestSpecimen" column="test_specimen_id" not-null="true" />
+		<many-to-one name="testResultConcept" class="org.openmrs.Concept" column="test_result_concept" not-null="true" />
 		<property name="testResultType" type="org.openmrs.module.jsslab.LabResultType" column="test_result_type" not-null="true" />
 		<many-to-one name="testAnswerConcept" class="org.openmrs.Concept" column="test_answer_concept" not-null="false" />
 		<property name="testAnswerDuration" type="java.util.Double" not-null="false" column="test_answer_duration" />

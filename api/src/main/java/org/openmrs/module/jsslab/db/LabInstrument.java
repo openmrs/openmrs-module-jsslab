@@ -44,6 +44,8 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	
 	private String serialNumber;
 	
+	private Location location;
+	
 	private Date receivedDate;
 	
 	private String receivedFrom;
@@ -64,7 +66,8 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	
 	protected Set<LabTestRun> testRuns = new HashSet<LabTestRun>();
 	
-
+	private String name;
+	
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()
 	 */
@@ -141,6 +144,22 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	@Attribute(required = false)
 	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
+	}
+	
+	/**
+	 * @return Returns the location.
+	 */
+	@Attribute(required = false)
+	public Location getLocation() {
+		return location;
+	}
+	
+	/**
+	 * @param location The location to set.
+	 */
+	@Attribute(required = false)
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 	
 	/**
@@ -301,6 +320,14 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	@Attribute(required = false)
 	public void setTestRuns(Set<LabTestRun> testRuns) {
 		this.testRuns = testRuns;
+	}
+	
+	/**
+	 * @return Returns the description (manufacturer, model, serial).
+	 */
+	@Attribute(required = false)
+	public String getName() {
+		return name;
 	}
 	
 

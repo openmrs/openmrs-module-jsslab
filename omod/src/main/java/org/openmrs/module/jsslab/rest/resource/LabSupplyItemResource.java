@@ -47,10 +47,10 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 		if (rep instanceof DefaultRepresentation) {
 			DelegatingResourceDescription description = new DelegatingResourceDescription();
 			description.addProperty("uuid");
-			description.addProperty("propertyTag");
-			description.addProperty("manufacturer");
-			description.addProperty("model");
-			description.addProperty("serialNumber");
+			description.addProperty("name");
+			description.addProperty("labStockNumber");
+			description.addProperty("lotNumber");
+			description.addProperty("expirationDate");
 			description.addProperty("retired");
 			description.addSelfLink();
 			description.addLink("full", ".?v=" + RestConstants.REPRESENTATION_FULL);
@@ -58,21 +58,15 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 		} else if (rep instanceof FullRepresentation) {
 			DelegatingResourceDescription description = new DelegatingResourceDescription();
 			description.addProperty("uuid");
-			description.addProperty("propertyTag");
+			description.addProperty("labStockNumber");
+			description.addProperty("manufacturerStockNumer");
 			description.addProperty("manufacturer");
-			description.addProperty("model");
-			description.addProperty("serialNumber");
-			description.addProperty("receivedDate");
-			description.addProperty("receivedFrom");
-			description.addProperty("receivedCost");
-			description.addProperty("receivedValue");
-			description.addProperty("conditionDate");
-			description.addProperty("conditionConcept",Representation.REF);
-			description.addProperty("maintenanceVendor");
-			description.addProperty("maintenancePhone");
-			description.addProperty("maintenanceDescription");
-			description.addProperty("testSpecimens", Representation.REF);
-			description.addProperty("retired");
+			description.addProperty("itemName");
+			description.addProperty("itemClassConcept",Representation.REF);
+			description.addProperty("lotNumber");
+			description.addProperty("expirationDate");
+			description.addProperty("testRuns", Representation.REF);
+			description.addProperty("auditInfo", findMethod("getAuditInfo"));
 			description.addSelfLink();
 			return description;
 		}

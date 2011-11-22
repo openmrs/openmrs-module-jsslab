@@ -47,10 +47,9 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 		if (rep instanceof DefaultRepresentation) {
 			DelegatingResourceDescription description = new DelegatingResourceDescription();
 			description.addProperty("uuid");
+			description.addProperty("name");
 			description.addProperty("propertyTag");
-			description.addProperty("manufacturer");
-			description.addProperty("model");
-			description.addProperty("serialNumber");
+			description.addProperty("location",Representation.REF);
 			description.addProperty("retired");
 			description.addSelfLink();
 			description.addLink("full", ".?v=" + RestConstants.REPRESENTATION_FULL);
@@ -62,6 +61,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 			description.addProperty("manufacturer");
 			description.addProperty("model");
 			description.addProperty("serialNumber");
+			description.addProperty("location",Representation.REF);
 			description.addProperty("receivedDate");
 			description.addProperty("receivedFrom");
 			description.addProperty("receivedCost");
@@ -72,7 +72,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 			description.addProperty("maintenancePhone");
 			description.addProperty("maintenanceDescription");
 			description.addProperty("testSpecimens", Representation.REF);
-			description.addProperty("retired");
+			description.addProperty("auditInfo", findMethod("getAuditInfo"));
 			description.addSelfLink();
 			return description;
 		}

@@ -42,6 +42,8 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 
 	private LabTestSpecimen testSpecimen;
 	
+	private Concept testResultConcept;
+	
 	private LabResultType resultType;
 	
 	private Concept testAnswerConcept;
@@ -103,6 +105,22 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	@Attribute(required = true)
 	public void setTestSpecimen(LabTestSpecimen testSpecimen) {
 		this.testSpecimen = testSpecimen;
+	}
+	
+	/**
+	 * @return Returns the testResultConcept concept.
+	 */
+	@Attribute(required = true)
+	public Concept getTestResultConcept() {
+		return testResultConcept;
+	}
+	
+	/**
+	 * @param testResultConcept The testResultConcept to set.
+	 */
+	@Attribute(required = false)
+	public void setTestResultConcept(Concept testResultConcept) {
+		this.testResultConcept = testResultConcept;
 	}
 	
 	/**

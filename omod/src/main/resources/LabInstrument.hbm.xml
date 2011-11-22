@@ -12,6 +12,7 @@
 		<property name="manufacturer" type="java.lang.String" column="manufacturer" length="45" unique="false" not-null="false" />
 		<property name="model" type="java.lang.String" column="model" length="45" unique="false" not-null="false" />
 		<property name="serialNumber" type="java.lang.String" column="serial_number" length="45" unique="false" not-null="false" />
+		<many-to-one name="location" class="org.openmrs.Location" column="location_id" not-null="false" />
 		<property name="receivedDate" type="java.util.Date" not-null="false" column="received_date" />
 		<property name="receivedFrom" type="java.lang.String" column="received_from" length="45" unique="false" not-null="false" />
 		<property name="receivedCost" type="java.math.BigDecimal" column="received_cost" />
@@ -42,5 +43,9 @@
         </set>
 -->
 
+	    <property name="name" type="java.lang.String" insert="false" update="false" lazy="true">
+	    	<formula>concat(manufacturer," ",model," ",serial_number)</formula> 
+	    </property>
+	    		
     </class>
 </hibernate-mapping>

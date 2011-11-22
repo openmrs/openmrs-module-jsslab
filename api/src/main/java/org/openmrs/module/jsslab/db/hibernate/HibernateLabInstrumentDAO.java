@@ -23,7 +23,6 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.api.APIException;
 import org.openmrs.module.jsslab.db.LabInstrumentDAO;
 import org.openmrs.module.jsslab.db.LabTestRun;

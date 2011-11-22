@@ -51,7 +51,8 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 	
 	protected Set<LabTestSpecimen> testSpecimens = new HashSet<LabTestSpecimen>();
 	
-
+	private String name;
+	
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()
 	 */
@@ -192,6 +193,14 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 	@Attribute(required = false)
 	public void setTestSpecimens(Set<LabTestSpecimen> testSpecimens) {
 		this.testSpecimens = testSpecimens;
+	}
+	
+	/**
+	 * @return Returns the description (manufacturer, itemName).
+	 */
+	@Attribute(required = false)
+	public String getName() {
+		return name;
 	}
 	
 }
