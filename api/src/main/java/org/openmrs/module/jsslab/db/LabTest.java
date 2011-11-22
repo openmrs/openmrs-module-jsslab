@@ -145,7 +145,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable{
 	 * @return Returns ranges.
 	 */
 	@Attribute(required = false)
-	public Set<LabTestRange> getRanges() {
+	public Set<LabTestRange> getLabTestRanges() {
 		return ranges;
 	}
 	
@@ -153,7 +153,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable{
 	 * @param ranges.  The ranges to set.
 	 */
 	@Attribute(required = false)
-	public void setRanges(Set<LabTestRange> ranges) {
+	public void setLabTestRanges(Set<LabTestRange> ranges) {
 		this.ranges = ranges;
 	}
 
