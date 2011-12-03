@@ -37,14 +37,14 @@
 			<dependency>
 				<groupId>org.openmrs.api</groupId>
 				<artifactId>openmrs-api</artifactId>
-				<version>${openMRSVersion}</version>
+				<version>${openMRSVersion}</version><!--$NO-MVN-MAN-VER$-->
 				<type>test-jar</type>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.openmrs.web</groupId>
 				<artifactId>openmrs-web</artifactId>
-				<version>${openMRSVersion}</version>
+				<version>${openMRSVersion}</version><!--$NO-MVN-MAN-VER$-->
 				<type>test-jar</type>
 				<scope>test</scope>
 			</dependency>
@@ -55,7 +55,17 @@
 				<type>pom</type>
 				<scope>test</scope>
 			</dependency>
-        	</dependencies>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>webservices.rest-api</artifactId>
+				<version>0.9-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>webservices.rest</artifactId>
+				<version>0.9-SNAPSHOT</version>
+			</dependency>
+	</dependencies>
 
 	<build>
 		<resources>
@@ -120,24 +130,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.openmrs.module</groupId>
-				<artifactId>webservices.rest-api</artifactId>
-				<scope>provided</scope>
-				<version>0.8</version>
-				<type>jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.openmrs.module</groupId>
-				<artifactId>webservices.rest</artifactId>
-				<version>0.8</version>
-				<scope>provided</scope>
-				<type>jar</type>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	
 

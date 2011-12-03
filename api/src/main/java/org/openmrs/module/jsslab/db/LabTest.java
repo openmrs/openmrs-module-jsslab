@@ -23,6 +23,7 @@ import java.util.Set;
 
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Concept;
+import org.openmrs.api.context.Context;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
@@ -33,7 +34,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabTest extends BaseOpenmrsMetadata implements Serializable{
+public class LabTest extends BaseOpenmrsMetadata implements Serializable, Comparable<LabTest> {
 
 	public static final long serialVersionUID = 2L;
 	
@@ -44,6 +45,8 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable{
 	private LabTestPanel testPanel;
 	
 	private Concept testConcept;
+	
+	private String testName;
 	
 	private String resultFormat;
 	
@@ -91,6 +94,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable{
 	@Attribute(required = true)
 	public void setTestConcept(Concept testConcept) {
 		this.testConcept = testConcept;
+		this.testName = null;
 	}
 	
 	/**
@@ -157,4 +161,23 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable{
 		this.ranges = ranges;
 	}
 
+	/**
+	 * @return Returns lab Test Name.
+	 */
+	public String getTestName() {
+		if (testName == null)
+			testName = Context.getConceptService().getConceptName(this.getTestConcept().getId()).getName();
+		return testName;
+	}
+	
+	/**
+	 * @return Returns int indicating comparison.
+	 */
+	public int compareTo(LabTest labTest) {
+		int i = this.getTestPanel().getName().compareToIgnoreCase(labTest.getTestPanel().getName());
+		if (i == 0)
+			i = this.getSortOrder().compareTo(labTest.getSortOrder());
+		return i;
+	}
+	
 }

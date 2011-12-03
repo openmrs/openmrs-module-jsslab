@@ -22,7 +22,7 @@ import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.jsslab.LabCatalogService;
 
 /**
- * Lab supply item related database functions
+ * Lab test related database functions
  */
 
 public interface LabTestDAO {
@@ -36,7 +36,7 @@ public interface LabTestDAO {
 	public void setSessionFactory(SessionFactory sessionFactory);
 	
 	/**
-	 * Create or update a labInstrument labTest.
+	 * Create or update a labTest.
 	 * 
 	 * @param labTest
 	 * @return the saved <code>LabTest</code>
@@ -44,12 +44,12 @@ public interface LabTestDAO {
 	public LabTest saveLabTest(LabTest labTest);
 	
 	/**
-	 * Get a labInstrument labTest by <code>labInstrumentTagId</code>
+	 * Get a labTest by <code>testId</code>
 	 * 
-	 * @param labInstrumentTagId Internal <code>Integer</code> identifier of the labTest to get
+	 * @param testId  <code>Integer</code> identifier of the labTest to get
 	 * @return the requested <code>LabTest</code>
 	 */
-	public LabTest getLabTest(Integer labInstrumentTagId);
+	public LabTest getLabTest(Integer testId);
 	
 	/**
 	 * @param uuid
@@ -66,7 +66,7 @@ public interface LabTestDAO {
 	public LabTest getLabTestByName(String labTest);
 	
 	/**
-	 * Get all labInstrument labTests
+	 * Get all labTests
 	 * 
 	 * @param includeRetired Boolean - include retired labTests as well?
 	 * @return List<LabTest> object with all <code>LabTest</code>s, possibly included
@@ -75,7 +75,7 @@ public interface LabTestDAO {
 	public List<LabTest> getAllLabTests(Boolean includeRetired);
 	
 	/**
-	 * Find all labTest labTests with matching names.
+	 * Find all labTests with matching names.
 	 * 
 	 * @param search name to search
 	 * @return List<LabTest> with all matching <code>LabTests</code>
@@ -90,7 +90,7 @@ public interface LabTestDAO {
 	public void deleteLabTest(LabTest labTest);
 	
 	/**
-	 * @see org.openmrs.api.LabManagementService#getCountOfLabTests(String, Boolean)
+	 * @see org.openmrs.api.LabCatalogService#getCountOfLabTests(String, Boolean)
 	 */
 	public Integer getCountOfLabTests(String nameFragment, Boolean includeRetired);
 	

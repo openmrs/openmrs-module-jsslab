@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Location;
 import org.openmrs.Concept;
+import org.openmrs.api.context.Context;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
@@ -35,7 +36,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
+public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable, Comparable<LabTestPanel> {
 	
 	public static final long serialVersionUID = 2L;
 	
@@ -45,9 +46,15 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	
 	private Location labLocation;
 	
+	private String labLocationName;
+	
 	private Concept testGroupConcept;
 	
+	private String testGroupName;
+	
 	private Concept testPanelConcept;
+	
+	private String testPanelName;
 	
 	private String testPanelCode;
 	
@@ -87,6 +94,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	@Attribute(required = true)
 	public void setLabLocation(Location labLocation) {
 		this.labLocation = labLocation;
+		this.labLocationName = null;
 	}
 	
 	/**
@@ -103,6 +111,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	@Attribute(required = true)
 	public void setTestGroupConcept(Concept testGroupConcept) {
 		this.testGroupConcept = testGroupConcept;
+		this.testGroupName = null;
 	}
 	
 	/**
@@ -119,6 +128,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	@Attribute(required = true)
 	public void setTestPanelConcept(Concept testPanelConcept) {
 		this.testPanelConcept = testPanelConcept;
+		this.testPanelName = null;
 	}
 	
 	/**
@@ -249,5 +259,46 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 		this.tests = tests;
 	}
 	
-
+	/**
+	 * @return Returns the labLocation name
+	 */
+	public String getLabLocationName(){
+		if (labLocationName == null)
+			labLocationName = this.getLabLocation().getName();
+		return labLocationName;
+	}
+	
+	/**
+	 * @return Returns the Test Group name
+	 */
+	public String getTestGroupName(){
+		if (testGroupName == null)
+			testGroupName = Context.getConceptService().getConceptName(this.getTestGroupConcept().getId()).getName();
+		return testGroupName;
+	}
+	
+	/**
+	 * @return Returns the Test Panel name
+	 */
+	public String getTestPanelName(){
+		if (testPanelName == null)
+			testPanelName = Context.getConceptService().getConceptName(this.getTestPanelConcept().getId()).getName();
+		return testPanelName;
+	}
+	
+	/**
+	 * @return Returns the Test Panel full name
+	 */
+	public String getName(){
+		return this.getTestGroupName() + ": " + this.getTestPanelName();
+	}
+	
+	/**
+	 * @return integer showing comparison result
+	 */
+	public int compareTo(LabTestPanel labTestPanel){
+		return this.getName().compareToIgnoreCase(labTestPanel.getName());
+	}
+	
+	
 }

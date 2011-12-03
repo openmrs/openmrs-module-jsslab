@@ -13,6 +13,7 @@
  */
 package org.openmrs.module.jsslab.db.hibernate;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -30,11 +31,9 @@ import org.openmrs.module.jsslab.db.LabTestDAO;
 import org.openmrs.module.jsslab.db.LabTestRange;
 
 /**
- * Hibernate lab management related database functions
+ * Hibernate lab test related database functions
  */
 public class HibernateLabTestDAO implements LabTestDAO {
-	
-	private ConceptService conceptService = Context.getConceptService();
 	
 	private SessionFactory sessionFactory;
 	
@@ -66,8 +65,8 @@ public class HibernateLabTestDAO implements LabTestDAO {
 	/**
 	 * @see org.openmrs.api.db.LabTestDAO#getLabTest(java.lang.Integer)
 	 */
-	public LabTest getLabTest(Integer instrumentTagId) {
-		return (LabTest) sessionFactory.getCurrentSession().get(LabTest.class, instrumentTagId);
+	public LabTest getLabTest(Integer labTestId) {
+		return (LabTest) sessionFactory.getCurrentSession().get(LabTest.class, labTestId);
 	}
 	
 	/**
@@ -80,19 +79,26 @@ public class HibernateLabTestDAO implements LabTestDAO {
 
 	/**
 	 * @see org.openmrs.api.db.LabTestDAO#getLabTestByName(java.lang.String)
-	 * will return the non-retired supply item with the earliest expiration date
 	 */
 	@SuppressWarnings("unchecked")
 	public LabTest getLabTestByName(String name) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabTest.class)
-		.add(Restrictions.eq("itemName", name))
-		.add(Restrictions.ne("retired", true))
-		.addOrder(Order.asc("expirationDate"));
-		
-		List<LabTest> labTests = criteria.list();
+		// get candidates
+		List<LabTest> labTests= (List<LabTest>) sessionFactory.getCurrentSession()
+				.createQuery("from LabTest as lt where lt.testConcept.names.name=:name and not lt.retired" )
+				.setString("name", name);
+
+		// eliminate those that don't really match (perhaps wrong locale)
+		for (LabTest labTest : labTests)
+			if (! labTest.getTestName().equalsIgnoreCase(name))
+				labTests.remove(labTest);
+
+		// if list is exhausted, return null
 		if (null == labTests || labTests.isEmpty()) {
 			return null;
 		}
+		
+		// sort the possible returns and take the first
+		Collections.sort(labTests);
 		return labTests.get(0);
 	}
 	
@@ -105,24 +111,35 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		if (!includeRetired) {
 			criteria.add(Restrictions.ne("retired", true));
 		}
-		criteria.addOrder(Order.asc("itemName")).addOrder(Order.desc("expirationDate"));
 		
-		return criteria.list();
+		List<LabTest> list = (List<LabTest>) criteria.list();
+		Collections.sort(list);
+		return list;
 	}
 	
 	/**
 	 * @see org.openmrs.api.db.LabTestDAO#getLabTests(java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
-	public List<LabTest> getLabTests(String search) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabTest.class)
-			.add(Restrictions.disjunction()
-		// 'ilike' case insensitive search
-		        .add(Restrictions.ilike("itemName", search, MatchMode.START))
-		        .add(Restrictions.ilike("labStockNumber", search, MatchMode.START))
-		    );
-		criteria.addOrder(Order.asc("itemName")).addOrder(Order.desc("expirationDate"));
-		return criteria.list();
+	public List<LabTest> getLabTests(String name) {
+		// get candidates
+		List<LabTest> labTests= (List<LabTest>) sessionFactory.getCurrentSession()
+				.createQuery("from LabTest as lt where upper(lt.testConcept.names.name) like concat(upper(:name),'%') and not lt.retired" )
+				.setString("name", name);
+
+		// eliminate those that don't really match (perhaps wrong locale)
+		for (LabTest labTest : labTests)
+			if (! labTest.getTestName().toUpperCase().startsWith(name.toUpperCase()))
+				labTests.remove(labTest);
+
+		// if list is exhausted, return null
+		if (null == labTests || labTests.isEmpty()) {
+			return null;
+		}
+		
+		// sort the possible returns
+		Collections.sort(labTests);
+		return labTests;
 	}
 	
 	/**
@@ -138,20 +155,19 @@ public class HibernateLabTestDAO implements LabTestDAO {
 	/**
 	 * @see org.openmrs.api.db.LabTestDAO#getCountOfSupplyItems(String, Boolean)
 	 */
-	public Integer getCountOfLabTests(String nameFragment, Boolean includeRetired) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabTest.class);
-		if (!includeRetired)
-			criteria.add(Restrictions.eq("retired", false));
-		
-		if (StringUtils.isNotBlank(nameFragment))
-			criteria.add(Restrictions.disjunction()
-			        .add(Restrictions.ilike("itemName", nameFragment, MatchMode.START))
-			        .add(Restrictions.ilike("labStockNumber", nameFragment, MatchMode.START))
-			);
-		
-		criteria.setProjection(Projections.rowCount());
-		
-		return (Integer) criteria.uniqueResult();
+	@SuppressWarnings("unchecked")
+	public Integer getCountOfLabTests(String name, Boolean includeRetired) {
+		// get candidates
+		List<LabTest> labTests= (List<LabTest>) sessionFactory.getCurrentSession()
+				.createQuery("from LabTest as lt where upper(lt.testConcept.names.name) like concat(upper(:name),'%') and (:retired or not lt.retired" )
+				.setString("name", name).setBoolean("retired", includeRetired);
+
+		// eliminate those that don't really match (perhaps wrong locale)
+		for (LabTest labTest : labTests)
+			if (! labTest.getTestName().toUpperCase().startsWith(name.toUpperCase()))
+				labTests.remove(labTest);
+
+		return labTests.size();
 	}
 
 // TODO: replace stubs below with real methods in LabTestingService

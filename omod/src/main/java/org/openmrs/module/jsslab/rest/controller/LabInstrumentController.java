@@ -1,6 +1,13 @@
 package org.openmrs.module.jsslab.rest.controller;
 
 import org.openmrs.module.webservices.rest.web.RestConstants;
+import org.openmrs.module.web.resource.IdentifierResource;
+import org.openmrs.module.webservices.rest.SimpleObject;
+import org.openmrs.module.webservices.rest.web.RequestContext;
+import org.openmrs.module.webservices.rest.web.RestUtil;
+import org.openmrs.module.webservices.rest.web.api.RestService;
+import org.openmrs.module.webservices.rest.web.controller.BaseRestController;
+import org.openmrs.module.webservices.rest.web.response.ResponseException;
 import org.openmrs.module.jsslab.rest.resource.LabInstrumentResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
