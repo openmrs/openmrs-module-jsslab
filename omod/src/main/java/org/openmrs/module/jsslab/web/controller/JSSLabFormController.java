@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.JSSLab.web.controller;
+package org.openmrs.module.jsslab.web.controller;
 
 import java.util.Collection;
 

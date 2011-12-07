@@ -98,10 +98,10 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	 */
 	@Override
 	public LabSupplyItem getByUniqueId(String uuid) {
-		LabSupplyItem labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItemByUuid(uuid);
+		LabSupplyItem labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItemByUUID(uuid);
 		//We assume the caller was fetching by propertyTag or serialNumber
 		if (labSupplyItem == null)
-			labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItem(uuid);
+			labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItemByUUID(uuid);
 		
 		return labSupplyItem;
 	}
@@ -114,7 +114,7 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	public void purge(LabSupplyItem labSupplyItem, RequestContext context) throws ResponseException {
 		if (labSupplyItem == null)
 			return;
-		Context.getService(LabManagementService.class).purgeLabSupplyItem(LabSupplyItem);
+		Context.getService(LabManagementService.class).purgeLabSupplyItem(labSupplyItem);
 	}
 	
 	/**
@@ -122,7 +122,7 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	 */
 	@Override
 	protected List<LabSupplyItem> doGetAll(RequestContext context) {
-		return Context.getService(LabManagementService.class).getAllSupplyItems(false);
+		return Context.getService(LabManagementService.class).getAllLabSupplyItems(false);
 	}
 	
 	/**
@@ -131,7 +131,7 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	 */
 	@Override
 	protected AlreadyPaged<LabSupplyItem> doSearch(String query, RequestContext context) {
-		return new ServiceSearcher<LabSupplyItem>(LabSupplyItem.class, "getLabSupplyItems", "getCountOfLabSupplyItems").search(query,
+		return new ServiceSearcher<LabSupplyItem>(LabManagementService.class, "getLabSupplyItems", "getCountOfLabSupplyItems").search(query,
 		    context);
 	}
 	

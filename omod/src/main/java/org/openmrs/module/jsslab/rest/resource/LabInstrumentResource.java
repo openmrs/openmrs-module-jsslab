@@ -120,7 +120,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 	public void purge(LabInstrument labInstrument, RequestContext context) throws ResponseException {
 		if (labInstrument == null)
 			return;
-		Context.getService(LabManagementService.class).purgeLabInstrument(LabInstrument);
+		Context.getService(LabManagementService.class).purgeLabInstrument(labInstrument);
 	}
 	
 	/**
@@ -137,7 +137,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 	 */
 	@Override
 	protected AlreadyPaged<LabInstrument> doSearch(String query, RequestContext context) {
-		return new ServiceSearcher<LabInstrument>(LabInstrumentService.class, "getLabInstruments", "getCountOfLabInstruments").search(query,
+		return new ServiceSearcher<LabInstrument>(LabManagementService.class, "getLabInstruments", "getCountOfLabInstruments").search(query,
 		    context);
 	}
 	
