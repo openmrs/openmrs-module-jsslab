@@ -3,10 +3,10 @@
 <module configVersion="1.2">
 	
     <!-- Module Properties -->
-	<id>JSSLab</id>
+	<id>jsslab</id>
 	<name>JSSLab Module</name>
 	<version>1.0-SNAPSHOT</version>
-	<package>org.openmrs.module.JSSLab</package>
+	<package>org.openmrs.module.jsslab</package>
 	<author>rfriedman</author>
 	<description>
 			Specimen-based lab module for JSS
@@ -18,14 +18,14 @@
 
 
     <!-- Module Activator -->
-	<activator>org.openmrs.module.JSSLab.JSSLabActivator</activator>
+	<activator>org.openmrs.module.jsslab.JSSLabActivator</activator>
 
 
 	
 		<!-- Add's link to admin page --> 
 	 <extension>
 	  <point>org.openmrs.admin.list</point>
-	  <class>org.openmrs.module.JSSLab.extension.html.AdminList</class>
+	  <class>org.openmrs.module.jsslab.extension.html.AdminList</class>
 	 </extension>    
   	  	
   	<!-- Maps hibernate file's , if present -->   	

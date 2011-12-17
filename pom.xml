@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>JSSLab</artifactId>
+	<artifactId>jsslab</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>JSSLab Module</name>
@@ -12,9 +12,9 @@
 	<url>http://openmrs.org</url>
 
 	<scm>
-		<connection>scm:svn:http://svn.openmrs.org/openmrs-modules/JSSLab/trunk/</connection>
-		<developerConnection>scm:svn:http://svn.openmrs.org/openmrs-modules/JSSLab/trunk/</developerConnection>
-		<url>http://svn.openmrs.org/openmrs-modules/JSSLab/trunk/</url>
+		<connection>scm:svn:http://svn.openmrs.org/openmrs-modules/jsslab/trunk/</connection>
+		<developerConnection>scm:svn:http://svn.openmrs.org/openmrs-modules/jsslab/trunk/</developerConnection>
+		<url>http://svn.openmrs.org/openmrs-modules/jsslab/trunk/</url>
 	</scm>
 
 

@@ -4,11 +4,11 @@
 
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>JSSLab</artifactId>
+		<artifactId>jsslab</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>JSSLab-omod</artifactId>
+	<artifactId>jsslab-omod</artifactId>
 	<name>JSSLab Module OMOD</name>
 	<description>Omod project for JSSLab</description>
 	

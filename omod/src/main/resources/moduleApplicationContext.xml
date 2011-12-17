@@ -25,7 +25,7 @@
  
   <!-- Mapping webpages -->
   <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
-  <context:component-scan base-package="org.openmrs.module.JSSLab.web.controller" />
+  <context:component-scan base-package="org.openmrs.module.jsslab.web.controller" />
  
   
  
@@ -35,17 +35,17 @@
   <bean parent="serviceContext">
 	<property name="moduleService">
 		<list>
-			<value>org.openmrs.module.JSSLab.LabService</value>
+			<value>org.openmrs.module.jsslab.LabService</value>
 			<bean
 				class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
 				<property name="transactionManager">
 					<ref bean="transactionManager" />
 				</property>
 				<property name="target">
-					<bean class="org.openmrs.module.JSSLab.impl.LabServiceImpl" > 				
+					<bean class="org.openmrs.module.jsslab.impl.LabServiceImpl" > 				
 					   <property name="LabDAO">
 							<bean
-								class="org.openmrs.module.JSSLab.db.hibernate.HibernateLabDAO">
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabDAO">
 								<property name="sessionFactory">
 									<ref bean="sessionFactory" />
 								</property>
