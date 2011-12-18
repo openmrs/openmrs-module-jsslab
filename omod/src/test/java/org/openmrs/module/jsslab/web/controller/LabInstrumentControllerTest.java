@@ -39,6 +39,11 @@ import org.springframework.mock.web.MockHttpServletResponse;
  */
 public class LabInstrumentControllerTest extends BaseModuleWebContextSensitiveTest {
 	
+	@Test
+	public void fakeTest() {
+		
+	}
+	
 	/*private LabManagementService service;
 	
 	private LabInstrumentController controller;
