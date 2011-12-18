@@ -39,7 +39,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
  */
 public class LabInstrumentControllerTest extends BaseModuleWebContextSensitiveTest {
 	
-	private LabManagementService service;
+	/*private LabManagementService service;
 	
 	private LabInstrumentController controller;
 	
@@ -120,6 +120,6 @@ public class LabInstrumentControllerTest extends BaseModuleWebContextSensitiveTe
 		Object result = controller.retrieve("72a26526-21d2-11e1-9815-00265e639063", httpReq);
 		Assert.assertNotNull(result);
 		Assert.assertNotNull(PropertyUtils.getProperty(result, "auditInfo"));
-	}
+	}*/
 	
 }

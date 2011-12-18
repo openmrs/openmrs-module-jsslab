@@ -7,64 +7,60 @@
 		<artifactId>jsslab</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<groupId>org.openmrs.module</groupId>
+	
 	<artifactId>jsslab-omod</artifactId>
 	<name>JSSLab Module OMOD</name>
 	<description>Omod project for JSSLab</description>
-	
-   
 
 	<dependencies>
-	   <dependency>
+		<dependency>
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>jsslab-api</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.openmrs.api</groupId>
 			<artifactId>openmrs-api</artifactId>
 			<type>jar</type>
 		</dependency>
 		<dependency>
+			<groupId>org.openmrs.api</groupId>
+			<artifactId>openmrs-api</artifactId>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
 			<groupId>org.openmrs.web</groupId>
 			<artifactId>openmrs-web</artifactId>
 			<type>jar</type>
 		</dependency>
+		<dependency>
+			<groupId>org.openmrs.web</groupId>
+			<artifactId>openmrs-web</artifactId>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.test</groupId>
+			<artifactId>openmrs-test</artifactId>
+			<type>pom</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>webservices.rest-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>webservices.rest-omod</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		
-					
-			<dependency>
-				<groupId>org.openmrs.api</groupId>
-				<artifactId>openmrs-api</artifactId>
-				<version>${openMRSVersion}</version><!--$NO-MVN-MAN-VER$-->
-				<type>test-jar</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.openmrs.web</groupId>
-				<artifactId>openmrs-web</artifactId>
-				<version>${openMRSVersion}</version><!--$NO-MVN-MAN-VER$-->
-				<type>test-jar</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.openmrs.test</groupId>
-				<artifactId>openmrs-test</artifactId>
-				<type>pom</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.openmrs.module</groupId>
-				<artifactId>webservices.rest-api</artifactId>
-				<scope>provided</scope>
-				<version>0.9-SNAPSHOT</version>
-			</dependency>
-			<dependency>
-				<groupId>org.openmrs.module</groupId>
-				<artifactId>webservices.rest-omod</artifactId>
-				<scope>provided</scope>
-				<version>0.9-SNAPSHOT</version>
-			</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>logic</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -116,6 +112,40 @@
 						<includeEmptyDirs>true</includeEmptyDirs>
 					</configuration>
 				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.openmrs.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-openmrs-plugin
+										</artifactId>
+										<versionRange>
+											[1.0.1,)
+										</versionRange>
+										<goals>
+											<goal>
+												initialize-module
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -125,7 +155,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<verifyOmod>false</verifyOmod>
-					
+
 				</configuration>
 				<executions>
 					<execution>
@@ -146,8 +176,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	
-
-	<version>1.0-SNAPSHOT</version>
 </project>
