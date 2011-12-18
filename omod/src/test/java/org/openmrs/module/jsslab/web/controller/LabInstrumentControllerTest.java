@@ -14,35 +14,12 @@
 package org.openmrs.module.jsslab.web.controller;
 
 import org.openmrs.module.jsslab.rest.controller.LabInstrumentController;
-import java.util.Collection;
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.LabManagementService;
-import org.openmrs.api.context.Context;
-import org.openmrs.module.webservices.rest.SimpleObject;
-import org.openmrs.module.webservices.rest.web.RestConstants;
-import org.openmrs.web.test.BaseModuleWebContextSensitiveTest;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
 
 /**
- * Tests functionality of {@link LabInstrumentController}. This does not use @should annotations because
- * the controller inherits those methods from a subclass
+ * Tests functionality of {@link LabInstrumentController}. This does not use @should annotations
+ * because the controller inherits those methods from a subclass
  */
-public class LabInstrumentControllerTest extends BaseModuleWebContextSensitiveTest {
-	
-	@Test
-	public void fakeTest() {
-		
-	}
+public class LabInstrumentControllerTest {
 	
 	/*private LabManagementService service;
 	
