@@ -19,64 +19,73 @@ import org.openmrs.module.Activator;
 import org.openmrs.module.ModuleActivator;
 import org.openmrs.module.BaseModuleActivator;
 
-
 /**
  * This class contains the logic that is run every time this module is either started or shutdown
  */
-public class JSSLabActivator extends BaseModuleActivator implements Activator{
+public class jsslabActivator extends BaseModuleActivator implements Activator {
 	
 	private Log log = LogFactory.getLog(this.getClass());
 	
 	/**
-	 * @see org.openmrs.module.BaseModuleActivator#startup()
+	 * @see org.openmrs.module.Activator#startup()
 	 */
-	@Override
 	public void startup() {
 		log.info("Starting JSSLab Module");
 	}
 	
 	/**
-	 * @see org.openmrs.module.BaseModuleActivator#shutdown()
+	 * @see org.openmrs.module.Activator#shutdown()
 	 */
-	@Override
 	public void shutdown() {
 		log.info("Shutting down JSSLab Module");
 	}
-	
-	/**
-	 * @see org.openmrs.module.BaseModuleActivator#willRefreshContext()
-	 */
-	@Override
-	public void willRefreshContext() {super.willRefreshContext();}
 
-	/**
+	/* (non-Javadoc)
 	 * @see org.openmrs.module.BaseModuleActivator#contextRefreshed()
 	 */
 	@Override
-	public void contextRefreshed() {super.contextRefreshed();}
-	
-	/**
-	 * @see org.openmrs.module.BaseModuleActivator#willStart()
-	 */
-	@Override
-	public void willStart() {super.willStart();}
-	
-	/**
+	public void contextRefreshed() {
+		super.contextRefreshed();
+	}
+
+	/* (non-Javadoc)
 	 * @see org.openmrs.module.BaseModuleActivator#started()
 	 */
 	@Override
-	public void started() {super.started();}
-	
-	/**
-	 * @see org.openmrs.module.BaseModuleActivator#willStop()
-	 */
-	@Override
-	public void willStop() {super.willStop();}
-	
-	/**
+	public void started() {
+		super.started();
+	}
+
+	/* (non-Javadoc)
 	 * @see org.openmrs.module.BaseModuleActivator#stopped()
 	 */
 	@Override
-	public void stopped() {super.stopped();}
+	public void stopped() {
+		super.stopped();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.openmrs.module.BaseModuleActivator#willRefreshContext()
+	 */
+	@Override
+	public void willRefreshContext() {
+		super.willRefreshContext();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.openmrs.module.BaseModuleActivator#willStart()
+	 */
+	@Override
+	public void willStart() {
+		super.willStart();
+	}
+
+	/* (non-Javadoc)
+	 * @see org.openmrs.module.BaseModuleActivator#willStop()
+	 */
+	@Override
+	public void willStop() {
+		super.willStop();
+	}
 	
 }

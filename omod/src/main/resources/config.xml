@@ -18,7 +18,7 @@
 
 
     <!-- Module Activator -->
-	<activator>org.openmrs.module.jsslab.JSSLabActivator</activator>
+	<activator>org.openmrs.module.jsslab.jsslabActivator</activator>
 
 
 	
