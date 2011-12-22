@@ -111,6 +111,18 @@
 					<artifactId>maven-openmrs-plugin</artifactId>
 					<version>1.0.1</version>
 				</plugin>
+               <plugin>
+                    <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
+                    <artifactId>maven-java-formatter-plugin</artifactId>
+                    <configuration>
+                        <compilerSource>${javaCompilerVersion}</compilerSource>
+                        <compilerCompliance>${javaCompilerVersion}</compilerCompliance>
+                        <compilerTargetPlatform>${javaCompilerVersion}</compilerTargetPlatform>
+                        <configFile>../OpenMRSFormatter.xml</configFile>
+                        <overrideConfigCompilerVersion>true</overrideConfigCompilerVersion>
+                        <lineEnding>CRLF</lineEnding>
+                    </configuration>
+                </plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

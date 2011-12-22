@@ -20,22 +20,30 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	private final Log log = LogFactory.getLog(this.getClass());
 	
-	private LabTestPanelDAO daoLabTestPanel = new HibernateLabTestPanelDAO();
-	private LabTestDAO daoLabTest = new HibernateLabTestDAO();
+	protected LabTestPanelDAO labTestPanelDAO;
+	protected LabTestDAO labTestDAO;
+	
+	public void setLabTestPanelDAO(LabTestPanelDAO labTestPanelDAO) {
+		this.labTestPanelDAO = labTestPanelDAO;
+	}
+
+	public void setLabTestDAO(LabTestDAO labTestDAO) {
+		this.labTestDAO = labTestDAO;
+	}
 
 	public LabTestPanel saveLabTestPanel(LabTestPanel labTestPanel)
 			throws APIException {
-		return daoLabTestPanel.saveLabTestPanel(labTestPanel);
+		return labTestPanelDAO.saveLabTestPanel(labTestPanel);
 		
 	}
 
 	public LabTestPanel getLabTestPanelByUuid(String uuid) {
-		return daoLabTestPanel.getLabTestPanelByUuid(uuid);
+		return labTestPanelDAO.getLabTestPanelByUuid(uuid);
 	}
 
 	public void purgeLabTestPanel(LabTestPanel labTestPanel)
 			throws APIException {
-		daoLabTestPanel.deleteLabTestPanel(labTestPanel);
+		labTestPanelDAO.deleteLabTestPanel(labTestPanel);
 		
 	}
 
@@ -44,30 +52,30 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		labTestPanel.setRetired(true);
 		labTestPanel.setDateRetired(new Date());
 		labTestPanel.setRetireReason(retireReason);
-		return daoLabTestPanel.saveLabTestPanel(labTestPanel);
+		return labTestPanelDAO.saveLabTestPanel(labTestPanel);
 	}
 
 	public List<LabTestPanel> getAllLabTestPanels(Boolean includeRetired)
 			throws APIException {
-		return daoLabTestPanel.getAllLabTestPanels(includeRetired);
+		return labTestPanelDAO.getAllLabTestPanels(includeRetired);
 	}
 
 	public LabTestPanel getLabTestPanel(String idNumber) {
-		return daoLabTestPanel.getLabTestPanel(idNumber);
+		return labTestPanelDAO.getLabTestPanel(idNumber);
 	}
 
 	public LabTest saveLabTest(LabTest labTest)
 			throws APIException {
-		return daoLabTest.saveLabTest(labTest);
+		return labTestDAO.saveLabTest(labTest);
 	}
 
 	public LabTest getLabTestByUUID(String uuid) {
-		return daoLabTest.getLabTestByUuid(uuid);
+		return labTestDAO.getLabTestByUuid(uuid);
 	}
 
 	public void purgeLabTest(LabTest labTest)
 			throws APIException {
-		daoLabTest.deleteLabTest(labTest);
+		labTestDAO.deleteLabTest(labTest);
 	}
 
 	public LabTest retireLabTest(LabTest labTest,
@@ -75,12 +83,12 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		labTest.setRetired(true);
 		labTest.setDateRetired(new Date());
 		labTest.setRetireReason(retireReason);
-		return daoLabTest.saveLabTest(labTest);
+		return labTestDAO.saveLabTest(labTest);
 	}
 
 	public List<LabTest> getAllLabTests(Boolean includeRetired)
 			throws APIException {
-		return daoLabTest.getAllLabTests(includeRetired);
+		return labTestDAO.getAllLabTests(includeRetired);
 	}
 
 

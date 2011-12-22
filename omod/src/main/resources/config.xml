@@ -14,19 +14,31 @@
 	
 	<!-- / Module Properties -->
 	
-	<require_version>1.2.0.3400</require_version>
-
+	<require_version>1.8.0.00</require_version>
+	<require_modules>
+		<require_module>org.openmrs.module.webservices.rest</require_module> 
+	</require_modules>
 
     <!-- Module Activator -->
 	<activator>org.openmrs.module.jsslab.jsslabActivator</activator>
 
+	<!-- Global Properties -->
+	<globalProperty>
+		<property>jsslab.homeLab</property>
+		<description>Location id of lab supported by this instance</description>
+	</globalProperty>
 
-	
-		<!-- Add's link to admin page --> 
-	 <extension>
-	  <point>org.openmrs.admin.list</point>
-	  <class>org.openmrs.module.jsslab.extension.html.AdminList</class>
-	 </extension>    
+	<!-- Permissions -->
+	<permission>
+		<name>Ordering</name>
+		<description>Create or edit lab orders</description>
+	</permission>
+		
+	<!-- Add link to admin page --> 
+	<extension>
+		<point>org.openmrs.admin.list</point>
+		<class>org.openmrs.module.jsslab.extension.html.JSSLabAdmExt</class>
+	</extension>    
   	  	
   	<!-- Maps hibernate file's , if present -->   	
    	<mappingFiles>

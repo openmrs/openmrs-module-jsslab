@@ -17,3 +17,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/jsslab/labInstrument")
 public class LabInstrumentController extends BaseCrudController<LabInstrumentResource> {}
+

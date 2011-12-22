@@ -34,7 +34,7 @@
  <!-- Mapping Service -->
   <bean parent="serviceContext">
 	<property name="moduleService">
-		<list merge="true">
+		<list>
 			<value>org.openmrs.module.jsslab.LabCatalogService</value>
 			<bean
 				class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
@@ -43,7 +43,7 @@
 				</property>
 				<property name="target">
 					<bean class="org.openmrs.module.jsslab.impl.LabCatalogServiceImpl" > 				
-					   <property name="LabTestPanelDAO">
+					   <property name="labTestPanelDAO">
 							<bean
 								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestPanelDAO">
 								<property name="sessionFactory">
@@ -51,7 +51,7 @@
 								</property>
 							</bean>
 						</property>
-					   <property name="LabTestDAO">
+					   <property name="labTestDAO">
 							<bean
 								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestDAO">
 								<property name="sessionFactory">
@@ -75,7 +75,7 @@
 	</bean>
   <bean parent="serviceContext">
 	<property name="moduleService">
-		<list merge="true">
+		<list>
 			<value>org.openmrs.module.jsslab.LabManagementService</value>
 			<bean
 				class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
@@ -84,7 +84,7 @@
 				</property>
 				<property name="target">
 					<bean class="org.openmrs.module.jsslab.impl.LabManagementServiceImpl" > 				
-					   <property name="LabInstrumentDAO">
+					   <property name="labInstrumentDAO">
 							<bean
 								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabInstrumentDAO">
 								<property name="sessionFactory">
@@ -92,7 +92,7 @@
 								</property>
 							</bean>
 						</property>
-					   <property name="LabSupplyItemDAO">
+					   <property name="labSupplyItemDAO">
 							<bean
 								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabSupplyItemDAO">
 								<property name="sessionFactory">
@@ -114,5 +114,7 @@
 		</list>
 	</property>
 	</bean>
+
+	<context:component-scan base-package="org.openmrs.module.jsslab" />
  
 </beans>
