@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="org.openmrs.module.jsslab.LabInstrument" table="jsslab_instrument">
+    <class name="org.openmrs.module.jsslab.db.LabInstrument" table="jsslab_instrument">
         <id name="instrumentId" type="int">
             <column name="instrument_id" />
             <generator class="native" />
@@ -32,14 +32,16 @@
 		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
 
+<!-- 
         <set name="testRuns" inverse="true" >
             <key column="instrument_id" not-null="false" />
-            <one-to-many class="org.openmrs.module.jsslab.LabTestRun" />
+            <one-to-many class="org.openmrs.module.jsslab.db.LabTestRun" />
         </set>
+-->
 <!-- 
         <set name="maintenance" inverse="true" >
             <key column="instrument_id" not-null="true" />
-            <one-to-many class="org.openmrs.module.jsslab.LabInstrumentMaintenance" />
+            <one-to-many class="org.openmrs.module.jsslab.db.LabInstrumentMaintenance" />
         </set>
 -->
 

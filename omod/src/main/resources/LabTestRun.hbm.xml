@@ -2,13 +2,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="org.openmrs.module.jsslab.LabTestRun" table="jsslab_test_run">
+    <class name="org.openmrs.module.jsslab.db.LabTestRun" table="jsslab_test_run">
         <id name="testRunId" type="int">
             <column name="test_run_id" />
             <generator class="native" />
         </id>
 
-		<many-to-one name="instrument" class="org.openmrs.module.jsslab.LabInstrument" column="instrument_id" not-null="false" />
+		<many-to-one name="instrument" class="org.openmrs.module.jsslab.db.LabInstrument" column="instrument_id" not-null="false" />
       	<many-to-one name="labTech" class="org.openmrs.User" not-null="false" column="lab_tech" />
 		<property name="runStart" type="java.util.Date" not-null="false" column="run_start" />
 		<property name="runEnd" type="java.util.Date" not-null="false" column="run_end" />
@@ -24,7 +24,7 @@
 
         <set name="testSpecimens" inverse="true" >
             <key column="test_run_id" not-null="false" />
-            <one-to-many class="org.openmrs.module.jsslab.LabTestSpecimen" />
+            <one-to-many class="org.openmrs.module.jsslab.db.LabTestSpecimen" />
         </set>
     </class>
 </hibernate-mapping>

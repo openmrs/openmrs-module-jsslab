@@ -2,16 +2,15 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="org.openmrs.module.jsslab.LabPrecondition" table="jsslab_precondition">
-        <id name="testResultId" type="int">
+    <class name="org.openmrs.module.jsslab.db.LabPrecondition" table="jsslab_precondition">
+        <id name="preconditionId" type="int">
             <column name="precondition_id" />
             <generator class="native" />
         </id>
-
-		<many-to-one name="testPanel" class="org.openmrs.LabTestPanel" column="test_panel_id" not-null="true" />
+		<many-to-one name="testPanel" class="org.openmrs.module.jsslab.db.LabTestPanel" column="test_panel_id" not-null="true" />
 		<many-to-one name="preconditionQuestionConcept" class="org.openmrs.Concept" column="precondition_question_concept" not-null="true" />
 		<many-to-one name="preconditionAnswerConcept" class="org.openmrs.Concept" column="precondition_answer_concept" not-null="true" />
-		<property name="sortOrder" type="java.util.Double" not-null="false" column="sort_order" />
+		<property name="sortOrder" type="java.lang.Double" not-null="false" column="sort_order" />
 
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
 		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />

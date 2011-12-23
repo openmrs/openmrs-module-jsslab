@@ -25,7 +25,6 @@
  
   <!-- Mapping webpages -->
   <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
-  <context:component-scan base-package="org.openmrs.module.jsslab.web.controller" />
  
   
  

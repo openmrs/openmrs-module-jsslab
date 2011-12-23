@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="org.openmrs.module.jsslab.LabSpecimen" table="jsslab_specimen">
+    <class name="org.openmrs.module.jsslab.db.LabSpecimen" table="jsslab_specimen">
         <id name="specimenId" type="int">
             <column name="specimen_id" />
             <generator class="native" />
@@ -18,7 +18,7 @@
 		<property name="receivedDate" type="java.util.Date" not-null="true" column="received_date" />
 		<many-to-one name="receivedConditionConcept"  class="org.openmrs.Concept" column="received_condition_concept" not-null="false" />
 		<many-to-one name="receivedSpecimenConcept" class="org.openmrs.Concept" column="received_specimen_concept" not-null="true" />
-		<many-to-one name="report" class="org.openmrs.module.jsslab.LabReport" column="report_id" not-null="true" />
+		<many-to-one name="report" class="org.openmrs.module.jsslab.db.LabReport" column="report_id" not-null="true" />
 		<property name="urgent" type="java.util.Boolean" not-null="true" column="urgent" />
 		<property name="physicianRetest" type="java.util.Boolean" not-null="false" column="physician_retest" />
 		<property name="hidden" type="java.util.Boolean" not-null="true" column="hidden" />
@@ -34,11 +34,11 @@
 
         <set name="testSpecimens" inverse="true">
             <key column="specimen_id" not-null="true" />
-            <one-to-many class="org.openmrs.module.jsslab.LabTestSpecimen" />
+            <one-to-many class="org.openmrs.module.jsslab.db.LabTestSpecimen" />
         </set>
         <set name="orders" table="jsslab_specimen_order">
         	<key column="specimen_id" not-null="false" />
-        	<many-to-many class="org.openmrs.module.jsslab.LabOrder" />
+        	<many-to-many class="org.openmrs.module.jsslab.db.LabOrder" />
         </set>
     </class>
 </hibernate-mapping>

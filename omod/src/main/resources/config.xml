@@ -42,9 +42,22 @@
   	  	
   	<!-- Maps hibernate file's , if present -->   	
    	<mappingFiles>
-		${omodHbmConfig}
+LabInstrument.hbm.xml
+LabTestPanel.hbm.xml
+LabPrecondition.hbm.xml
+LabReport.hbm.xml
+LabTest.hbm.xml
+LabTestRange.hbm.xml
 	</mappingFiles>
-
+<!-- 
+LabOrder.hbm.xml
+LabOrderSpecimen.hbm.xml
+LabSpecimen.hbm.xml
+LabSupplyItem.hbm.xml
+LabTestResult.hbm.xml
+LabTestRun.hbm.xml
+LabTestSpecimen.hbm.xml
+-->
 	
 	<!-- Internationalization -->
 	<!-- All message codes should start with @MODULE_ID@.* -->
@@ -62,5 +75,6 @@
 	</messages>
 	<!-- /Internationalization -->
 	
+<context:component-scan base-package="org.openmrs.module.jsslab" /> 
 </module>
 

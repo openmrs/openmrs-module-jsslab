@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="org.openmrs.module.jsslab.LabReport" table="jsslab_report">
+    <class name="org.openmrs.module.jsslab.db.LabReport" table="jsslab_report">
         <id name="reportId" type="int">
             <column name="report_id" />
             <generator class="native" />
@@ -24,10 +24,11 @@
 		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
 		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
-
+<!--  
         <set name="specimens" inverse="true" >
             <key column="report_id" not-null="true" />
-            <one-to-many class="org.openmrs.module.jsslab.LabSpecimen" />
+            <one-to-many class="org.openmrs.module.jsslab.db.LabSpecimen" />
         </set>
+-->        
     </class>
 </hibernate-mapping>

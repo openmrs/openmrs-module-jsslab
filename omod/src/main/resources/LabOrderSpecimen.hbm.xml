@@ -2,14 +2,14 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="org.openmrs.module.jsslab.LabOrderSpecimen" table="jsslab_order_specimen" >
+    <class name="org.openmrs.module.jsslab.db.LabOrderSpecimen" table="jsslab_order_specimen" >
         <id name="orderSpecimenId" type="int">
             <column name="order_specimen_id" />
             <generator class="native" />
         </id>
 
-		<many_to_one name="labSpecimen" type="org.openmrs.module.jsslab.LabSpecimen" column="lab_specimen_id" not-null="true" />
-		<many_to_one name="labOrder" type="org.openmrs.module.jsslab.LabOrder" column="lab_order_id" not-null="true" />
+		<many_to_one name="labSpecimen" type="org.openmrs.module.jsslab.db.LabSpecimen" column="lab_specimen_id" not-null="true" />
+		<many_to_one name="labOrder" type="org.openmrs.module.jsslab.db.LabOrder" column="lab_order_id" not-null="true" />
 				
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
 		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />

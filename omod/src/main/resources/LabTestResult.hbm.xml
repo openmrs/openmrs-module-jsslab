@@ -2,26 +2,26 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="org.openmrs.module.jsslab.LabTestResult" table="jsslab_test_result">
+    <class name="org.openmrs.module.jsslab.db.LabTestResult" table="jsslab_test_result">
         <id name="testResultId" type="int">
             <column name="test_result_id" />
             <generator class="native" />
         </id>
 
-		<many-to-one name="testSpecimen" class="org.openmrs.module.jsslab.LabTestSpecimen" column="test_specimen_id" not-null="true" />
+		<many-to-one name="testSpecimen" class="org.openmrs.module.jsslab.db.LabTestSpecimen" column="test_specimen_id" not-null="true" />
 		<many-to-one name="testResultConcept" class="org.openmrs.Concept" column="test_result_concept" not-null="true" />
-		<property name="testResultType" type="org.openmrs.module.jsslab.LabResultType" column="test_result_type" not-null="true" />
+		<property name="testResultType" type="org.openmrs.module.jsslab.db.LabResultType" column="test_result_type" not-null="true" />
 		<many-to-one name="testAnswerConcept" class="org.openmrs.Concept" column="test_answer_concept" not-null="false" />
-		<property name="testAnswerDuration" type="java.util.Double" not-null="false" column="test_answer_duration" />
-		<property name="testAnswerTiter" type="java.util.Integer" not-null="false" column="test_answer_titer" />
-		<property name="testAnswerNumeric" type="java.util.Double" not-null="false" column="test_answer_numeric" />
+		<property name="testAnswerDuration" type="java.lang.Double" not-null="false" column="test_answer_duration" />
+		<property name="testAnswerTiter" type="java.lang.Integer" not-null="false" column="test_answer_titer" />
+		<property name="testAnswerNumeric" type="java.lang.Double" not-null="false" column="test_answer_numeric" />
 		<property name="testAnswerString" type="java.lang.String" column="test_answer_string" length="255" not-null="false" />
 		<property name="testAnswerFlag" type="java.lang.String" column="test_answer_flag" length="5" not-null="false" />
 		<property name="testAnswerNote" type="java.lang.String" column="test_answer_note" length="45" not-null="false" />
-		<property name="testNormalLow" type="java.util.Double" not-null="false" column="test_normal_low" />
-		<property name="testNormalHigh" type="java.util.Double" not-null="false" column="test_normal_high" />
-		<property name="testCriticalLow" type="java.util.Double" not-null="false" column="test_critical_low" />
-		<property name="testCriticalHigh" type="java.util.Double" not-null="false" column="test_critical_high" />
+		<property name="testNormalLow" type="java.lang.Double" not-null="false" column="test_normal_low" />
+		<property name="testNormalHigh" type="java.lang.Double" not-null="false" column="test_normal_high" />
+		<property name="testCriticalLow" type="java.lang.Double" not-null="false" column="test_critical_low" />
+		<property name="testCriticalHigh" type="java.lang.Double" not-null="false" column="test_critical_high" />
 		<property name="hidden" type="java.util.Boolean" not-null="false" column="hidden" />
 				
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>

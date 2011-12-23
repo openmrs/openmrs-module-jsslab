@@ -2,13 +2,13 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name=" not-null="false"" table="jsslab_test_range">
+    <class name="org.openmrs.module.jsslab.db.LabTestRange" table="jsslab_test_range">
         <id name="testRangeId" type="int">
             <column name="test_range_id" />
             <generator class="native" />
         </id>
 
-		<many-to-one name="testID" class=" not-null="false"" column="test_id" not-null="true" />
+		<many-to-one name="test" class="org.openmrs.module.jsslab.db.LabTest" column="test_id" not-null="true" />
 		<property name="sortOrder" type="java.lang.Double" column="sort_order" not-null="true" />
 		<property name="rangeSex" type="java.lang.String" column="range_sex" length="1" not-null="false" />
 		<property name="rangeAgeMin" type="java.lang.Double" column="range_age_min" not-null="false" />
