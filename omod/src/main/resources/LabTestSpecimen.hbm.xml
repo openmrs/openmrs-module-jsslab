@@ -8,7 +8,7 @@
             <generator class="native" />
         </id>
 
-		<many-to-one name="specimenId" class="org.openmrs.module.jsslab.db.LabSpecimen" not-null="true" column="specimen_id"/>
+		<many-to-one name="specimen" class="org.openmrs.module.jsslab.db.LabSpecimen" not-null="true" column="specimen_id"/>
 		<property name="specimenSubId" type="java.lang.Integer" not-null="true" column="specimen_sub_id" />
 		<property name="parentSubId" type="java.lang.Integer" not-null="true" column="parent_sub_id" />
 		<many-to-one name="parentRelationConcept" class="org.openmrs.Concept" column="parent_relation_concept" not-null="true" />
@@ -32,10 +32,11 @@
 		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
 		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
-
+<!--   
         <set name="testResults" inverse="true">
             <key column="test_specimen_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.db.LabTestResult" />
         </set>
+-->        
     </class>
 </hibernate-mapping>

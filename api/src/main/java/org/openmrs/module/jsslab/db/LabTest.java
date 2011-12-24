@@ -30,7 +30,7 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
 /**
- * A lab test. Child of Panel.  Contains test ranges
+ * A lab test. Child of Panel.  Contains test testRanges
  * 
  */
 @Root(strict = false)
@@ -54,13 +54,21 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable, Compar
 	
 	private Double sortOrder;
 	
-	private Set<LabTestRange> ranges = new HashSet<LabTestRange>();
+	private Set<LabTestRange> testRanges = new HashSet<LabTestRange>();
 	
 	public Integer getId() {
 		return testId;
 	}
 
 	public void setId(Integer testId) {
+		this.testId = testId;
+	}
+
+	public Integer getTestId() {
+		return testId;
+	}
+
+	public void setTestId(Integer testId) {
 		this.testId = testId;
 	}
 
@@ -146,19 +154,19 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable, Compar
 	}
 	
 	/**
-	 * @return Returns ranges.
+	 * @return Returns testRanges.
 	 */
 	@Attribute(required = false)
-	public Set<LabTestRange> getLabTestRanges() {
-		return ranges;
+	public Set<LabTestRange> getTestRanges() {
+		return testRanges;
 	}
 	
 	/**
-	 * @param ranges.  The ranges to set.
+	 * @param testRanges.  The testRanges to set.
 	 */
 	@Attribute(required = false)
-	public void setLabTestRanges(Set<LabTestRange> ranges) {
-		this.ranges = ranges;
+	public void setTestRanges(Set<LabTestRange> testRanges) {
+		this.testRanges = testRanges;
 	}
 
 	/**

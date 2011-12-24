@@ -16,7 +16,7 @@ package org.openmrs.module.jsslab.db;
 import java.io.Serializable;
 
 import org.openmrs.BaseOpenmrsData;
-import org.openmrs.PersonAttributeType;
+import org.openmrs.logic.rule.definition.RuleDefinition;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
@@ -45,9 +45,7 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	
 	private Double rangeAgeMax;
 	
-	private PersonAttributeType rangeAttributeType;
-	
-	private String rangeAttributeValue;
+	private RuleDefinition logicRule;
 	
 	private Double rangeNormalLow;
 	
@@ -62,6 +60,14 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	}
 
 	public void setId(Integer testRangeId) {
+		this.testRangeId = testRangeId;
+	}
+
+	public Integer getTestRangeId() {
+		return testRangeId;
+	}
+
+	public void setTestRangeId(Integer testRangeId) {
 		this.testRangeId = testRangeId;
 	}
 
@@ -146,37 +152,20 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	}
 	
 	/**
-	 * @return Returns rangeAttributeType.
+	 * @return Returns logicRule.
 	 */
 	@Attribute(required = false)
-	public PersonAttributeType getRangeAttributeType() {
-		return rangeAttributeType;
+	public RuleDefinition getLogicRule() {
+		return logicRule;
 	}
 	
 	/**
-	 * @param rangeAttributeType.  The rangeAttributeType to set.
+	 * @param logicRule.  The logicRule to set.
 	 */
 	@Attribute(required = false)
-	public void setRangeAttributeType(PersonAttributeType rangeAttributeType) {
-		this.rangeAttributeType = rangeAttributeType;
+	public void setLogicRule(RuleDefinition logicRule) {
+		this.logicRule = logicRule;
 	}
-	
-	/**
-	 * @return Returns rangeAttributeValue.
-	 */
-	@Attribute(required = false)
-	public String getrangeAttributeValue() {
-		return rangeAttributeValue;
-	}
-	
-	/**
-	 * @param rangeAttributeValue.  The rangeAttributeValue to set.
-	 */
-	@Attribute(required = false)
-	public void setrangeAttributeValue(String rangeAttributeValue) {
-		this.rangeAttributeValue = rangeAttributeValue;
-	}
-	
 	/**
 	 * @return Returns rangeNormalLow.
 	 */

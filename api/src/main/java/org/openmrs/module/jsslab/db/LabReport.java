@@ -72,6 +72,14 @@ public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 		return reportId;
 	}
 
+	public void setReportId(Integer reportId) {
+		this.reportId = reportId;
+	}
+
+	public Integer getReportId() {
+		return reportId;
+	}
+
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#setId(java.lang.Integer)
 	 */

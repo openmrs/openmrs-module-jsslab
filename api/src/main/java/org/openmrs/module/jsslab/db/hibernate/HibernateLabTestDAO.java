@@ -49,11 +49,11 @@ public class HibernateLabTestDAO implements LabTestDAO {
 	 */
 	public LabTest saveLabTest(LabTest labTest) {
 
-		if (labTest.getLabTestRanges() != null && labTest.getId() != null) {
+		if (labTest.getTestRanges() != null && labTest.getId() != null) {
 			// Hibernate has a problem updating child collections
 			// if the parent object was already saved so we do it 
 			// explicitly here
-			for (LabTestRange child : labTest.getLabTestRanges())
+			for (LabTestRange child : labTest.getTestRanges())
 				if (child.getId() == null)
 					saveLabTestRange(child);
 		}
@@ -146,7 +146,7 @@ public class HibernateLabTestDAO implements LabTestDAO {
 	 * @see org.openmrs.api.db.LabTestDAO#deleteLabTest(org.openmrs.LabTest)
 	 */
 	public void deleteLabTest(LabTest labTest) throws APIException {
-		if (labTest.getLabTestRanges().size() != 0)
+		if (labTest.getTestRanges().size() != 0)
 			throw new APIException("Cannot delete a referenced supply item");
 
 		sessionFactory.getCurrentSession().delete(labTest);

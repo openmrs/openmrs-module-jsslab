@@ -17,11 +17,11 @@
 		<property name="specimenDate" type="java.util.Date" not-null="true" column="specimen_date" />
 		<property name="receivedDate" type="java.util.Date" not-null="true" column="received_date" />
 		<many-to-one name="receivedConditionConcept"  class="org.openmrs.Concept" column="received_condition_concept" not-null="false" />
-		<many-to-one name="receivedSpecimenConcept" class="org.openmrs.Concept" column="received_specimen_concept" not-null="true" />
+		<many-to-one name="receivedSpecimenTypeConcept" class="org.openmrs.Concept" column="received_specimen_concept" not-null="true" />
 		<many-to-one name="report" class="org.openmrs.module.jsslab.db.LabReport" column="report_id" not-null="true" />
-		<property name="urgent" type="java.util.Boolean" not-null="true" column="urgent" />
-		<property name="physicianRetest" type="java.util.Boolean" not-null="false" column="physician_retest" />
-		<property name="hidden" type="java.util.Boolean" not-null="true" column="hidden" />
+		<property name="urgent" type="java.lang.Boolean" not-null="true" column="urgent" />
+		<property name="physicianRetest" type="java.lang.Boolean" not-null="false" column="physician_retest" />
+		<property name="hidden" type="java.lang.Boolean" not-null="true" column="hidden" />
 				
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
 		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
@@ -40,5 +40,6 @@
         	<key column="specimen_id" not-null="false" />
         	<many-to-many class="org.openmrs.module.jsslab.db.LabOrder" />
         </set>
+        
     </class>
 </hibernate-mapping>

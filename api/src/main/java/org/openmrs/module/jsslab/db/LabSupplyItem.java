@@ -67,6 +67,14 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 		this.supplyItemId = supplyItemId;
 	}
 	
+	public Integer getSupplyItemId() {
+		return supplyItemId;
+	}
+
+	public void setSupplyItemId(Integer supplyItemId) {
+		this.supplyItemId = supplyItemId;
+	}
+	
 	/**
 	 * @return Returns the labStockNumber.
 	 */

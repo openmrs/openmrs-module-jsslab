@@ -21,11 +21,11 @@
 		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
 		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
-<!-- 
-        <set name="testRanges" >
-            <key column="test_id" not-null="false" inverse="true" />
+
+        <set name="testRanges" inverse="true" >
+            <key column="test_id" not-null="false" />
             <one-to-many class="org.openmrs.module.jsslab.db.LabTestRange" />
         </set>
- -->
+
     </class>
 </hibernate-mapping>

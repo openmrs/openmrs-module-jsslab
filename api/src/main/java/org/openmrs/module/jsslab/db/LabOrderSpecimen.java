@@ -50,7 +50,15 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#setId(java.lang.Integer)
 	 */
-	public void setId(Integer instrumentId) {
+	public void setId(Integer orderSpecimenId) {
+		this.orderSpecimenId = orderSpecimenId;
+	}
+	
+	public Integer getOrderSpecimenId() {
+		return orderSpecimenId;
+	}
+
+	public void setOrderSpecimenId(Integer orderSpecimenId) {
 		this.orderSpecimenId = orderSpecimenId;
 	}
 	
@@ -71,7 +79,7 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 	}
 	
 	/**
-	 * @return Returns the laborder .
+	 * @return Returns the order .
 	 */
 	@Attribute(required = true)
 	public LabOrder getOrder() {

@@ -59,6 +59,14 @@ public class LabTestRun extends BaseOpenmrsMetadata implements Serializable {
 		this.testRunId = testRunId;
 	}
 
+	public Integer getTestRunId() {
+		return testRunId;
+	}
+
+	public void setTestRunId(Integer testRunId) {
+		this.testRunId = testRunId;
+	}
+
 	/**
 	 * @return Returns the instrument.
 	 */
@@ -71,7 +79,7 @@ public class LabTestRun extends BaseOpenmrsMetadata implements Serializable {
 	 * @param instrument The instrument to set.
 	 */
 	@Attribute(required = false)
-	public void setInstument(LabInstrument instrument) {
+	public void setInstrument(LabInstrument instrument) {
 		this.instrument = instrument;
 	}
 	

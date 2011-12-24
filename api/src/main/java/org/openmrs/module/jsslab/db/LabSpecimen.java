@@ -92,6 +92,14 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 		this.specimenId = specimenId;
 	}
 
+	public Integer getSpecimenId() {
+		return specimenId;
+	}
+
+	public void setSpecimenId(Integer specimenId) {
+		this.specimenId = specimenId;
+	}
+
 	/**
 	 * @return Returns the labSpecimenId.
 	 */
@@ -343,7 +351,7 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	}
 	
 	/**
-	 * @return Returns the test specimens set.
+	 * @return Returns the testspecimens set.
 	 */
 	@Attribute(required = false)
 	public Set<LabTestSpecimen> getTestSpecimens(){
@@ -351,12 +359,27 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	}
 	
 	/**
-	 * @param orders The set of specimens to set.
+	 * @param testspecimens The set of testspecimens to set.
 	 */
 	@Attribute(required = false)
-	public void setSpecimens(Set<LabTestSpecimen> TestSpecimens) {
+	public void setTestSpecimens(Set<LabTestSpecimen> TestSpecimens) {
 		this.testSpecimens = testSpecimens;
 	}
 	
+	/**
+	 * @return Returns the orders set.
+	 */
+	@Attribute(required = false)
+	public Set<LabOrder> getOrders(){
+		return orders;
+	}
+	
+	/**
+	 * @param orders The set of orders to set.
+	 */
+	@Attribute(required = false)
+	public void setOrders(Set<LabOrder> orders) {
+		this.orders = orders;
+	}
 
 }

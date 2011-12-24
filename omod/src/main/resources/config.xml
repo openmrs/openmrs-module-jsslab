@@ -48,15 +48,15 @@ LabPrecondition.hbm.xml
 LabReport.hbm.xml
 LabTest.hbm.xml
 LabTestRange.hbm.xml
-	</mappingFiles>
-<!-- 
-LabOrder.hbm.xml
-LabOrderSpecimen.hbm.xml
 LabSpecimen.hbm.xml
 LabSupplyItem.hbm.xml
-LabTestResult.hbm.xml
 LabTestRun.hbm.xml
 LabTestSpecimen.hbm.xml
+LabOrder.hbm.xml
+LabOrderSpecimen.hbm.xml
+	</mappingFiles>
+<!-- 
+LabTestResult.hbm.xml
 -->
 	
 	<!-- Internationalization -->

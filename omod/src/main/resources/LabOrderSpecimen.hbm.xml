@@ -3,15 +3,15 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="org.openmrs.module.jsslab.db.LabOrderSpecimen" table="jsslab_order_specimen" >
-        <id name="orderSpecimenId" type="int">
-            <column name="order_specimen_id" />
-            <generator class="native" />
-        </id>
-
-		<many_to_one name="labSpecimen" type="org.openmrs.module.jsslab.db.LabSpecimen" column="lab_specimen_id" not-null="true" />
-		<many_to_one name="labOrder" type="org.openmrs.module.jsslab.db.LabOrder" column="lab_order_id" not-null="true" />
-				
-      	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
+    	<id name="orderSpecimenId" type="int">
+    		<column name="order_specimen_id" />
+    		<generator class="native" />
+    	</id>
+    	
+    	<many-to-one name="specimen" class="org.openmrs.module.jsslab.db.LabSpecimen" column="lab_specimen_id" not-null="true" />
+		<many-to-one name="order" class="org.openmrs.module.jsslab.db.LabOrder" column="lab_order_id" not-null="true" />
+		
+		<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
 		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
 		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
 		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
@@ -19,6 +19,5 @@
 		<property name="dateVoided" type="java.util.Date" column="date_voided" length="19" />
 		<property name="voidReason" type="java.lang.String" column="void_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
-
-    </class>
+	</class>
 </hibernate-mapping>

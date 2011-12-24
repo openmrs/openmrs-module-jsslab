@@ -80,6 +80,14 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable, C
 		this.testPanelId = testPanelId;
 	}
 
+	public Integer getTestPanelId() {
+		return testPanelId;
+	}
+
+	public void setTestPanelId(Integer testPanelId) {
+		this.testPanelId = testPanelId;
+	}
+
 	/**
 	 * @return Returns labLocation.
 	 */
@@ -159,7 +167,7 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable, C
 	 * @param receivedSpecimenType The receivedSpecimenType to set.
 	 */
 	@Attribute(required = false)
-	public void setreceivedSpecimenTypeConcept(Concept receivedSpecimenTypeConcept) {
+	public void setReceivedSpecimenTypeConcept(Concept receivedSpecimenTypeConcept) {
 		this.receivedSpecimenTypeConcept = receivedSpecimenTypeConcept;
 	}
 	

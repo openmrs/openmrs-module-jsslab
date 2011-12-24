@@ -61,6 +61,14 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 		this.preconditionId = preconditionId;
 	}
 
+	public Integer getPreconditionId() {
+		return preconditionId;
+	}
+
+	public void setPreconditionId(Integer preconditionId) {
+		this.preconditionId = preconditionId;
+	}
+
 	/**
 	 * @return Returns testPanel.
 	 */

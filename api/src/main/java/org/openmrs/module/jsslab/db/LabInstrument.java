@@ -83,6 +83,22 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	}
 	
 	/**
+	 * @return Returns the InstrumentId.
+	 */
+	@Attribute(required = true)
+	public Integer getInstrumentId() {
+		return instrumentId;
+	}
+	
+	/**
+	 * @param InstrumentId The InstrumentId to set.
+	 */
+	@Attribute(required = true)
+	public void setInstrumentId(Integer instrumentId) {
+		this.instrumentId = instrumentId;
+	}
+	
+	/**
 	 * @return Returns the propertyTag.
 	 */
 	@Attribute(required = false)

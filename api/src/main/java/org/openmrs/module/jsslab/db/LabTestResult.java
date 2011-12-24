@@ -18,6 +18,7 @@ import java.io.Serializable;
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Concept;
 import org.openmrs.User;
+import org.openmrs.module.jsslab.db.LabResultType;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
@@ -34,16 +35,12 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	
 	private static final Log log = LogFactory.getLog(LabTestResult.class);
 	
-	public static enum LabResultType {
-		CONCEPT, DURATION, TITER, NUMERIC, TEXT
-	}
-	
 	private Integer testResultId;
 
 	private LabTestSpecimen testSpecimen;
 	
 	private Concept testResultConcept;
-	
+
 	private LabResultType resultType;
 	
 	private Concept testAnswerConcept;
@@ -387,3 +384,4 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	}
 	
 }
+

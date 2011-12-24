@@ -26,15 +26,15 @@
 		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
 		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
-<!--  
+  
         <set name="preconditions" inverse="true" >
             <key column="test_panel_id" not-null="true" />
-            <one-to-many class="org.openmrs.module.jsslab.db.LabPreconditions" />
+            <one-to-many class="org.openmrs.module.jsslab.db.LabPrecondition" />
         </set>
         <set name="tests" inverse="true" >
             <key column="test_panel_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.db.LabTest" />
         </set>
--->
+
     </class>
 </hibernate-mapping>

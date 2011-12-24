@@ -57,13 +57,13 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	
 	private User prepTech;
 	
-	private Date prepDate;
+	private Date prepTime;
 	
 	private String rackPosition;
 	
-	private User labTech;
+	private User testTech;
 	
-	private Date testDate;
+	private Date testTime;
 	
 	private LabTestRun testRun;
 	
@@ -76,6 +76,14 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	}
 
 	public void setId(Integer testSpecimenId) {
+		this.testSpecimenId = testSpecimenId;
+	}
+
+	public Integer getTestSpecimenId() {
+		return testSpecimenId;
+	}
+
+	public void setTestSpecimenId(Integer testSpecimenId) {
 		this.testSpecimenId = testSpecimenId;
 	}
 
@@ -163,7 +171,7 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	 * @return Returns the test panel
 	 */
 	@Attribute(required = false)
-	public LabTestPanel getLabTestPanel() {
+	public LabTestPanel getTestPanel() {
 		return testPanel;
 	}
 	
@@ -171,7 +179,7 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	 * @param labTestPanel The labTestPanel to set.
 	 */
 	@Attribute(required = false)
-	public void setLabTestPanel(LabTestPanel testPanel) {
+	public void setTestPanel(LabTestPanel testPanel) {
 		this.testPanel = testPanel;
 	}
 	
@@ -226,19 +234,19 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	}
 	
 	/**
-	 * @return Returns the prepDate.
+	 * @return Returns the prepTime.
 	 */
 	@Attribute(required = false)
-	public Date getPrepDate() {
-		return prepDate;
+	public Date getPrepTime() {
+		return prepTime;
 	}
 	
 	/**
-	 * @param prepDate.  The prepDate to set.
+	 * @param prepTime  The prepTime to set.
 	 */
 	@Attribute(required = false)
-	public void setPrepDate(Date prepDate) {
-		this.prepDate = prepDate;
+	public void setPrepTime(Date prepTime) {
+		this.prepTime = prepTime;
 	}
 	
 	/**
@@ -258,37 +266,37 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	}
 	
 	/**
-	 * @return Returns the labTech user.
+	 * @return Returns the testTech user.
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public User getLabTech() {
-		return labTech;
+	public User getTestTech() {
+		return testTech;
 	}
 	
 	/**
-	 * @param labTech The labTech user to set.
+	 * @param testTech The testTech user to set.
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public void setLabTech(User labTech) {
-		this.labTech = labTech;
+	public void setTestTech(User testTech) {
+		this.testTech = testTech;
 	}
 	
 	/**
-	 * @return Returns the testDate.
+	 * @return Returns the testTime.
 	 */
 	@Attribute(required = false)
-	public Date getTestDate() {
-		return testDate;
+	public Date getTestTime() {
+		return testTime;
 	}
 	
 	/**
-	 * @param testDate.  The testDate to set.
+	 * @param testTime.  The testTime to set.
 	 */
 	@Attribute(required = false)
-	public void setTestDate(Date testDate) {
-		this.testDate = testDate;
+	public void setTestTime(Date testTime) {
+		this.testTime = testTime;
 	}
 	
 	/**
