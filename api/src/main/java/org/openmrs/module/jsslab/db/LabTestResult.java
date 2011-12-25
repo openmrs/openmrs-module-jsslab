@@ -88,6 +88,14 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 		this.testResultId = testResultId;
 	}
 
+	public Integer gettestResultId() {
+		return testResultId;
+	}
+
+	public void settestResultId(Integer testResultId) {
+		this.testResultId = testResultId;
+	}
+
 	/**
 	 * @return Returns the test specimen .
 	 */

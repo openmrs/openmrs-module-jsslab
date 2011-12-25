@@ -54,9 +54,9 @@ LabTestRun.hbm.xml
 LabTestSpecimen.hbm.xml
 LabOrder.hbm.xml
 LabOrderSpecimen.hbm.xml
+LabTestResult.hbm.xml
 	</mappingFiles>
 <!-- 
-LabTestResult.hbm.xml
 -->
 	
 	<!-- Internationalization -->

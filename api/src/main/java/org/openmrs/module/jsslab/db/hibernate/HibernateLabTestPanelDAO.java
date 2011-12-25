@@ -35,8 +35,6 @@ import org.openmrs.module.jsslab.db.LabTest;
  */
 public class HibernateLabTestPanelDAO implements LabTestPanelDAO {
 	
-	private ConceptService conceptService = Context.getConceptService();
-	
 	private SessionFactory sessionFactory;
 	
 	/**

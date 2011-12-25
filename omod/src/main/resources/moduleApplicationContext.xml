@@ -50,7 +50,7 @@
 								</property>
 							</bean>
 						</property>
-					   <property name="labTestDAO">
+					   	<property name="labTestDAO">
 							<bean
 								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestDAO">
 								<property name="sessionFactory">

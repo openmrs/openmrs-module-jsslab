@@ -7,7 +7,8 @@
             <column name="test_result_id" />
             <generator class="native" />
         </id>
-
+<!--
+UNTIL PROBLEM IS RESOLVED  
 		<many-to-one name="testSpecimen" class="org.openmrs.module.jsslab.db.LabTestSpecimen" column="test_specimen_id" not-null="true" />
 		<many-to-one name="testResultConcept" class="org.openmrs.Concept" column="test_result_concept" not-null="true" />
 
@@ -16,7 +17,7 @@
 				<param name="enumClassName">org.openmrs.module.jsslab.db.LabResultType</param>
 			</type>
 		</property>
-
+-->
 		<many-to-one name="testAnswerConcept" class="org.openmrs.Concept" column="test_answer_concept" not-null="false" />
 		<property name="testAnswerDuration" type="java.lang.Double" not-null="false" column="test_answer_duration" />
 		<property name="testAnswerTiter" type="java.lang.Integer" not-null="false" column="test_answer_titer" />
