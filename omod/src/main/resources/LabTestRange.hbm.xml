@@ -9,7 +9,7 @@
         </id>
 
 		<many-to-one name="test" class="org.openmrs.module.jsslab.db.LabTest" column="test_id" not-null="true" />
-		<property name="sortOrder" type="java.lang.Double" column="sort_order" not-null="true" />
+		<property name="sortWeight" type="java.lang.Double" column="sort_weight" not-null="false" />
 		<property name="rangeSex" type="java.lang.String" column="range_sex" length="1" not-null="false" />
 		<property name="rangeAgeMin" type="java.lang.Double" column="range_age_min" not-null="false" />
 		<property name="rangeAgeMax" type="java.lang.Double" column="range_age_max" not-null="false" />

@@ -52,7 +52,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable, Compar
 	
 	private LabTest confirmTest;
 	
-	private Double sortOrder;
+	private Double sortWeight;
 	
 	private Set<LabTestRange> testRanges = new HashSet<LabTestRange>();
 	
@@ -138,19 +138,19 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable, Compar
 	}
 
 	/**
-	 * @return Returns sortOrder.
+	 * @return Returns sortWeight.
 	 */
 	@Attribute(required = false)
-	public Double getSortOrder() {
-		return sortOrder;
+	public Double getSortWeight() {
+		return sortWeight;
 	}
 	
 	/**
-	 * @param sortOrder.  The sortOrder to set.
+	 * @param sortWeight.  The sortWeight to set.
 	 */
 	@Attribute(required = false)
-	public void setSortOrder(Double sortOrder) {
-		this.sortOrder = sortOrder;
+	public void setSortWeight(Double sortWeight) {
+		this.sortWeight = sortWeight;
 	}
 	
 	/**
@@ -184,7 +184,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable, Compar
 	public int compareTo(LabTest labTest) {
 		int i = this.getTestPanel().getName().compareToIgnoreCase(labTest.getTestPanel().getName());
 		if (i == 0)
-			i = this.getSortOrder().compareTo(labTest.getSortOrder());
+			i = this.getSortWeight().compareTo(labTest.getSortWeight());
 		return i;
 	}
 	

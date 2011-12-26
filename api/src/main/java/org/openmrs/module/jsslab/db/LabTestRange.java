@@ -37,7 +37,7 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	
 	private LabTest test;
 
-	private Double sortOrder;
+	private Double sortWeight;
 	
 	private String rangeSex;
 	
@@ -88,19 +88,19 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	}
 	
 	/**
-	 * @return Returns sortOrder.
+	 * @return Returns sortWeight.
 	 */
 	@Attribute(required = true)
-	public Double getSortOrder() {
-		return sortOrder;
+	public Double getSortWeight() {
+		return sortWeight;
 	}
 	
 	/**
-	 * @param sortOrder.  The sortOrder to set.
+	 * @param sortWeight.  The sortWeight to set.
 	 */
 	@Attribute(required = true)
-	public void setSortOrder(Double sortOrder) {
-		this.sortOrder = sortOrder;
+	public void setSortWeight(Double sortWeight) {
+		this.sortWeight = sortWeight;
 	}
 	
 	/**

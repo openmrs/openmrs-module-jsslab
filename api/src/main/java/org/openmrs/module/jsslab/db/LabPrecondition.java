@@ -51,7 +51,7 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 	
 	private Concept preconditionAnswerConcept;
 	
-	private Double sortOrder;
+	private Double sortWeight;
 	
 	public Integer getId() {
 		return preconditionId;
@@ -118,19 +118,19 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 	}
 	
 	/**
-	 * @return Returns sortOrder.
+	 * @return Returns sortWeight.
 	 */
 	@Attribute(required = false)
-	public Double getSortOrder() {
-		return sortOrder;
+	public Double getSortWeight() {
+		return sortWeight;
 	}
 	
 	/**
-	 * @param sortOrder.  The sortOrder to set.
+	 * @param sortWeight.  The sortWeight to set.
 	 */
 	@Attribute(required = false)
-	public void setSortOrder(Double sortOrder) {
-		this.sortOrder = sortOrder;
+	public void setSortWeight(Double sortWeight) {
+		this.sortWeight = sortWeight;
 	}
 	
 
