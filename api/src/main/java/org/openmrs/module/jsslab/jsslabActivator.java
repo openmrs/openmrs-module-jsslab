@@ -16,8 +16,8 @@ package org.openmrs.module.jsslab;
 import org.apache.commons.logging.Log; 
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.Activator;
-import org.openmrs.module.ModuleActivator;
 import org.openmrs.module.BaseModuleActivator;
+
 
 /**
  * This class contains the logic that is run every time this module is either started or shutdown
@@ -54,6 +54,7 @@ public class jsslabActivator extends BaseModuleActivator implements Activator {
 	@Override
 	public void started() {
 		super.started();
+		log.info("JSSLab Module is started");
 	}
 
 	/* (non-Javadoc)
