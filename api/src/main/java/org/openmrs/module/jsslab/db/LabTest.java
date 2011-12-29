@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Concept;
@@ -56,6 +57,27 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable, Compar
 	
 	private Set<LabTestRange> testRanges = new HashSet<LabTestRange>();
 	
+	public void LabTest() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabTest temp = (LabTest) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	public Integer getId() {
 		return testId;
 	}

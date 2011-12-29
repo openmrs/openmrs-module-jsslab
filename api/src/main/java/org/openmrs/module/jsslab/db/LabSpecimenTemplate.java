@@ -17,6 +17,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -57,6 +58,27 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	
 	private String instructions;
 	
+	public void LabSpecimenTemplate() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabSpecimenTemplate temp = (LabSpecimenTemplate) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	public Integer getId() {
 		return specimenTemplateId;
 	}

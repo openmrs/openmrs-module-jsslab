@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.math.BigDecimal;
 
 import org.openmrs.BaseOpenmrsMetadata;
@@ -72,6 +73,27 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable, C
 	
 	private Set<LabPrecondition> preconditions = new HashSet<LabPrecondition>();
 	
+	public void LabTestPanel() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabTestPanel temp = (LabTestPanel) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	public Integer getId() {
 		return testPanelId;
 	}

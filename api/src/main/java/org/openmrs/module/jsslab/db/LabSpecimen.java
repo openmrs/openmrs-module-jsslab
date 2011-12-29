@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Order;
@@ -78,6 +79,27 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	
 	protected Set<LabOrder> orders = new HashSet<LabOrder>();
 	
+	public void LabSpecimen() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabSpecimen temp = (LabSpecimen) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()
 	 */

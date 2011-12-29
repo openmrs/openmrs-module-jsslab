@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Patient;
@@ -65,6 +66,27 @@ public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 	
 	protected Set<LabSpecimen> specimens = new HashSet<LabSpecimen>();
 	
+	public void LabReport() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabReport temp = (LabReport) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()
 	 */

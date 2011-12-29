@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Order;
@@ -53,6 +54,27 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 	
 	private Double sortWeight;
 	
+	public void LabPrecondition() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabPrecondition temp = (LabPrecondition) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	public Integer getId() {
 		return preconditionId;
 	}

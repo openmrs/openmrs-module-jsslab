@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.math.BigDecimal;
 
 import org.openmrs.BaseOpenmrsMetadata;
@@ -67,7 +68,28 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	protected Set<LabTestRun> testRuns = new HashSet<LabTestRun>();
 	
 	private String name;
+
+	public void LabInstrument() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
 	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabInstrument temp = (LabInstrument) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()
 	 */

@@ -14,6 +14,7 @@
 package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Concept;
@@ -74,6 +75,27 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	/**
 	 * constructor from testSpecimen
 	 */
+
+	public void LabTestResult() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabTestResult temp = (LabTestResult) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
 	public LabTestResult(LabTestSpecimen testSpecimen) {
 		this.testSpecimen = testSpecimen;

@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Patient;
@@ -39,6 +40,26 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 	
 	private LabSpecimen specimen;
 
+	public void LabOrderSpecimen() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabOrderSpecimen temp = (LabOrderSpecimen) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
 
 	/* (non-Javadoc)
 	 * @see org.openmrs.OpenmrsObject#getId()

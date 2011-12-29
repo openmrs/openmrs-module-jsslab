@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import org.openmrs.BaseOpenmrsObject;
 import org.openmrs.Auditable;
@@ -140,7 +141,7 @@ public class LabOrder extends BaseOpenmrsObject implements Auditable, Voidable, 
 	 */
 	@Attribute(required = false)
 	public Set<LabSpecimen> getSpecimens(){
-		if (order == null) {return null;}
+		if (this.getOrder() == null) {return null;}
 		return specimens;
 	}
 	
@@ -156,143 +157,166 @@ public class LabOrder extends BaseOpenmrsObject implements Auditable, Voidable, 
 
 	
 	public String getAccessionNumber() {
-		if (order == null) {return null;}
-		return order.getAccessionNumber();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getAccessionNumber();
 	}
 
 	public Date getAutoExpireDate() {
-		if (order == null) {return null;}
-		return order.getAutoExpireDate();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getAutoExpireDate();
 	}
 
 	public User getChangedBy() {
-		if (order == null) {return null;}
-		return order.getChangedBy();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getChangedBy();
 	}
 
 	public Concept getConcept() {
-		if (order == null) {return null;}
-		return order.getConcept();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getConcept();
 	}
 
 	public User getCreator() {
-		if (order == null) {return null;}
-		return order.getCreator();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getCreator();
 	}
 
 	public Date getDateChanged() {
-		if (order == null) {return null;}
-		return order.getDateChanged();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getDateChanged();
 	}
 
 	public Date getDateCreated() {
-		if (order == null) {return null;}
-		return order.getDateCreated();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getDateCreated();
 	}
 
 	public Date getDateVoided() {
-		if (order == null) {return null;}
-		return order.getDateVoided();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getDateVoided();
 	}
 
 	public Boolean getDiscontinued() {
-		if (order == null) {return null;}
-		return order.getDiscontinued();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getDiscontinued();
 	}
 
 	public User getDiscontinuedBy() {
-		if (order == null) {return null;}
-		return order.getDiscontinuedBy();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getDiscontinuedBy();
 	}
 
 	public Date getDiscontinuedDate() {
-		if (order == null) {return null;}
-		return order.getDiscontinuedDate();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getDiscontinuedDate();
 	}
 
 	public Concept getDiscontinuedReason() {
-		if (order == null) {return null;}
-		return order.getDiscontinuedReason();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getDiscontinuedReason();
 	}
 
 	public Encounter getEncounter() {
-		if (order == null) {return null;}
-		return order.getEncounter();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getEncounter();
 	}
 
 	public Integer getId() {
-		if (order == null) {return null;}
-		return order.getId();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getId();
 	}
 
 	public String getInstructions() {
-		if (order == null) {return null;}
-		return order.getInstructions();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getInstructions();
 	}
 
 	public Integer getOrderId() {
-		if (order == null) {return null;}
-		return order.getOrderId();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getOrderId();
 	}
 
 	public OrderType getOrderType() {
-		if (order == null) {return null;}
-		return order.getOrderType();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getOrderType();
 	}
 
 	public User getOrderer() {
-		if (order == null) {return null;}
-		return order.getOrderer();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getOrderer();
 	}
 
 	public Patient getPatient() {
-		if (order == null) {return null;}
-		return order.getPatient();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getPatient();
 	}
 
 	public Date getStartDate() {
-		if (order == null) {return null;}
-		return order.getStartDate();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getStartDate();
 	}
 
 	public String getVoidReason() {
-		if (order == null) {return null;}
-		return order.getVoidReason();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getVoidReason();
 	}
 
 	public Boolean getVoided() {
-		if (order == null) {return null;}
-		return order.getVoided();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getVoided();
 	}
 
 	public User getVoidedBy() {
-		if (order == null) {return null;}
-		return order.getVoidedBy();
+		if (this.getOrder() == null) {return null;}
+		return this.getOrder().getVoidedBy();
 	}
 
 	public int hashCode() {
 		CreateOrderIfNecessary();
-		return order.hashCode();
+		return this.getOrder().hashCode();
 	}
 
+	public boolean equals(Object other) {
+		if (this.getOrder() == null) {
+			return false;
+		} else {
+			try {
+				LabOrder temp = (LabOrder) other;
+				return this.getOrder().equals(temp.getOrder());
+			} catch (Exception e) {
+				return false;
+			}
+		}
+	}
+	@Override
+	public String getUuid() {
+		CreateOrderIfNecessary();
+		return this.getOrder().getUuid();
+	}
+	
+	@Override
+	public void setUuid(String uuid) {
+		CreateOrderIfNecessary();
+		this.getOrder().setUuid(uuid);
+	}
 	public boolean isCurrent() {
-		if (order == null) {return false;}
-		return order.isCurrent();
+		if (this.getOrder() == null) {return false;}
+		return this.getOrder().isCurrent();
 	}
 
 	public boolean isCurrent(Date checkDate) {
-		if (order == null) {return false;}
-		return order.isCurrent(checkDate);
+		if (this.getOrder() == null) {return false;}
+		return this.getOrder().isCurrent(checkDate);
 	}
 
 	public boolean isDiscontinued(Date checkDate) {
-		if (order == null) {return false;}
-		return order.isDiscontinued(checkDate);
+		if (this.getOrder() == null) {return false;}
+		return this.getOrder().isDiscontinued(checkDate);
 	}
 
 	public boolean isDiscontinuedRightNow() {
-		if (order == null) {return false;}
-		return order.isDiscontinuedRightNow();
+		if (this.getOrder() == null) {return false;}
+		return this.getOrder().isDiscontinuedRightNow();
 	}
 
 	public boolean isDrugOrder() {
@@ -300,133 +324,133 @@ public class LabOrder extends BaseOpenmrsObject implements Auditable, Voidable, 
 	}
 
 	public boolean isFuture() {
-		if (order == null) {return false;}
-		return order.isFuture();
+		if (this.getOrder() == null) {return false;}
+		return this.getOrder().isFuture();
 	}
 
 	public boolean isFuture(Date checkDate) {
-		if (order == null) {return false;}
-		return order.isFuture(checkDate);
+		if (this.getOrder() == null) {return false;}
+		return this.getOrder().isFuture(checkDate);
 	}
 
 	public Boolean isVoided() {
-		if (order == null) {return false;}
-		return order.isVoided();
+		if (this.getOrder() == null) {return false;}
+		return this.getOrder().isVoided();
 	}
 
 	public void setAccessionNumber(String accessionNumber) {
 		CreateOrderIfNecessary();
-		order.setAccessionNumber(accessionNumber);
+		this.getOrder().setAccessionNumber(accessionNumber);
 	}
 
 	public void setAutoExpireDate(Date autoExpireDate) {
 		CreateOrderIfNecessary();
-		order.setAutoExpireDate(autoExpireDate);
+		this.getOrder().setAutoExpireDate(autoExpireDate);
 	}
 
 	public void setChangedBy(User changedBy) {
 		CreateOrderIfNecessary();
-		order.setChangedBy(changedBy);
+		this.getOrder().setChangedBy(changedBy);
 	}
 
 	public void setConcept(Concept concept) {
 		CreateOrderIfNecessary();
-		order.setConcept(concept);
+		this.getOrder().setConcept(concept);
 	}
 
 	public void setCreator(User creator) {
 		CreateOrderIfNecessary();
-		order.setCreator(creator);
+		this.getOrder().setCreator(creator);
 	}
 
 	public void setDateChanged(Date dateChanged) {
 		CreateOrderIfNecessary();
-		order.setDateChanged(dateChanged);
+		this.getOrder().setDateChanged(dateChanged);
 	}
 
 	public void setDateCreated(Date dateCreated) {
 		CreateOrderIfNecessary();
-		order.setDateCreated(dateCreated);
+		this.getOrder().setDateCreated(dateCreated);
 	}
 
 	public void setDateVoided(Date dateVoided) {
 		CreateOrderIfNecessary();
-		order.setDateVoided(dateVoided);
+		this.getOrder().setDateVoided(dateVoided);
 	}
 
 	public void setDiscontinued(Boolean discontinued) {
 		CreateOrderIfNecessary();
-		order.setDiscontinued(discontinued);
+		this.getOrder().setDiscontinued(discontinued);
 	}
 
 	public void setDiscontinuedBy(User discontinuedBy) {
 		CreateOrderIfNecessary();
-		order.setDiscontinuedBy(discontinuedBy);
+		this.getOrder().setDiscontinuedBy(discontinuedBy);
 	}
 
 	public void setDiscontinuedDate(Date discontinuedDate) {
 		CreateOrderIfNecessary();
-		order.setDiscontinuedDate(discontinuedDate);
+		this.getOrder().setDiscontinuedDate(discontinuedDate);
 	}
 
 	public void setDiscontinuedReason(Concept discontinuedReason) {
 		CreateOrderIfNecessary();
-		order.setDiscontinuedReason(discontinuedReason);
+		this.getOrder().setDiscontinuedReason(discontinuedReason);
 	}
 
 	public void setEncounter(Encounter encounter) {
 		CreateOrderIfNecessary();
-		order.setEncounter(encounter);
+		this.getOrder().setEncounter(encounter);
 	}
 
 	public void setId(Integer id) {
 		CreateOrderIfNecessary();
-		order.setId(id);
+		this.getOrder().setId(id);
 	}
 
 	public void setInstructions(String instructions) {
 		CreateOrderIfNecessary();
-		order.setInstructions(instructions);
+		this.getOrder().setInstructions(instructions);
 	}
 
 	public void setOrderId(Integer orderId) {
 		CreateOrderIfNecessary();
-		order.setOrderId(orderId);
+		this.getOrder().setOrderId(orderId);
 	}
 
 	public void setOrderType(OrderType orderType) {
 		CreateOrderIfNecessary();
-		order.setOrderType(orderType);
+		this.getOrder().setOrderType(orderType);
 	}
 
 	public void setOrderer(User orderer) {
 		CreateOrderIfNecessary();
-		order.setOrderer(orderer);
+		this.getOrder().setOrderer(orderer);
 	}
 
 	public void setPatient(Patient patient) {
 		CreateOrderIfNecessary();
-		order.setPatient(patient);
+		this.getOrder().setPatient(patient);
 	}
 
 	public void setStartDate(Date startDate) {
 		CreateOrderIfNecessary();
-		order.setStartDate(startDate);
+		this.getOrder().setStartDate(startDate);
 	}
 
 	public void setVoidReason(String voidReason) {
 		CreateOrderIfNecessary();
-		order.setVoidReason(voidReason);
+		this.getOrder().setVoidReason(voidReason);
 	}
 
 	public void setVoided(Boolean voided) {
 		CreateOrderIfNecessary();
-		order.setVoided(voided);
+		this.getOrder().setVoided(voided);
 	}
 
 	public void setVoidedBy(User voidedBy) {
 		CreateOrderIfNecessary();
-		order.setVoidedBy(voidedBy);
+		this.getOrder().setVoidedBy(voidedBy);
 	}
 
 	public String toString() {
@@ -435,7 +459,9 @@ public class LabOrder extends BaseOpenmrsObject implements Auditable, Voidable, 
 	}
 	
 	private void CreateOrderIfNecessary() {
-		if (this.order == null) {this.order = new Order();}
+		if (this.getOrder() == null) 
+			{this.setOrder(new Order());
+		}
 	}
 	
 }

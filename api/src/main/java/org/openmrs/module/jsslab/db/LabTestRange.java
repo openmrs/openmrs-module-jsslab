@@ -14,6 +14,7 @@
 package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.logic.rule.definition.RuleDefinition;
@@ -55,6 +56,27 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	
 	private Double rangeCriticalHigh;
 	
+	public void LabTestRange() {
+		
+		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return this.getUuid().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		try {
+			LabTestRange temp = (LabTestRange) other;
+			return this.getUuid().equals(temp.getUuid());		
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	public Integer getId() {
 		return testRangeId;
 	}
