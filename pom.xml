@@ -81,15 +81,13 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-api</artifactId>
-				<version>0.9-SNAPSHOT</version>
-				<type>jar</type>
+				<version>0.8</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-omod</artifactId>
-				<version>0.9-SNAPSHOT</version>
-				<type>jar</type>
+				<version>0.8</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>
