@@ -66,6 +66,47 @@ public interface LabManagementService extends OpenmrsService {
 	public List<LabInstrument> getAllLabInstruments(Boolean includeRetired) throws APIException;
 	
 	/**
+	 * Get all unretired LabInstrument
+	 * 
+	 * @return LabInstruments list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public List<LabInstrument> getAllLabInstruments() throws APIException;
+	
+	/**
+	 * Returns a specified number of labInstruments starting with a given string from the specified index
+	 */
+	public List<LabInstrument> getLabInstruments(String nameFragment, Boolean includeRetired, Integer start, Integer length);
+	
+	/**
+	 * Get count of LabInstrument, only showing ones not marked as retired if includeRetired is true
+	 * 
+	 * @param includeRetired true/false whether to include retired LabInstruments in this list
+	 * @return LabInstruments list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public Integer getCountOfLabInstruments(Boolean includeRetired) throws APIException;
+	
+	/**
+	 * Returns a specified number of supplyItems starting with a given string from the specified index
+	 */
+	public List<LabSupplyItem> getLabSupplyItems(String nameFragment, Boolean includeRetired, Integer start, Integer length);
+	
+	/**
+	 * Get count of unretired LabInstrument
+	 * 
+	 * @return LabInstruments list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public Integer getCountOfLabInstruments() throws APIException;
+	
+	/**
 	 * Get the <code>LabInstrument</code> with the given propertyTag or serialNumber
 	 * 
 	 * @param propertyTag or serialNumber to find
@@ -117,7 +158,7 @@ public interface LabManagementService extends OpenmrsService {
 	public LabSupplyItem retireLabSupplyItem(LabSupplyItem labSupplyItem, String retireReason) throws APIException;
 	
 	/**
-	 * Get all LabSupplyItems, only showing ones not marked as retired if includeRetired is true
+	 * Get all LabSupplyItem, only showing ones not marked as retired if includeRetired is true
 	 * 
 	 * @param includeRetired true/false whether to include retired LabSupplyItems in this list
 	 * @return LabSupplyItems list
@@ -127,6 +168,36 @@ public interface LabManagementService extends OpenmrsService {
 	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
 	public List<LabSupplyItem> getAllLabSupplyItems(Boolean includeRetired) throws APIException;
 	
+	/**
+	 * Get all unretired LabSupplyItem
+	 * 
+	 * @return LabSupplyItems list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public List<LabSupplyItem> getAllLabSupplyItems() throws APIException;
+	
+	/**
+	 * Get count of LabSupplyItem, only showing ones not marked as retired if includeRetired is true
+	 * 
+	 * @param includeRetired true/false whether to include retired LabSupplyItems in this list
+	 * @return LabSupplyItems list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public Integer getCountOfLabSupplyItems(Boolean includeRetired) throws APIException;
+	
+	/**
+	 * Get count of unretired LabSupplyItem
+	 * 
+	 * @return LabSupplyItems list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public Integer getCountOfLabSupplyItems() throws APIException;
 	
 	
 }

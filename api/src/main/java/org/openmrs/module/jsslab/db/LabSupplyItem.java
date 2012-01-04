@@ -230,7 +230,7 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 	 */
 	@Attribute(required = false)
 	public String getName() {
-		return name;
+		return itemName;
 	}
 	
 }

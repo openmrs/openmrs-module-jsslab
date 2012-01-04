@@ -78,6 +78,17 @@ public interface LabSupplyItemDAO {
 	 * Find all labInstrument supplyItems with matching names.
 	 * 
 	 * @param search name to search
+	 * @param includeRetired true to include retired
+	 * @param start record number at which to start
+	 * @param length number of records to return
+	 * @return List<LabSupplyItem> with all matching <code>LabSupplyItems</code>
+	 */
+	public List<LabSupplyItem> getLabSupplyItems(String search, Boolean includeRetired, Integer start, Integer length);
+	
+	/**
+	 * Find all labInstrument supplyItems with matching names.
+	 * 
+	 * @param search name to search
 	 * @return List<LabSupplyItem> with all matching <code>LabSupplyItems</code>
 	 */
 	public List<LabSupplyItem> getLabSupplyItems(String search);

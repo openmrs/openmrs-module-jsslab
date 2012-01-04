@@ -122,6 +122,35 @@ public class HibernateLabSupplyItemDAO implements LabSupplyItemDAO {
 	}
 	
 	/**
+	 * Find all labInstrument supplyItems with matching names.
+	 * 
+	 */
+	@SuppressWarnings("unchecked")
+	public List<LabSupplyItem> getLabSupplyItems(String search, Boolean includeRetired, Integer start, Integer length) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabSupplyItem.class);
+		
+		if (!includeRetired)
+			criteria.add(Restrictions.eq("retired", false));
+				
+		if (StringUtils.isNotBlank(search))
+			criteria.add(Restrictions.disjunction()
+			// 'ilike' case insensitive search
+					.add(Restrictions.ilike("itemName", search, MatchMode.START))
+					.add(Restrictions.ilike("labStockNumber", search, MatchMode.START))
+		    );
+
+		criteria.addOrder(Order.asc("itemName")).addOrder(Order.desc("expirationDate"));
+
+		if (start != null)
+				criteria.setFirstResult(start);
+		if (length != null && length > 0)
+				criteria.setMaxResults(length);
+	
+		return (List<LabSupplyItem>) criteria.list();
+		
+	}
+	
+	/**
 	 * @see org.openmrs.api.db.LabSupplyItemDAO#deleteLabSupplyItem(org.openmrs.LabSupplyItem)
 	 */
 	public void deleteLabSupplyItem(LabSupplyItem supplyItem) throws APIException {

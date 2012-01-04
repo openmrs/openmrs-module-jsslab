@@ -65,8 +65,9 @@ public interface LabInstrumentDAO {
 	 */
 	public LabInstrument getLabInstrument(String name);
 	
+	
 	/**
-	 * Get all labInstruments
+	 * Get count of labInstruments
 	 * 
 	 * @param includeRetired Boolean - include retired labInstruments as well?
 	 * @return <code>List<LabInstrument></code> object of all <code>LabInstrument</code>s, possibly including

@@ -156,7 +156,7 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 		if (length != null && length > 0)
 			criteria.setMaxResults(length);
 		
-		return criteria.list();
+		return (List<LabInstrument>) criteria.list();
 	}
 
 

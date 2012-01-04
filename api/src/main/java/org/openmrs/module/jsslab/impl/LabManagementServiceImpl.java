@@ -60,10 +60,35 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 		return labInstrumentDAO.getAllLabInstruments(includeRetired);
 	}
 
+	public List<LabInstrument> getAllLabInstruments()
+			throws APIException {
+		return labInstrumentDAO.getAllLabInstruments(false);
+	}
+
+	public Integer getCountOfLabInstruments(Boolean includeRetired)
+			throws APIException {
+		return labInstrumentDAO.getCountOfLabInstruments("", includeRetired);
+	}
+
+	public Integer getCountOfLabInstruments()
+			throws APIException {
+		return labInstrumentDAO.getCountOfLabInstruments("", false);
+	}
+
 	public LabInstrument getLabInstrument(String idNumber) {
 		return labInstrumentDAO.getLabInstrument(idNumber);
 	}
 
+	/**
+	 * Returns a specified number of labInstruments starting with a given string from the specified index
+	 * 
+	 * @see LabManagementService#getLabInstruments(String, Boolean, Integer, Integer)
+	 */
+	public List<LabInstrument> getLabInstruments(String nameFragment, Boolean includeRetired, Integer start, Integer length) {
+		return labInstrumentDAO.getLabInstruments(nameFragment, includeRetired, start, length);
+
+	}
+	
 	public LabSupplyItem saveLabSupplyItem(LabSupplyItem labSupplyItem)
 			throws APIException {
 		return labSupplyItemDAO.saveLabSupplyItem(labSupplyItem);
@@ -89,6 +114,28 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 	public List<LabSupplyItem> getAllLabSupplyItems(Boolean includeRetired)
 			throws APIException {
 		return labSupplyItemDAO.getAllLabSupplyItems(includeRetired);
+	}
+
+	public List<LabSupplyItem> getAllLabSupplyItems()
+			throws APIException {
+		return labSupplyItemDAO.getAllLabSupplyItems(false);
+	}
+
+	/**
+	 * Returns a specified number of supplyItems starting with a given string from the specified index
+	 */
+	public List<LabSupplyItem> getLabSupplyItems(String nameFragment, Boolean includeRetired, Integer start, Integer length) {
+			return labSupplyItemDAO.getLabSupplyItems(nameFragment, includeRetired, start, length);
+	}
+	
+	public Integer getCountOfLabSupplyItems(Boolean includeRetired)
+			throws APIException {
+		return labSupplyItemDAO.getCountOfLabSupplyItems("",includeRetired);
+	}
+
+	public Integer getCountOfLabSupplyItems()
+			throws APIException {
+		return labSupplyItemDAO.getCountOfLabSupplyItems("",false);
 	}
 
 

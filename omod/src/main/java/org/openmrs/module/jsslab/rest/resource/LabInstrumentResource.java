@@ -71,7 +71,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 			description.addProperty("maintenanceVendor");
 			description.addProperty("maintenancePhone");
 			description.addProperty("maintenanceDescription");
-			description.addProperty("testSpecimens", Representation.REF);
+//			description.addProperty("testRuns", Representation.REF);
 			description.addProperty("auditInfo", findMethod("getAuditInfo"));
 			description.addSelfLink();
 			return description;

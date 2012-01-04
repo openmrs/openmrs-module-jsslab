@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.Locale;
+import java.lang.Comparable;
 
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Order;
@@ -28,8 +30,10 @@ import org.openmrs.Patient;
 import org.openmrs.Person;
 import org.openmrs.User;
 import org.openmrs.Concept;
+import org.openmrs.api.context.Context;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.lang.StringUtils;  
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -38,7 +42,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabPrecondition extends BaseOpenmrsData implements Serializable {
+public class LabPrecondition extends BaseOpenmrsData implements Serializable, Comparable<LabPrecondition> {
 	
 	public static final long serialVersionUID = 2L;
 	
@@ -53,6 +57,12 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 	private Concept preconditionAnswerConcept;
 	
 	private Double sortWeight;
+	
+	private Locale textLocale;
+	
+	private String preconditionQuestionText;
+	
+	private String preconditionAnswerText;
 	
 	public void LabPrecondition() {
 		
@@ -154,6 +164,62 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 	public void setSortWeight(Double sortWeight) {
 		this.sortWeight = sortWeight;
 	}
-	
 
+	/**
+	 * Check for a locale change
+	 */
+	private void checkLocale() {
+		if (! textLocale.equals(Context.getLocale())) {
+			preconditionQuestionText = "";
+			preconditionAnswerText = "";
+			textLocale = Context.getLocale();
+		}
+		return;
+	}
+	
+	/**
+	 * Get text corresponding to preconditionQuestionConcept
+	 */
+	public String getPreconditionQuestionText() {
+		checkLocale();
+		if (StringUtils.isEmpty(preconditionQuestionText)) {
+			if (! (preconditionQuestionConcept == null)) {
+				preconditionQuestionText = Context.getConceptService().getConceptName(this.getPreconditionQuestionConcept().getId()).getName();
+			}
+		}
+		return preconditionQuestionText;
+	}
+
+	/**
+	 * Get text corresponding to preconditionAnswerConcept
+	 */
+	public String getPreconditionAnswerText() {
+		checkLocale();
+		if (StringUtils.isEmpty(preconditionAnswerText)) {
+			if (! (preconditionAnswerConcept == null)) {
+				preconditionAnswerText = Context.getConceptService().getConceptName(this.getPreconditionAnswerConcept().getId()).getName();
+				}
+			}
+		return preconditionAnswerText;
+		}
+
+	/**
+	 * Implement Comparable interface
+	 * @param other LabPrecondition to be compared
+	 * @return < = > other
+	 */
+	public int compareTo(LabPrecondition other) {
+		if (this.getTestPanel().equals(other.getTestPanel()))
+			return this.getSortWeight().compareTo(other.getSortWeight());
+		return this.getTestPanel().getId().compareTo(other.getTestPanel().getId());
+	}
+
+	public String toString() {
+		return "Precondition " + this.getId();
+	}
+	
+	public String getName() {
+		return this.getTestPanel().getName() + ": " + this.getPreconditionQuestionText();
+	}
 }
+
