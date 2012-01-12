@@ -18,12 +18,16 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+import java.util.Locale;
+import java.lang.Comparable;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Concept;
 import org.openmrs.User;
+import org.openmrs.api.context.Context;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -32,15 +36,19 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializable {
+public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializable, Comparable<LabSpecimenTemplate> {
 	
 	public static final long serialVersionUID = 2L;
 	
 	private static final Log log = LogFactory.getLog(LabSpecimenTemplate.class);
 	
+	private Locale textLocale;
+	
 	private Integer specimenTemplateId;
 	
 	private Concept parentRoleConcept;
+	
+	private String parentRoleName;
 
 	private String specimenSubId;
 	
@@ -48,11 +56,17 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	
 	private Concept parentRelationConcept;
 	
+	private String parentRelationName;
+	
 	private Concept analysisSpecimenTypeConcept;
+	
+	private String analysisSpecimenTypeName;
 	
 	private LabTestPanel testPanel;
 	
 	private Concept testRoleConcept;
+	
+	private String testRoleName;
 	
 	private LabSupplyItem supplyItem;
 	
@@ -239,5 +253,86 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
 	}
+
+	public int compareTo(LabSpecimenTemplate other) {
+		if (this.getTestPanel().equals(other.getTestPanel())) {
+			if (this.getParentSubId().equals(other.getParentSubId())) {
+				return this.getSpecimenSubId().compareTo(other.getSpecimenSubId());
+			}
+			return this.getParentSubId().compareTo(other.getParentSubId());
+		}
+		return this.getTestPanel().compareTo(other.getTestPanel());
+	}
+
+	public String getName() {
+		return this.getTestPanel().getName() + ":" + getParentSubId() + "/" + getSpecimenSubId();
+	}
+
+	/**
+	 * Check for a locale change
+	 */
+	private void checkLocale() {
+		if (! textLocale.equals(Context.getLocale())) {
+			parentRoleName = "";
+			parentRelationName = "";
+			analysisSpecimenTypeName = "";
+			testRoleName = "";
+			textLocale = Context.getLocale();
+		}
+		return;
+	}
 	
+	/**
+	 * Get text corresponding to parentRoleConcept
+	 */
+	public String getParentRoleName() {
+		checkLocale();
+		if (StringUtils.isEmpty(parentRoleName)) {
+			if (! (parentRoleConcept == null)) {
+				parentRoleName = this.getParentRoleConcept().getName().getName();
+			}
+		}
+		return parentRoleName;
+	}
+
+	/**
+	 * Get text corresponding to parentRelationConcept
+	 */
+	public String getParentRelationName() {
+		checkLocale();
+		if (StringUtils.isEmpty(parentRelationName)) {
+			if (! (parentRelationConcept == null)) {
+				parentRelationName = this.getParentRelationConcept().getName().getName();
+			}
+		}
+		return parentRelationName;
+	}
+
+	/**
+	 * Get text corresponding to analysisSpecimenTypeConcept
+	 */
+	public String getAnalysisSpecimenTypeName() {
+		checkLocale();
+		if (StringUtils.isEmpty(analysisSpecimenTypeName)) {
+			if (! (analysisSpecimenTypeConcept == null)) {
+				analysisSpecimenTypeName = this.getAnalysisSpecimenTypeConcept().getName().getName();
+			}
+		}
+		return analysisSpecimenTypeName;
+	}
+
+	/**
+	 * Get text corresponding to testRoleConcept
+	 */
+	public String getTestRoleName() {
+		checkLocale();
+		if (StringUtils.isEmpty(testRoleName)) {
+			if (! (testRoleConcept == null)) {
+				testRoleName = Context.getConceptService().getConceptName(this.getTestRoleConcept().getId()).getName();
+			}
+		}
+		return testRoleName;
+	}
+
+
 }

@@ -10,10 +10,10 @@ import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.openmrs.module.jsslab.db.LabTest;
+import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabTestPanelDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabTestPanelDAO;
 import org.openmrs.module.jsslab.db.LabTestDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabTestDAO;
+import org.openmrs.module.jsslab.db.LabPreconditionDAO;
 
 public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		LabCatalogService {
@@ -21,7 +21,10 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	private final Log log = LogFactory.getLog(this.getClass());
 	
 	protected LabTestPanelDAO labTestPanelDAO;
+
 	protected LabTestDAO labTestDAO;
+	
+	protected LabPreconditionDAO labPreconditionDAO;
 	
 	public void setLabTestPanelDAO(LabTestPanelDAO labTestPanelDAO) {
 		this.labTestPanelDAO = labTestPanelDAO;
@@ -29,6 +32,10 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	public void setLabTestDAO(LabTestDAO labTestDAO) {
 		this.labTestDAO = labTestDAO;
+	}
+
+	public void setLabPreconditionDAO(LabPreconditionDAO labPreconditionDAO) {
+		this.labPreconditionDAO = labPreconditionDAO;
 	}
 
 	public LabTestPanel saveLabTestPanel(LabTestPanel labTestPanel)

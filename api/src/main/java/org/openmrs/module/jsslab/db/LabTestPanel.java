@@ -73,6 +73,8 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable, C
 	
 	private Set<LabPrecondition> preconditions = new HashSet<LabPrecondition>();
 	
+	private Set<LabSpecimenTemplate> specimenTemplates = new HashSet<LabSpecimenTemplate>();
+	
 	public void LabTestPanel() {
 		
 		this.setUuid(UUID.randomUUID().toString());
@@ -271,6 +273,22 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable, C
 	@Attribute(required = false)
 	public void setPreconditions(Set<LabPrecondition> preconditions) {
 		this.preconditions = preconditions;
+	}
+	
+	/**
+	 * @return Returns the specimenTemplatess set.
+	 */
+	@Attribute(required = false)
+	public Set<LabSpecimenTemplate> getSpecimenTemplates(){
+		return specimenTemplates;
+	}
+	
+	/**
+	 * @param specimenTemplates The set of specimenTemplates to set.
+	 */
+	@Attribute(required = false)
+	public void setSpecimenTemplates(Set<LabSpecimenTemplate> specimenTemplates) {
+		this.specimenTemplates = specimenTemplates;
 	}
 	
 	/**

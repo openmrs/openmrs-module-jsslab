@@ -35,6 +35,10 @@
             <key column="test_panel_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.db.LabTest" />
         </set>
+        <set name="specimenTemplates" inverse="true" >
+        	<key column="test_panel_id" not-null="true" />
+        	<one-to-many class="org.openmrs.module.jsslab.db.LabSpecimenTemplate >
+       	</set>
 
     </class>
 </hibernate-mapping>
