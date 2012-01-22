@@ -101,6 +101,14 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 		this.specimenTemplateId = specimenTemplateId;
 	}
 
+	public Integer getSpecimenTemplateId() {
+		return specimenTemplateId;
+	}
+
+	public void setSpecimenTemplateId(Integer specimenTemplateId) {
+		this.specimenTemplateId = specimenTemplateId;
+	}
+
 	public Integer getTestSpecimenId() {
 		return specimenTemplateId;
 	}

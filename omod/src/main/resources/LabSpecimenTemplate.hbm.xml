@@ -16,7 +16,7 @@
 		<many-to-one name="testPanel" class="org.openmrs.module.jsslab.db.LabTestPanel" not-null="false" column="test_panel_id"/>
 		<many-to-one name="testRoleConcept" class="org.openmrs.Concept" column="test_role_concept" not-null="false" />
 		<many-to-one name="supplyItem" class="org.openmrs.module.jsslab.db.LabSupplyItem" not-null="false" column="supply_item_id"/>
-		<property name="insructions" type="java.lang.string" column="instructions" length="255" not-null="false" />
+		<property name="instructions" type="java.lang.String" column="instructions" length="255" not-null="false" />
 
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
 		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
@@ -25,6 +25,7 @@
 		<property name="retired" type="java.lang.Boolean" column="retired" length="1" not-null="true" />
 		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
 		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
+ 
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
         
     </class>

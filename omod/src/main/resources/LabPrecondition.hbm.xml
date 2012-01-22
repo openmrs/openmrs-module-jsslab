@@ -7,6 +7,7 @@
             <column name="precondition_id" />
             <generator class="native" />
         </id>
+  
 		<many-to-one name="testPanel" class="org.openmrs.module.jsslab.db.LabTestPanel" column="test_panel_id" not-null="true" />
 		<many-to-one name="preconditionQuestionConcept" class="org.openmrs.Concept" column="precondition_question_concept" not-null="true" />
 		<many-to-one name="preconditionAnswerConcept" class="org.openmrs.Concept" column="precondition_answer_concept" not-null="true" />
@@ -19,6 +20,7 @@
 		<property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true" />
 		<property name="dateVoided" type="java.util.Date" column="date_voided" length="19" />
 		<property name="voidReason" type="java.lang.String" column="void_reason" length="255" />
+
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
 
     </class>

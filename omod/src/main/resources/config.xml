@@ -43,21 +43,25 @@
   	<!-- Maps hibernate file's , if present -->   	
    	<mappingFiles>
 LabInstrument.hbm.xml
+LabSupplyItem.hbm.xml
 LabTestPanel.hbm.xml
-LabPrecondition.hbm.xml
-LabReport.hbm.xml
 LabTest.hbm.xml
+LabPrecondition.hbm.xml
+LabSpecimenTemplate.hbm.xml
+LabTestRange.hbm.xml
+LabReport.hbm.xml
+LabSpecimen.hbm.xml
+LabTestSpecimen.hbm.xml
 LabTestRange.hbm.xml
 LabSpecimen.hbm.xml
-LabSupplyItem.hbm.xml
 LabTestRun.hbm.xml
-LabTestSpecimen.hbm.xml
+LabTestResult.hbm.xml
 LabOrder.hbm.xml
 LabOrderSpecimen.hbm.xml
-LabTestResult.hbm.xml
-	</mappingFiles>
-<!-- 
+<!--  
 -->
+	</mappingFiles>
+
 	
 	<!-- Internationalization -->
 	<!-- All message codes should start with @MODULE_ID@.* -->

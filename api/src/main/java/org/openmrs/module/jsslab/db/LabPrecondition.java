@@ -64,7 +64,7 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable, Co
 	
 	private String preconditionAnswerText;
 	
-	public void LabPrecondition() {
+	public LabPrecondition() {
 		
 		this.setUuid(UUID.randomUUID().toString());
 	}

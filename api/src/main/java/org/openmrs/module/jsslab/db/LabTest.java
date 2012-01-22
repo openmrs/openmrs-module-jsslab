@@ -57,7 +57,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable, Compar
 	
 	private Set<LabTestRange> testRanges = new HashSet<LabTestRange>();
 	
-	public void LabTest() {
+	public LabTest() {
 		
 		this.setUuid(UUID.randomUUID().toString());
 	}
