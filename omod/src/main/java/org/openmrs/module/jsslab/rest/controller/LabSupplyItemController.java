@@ -23,7 +23,7 @@ public class LabSupplyItemController extends BaseCrudController<LabSupplyItemRes
 	
 	@Override
 	public LabSupplyItemResource getResource() {
-		log.info("Lafayette, we are here.");
+		log.info("getting LabSupplyItem resource");
 		return Context.getService(RestService.class).getResource(LabSupplyItemResource.class);
 	}
 }

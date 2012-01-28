@@ -19,13 +19,13 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		LabCatalogService {
 
 	private final Log log = LogFactory.getLog(this.getClass());
-	
+
 	protected LabTestPanelDAO labTestPanelDAO;
 
 	protected LabTestDAO labTestDAO;
-	
+
 	protected LabPreconditionDAO labPreconditionDAO;
-	
+
 	public void setLabTestPanelDAO(LabTestPanelDAO labTestPanelDAO) {
 		this.labTestPanelDAO = labTestPanelDAO;
 	}
@@ -41,7 +41,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	public LabTestPanel saveLabTestPanel(LabTestPanel labTestPanel)
 			throws APIException {
 		return labTestPanelDAO.saveLabTestPanel(labTestPanel);
-		
+
 	}
 
 	public LabTestPanel getLabTestPanelByUuid(String uuid) {
@@ -51,7 +51,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	public void purgeLabTestPanel(LabTestPanel labTestPanel)
 			throws APIException {
 		labTestPanelDAO.deleteLabTestPanel(labTestPanel);
-		
+
 	}
 
 	public LabTestPanel retireLabTestPanel(LabTestPanel labTestPanel,
@@ -71,8 +71,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labTestPanelDAO.getLabTestPanel(idNumber);
 	}
 
-	public LabTest saveLabTest(LabTest labTest)
-			throws APIException {
+	public LabTest saveLabTest(LabTest labTest) throws APIException {
 		return labTestDAO.saveLabTest(labTest);
 	}
 
@@ -80,13 +79,12 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labTestDAO.getLabTestByUuid(uuid);
 	}
 
-	public void purgeLabTest(LabTest labTest)
-			throws APIException {
+	public void purgeLabTest(LabTest labTest) throws APIException {
 		labTestDAO.deleteLabTest(labTest);
 	}
 
-	public LabTest retireLabTest(LabTest labTest,
-			String retireReason) throws APIException {
+	public LabTest retireLabTest(LabTest labTest, String retireReason)
+			throws APIException {
 		labTest.setRetired(true);
 		labTest.setDateRetired(new Date());
 		labTest.setRetireReason(retireReason);
@@ -98,5 +96,64 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labTestDAO.getAllLabTests(includeRetired);
 	}
 
+	public List<LabPrecondition> getLabPrecondition(String displayFragment,
+			Boolean ifVoided, Integer index, Integer length) {
+		//
+		return labPreconditionDAO.getLabPreconditions(displayFragment,
+				ifVoided, index, length);
+	}
+
+	public LabPrecondition getLabPreconditionByUuid(String uuid) {
+		//
+		return labPreconditionDAO.getLabPreconditionByUuid(uuid);
+	}
+
+	public LabPrecondition saveLabPrecondition(LabPrecondition labPrecondition)
+			throws APIException {
+		//
+		return labPreconditionDAO.saveLabPrecondition(labPrecondition);
+	}
+
+	public void purgeLabPrecondition(LabPrecondition labPrecondition)
+			throws APIException {
+		//
+		labPreconditionDAO.deleteLabPrecondition(labPrecondition);
+	}
+
+	public Integer getCountOfLabPrecondition(String search, Boolean ifVoided)
+			throws APIException {
+		//
+		return labPreconditionDAO.getCountOfLabPreconditions(search, ifVoided);
+	}
+
+	public LabPrecondition getLabPrecondition(Integer preconditionId) {
+		//
+		return labPreconditionDAO.getLabPrecondition(preconditionId);
+	}
+
+	public LabPrecondition getLabPreconditionByName(String labPrecondition) {
+		//
+		return labPreconditionDAO.getLabPreconditionByName(labPrecondition);
+	}
+
+	@Override
+	public void deleteLabPrecondition(LabPrecondition labPrecondition)
+			throws APIException {
+		// TODO Auto-generated method stub
+		labPreconditionDAO.deleteLabPrecondition(labPrecondition);
+	}
+
+	@Override
+	public List<LabPrecondition> getAllLabPreconditions() throws APIException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<LabPrecondition> getAllLabPreconditions(Boolean ifVoided)
+			throws APIException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

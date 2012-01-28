@@ -59,7 +59,7 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 			DelegatingResourceDescription description = new DelegatingResourceDescription();
 			description.addProperty("uuid");
 			description.addProperty("labStockNumber");
-			description.addProperty("manufacturerStockNumer");
+			description.addProperty("manufacturerStockNumber");
 			description.addProperty("manufacturer");
 			description.addProperty("itemName");
 			description.addProperty("itemClassConcept",Representation.REF);
@@ -98,7 +98,7 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	 */
 	@Override
 	public LabSupplyItem getByUniqueId(String uuid) {
-		LabSupplyItem labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItemByUUID(uuid);
+		LabSupplyItem labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItems(uuid,false,0,0).get(0);
 		//We assume the caller was fetching by propertyTag or serialNumber
 		if (labSupplyItem == null)
 			labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItemByUUID(uuid);

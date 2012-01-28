@@ -28,7 +28,7 @@ public class LabInstrumentController extends BaseCrudController<LabInstrumentRes
 	
 	@Override
 	public LabInstrumentResource getResource() {
-		log.info("Lafayette, we are here.");
+		log.info("getting LabInstrument resource");
 		return Context.getService(RestService.class).getResource(LabInstrumentResource.class);
 	}
 

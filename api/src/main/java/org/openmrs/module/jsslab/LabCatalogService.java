@@ -2,6 +2,7 @@ package org.openmrs.module.jsslab;
 
 import java.util.List;
 
+import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.jsslab.PrivilegeConstants;
@@ -127,6 +128,83 @@ public interface LabCatalogService extends OpenmrsService {
 	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
 	public List<LabTest> getAllLabTests(Boolean includeRetired) throws APIException;
 	
+	/*
+	 * get the specific list of LabPrecondition from String and index.
+	 */
+	public List<LabPrecondition> getLabPrecondition(String displayFragment, Boolean ifVoided, Integer index, Integer length);
+	/*
+	 * @param uuid
+	 * @return LabPrecondition if founded, or null.
+	 */
+	public LabPrecondition getLabPreconditionByUuid(String uuid);
 	
+	/*
+	 * @return save LabPrecondition to database.
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public LabPrecondition saveLabPrecondition(LabPrecondition labPrecondition)throws APIException;
 	
+	/*
+	 *  Remove the LabPrecondition from database, most of the time we just voided the LabPrecondition.
+	 * @param the LabPrecondition that should be removed
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.PURGE_LAB_MGMT)
+	public void purgeLabPrecondition(LabPrecondition labPrecondition)throws APIException;
+	
+	/*
+	 * 
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.DELETE_LAB_MGMT)
+	public void deleteLabPrecondition(LabPrecondition labPrecondition)throws APIException;
+	
+	/*
+	 * Get all not voided LabPrecondition
+	 * 
+	 * @return LabPrecondition list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public List<LabPrecondition> getAllLabPreconditions()throws APIException;
+	
+	/*
+	 * Get all LabPrecondition list including voided if the ifVoided is true
+	 * 
+	 * @param if include voided LabPrecondition
+	 * @return LabPrecondition list(include voided list if ifVoided is true)
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public List<LabPrecondition> getAllLabPreconditions(Boolean ifVoided)throws APIException;
+	
+	/*
+	 * Get the length of the list that LabPrecondition return(include voided if ifVoided is true)
+	 * @param search is a String that represent DisplayFragment
+	 * @param if include voided resources
+	 * @return length of LabPrecondition(include voided if ifVoided is true) resource
+	 * throws Exception
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public Integer getCountOfLabPrecondition(String search,Boolean ifVoided)throws APIException;
+	
+	/*
+	 * @param use preconditionID to search LabPrecondition
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public LabPrecondition getLabPrecondition(Integer preconditionId);
+	
+	/*
+	 * @param use name to search LabPrecondition
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
+	public LabPrecondition getLabPreconditionByName(String labPrecondition);
 }
