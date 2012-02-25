@@ -63,8 +63,8 @@ public class HibernateLabSpecimenTemplateDAO implements LabSpecimenTemplateDAO {
 	 * @see org.openmrs.api.db.LabSpecimenTemplateDAO#getLabSpecimenTemplateByUuid(java.lang.String)
 	 */
 	public LabSpecimenTemplate getLabSpecimenTemplateByUuid(String uuid) {
-		return (LabSpecimenTemplate) sessionFactory.getCurrentSession().createQuery("from LabSpecimenTemplate l where l.uuid = :uuid").setString(
-		    "uuid", uuid).uniqueResult();
+		return (LabSpecimenTemplate) sessionFactory.getCurrentSession().createQuery("from LabSpecimenTemplate l where l.uuid = :uuid")
+				.setString("uuid", uuid).uniqueResult();
 	}
 
 	/**
@@ -85,18 +85,18 @@ public class HibernateLabSpecimenTemplateDAO implements LabSpecimenTemplateDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	public LabSpecimenTemplate getLabSpecimenTemplate(String name) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabSpecimenTemplate.class)
-		.add(Restrictions.disjunction()
-		    .add(Restrictions.eq("propertyTag", name))
-		    .add(Restrictions.eq("serialNumber", name))
-		    .add(Restrictions.eq("model", name))
-		);
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabSpecimenTemplate.class);
 		
-		List<LabSpecimenTemplate> labSpecimenTemplates = criteria.list();
+		List<LabSpecimenTemplate> labSpecimenTemplates = (List<LabSpecimenTemplate>) criteria.list();
 		if (null == labSpecimenTemplates || labSpecimenTemplates.isEmpty()) {
 			return null;
 		}
-		return labSpecimenTemplates.get(0);
+		for (LabSpecimenTemplate lsp : labSpecimenTemplates) {
+			if (lsp.getName().equals(name)) {
+				return lsp;
+			}
+		}
+		return null;
 	}
 	
 	/**

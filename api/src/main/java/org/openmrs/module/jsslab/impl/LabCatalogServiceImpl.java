@@ -14,6 +14,7 @@ import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabTestPanelDAO;
 import org.openmrs.module.jsslab.db.LabTestDAO;
 import org.openmrs.module.jsslab.db.LabPreconditionDAO;
+import org.openmrs.module.jsslab.db.LabSpecimenTemplateDAO;
 
 public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		LabCatalogService {
@@ -25,6 +26,8 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	protected LabTestDAO labTestDAO;
 
 	protected LabPreconditionDAO labPreconditionDAO;
+	
+	protected LabSpecimenTemplateDAO labSpecimenTemplateDAO;
 
 	public void setLabTestPanelDAO(LabTestPanelDAO labTestPanelDAO) {
 		this.labTestPanelDAO = labTestPanelDAO;
@@ -36,6 +39,10 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	public void setLabPreconditionDAO(LabPreconditionDAO labPreconditionDAO) {
 		this.labPreconditionDAO = labPreconditionDAO;
+	}
+
+	public void setLabSpecimenTemplateDAO(LabSpecimenTemplateDAO labSpecimenTemplateDAO) {
+		this.labSpecimenTemplateDAO = labSpecimenTemplateDAO;
 	}
 
 	public LabTestPanel saveLabTestPanel(LabTestPanel labTestPanel)

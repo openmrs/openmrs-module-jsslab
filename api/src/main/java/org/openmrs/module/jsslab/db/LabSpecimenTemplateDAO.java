@@ -39,7 +39,7 @@ public interface LabSpecimenTemplateDAO {
 	 * @param LabSpecimenTemplate
 	 * @return the saved <code>LabSpecimenTemplate</code>
 	 */
-	public LabSpecimenTemplate saveLabSpecimenTemplate(LabSpecimenTemplate LabSpecimenTemplate);
+	public LabSpecimenTemplate saveLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate);
 
 	/**
 	 * Get a LabSpecimenTemplate by <code>testId</code>
@@ -48,7 +48,7 @@ public interface LabSpecimenTemplateDAO {
 	 *            <code>Integer</code> identifier of the LabSpecimenTemplate to get
 	 * @return the requested <code>LabSpecimenTemplate</code>
 	 */
-	public LabSpecimenTemplate getLabSpecimenTemplate(Integer preconditionId);
+	public LabSpecimenTemplate getLabSpecimenTemplate(Integer labSpecimenTemplateId);
 
 	/**
 	 * @param uuid

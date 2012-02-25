@@ -56,8 +56,8 @@ LabTestRange.hbm.xml
 LabSpecimen.hbm.xml
 LabTestRun.hbm.xml
 LabTestResult.hbm.xml
-LabOrder.hbm.xml
 LabOrderSpecimen.hbm.xml
+LabOrder.hbm.xml
 <!--  
 -->
 	</mappingFiles>

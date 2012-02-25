@@ -273,7 +273,7 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	}
 
 	public String getName() {
-		return this.getTestPanel().getName() + ":" + getParentSubId() + "/" + getSpecimenSubId();
+		return this.getTestPanel().getName() + " : " + getParentRelationConcept() + "/" + getParentSubId() + "/" + getSpecimenSubId();
 	}
 
 	/**

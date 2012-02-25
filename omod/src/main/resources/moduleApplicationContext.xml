@@ -59,13 +59,22 @@
 							</bean>
 						</property>
 
-     						<property name="labPreconditionDAO">   
-					        <bean   
-					            class="org.openmrs.module.jsslab.db.hibernate.HibernateLabPreconditionDAO">   
-					            <property name="sessionFactory">   
-				                <ref bean="sessionFactory"/>   
-					            </property>   
-					        </bean>   
+   						<property name="labPreconditionDAO">   
+				        <bean   
+				            class="org.openmrs.module.jsslab.db.hibernate.HibernateLabPreconditionDAO">   
+				            <property name="sessionFactory">   
+			                <ref bean="sessionFactory"/>   
+				            </property>   
+				        </bean>   
+					    </property>   
+
+   						<property name="labSpecimenTemplateDAO">   
+				        <bean   
+				            class="org.openmrs.module.jsslab.db.hibernate.HibernateLabSpecimenTemplateDAO">   
+				            <property name="sessionFactory">   
+			                <ref bean="sessionFactory"/>   
+				            </property>   
+				        </bean>   
 					    </property>   
 
 				  	</bean>
