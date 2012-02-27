@@ -3,6 +3,7 @@ package org.openmrs.module.jsslab;
 import java.util.List;
 
 import org.openmrs.module.jsslab.db.LabInstrument;
+import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
@@ -31,6 +32,13 @@ public interface LabManagementService extends OpenmrsService {
 	 */
 	@Authorized( PrivilegeConstants.VIEW_LAB_MGMT )
 	public LabInstrument getLabInstrumentByUuid(String uuid);
+	
+	/*
+	 * 
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.DELETE_LAB_MGMT)
+	public void deleteLabInstrument(LabInstrument labInstrument, String reason)throws APIException;
 	
 	/**
 	 * Completely delete an LabInstrument from the database. This should not typically be used unless
@@ -134,6 +142,13 @@ public interface LabManagementService extends OpenmrsService {
 	 */
 	@Authorized( PrivilegeConstants.VIEW_LAB_MGMT )
 	public LabSupplyItem getLabSupplyItemByUUID(String uuid);
+	
+	/*
+	 * 
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.DELETE_LAB_MGMT)
+	public void deleteSupplyItem(LabSupplyItem labSupplyItem, String reason)throws APIException;
 	
 	/**
 	 * Completely delete an LabSupplyItem from the database. This should not typically be used unless

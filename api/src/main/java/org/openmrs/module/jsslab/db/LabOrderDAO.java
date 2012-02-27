@@ -14,9 +14,44 @@
  
 package org.openmrs.module.jsslab.db;
 
+import java.util.List;
+
+import org.openmrs.api.APIException;
+import org.openmrs.api.db.DAOException;
+
 public interface LabOrderDAO {
 	
+	/**
+	 * @see org.openmrs.api.LabOrderService#saveLabOrder(LabOrder)
+	 */
+	public LabOrder saveLabOrder(LabOrder labLabOrder) throws DAOException;
 	
+	/**
+	 * @see org.openmrs.api.LabOrderService#purgeLabOrder(LabOrder)
+	 */
+	public void deleteLabOrder(LabOrder labLabOrder) throws DAOException;
 	
+	/**
+	 * @see org.openmrs.api.LabOrderService#getLabOrder(Integer)
+	 */
+	public LabOrder getLabOrder(Integer labLabOrderId) throws DAOException;
+	
+	/**
+	 * Auto generated method comment
+	 * 
+	 * @param uuid
+	 * @return
+	 */
+	public LabOrder getLabOrderByUuid(String uuid);
+	
+	/**
+	 * Returns a specified number of labOrders starting with a given string from the specified index
+	 */
+	public List<LabOrder> getLabOrders(String nameFragment, Boolean includeRetired, Integer start, Integer length);
+	
+	/**
+	 * Get count of LabOrder
+	 */
+	public Integer getCountOfLabOrders(String nameFragment, Boolean includeRetired) throws APIException;
 	
 }

@@ -5,8 +5,9 @@ import java.util.List;
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
-import org.openmrs.module.jsslab.db.LabPrecondition;
+import org.openmrs.module.jsslab.LabTestingService;
 import org.openmrs.module.jsslab.db.LabTest;
+import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.Resource;
@@ -14,49 +15,49 @@ import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentat
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
-import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudResource;  
+import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
-@Resource("LabPrecondition")
-@Handler(supports = LabPrecondition.class, order = 0)
-public class LabPreconditionResource extends DataDelegatingCrudResource<LabPrecondition>{
+
+@Resource("LabTestRange")
+@Handler(supports = LabTestRange.class, order = 0)
+public class LabTestRangeResource extends DataDelegatingCrudResource<LabTestRange>{
 
 	@Override
-	public LabPrecondition getByUniqueId(String uniqueId) {
-		LabPrecondition labPrecondition=Context.getService(LabCatalogService.class).getLabPreconditionByUuid(uniqueId);
-		return labPrecondition;
+	public LabTestRange getByUniqueId(String uniqueId) {
+		LabTestRange labTestRange=Context.getService(LabTestingService.class).getLabTestRangeByUuid(uniqueId);
+		return labTestRange;
 	}
 
 	@Override
-	protected LabPrecondition newDelegate() {
-		return new LabPrecondition();
+	protected LabTestRange newDelegate() {
+		return new LabTestRange();
 	}
 
 	@Override
-	protected LabPrecondition save(LabPrecondition delegate) {
-		LabPrecondition labPrecondition=Context.getService(LabCatalogService.class).saveLabPrecondition(delegate);
-		return labPrecondition;
+	protected LabTestRange save(LabTestRange delegate) {
+		LabTestRange labTestRange=Context.getService(LabTestingService.class).saveLabTestRange(delegate);
+		return labTestRange;
 	}
 
 	@Override
-	protected void delete(LabPrecondition labPrecondition, String reason,
+	protected void delete(LabTestRange labTestRange, String reason,
 			RequestContext context) throws ResponseException {
-		if(labPrecondition!=null)
+		if(labTestRange!=null)
 		{
 			//
-			Context.getService(LabCatalogService.class).deleteLabPrecondition(labPrecondition,reason);
-		}		
-		
+			Context.getService(LabTestingService.class).deleteLabTestRange(labTestRange,reason);
+		}			
 	}
 
 	@Override
-	public void purge(LabPrecondition labPrecondition, RequestContext context)
+	public void purge(LabTestRange labTestRange, RequestContext context)
 			throws ResponseException {
-		if(labPrecondition!=null)
+		if(labTestRange!=null)
 		{
 			//
-			Context.getService(LabCatalogService.class).purgeLabPrecondition(labPrecondition);
+			Context.getService(LabTestingService.class).purgeLabTestRange(labTestRange);
 		}
 				
 	}
@@ -69,8 +70,8 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 		{
 			//			
 			Descri.addProperty("uuid");
-			Descri.addProperty("testPanel",Representation.REF);
-			Descri.addProperty("preconditionQuestionConcept",Representation.REF);
+			Descri.addProperty("test",Representation.REF);
+			Descri.addProperty("logicRule",Representation.REF);
 			Descri.addProperty("voided");
 			Descri.addSelfLink();
 			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
@@ -80,9 +81,13 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 		{
 			//
 			Descri.addProperty("uuid");
-			Descri.addProperty("testPanel",Representation.REF);
-			Descri.addProperty("preconditionQuestionConcept",Representation.REF);
-			Descri.addProperty("preconditionAnswerConcept",Representation.REF);
+			Descri.addProperty("test",Representation.REF);
+			Descri.addProperty("logicRule",Representation.REF);
+			Descri.addProperty("rangeSex");
+			Descri.addProperty("rangeNormalLow");
+			Descri.addProperty("rangeNormalHigh");
+			Descri.addProperty("rangeCriticalLow");
+			Descri.addProperty("rangeCriticalHigh");
 			Descri.addProperty("sortWeight");
 			Descri.addProperty("voided");
 			Descri.addSelfLink();
@@ -91,16 +96,16 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 		}
 		return null;
 	}
+	
 	@Override
-	protected List<LabPrecondition> doGetAll(RequestContext context) {
-		return Context.getService(LabCatalogService.class).getLabPrecondition("",false,null,null);
+	protected List<LabTestRange> doGetAll(RequestContext context) {
+		return Context.getService(LabTestingService.class).getAllLabTestRanges(false);
 	}
 	
 	@Override
-	protected AlreadyPaged<LabTest> doSearch(String query, RequestContext context) {
-		return new ServiceSearcher<LabTest>(LabCatalogService.class, "getLabPrecondition", "getCountOfLabPrecondition").search(query,
-		    context);
+	protected AlreadyPaged<LabTestRange> doSearch(String query, RequestContext context) {
+		return new ServiceSearcher<LabTestRange>(LabCatalogService.class, "getAllLabTestRanges", "getCountOfLabTestRange")
+				.search(query, context);
 	}
-
 
 }

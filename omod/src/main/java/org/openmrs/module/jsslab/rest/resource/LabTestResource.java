@@ -6,8 +6,10 @@ import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.LabManagementService;
+import org.openmrs.module.jsslab.LabTestingService;
 import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabTest;
+import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.Resource;
@@ -41,6 +43,17 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 		return labTest;
 	}
 
+
+	@Override
+	public void delete(LabTest labTest, String reason,
+			RequestContext context) throws ResponseException {
+		if(labTest!=null)
+		{
+			//
+			Context.getService(LabCatalogService.class).retireLabTest(labTest,reason);
+		}			
+	}
+
 	@Override
 	public void purge(LabTest labTest, RequestContext context)
 			throws ResponseException {
@@ -59,7 +72,7 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	
 	@Override
 	protected AlreadyPaged<LabTest> doSearch(String query, RequestContext context) {
-		return new ServiceSearcher<LabTest>(LabCatalogService.class, "getLabTest", "getCountOfLabTest").search(query,
+		return new ServiceSearcher<LabTest>(LabCatalogService.class, "getLabTests", "getCountOfLabTest").search(query,
 		    context);
 	}
 

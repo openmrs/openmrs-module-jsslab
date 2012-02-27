@@ -8,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabCatalogService;
+import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.jsslab.db.LabPrecondition;
@@ -55,6 +56,14 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labTestPanelDAO.getLabTestPanelByUuid(uuid);
 	}
 
+	public LabPrecondition deleteLabPrecondition(LabPrecondition labPrecondition,
+			String deleteReason) throws APIException {
+		labPrecondition.setVoided(true);
+		labPrecondition.setDateVoided(new Date());
+		labPrecondition.setVoidReason(deleteReason);
+		return labPreconditionDAO.saveLabPrecondition(labPrecondition);
+	}
+
 	public void purgeLabTestPanel(LabTestPanel labTestPanel)
 			throws APIException {
 		labTestPanelDAO.deleteLabTestPanel(labTestPanel);
@@ -84,6 +93,14 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	public LabTest getLabTestByUUID(String uuid) {
 		return labTestDAO.getLabTestByUuid(uuid);
+	}
+
+	public LabTest deleteLabTest(LabTest labTest,
+			String deleteReason) throws APIException {
+		labTest.setRetired(true);
+		labTest.setDateRetired(new Date());
+		labTest.setRetireReason(deleteReason);
+		return labTestDAO.saveLabTest(labTest);
 	}
 
 	public void purgeLabTest(LabTest labTest) throws APIException {
@@ -138,16 +155,9 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labPreconditionDAO.getLabPrecondition(preconditionId);
 	}
 
-	public LabPrecondition getLabPreconditionByName(String labPrecondition) {
+	public LabPrecondition getLabPreconditionByName(String precondition) {
 		//
-		return labPreconditionDAO.getLabPreconditionByName(labPrecondition);
-	}
-
-	@Override
-	public void deleteLabPrecondition(LabPrecondition labPrecondition)
-			throws APIException {
-		// TODO Auto-generated method stub
-		labPreconditionDAO.deleteLabPrecondition(labPrecondition);
+		return labPreconditionDAO.getLabPreconditionByName(precondition);
 	}
 
 	@Override

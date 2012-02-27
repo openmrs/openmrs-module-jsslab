@@ -30,4 +30,34 @@ public class PrivilegeConstants {
 
 	public static final String PURGE_LAB_MGMT = "Purge LabManagement Records";
 
+	public static final String ADD_LAB_CAT = "Add LabCatalog Records";
+
+	public static final String EDIT_LAB_CAT = "Edit LabCatalog Records";
+
+	public static final String VIEW_LAB_CAT = "View LabCatalog Records";
+
+	public static final String DELETE_LAB_CAT = "Retire/Void LabCatalog Records";
+
+	public static final String PURGE_LAB_CAT = "Purge LabCatalog Records";
+
+	public static final String ADD_LAB_TEST = "Add LabTesting Records";
+
+	public static final String EDIT_LAB_TEST = "Edit LabTesting Records";
+
+	public static final String VIEW_LAB_TEST = "View LabTesting Records";
+
+	public static final String DELETE_LAB_TEST = "Retire/Void LabTesting Records";
+
+	public static final String PURGE_LAB_TEST = "Purge LabTesting Records";
+
+	public static final String ADD_LAB_ORDER = "Add LabOrder Records";
+
+	public static final String EDIT_LAB_ORDER = "Edit LabOrder Records";
+
+	public static final String VIEW_LAB_ORDER = "View LabOrder Records";
+
+	public static final String DELETE_LAB_ORDER = "Retire/Void LabOrder Records";
+
+	public static final String PURGE_LAB_ORDER = "Purge LabOrder Records";
+
 }

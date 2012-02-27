@@ -16,8 +16,10 @@ package org.openmrs.module.jsslab.rest.resource;
 import java.util.List;
 
 import org.openmrs.module.jsslab.db.LabSupplyItem;
+import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.annotation.Handler;
 import org.openmrs.module.jsslab.LabManagementService;
+import org.openmrs.module.jsslab.LabTestingService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
@@ -98,14 +100,20 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	 */
 	@Override
 	public LabSupplyItem getByUniqueId(String uuid) {
-		LabSupplyItem labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItems(uuid,false,0,0).get(0);
-		//We assume the caller was fetching by propertyTag or serialNumber
-		if (labSupplyItem == null)
-			labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItemByUUID(uuid);
-		
+		LabSupplyItem labSupplyItem = Context.getService(LabManagementService.class).getLabSupplyItemByUUID(uuid);
 		return labSupplyItem;
 	}
 	
+	@Override
+	public void delete(LabSupplyItem labSupplyItem, String reason,
+			RequestContext context) throws ResponseException {
+		if(labSupplyItem!=null)
+		{
+			//
+			Context.getService(LabManagementService.class).retireLabSupplyItem(labSupplyItem,reason);
+		}			
+	}
+
 	/**
 	 * @see org.openmrs.module.webservices.rest.web.resource.impl.DelegatingCrudResource#purge(java.lang.Object,
 	 *      org.openmrs.module.webservices.rest.web.RequestContext)

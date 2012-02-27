@@ -131,6 +131,76 @@
 		</list>
 	</property>
 	</bean>
+    <bean parent="serviceContext">
+          <property name="moduleService">
+             <list>
+                 <value>org.openmrs.module.jsslab.LabTestingService</value>
+                 <bean
+				class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+				<property name="transactionManager">
+					<ref bean="transactionManager" />
+				     </property>
+				     <property name="target">
+					     <bean class="org.openmrs.module.jsslab.impl.LabTestingServiceImpl" >
+					     <property name="labTestRangeDAO">
+							<bean
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestRangeDAO">
+								<property name="sessionFactory">
+									<ref bean="sessionFactory" />
+								</property>
+							</bean>
+						</property>
+					    </bean>
+					  </property>
+					  
+			    <property name="preInterceptors">
+					<ref bean="serviceInterceptors" />
+				</property>
+				<property name="transactionAttributeSource">
+					<bean
+						class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource">
+					</bean>
+				</property>
+				
+				</bean>
+             </list>
+          </property>
+    </bean>
+    <bean parent="serviceContext">
+          <property name="moduleService">
+             <list>
+                 <value>org.openmrs.module.jsslab.LabOrderService</value>
+                 <bean
+				class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+				<property name="transactionManager">
+					<ref bean="transactionManager" />
+				     </property>
+				     <property name="target">
+					     <bean class="org.openmrs.module.jsslab.impl.LabOrderServiceImpl" >
+					     <property name="labOrderDAO">
+							<bean
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabOrderDAO">
+								<property name="sessionFactory">
+									<ref bean="sessionFactory" />
+								</property>
+							</bean>
+						</property>
+					    </bean>
+					  </property>
+					  
+			    <property name="preInterceptors">
+					<ref bean="serviceInterceptors" />
+				</property>
+				<property name="transactionAttributeSource">
+					<bean
+						class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource">
+					</bean>
+				</property>
+				
+				</bean>
+             </list>
+          </property>
+    </bean>
 
 	<context:component-scan base-package="org.openmrs.module.jsslab" />
  

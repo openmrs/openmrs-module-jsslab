@@ -16,8 +16,10 @@ package org.openmrs.module.jsslab.rest.resource;
 import java.util.List;
 
 import org.openmrs.module.jsslab.db.LabInstrument;
+import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.annotation.Handler;
 import org.openmrs.module.jsslab.LabManagementService;
+import org.openmrs.module.jsslab.LabTestingService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
@@ -112,6 +114,17 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 		return labInstrument;
 	}
 	
+
+	@Override
+	public void delete(LabInstrument labInstrument, String reason,
+			RequestContext context) throws ResponseException {
+		if(labInstrument!=null)
+		{
+			//
+			Context.getService(LabManagementService.class).retireLabInstrument(labInstrument,reason);
+		}			
+	}
+
 	/**
 	 * @see org.openmrs.module.webservices.rest.web.resource.impl.DelegatingCrudResource#purge(java.lang.Object,
 	 *      org.openmrs.module.webservices.rest.web.RequestContext)
