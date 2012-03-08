@@ -42,7 +42,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabPrecondition extends BaseOpenmrsData implements Serializable, Comparable<LabPrecondition> {
+public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 	
 	public static final long serialVersionUID = 2L;
 	
@@ -202,17 +202,6 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable, Co
 			}
 		return preconditionAnswerText;
 		}
-
-	/**
-	 * Implement Comparable interface
-	 * @param other LabPrecondition to be compared
-	 * @return < = > other
-	 */
-	public int compareTo(LabPrecondition other) {
-		if (this.getTestPanel().equals(other.getTestPanel()))
-			return this.getSortWeight().compareTo(other.getSortWeight());
-		return this.getTestPanel().getId().compareTo(other.getTestPanel().getId());
-	}
 
 	public String toString() {
 		return "Precondition " + this.getId();

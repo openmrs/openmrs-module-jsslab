@@ -35,7 +35,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabTest extends BaseOpenmrsMetadata implements Serializable, Comparable<LabTest> {
+public class LabTest extends BaseOpenmrsMetadata implements Serializable {
 
 	public static final long serialVersionUID = 2L;
 	
@@ -198,16 +198,6 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable, Compar
 		if (testName == null)
 			testName = Context.getConceptService().getConceptName(this.getTestConcept().getId()).getName();
 		return testName;
-	}
-	
-	/**
-	 * @return Returns int indicating comparison.
-	 */
-	public int compareTo(LabTest labTest) {
-		int i = this.getTestPanel().getName().compareToIgnoreCase(labTest.getTestPanel().getName());
-		if (i == 0)
-			i = this.getSortWeight().compareTo(labTest.getSortWeight());
-		return i;
 	}
 	
 }

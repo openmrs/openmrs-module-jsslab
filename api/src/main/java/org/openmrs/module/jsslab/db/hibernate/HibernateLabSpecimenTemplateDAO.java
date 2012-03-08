@@ -143,25 +143,25 @@ public class HibernateLabSpecimenTemplateDAO implements LabSpecimenTemplateDAO {
 	 * @see LabSpecimenTemplateDAO#getLabSpecimenTemplates(String, Boolean, Integer, Integer)
 	 */
 	@SuppressWarnings("unchecked")
-	public List<LabSpecimenTemplate> getLabSpecimenTemplates(String nameFragment, Boolean includeRetired, Integer start, Integer length) {
+	public List<LabSpecimenTemplate> getLabSpecimenTemplates(String nameFragment, Boolean includeVoided, Integer start, Integer length) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabSpecimenTemplate.class);
-		if (!includeRetired)
-			criteria.add(Restrictions.ne("retired", true));
+		if (!includeVoided)
+			criteria.add(Restrictions.ne("voided", true));
 		
 		if (StringUtils.isNotBlank(nameFragment))
 			criteria.add(Restrictions.disjunction()
-			   .add(Restrictions.ilike("propertyTag", nameFragment, MatchMode.START))
-			   .add(Restrictions.ilike("serialNumber", nameFragment, MatchMode.START))
-			   .add(Restrictions.ilike("model", nameFragment, MatchMode.START))
+				.add(Restrictions.eq("order.uuid", nameFragment))
+				.add(Restrictions.eq("specimen.uuid", nameFragment))
 			);
 		
-		criteria.addOrder(Order.asc("name"));
+		criteria.addOrder(Order.asc("order.uuid")).addOrder(Order.asc("specimen.uuid"));
+		
 		if (start != null)
 			criteria.setFirstResult(start);
 		if (length != null && length > 0)
 			criteria.setMaxResults(length);
 		
-		return criteria.list();
+		return (List<LabSpecimenTemplate>) criteria.list();
 	}
 	
 }

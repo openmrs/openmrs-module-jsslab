@@ -68,12 +68,12 @@ public interface LabPreconditionDAO {
 	/**
 	 * Get all labPreconditions
 	 * 
-	 * @param includeRetired
-	 *            Boolean - include retired labPreconditions as well?
+	 * @param includeVoided
+	 *            Boolean - include voided labPreconditions as well?
 	 * @return List<LabPrecondition> object with all <code>LabPrecondition</code>s, possibly
-	 *         included retired ones
+	 *         included voided ones
 	 */
-	public List<LabPrecondition> getLabPreconditions(String search, Boolean includeRetired, Integer start, Integer length);
+	public List<LabPrecondition> getLabPreconditions(String search, Boolean includeVoided, Integer start, Integer length);
 
 	/**
 	 * Completely remove the labPrecondition from the database.
@@ -88,6 +88,6 @@ public interface LabPreconditionDAO {
 	 *      Boolean)
 	 */
 	public Integer getCountOfLabPreconditions(String search,
-			Boolean includeRetired);
+			Boolean includeVoided);
 
 }

@@ -3,6 +3,7 @@ package org.openmrs.module.jsslab;
 import java.util.List;
 
 import org.openmrs.module.jsslab.db.LabPrecondition;
+import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
 import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.jsslab.PrivilegeConstants;
@@ -107,7 +108,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 */
 	@Transactional(readOnly=false)
 	@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
-	public void deleteLabTest(LabPrecondition labTest, String reason)throws APIException;
+	public LabTest deleteLabTest(LabTest labTest, String reason)throws APIException;
 	
 	/**
 	 * Completely delete an LabTest from the database. This should not typically be used unless
@@ -143,9 +144,18 @@ public interface LabCatalogService extends OpenmrsService {
 	public List<LabTest> getAllLabTests(Boolean includeRetired) throws APIException;
 	
 	/*
-	 * get the specific list of LabPrecondition from String and index.
+	 * get the specific list of LabTests from String and index.
 	 */
-	public List<LabPrecondition> getLabPrecondition(String displayFragment, Boolean ifVoided, Integer index, Integer length);
+	public List<LabTest> getLabTests(String displayFragment, Boolean ifVoided, Integer index, Integer length);
+
+	
+	
+	/*
+	 * @param id
+	 * @return LabPrecondition if founded, or null.
+	 */
+	public LabPrecondition getLabPrecondition(Integer labPreconditionId);
+	
 	/*
 	 * @param uuid
 	 * @return LabPrecondition if founded, or null.
@@ -158,7 +168,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
-	public LabPrecondition saveLabPrecondition(LabPrecondition labPrecondition)throws APIException;
+	public LabPrecondition saveLabPrecondition(LabPrecondition labLabPrecondition)throws APIException;
 	
 	/*
 	 *  Remove the LabPrecondition from database, most of the time we just voided the LabPrecondition.
@@ -167,24 +177,14 @@ public interface LabCatalogService extends OpenmrsService {
 	 */
 	@Transactional(readOnly=false)
 	@Authorized(PrivilegeConstants.PURGE_LAB_CAT)
-	public void purgeLabPrecondition(LabPrecondition labPrecondition)throws APIException;
+	public void purgeLabPrecondition(LabPrecondition labLabPrecondition)throws APIException;
 	
 	/*
 	 * 
 	 */
 	@Transactional(readOnly=false)
 	@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
-	public LabPrecondition deleteLabPrecondition(LabPrecondition labPrecondition, String reason)throws APIException;
-	
-	/*
-	 * Get all not voided LabPrecondition
-	 * 
-	 * @return LabPrecondition list
-	 * @throws APIException
-	 */
-	@Transactional(readOnly=true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
-	public List<LabPrecondition> getAllLabPreconditions()throws APIException;
+	public LabPrecondition deleteLabPrecondition(LabPrecondition labLabPrecondition, String reason)throws APIException;
 	
 	/*
 	 * Get all LabPrecondition list including voided if the ifVoided is true
@@ -198,6 +198,11 @@ public interface LabCatalogService extends OpenmrsService {
 	public List<LabPrecondition> getAllLabPreconditions(Boolean ifVoided)throws APIException;
 	
 	/*
+	 * get the specific list of LabTests from String and index.
+	 */
+	public List<LabPrecondition> getLabPreconditions(String displayFragment, Boolean ifVoided, Integer index, Integer length);
+
+	/*
 	 * Get the length of the list that LabPrecondition return(include voided if ifVoided is true)
 	 * @param search is a String that represent DisplayFragment
 	 * @param if include voided resources
@@ -209,16 +214,83 @@ public interface LabCatalogService extends OpenmrsService {
 	public Integer getCountOfLabPrecondition(String search,Boolean ifVoided)throws APIException;
 	
 	/*
-	 * @param use preconditionID to search LabPrecondition
+	 * @param use ID to search LabSpecimenTemplate
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
-	public LabPrecondition getLabPrecondition(Integer preconditionId);
+	public LabSpecimenTemplate getLabSpecimenTemplate(Integer labSpecimenTemplateId);
 	
 	/*
-	 * @param use name to search LabPrecondition
+	 * @param use name to search LabSpecimenTemplate
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
-	public LabPrecondition getLabPreconditionByName(String labPrecondition);
+	public LabSpecimenTemplate getLabSpecimenTemplateByName(String labSpecimenTemplate);
+
+	/*
+	 * get the specific list of LabSpecimenTemplate from String and index.
+	 */
+	public List<LabSpecimenTemplate> getLabSpecimenTemplate(String displayFragment, Boolean ifVoided, Integer index, Integer length);
+	/*
+	 * @param uuid
+	 * @return LabSpecimenTemplate if founded, or null.
+	 */
+	public LabSpecimenTemplate getLabSpecimenTemplateByUuid(String uuid);
+	
+	/*
+	 * @return save LabSpecimenTemplate to database.
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
+	public LabSpecimenTemplate saveLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate)throws APIException;
+	
+	/*
+	 *  Remove the LabSpecimenTemplate from database, most of the time we just voided the LabSpecimenTemplate.
+	 * @param the LabSpecimenTemplate that should be removed
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.PURGE_LAB_CAT)
+	public void purgeLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate)throws APIException;
+	
+	/*
+	 * 
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
+	public LabSpecimenTemplate deleteLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate, String reason)throws APIException;
+	
+	/*
+	 * Get all not voided LabSpecimenTemplate
+	 * 
+	 * @return LabSpecimenTemplate list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
+	public List<LabSpecimenTemplate> getAllLabSpecimenTemplates()throws APIException;
+	
+	/*
+	 * Get all LabSpecimenTemplate list including voided if the ifVoided is true
+	 * 
+	 * @param if include voided LabSpecimenTemplate
+	 * @return LabSpecimenTemplate list(include voided list if ifVoided is true)
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
+	public List<LabSpecimenTemplate> getAllLabSpecimenTemplates(Boolean ifVoided)throws APIException;
+	
+	/*
+	 * Get the length of the list that LabSpecimenTemplate return(include voided if ifVoided is true)
+	 * @param search is a String that represent DisplayFragment
+	 * @param if include voided resources
+	 * @return length of LabSpecimenTemplate(include voided if ifVoided is true) resource
+	 * throws Exception
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
+	public Integer getCountOfLabSpecimenTemplate(String search,Boolean ifVoided)throws APIException;
+	
 }

@@ -13,6 +13,7 @@
  */
 package org.openmrs.module.jsslab.db.hibernate;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -44,6 +45,19 @@ public class HibernateLabTestPanelDAO implements LabTestPanelDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	public class LabTestPanelComparator implements Comparator<LabTestPanel> {
+		  public int compare(LabTestPanel lt1, LabTestPanel lt2) {
+			  int i ;
+			  if (lt1.getTestPanelConcept().getId() < lt2.getTestPanelConcept().getId())
+				  i = -1;
+			  else if (lt1.getTestPanelConcept().getId() > lt2.getTestPanelConcept().getId())
+				  i = 1;
+			  else
+				  i = 0;
+			  return i;
+		  }
+		}
+
 	/**
 	 * @see org.openmrs.api.db.LabTestPanelDAO#saveLabTestPanel(org.openmrs.LabTestPanel)
 	 */
@@ -146,20 +160,19 @@ public class HibernateLabTestPanelDAO implements LabTestPanelDAO {
 		if (!includeRetired)
 			criteria.add(Restrictions.ne("retired", true));
 		
-		if (StringUtils.isNotBlank(nameFragment))
-			criteria.add(Restrictions.disjunction()
-			   .add(Restrictions.ilike("propertyTag", nameFragment, MatchMode.START))
-			   .add(Restrictions.ilike("serialNumber", nameFragment, MatchMode.START))
-			   .add(Restrictions.ilike("model", nameFragment, MatchMode.START))
-			);
+		criteria.addOrder(Order.asc("testPanelId"));
 		
-		criteria.addOrder(Order.asc("name"));
 		if (start != null)
 			criteria.setFirstResult(start);
 		if (length != null && length > 0)
 			criteria.setMaxResults(length);
 		
-		return criteria.list();
+		List<LabTestPanel> list = (List<LabTestPanel>) criteria.list();
+		for (LabTestPanel lp : list) {
+			if (!lp.getTestPanelConcept().getName().getName().startsWith(nameFragment))
+				list.remove(lp);
+		}
+		return list;
 	}
 
 

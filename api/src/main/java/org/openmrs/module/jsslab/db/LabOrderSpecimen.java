@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.Locale;
+import org.apache.commons.lang.StringUtils;  
 
+import org.openmrs.api.context.Context;
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Patient;
 import org.openmrs.Person;
@@ -39,7 +42,15 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 	private LabOrder order;
 	
 	private LabSpecimen specimen;
+	
+	private Concept specimenRoleConcept;
 
+	private Locale textLocale;
+	
+	private String specimenRoleText;
+	
+	private String specimenRoleCode;
+	
 	public void LabOrderSpecimen() {
 		
 		this.setUuid(UUID.randomUUID().toString());
@@ -115,5 +126,76 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 		this.order = order;
 	}
 	
+	/**
+	 * @return Returns the SpecimenRoleConcept concept.
+	 */
+	@Attribute(required = false)
+	public Concept getSpecimenRoleConcept() {
+		return specimenRoleConcept;
+	}
+	
+	/**
+	 * @param SpecimenRoleConcept The SpecimenRoleConcept to set.  
+	 */
+	@Attribute(required = false)
+	public void setSpecimenRoleConcept(Concept specimenRoleConcept) {
+		this.specimenRoleConcept = specimenRoleConcept;
+		this.specimenRoleText = null;
+		this.specimenRoleCode = null;
+	}
+	
+	/**
+	 * Check for a locale change
+	 */
+	private void checkLocale() {
+		if (! textLocale.equals(Context.getLocale())) {
+			specimenRoleText = "";
+			specimenRoleCode = "";
+			textLocale = Context.getLocale();
+		}
+		return;
+	}
+	
+	/**
+	 * Get text corresponding to specimenRoleConcept
+	 */
+	public String getSpecimenRoleText() {
+		checkLocale();
+		if (StringUtils.isEmpty(specimenRoleText)) {
+			if (! (specimenRoleConcept == null)) {
+				specimenRoleText = Context.getConceptService().getConceptName(this.getSpecimenRoleConcept().getId()).getName();
+				specimenRoleCode = Context.getConceptService().getConceptName(this.getSpecimenRoleConcept().getId()).getName();
+			}
+		}
+		return specimenRoleText;
+	}
+
+	/**
+	 * Get text corresponding to preconditionAnswerConcept
+	 */
+	public String getSpecimenRoleCode() {
+		checkLocale();
+		if (StringUtils.isEmpty(specimenRoleCode)) {
+			if (! (specimenRoleConcept == null)) {
+				specimenRoleText = Context.getConceptService().getConceptName(this.getSpecimenRoleConcept().getId()).getName();
+				specimenRoleCode = Context.getConceptService().getConceptName(this.getSpecimenRoleConcept().getId()).getName();
+
+				
+				}
+			}
+		return specimenRoleCode;
+		}
+
+	public String toString() {
+		return "LabOrderSpecimen " + this.getId();
+	}
+	
+	public String getName() {
+		return this.getOrder().getId() + " " + this.getSpecimenRoleCode() + " " + this.getSpecimen().getId();
+	}
+	
+	public String getDisplayString() {
+		return this.getName();
+	}
 
 }

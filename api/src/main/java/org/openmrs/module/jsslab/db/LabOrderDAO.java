@@ -53,5 +53,4 @@ public interface LabOrderDAO {
 	 * Get count of LabOrder
 	 */
 	public Integer getCountOfLabOrders(String nameFragment, Boolean includeRetired) throws APIException;
-	
 }

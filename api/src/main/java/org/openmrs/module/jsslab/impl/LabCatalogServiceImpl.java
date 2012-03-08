@@ -15,6 +15,7 @@ import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabTestPanelDAO;
 import org.openmrs.module.jsslab.db.LabTestDAO;
 import org.openmrs.module.jsslab.db.LabPreconditionDAO;
+import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplateDAO;
 
 public class LabCatalogServiceImpl extends BaseOpenmrsService implements
@@ -29,7 +30,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	protected LabPreconditionDAO labPreconditionDAO;
 	
 	protected LabSpecimenTemplateDAO labSpecimenTemplateDAO;
-
+	
 	public void setLabTestPanelDAO(LabTestPanelDAO labTestPanelDAO) {
 		this.labTestPanelDAO = labTestPanelDAO;
 	}
@@ -56,14 +57,6 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labTestPanelDAO.getLabTestPanelByUuid(uuid);
 	}
 
-	public LabPrecondition deleteLabPrecondition(LabPrecondition labPrecondition,
-			String deleteReason) throws APIException {
-		labPrecondition.setVoided(true);
-		labPrecondition.setDateVoided(new Date());
-		labPrecondition.setVoidReason(deleteReason);
-		return labPreconditionDAO.saveLabPrecondition(labPrecondition);
-	}
-
 	public void purgeLabTestPanel(LabTestPanel labTestPanel)
 			throws APIException {
 		labTestPanelDAO.deleteLabTestPanel(labTestPanel);
@@ -87,6 +80,20 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labTestPanelDAO.getLabTestPanel(idNumber);
 	}
 
+
+	@Override
+	public void deleteLabTestPanel(LabTestPanel labTestPanel, String reason)
+			throws APIException {
+		labTestPanel.setDateRetired(new Date());
+		labTestPanel.setRetired(true);
+		labTestPanel.setRetireReason(reason);
+		labTestPanelDAO.saveLabTestPanel(labTestPanel);
+		return;
+	}
+
+// ------------------------------------------------------
+
+	
 	public LabTest saveLabTest(LabTest labTest) throws APIException {
 		return labTestDAO.saveLabTest(labTest);
 	}
@@ -120,11 +127,18 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labTestDAO.getAllLabTests(includeRetired);
 	}
 
-	public List<LabPrecondition> getLabPrecondition(String displayFragment,
+	public List<LabTest> getLabTests(String displayFragment,
 			Boolean ifVoided, Integer index, Integer length) {
 		//
-		return labPreconditionDAO.getLabPreconditions(displayFragment,
+		return labTestDAO.getLabTests(displayFragment,
 				ifVoided, index, length);
+	}
+
+//------------------------------------------------------------	
+	
+	public LabPrecondition getLabPrecondition(Integer labPrecondition) {
+		//
+		return labPreconditionDAO.getLabPrecondition(labPrecondition);
 	}
 
 	public LabPrecondition getLabPreconditionByUuid(String uuid) {
@@ -138,39 +152,95 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labPreconditionDAO.saveLabPrecondition(labPrecondition);
 	}
 
+	public LabPrecondition deleteLabPrecondition(LabPrecondition labPrecondition,
+			String deleteReason) throws APIException {
+		labPrecondition.setVoided(true);
+		labPrecondition.setDateVoided(new Date());
+		labPrecondition.setVoidReason(deleteReason);
+		return labPreconditionDAO.saveLabPrecondition(labPrecondition);
+	}
+
 	public void purgeLabPrecondition(LabPrecondition labPrecondition)
 			throws APIException {
 		//
 		labPreconditionDAO.deleteLabPrecondition(labPrecondition);
 	}
 
+	public List<LabPrecondition> getAllLabPreconditions(Boolean includeVoided) {
+		return labPreconditionDAO.getLabPreconditions("", includeVoided, null, null);
+	}
+		
+	public List<LabPrecondition> getLabPreconditions(String displayFragment,
+			Boolean ifVoided, Integer index, Integer length) {
+		return labPreconditionDAO.getLabPreconditions(displayFragment,
+				ifVoided, index, length);
+	}
+
 	public Integer getCountOfLabPrecondition(String search, Boolean ifVoided)
 			throws APIException {
-		//
 		return labPreconditionDAO.getCountOfLabPreconditions(search, ifVoided);
 	}
 
-	public LabPrecondition getLabPrecondition(Integer preconditionId) {
+//------------------------------------------------------
+	
+	public LabSpecimenTemplate getLabSpecimenTemplate(Integer specimenTemplateId) {
 		//
-		return labPreconditionDAO.getLabPrecondition(preconditionId);
+		return labSpecimenTemplateDAO.getLabSpecimenTemplate(specimenTemplateId);
 	}
 
-	public LabPrecondition getLabPreconditionByName(String precondition) {
+	public LabSpecimenTemplate getLabSpecimenTemplateByUuid(String uuid) {
 		//
-		return labPreconditionDAO.getLabPreconditionByName(precondition);
+		return labSpecimenTemplateDAO.getLabSpecimenTemplateByUuid(uuid);
 	}
 
-	@Override
-	public List<LabPrecondition> getAllLabPreconditions() throws APIException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<LabPrecondition> getAllLabPreconditions(Boolean ifVoided)
+	public LabSpecimenTemplate saveLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate)
 			throws APIException {
-		// TODO Auto-generated method stub
-		return null;
+		//
+		return labSpecimenTemplateDAO.saveLabSpecimenTemplate(labSpecimenTemplate);
 	}
+
+	public LabSpecimenTemplate deleteLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate, String reason)
+			throws APIException {
+		labSpecimenTemplate.setVoided(true);
+		labSpecimenTemplate.setVoidReason(reason);
+		labSpecimenTemplate.setDateVoided(new Date());
+		return labSpecimenTemplateDAO.saveLabSpecimenTemplate(labSpecimenTemplate);
+	}
+
+	public void purgeLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate)
+			throws APIException {
+		//
+		labSpecimenTemplateDAO.deleteLabSpecimenTemplate(labSpecimenTemplate);
+	}
+
+	public LabSpecimenTemplate getLabSpecimenTemplateByName(String specimenTemplate) {
+		//
+		return labSpecimenTemplateDAO.getLabSpecimenTemplateByName(specimenTemplate);
+	}
+
+	@Override
+	public List<LabSpecimenTemplate> getAllLabSpecimenTemplates() throws APIException {
+		return labSpecimenTemplateDAO.getLabSpecimenTemplates("", false, null, null);
+	}
+
+	@Override
+	public List<LabSpecimenTemplate> getAllLabSpecimenTemplates(Boolean ifVoided)
+			throws APIException {
+		return labSpecimenTemplateDAO.getLabSpecimenTemplates("", ifVoided, null, null);
+	}
+
+		public List<LabSpecimenTemplate> getLabSpecimenTemplate(String displayFragment,
+				Boolean ifVoided, Integer index, Integer length) {
+			//
+			return labSpecimenTemplateDAO.getLabSpecimenTemplates(displayFragment,
+					ifVoided, index, length);
+		}
+
+		public Integer getCountOfLabSpecimenTemplate(String search, Boolean ifVoided)
+				throws APIException {
+			//
+			return labSpecimenTemplateDAO.getCountOfLabSpecimenTemplates(search, ifVoided);
+		}
+
 
 }

@@ -37,7 +37,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable, Comparable<LabTestPanel> {
+public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	
 	public static final long serialVersionUID = 2L;
 	
@@ -339,13 +339,6 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable, C
 	 */
 	public String getName(){
 		return this.getTestGroupName() + ": " + this.getTestPanelName();
-	}
-	
-	/**
-	 * @return integer showing comparison result
-	 */
-	public int compareTo(LabTestPanel labTestPanel){
-		return this.getName().compareToIgnoreCase(labTestPanel.getName());
 	}
 	
 	

@@ -15,10 +15,23 @@ public interface LabTestRangeDAO {
 	
 	public void deleteLabTestRange(LabTestRange labTestRange);
 	
-	public void purgeLabTestRange(LabTestRange labTestRange);
-	
-    public LabTestRange getLabTestRangeByName(String labTestRange);
-	
-    public List<LabTestRange> getAllLabTestRanges(Boolean ifVoided);
+    public List<LabTestRange> getAllLabTestRanges(Boolean includeVoided);
+
+	/**
+	 * Get all labTestRanges
+	 * 
+	 * @param includeVoided
+	 *            Boolean - include voided labTestRanges as well?
+	 * @return List<LabTestRange> object with all <code>LabTestRange</code>s, possibly
+	 *         included voided ones
+	 */
+	public List<LabTestRange> getLabTestRanges(String search, Boolean includeVoided, Integer start, Integer length);
+
+	/**
+	 * @see org.openmrs.api.LabCatalogService#getCountOfLabTestRanges(String,
+	 *      Boolean)
+	 */
+	public Integer getCountOfLabTestRanges(String search,
+			Boolean includeVoided);
 
 }

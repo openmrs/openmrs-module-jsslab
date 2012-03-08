@@ -33,13 +33,6 @@ public interface LabManagementService extends OpenmrsService {
 	@Authorized( PrivilegeConstants.VIEW_LAB_MGMT )
 	public LabInstrument getLabInstrumentByUuid(String uuid);
 	
-	/*
-	 * 
-	 */
-	@Transactional(readOnly=false)
-	@Authorized(PrivilegeConstants.DELETE_LAB_MGMT)
-	public void deleteLabInstrument(LabInstrument labInstrument, String reason)throws APIException;
-	
 	/**
 	 * Completely delete an LabInstrument from the database. This should not typically be used unless
 	 * desperately needed. Most LabInstruments should just be retired. See {@link #retireLabInstrument(LabInstrument, String)}
@@ -142,13 +135,6 @@ public interface LabManagementService extends OpenmrsService {
 	 */
 	@Authorized( PrivilegeConstants.VIEW_LAB_MGMT )
 	public LabSupplyItem getLabSupplyItemByUUID(String uuid);
-	
-	/*
-	 * 
-	 */
-	@Transactional(readOnly=false)
-	@Authorized(PrivilegeConstants.DELETE_LAB_MGMT)
-	public void deleteSupplyItem(LabSupplyItem labSupplyItem, String reason)throws APIException;
 	
 	/**
 	 * Completely delete an LabSupplyItem from the database. This should not typically be used unless

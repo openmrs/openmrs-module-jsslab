@@ -13,7 +13,9 @@
  */
 package org.openmrs.module.jsslab.db.hibernate;
 
+import java.lang.reflect.Array;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -24,10 +26,12 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.openmrs.module.jsslab.db.LabTest;
+import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.openmrs.api.APIException;
 import org.openmrs.api.ConceptService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabTestDAO;
+import org.openmrs.module.jsslab.db.hibernate.HibernateLabTestPanelDAO;
 import org.openmrs.module.jsslab.db.LabTestRange;
 
 /**
@@ -44,6 +48,23 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		this.sessionFactory = sessionFactory;
 	}
 	
+	public class LabTestComparator implements Comparator<LabTest> {
+		  public int compare(LabTest lt1, LabTest lt2) {
+			  if (lt1.getTestPanel().getTestPanelConcept().getId()<lt2.getTestPanel().getTestPanelConcept().getId()) 
+				  return -1;
+			  else if (lt1.getTestPanel().getTestPanelConcept().getId()>lt2.getTestPanel().getTestPanelConcept().getId()) 
+				  return 1;
+			  else if ((lt1.getSortWeight()==null) && (lt2.getSortWeight()==null))
+				  return 0;
+			  else if ((lt1.getSortWeight()==null) || (lt1.getSortWeight()<lt2.getSortWeight()))
+				  return -1;
+			  else if ((lt2.getSortWeight()==null) || (lt1.getSortWeight()>lt2.getSortWeight()))
+				  return 1;
+			  else
+				  return 0;
+		  }
+		}
+
 	/**
 	 * @see org.openmrs.api.db.LabTestDAO#saveLabTest(org.openmrs.LabTest)
 	 */
@@ -98,7 +119,7 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		}
 		
 		// sort the possible returns and take the first
-		Collections.sort(labTests);
+		Collections.sort(labTests, new LabTestComparator());
 		return labTests.get(0);
 	}
 	
@@ -113,7 +134,7 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		}
 		
 		List<LabTest> list = (List<LabTest>) criteria.list();
-		Collections.sort(list);
+		Collections.sort(list, new LabTestComparator());
 		return list;
 	}
 	
@@ -138,7 +159,7 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		}
 		
 		// sort the possible returns
-		Collections.sort(labTests);
+		Collections.sort(labTests, new LabTestComparator());
 		return labTests;
 	}
 	
@@ -170,7 +191,29 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		return labTests.size();
 	}
 
-// TODO: replace stubs below with real methods in LabTestingService
-	private LabTestRange saveLabTestRange(LabTestRange labTestRange) { return labTestRange; }
-	
+	@Override
+	public List<LabTest> getLabTests(String nameFragment, Boolean includeRetired, Integer start, Integer length) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabTestPanel.class);
+		if (!includeRetired)
+			criteria.add(Restrictions.ne("retired", true));
+		
+		criteria.addOrder(Order.asc("testPanelId"));
+		
+		if (start != null)
+			criteria.setFirstResult(start);
+		if (length != null && length > 0)
+			criteria.setMaxResults(length);
+		
+		List<LabTest> list = (List<LabTest>) criteria.list();
+		for (LabTest lt : list) {
+			if (!lt.getTestConcept().getName().getName().startsWith(nameFragment))
+				list.remove(lt);
+		}
+		return list;
+	}
+
+
+	// TODO: replace stubs below with real methods in LabTestingService
+		private LabTestRange saveLabTestRange(LabTestRange labTestRange) { return labTestRange; }
+
 }

@@ -24,7 +24,7 @@ import java.lang.Comparable;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.BaseOpenmrsMetadata;
+import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Concept;
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
@@ -36,7 +36,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializable, Comparable<LabSpecimenTemplate> {
+public class LabSpecimenTemplate extends BaseOpenmrsData implements Serializable {
 	
 	public static final long serialVersionUID = 2L;
 	
@@ -260,16 +260,6 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	@Attribute(required = false)
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
-	}
-
-	public int compareTo(LabSpecimenTemplate other) {
-		if (this.getTestPanel().equals(other.getTestPanel())) {
-			if (this.getParentSubId().equals(other.getParentSubId())) {
-				return this.getSpecimenSubId().compareTo(other.getSpecimenSubId());
-			}
-			return this.getParentSubId().compareTo(other.getParentSubId());
-		}
-		return this.getTestPanel().compareTo(other.getTestPanel());
 	}
 
 	public String getName() {

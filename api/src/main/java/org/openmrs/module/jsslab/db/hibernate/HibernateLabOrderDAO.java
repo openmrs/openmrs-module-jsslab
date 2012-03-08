@@ -27,6 +27,8 @@ import org.openmrs.api.APIException;
 import org.openmrs.api.db.DAOException;
 import org.openmrs.module.jsslab.db.LabOrderDAO;
 import org.openmrs.module.jsslab.db.LabOrder;
+import org.openmrs.module.jsslab.db.LabOrderSpecimen;
+import org.openmrs.module.jsslab.db.LabSpecimen;
 
 /**
  * This class should not be used directly. This is just a common implementation of the LabOrderDAO that
@@ -122,5 +124,37 @@ public class HibernateLabOrderDAO implements LabOrderDAO {
 		crit.setProjection(Projections.rowCount());
 		
 		return (Integer) crit.uniqueResult();
+	}
+	public void createLink(String uuidL, String uuidR) {
+		LabOrder labOrder = this.getLabOrderByUuid(uuidL);
+		LabSpecimen labSpecimen = (LabSpecimen) sessionFactory.getCurrentSession().createQuery("from LabSpecimen s where s.uuid = :uuid")
+				.setString("uuid",uuidR).uniqueResult();
+		if ((labOrder!=null) && (labSpecimen!=null)) {
+			LabOrderSpecimen labOrderSpecimen = (LabOrderSpecimen) sessionFactory.getCurrentSession().createCriteria(LabOrderSpecimen.class)
+					.add(Restrictions.eq("labOrder", labOrder))
+					.add(Restrictions.eq("labSpecimen", labSpecimen))
+					.uniqueResult();
+			if (labOrderSpecimen==null) {
+				labOrderSpecimen=new LabOrderSpecimen();
+				labOrderSpecimen.setOrder(labOrder);
+				labOrderSpecimen.setSpecimen(labSpecimen);
+				sessionFactory.getCurrentSession().save(labOrderSpecimen);
+			}
+		}
+	}
+
+	public void deleteLink(String uuidL, String uuidR) {
+		LabOrder labOrder = this.getLabOrderByUuid(uuidL);
+		LabSpecimen labSpecimen = (LabSpecimen) sessionFactory.getCurrentSession().createQuery("from LabSpecimen s where s.uuid = :uuid")
+				.setString("uuid",uuidR).uniqueResult();
+		if ((labOrder!=null) && (labSpecimen!=null)) {
+			LabOrderSpecimen labOrderSpecimen = (LabOrderSpecimen) sessionFactory.getCurrentSession().createCriteria(LabOrderSpecimen.class)
+					.add(Restrictions.eq("labOrder", labOrder))
+					.add(Restrictions.eq("labSpecimen", labSpecimen))
+					.uniqueResult();
+			if (labOrderSpecimen!=null) {
+				sessionFactory.getCurrentSession().delete(labOrderSpecimen);
+			}
+		}
 	}
 }

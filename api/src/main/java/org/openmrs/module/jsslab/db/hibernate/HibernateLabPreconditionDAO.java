@@ -4,6 +4,7 @@
 package org.openmrs.module.jsslab.db.hibernate;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -16,6 +17,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabPreconditionDAO;
+import org.openmrs.module.jsslab.db.LabTest;
 
 /**
  *
@@ -31,6 +33,23 @@ public class HibernateLabPreconditionDAO implements LabPreconditionDAO {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
+
+	public class LabPreconditionComparator implements Comparator<LabPrecondition> {
+		  public int compare(LabPrecondition lp1, LabPrecondition lp2) {
+			  if (lp1.getTestPanel().getTestPanelConcept().getId()<lp2.getTestPanel().getTestPanelConcept().getId()) 
+				  return -1;
+			  else if (lp1.getTestPanel().getTestPanelConcept().getId()>lp2.getTestPanel().getTestPanelConcept().getId()) 
+				  return 1;
+			  else if ((lp1.getSortWeight()==null) && (lp2.getSortWeight()==null))
+				  return 0;
+			  else if ((lp1.getSortWeight()==null) || (lp1.getSortWeight()<lp2.getSortWeight()))
+				  return -1;
+			  else if ((lp2.getSortWeight()==null) || (lp1.getSortWeight()>lp2.getSortWeight()))
+				  return 1;
+			  else
+				  return 0;
+		  }
+		}
 
 	/* (non-Javadoc)
 	 * @see org.openmrs.module.jsslab.db.LabPreconditionDAO#saveLabPrecondition(org.openmrs.module.jsslab.db.LabPrecondition)
@@ -80,7 +99,7 @@ public class HibernateLabPreconditionDAO implements LabPreconditionDAO {
 		}
 		
 		// sort the possible returns and take the first
-		Collections.sort(labPreconditions);
+		Collections.sort(labPreconditions,new LabPreconditionComparator());
 		return labPreconditions.get(0);
 	}
 
@@ -112,7 +131,7 @@ public class HibernateLabPreconditionDAO implements LabPreconditionDAO {
 		}
 		
 		// sort the possible returns and take the first
-		Collections.sort(labPreconditions);
+		Collections.sort(labPreconditions,new LabPreconditionComparator());
 		if ((start == 0) && (length <= 0)) 
 			return labPreconditions;
 

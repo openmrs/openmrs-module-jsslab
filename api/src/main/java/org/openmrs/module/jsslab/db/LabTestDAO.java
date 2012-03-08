@@ -90,6 +90,11 @@ public interface LabTestDAO {
 	public void deleteLabTest(LabTest labTest);
 	
 	/**
+	 * @see org.openmrs.api.LabCatalogService#getLabTests(String, Boolean, Integer, Integer)
+	 */
+	public List<LabTest> getLabTests(String nameFragment, Boolean includeRetired, Integer start, Integer length);
+	
+	/**
 	 * @see org.openmrs.api.LabCatalogService#getCountOfLabTests(String, Boolean)
 	 */
 	public Integer getCountOfLabTests(String nameFragment, Boolean includeRetired);

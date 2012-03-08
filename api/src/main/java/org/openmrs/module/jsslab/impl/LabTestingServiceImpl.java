@@ -1,5 +1,6 @@
 package org.openmrs.module.jsslab.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -7,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabTestingService;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.jsslab.db.LabTestRangeDAO;
 
@@ -34,18 +36,17 @@ public class LabTestingServiceImpl extends BaseOpenmrsService implements LabTest
 	}
 
 	@Override
-	public void deleteLabTestRange(LabTestRange labTestRange)throws APIException {
-		labTestRangeDAO.deleteLabTestRange(labTestRange);		
+	public void deleteLabTestRange(LabTestRange labTestRange, String reason)throws APIException {
+			labTestRange.setVoided(true);
+			labTestRange.setDateVoided(new Date());
+			labTestRange.setVoidReason(reason);
+			labTestRangeDAO.saveLabTestRange(labTestRange);
+			return;
 	}
 
 	@Override
 	public void purgeLabTestRange(LabTestRange labTestRange)throws APIException {
-		labTestRangeDAO.purgeLabTestRange(labTestRange);
-	}
-
-	@Override
-	public LabTestRange getLabTestRangeByName(String labTestRange) {		
-		return labTestRangeDAO.getLabTestRangeByName(labTestRange);
+		labTestRangeDAO.deleteLabTestRange(labTestRange);
 	}
 
 	@Override

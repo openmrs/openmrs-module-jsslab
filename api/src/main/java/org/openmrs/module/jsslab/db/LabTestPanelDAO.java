@@ -13,6 +13,7 @@
  */
 package org.openmrs.module.jsslab.db;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -34,7 +35,7 @@ public interface LabTestPanelDAO {
 	 * @param sessionFactory
 	 */
 	public void setSessionFactory(SessionFactory sessionFactory);
-	
+
 	/**
 	 * Create or update a labTestPanel.
 	 * 

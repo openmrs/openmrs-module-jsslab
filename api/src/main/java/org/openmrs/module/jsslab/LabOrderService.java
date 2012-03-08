@@ -3,6 +3,7 @@ package org.openmrs.module.jsslab;
 import java.util.List;
 
 import org.openmrs.module.jsslab.db.LabOrder;
+import org.openmrs.module.jsslab.db.LabOrderSpecimen;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
@@ -101,5 +102,95 @@ public interface LabOrderService extends OpenmrsService {
 	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public Integer getCountOfLabOrders() throws APIException;
 	
+//----------------------------------------------------------------
+	/**
+	 * Save or update the given <code>LabOrder</code> in the database
+	 * 
+	 * @param labOrderSpecimen the LabOrderSpecimen to save
+	 * @return the LabOrderSpecimen that was saved
+	 * @throws APIException
+	 * @should not save LabOrderSpecimen if LabOrderSpecimen doesn't validate
+	 */
+	@Authorized( { PrivilegeConstants.EDIT_LAB_ORDER, PrivilegeConstants.ADD_LAB_ORDER })
+	public LabOrderSpecimen saveLabOrderSpecimen(LabOrderSpecimen labOrderSpecimen) throws APIException;
 	
-}
+	/**
+	 * Get the <code>LabOrderSpecimen</code> with the given uuid from the database
+	 * 
+	 * @param uuid the uuid to find
+	 * @return the LabOrderSpecimen that was found or null
+	 */
+	@Authorized( PrivilegeConstants.VIEW_LAB_ORDER )
+	public LabOrderSpecimen getLabOrderSpecimenByUuid(String uuid);
+	
+	/**
+	 * Completely delete an LabOrderSpecimen from the database. This should not typically be used unless
+	 * desperately needed. Most LabOrderSpecimens should just be retired. See {@link #purgeLabOrderSpecimen(LabOrderSpecimen, String)}
+	 * 
+	 * @param labOrderSpecimen The LabOrderSpecimen to remove from the system
+	 * @throws APIException
+	 */
+	@Authorized(PrivilegeConstants.PURGE_LAB_ORDER)
+	public void purgeLabOrderSpecimen(LabOrderSpecimen labOrderSpecimen) throws APIException;
+	
+	/**
+	 * Mark an LabOrderSpecimen as retired. This functionally removes the LabOrderSpecimen from the system while keeping a
+	 * semblance
+	 * 
+	 * @param reason String reason
+	 * @param labOrderSpecimen LabOrderSpecimen to void
+	 * @return the LabOrderSpecimen that was voided
+	 * @throws APIException
+	 */
+	@Authorized(PrivilegeConstants.DELETE_LAB_ORDER)
+	public LabOrderSpecimen deleteLabOrderSpecimen(LabOrderSpecimen labOrderSpecimen, String retireReason) throws APIException;
+	
+	/**
+	 * Get all LabOrderSpecimen, only showing ones not marked as retired if includeRetired is true
+	 * 
+	 * @param includeVoided true/false whether to include retired LabOrderSpecimens in this list
+	 * @return LabOrderSpecimens list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	public List<LabOrderSpecimen> getAllLabOrderSpecimens(Boolean includeVoided) throws APIException;
+	
+	/**
+	 * Get all unvoided LabOrderSpecimen
+	 * 
+	 * @return LabOrderSpecimens list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	public List<LabOrderSpecimen> getAllLabOrderSpecimens() throws APIException;
+	
+	/**
+	 * Returns a specified number of labOrderSpecimens starting with a given string from the specified index
+	 */
+	public List<LabOrderSpecimen> getLabOrderSpecimens(String nameFragment, Boolean includeRetired, Integer start, Integer length);
+	
+	/**
+	 * Get count of LabOrderSpecimen, only showing ones not marked as retired if includeRetired is true
+	 * 
+	 * @param includeRetired true/false whether to include retired LabOrderSpecimens in this list
+	 * @return LabOrderSpecimens list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	public Integer getCountOfLabOrderSpecimens(Boolean includeRetired) throws APIException;
+	
+	/**
+	 * Get count of unretired LabOrderSpecimen
+	 * 
+	 * @return LabOrderSpecimens list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	public Integer getCountOfLabOrderSpecimens() throws APIException;
+	
+	
+};

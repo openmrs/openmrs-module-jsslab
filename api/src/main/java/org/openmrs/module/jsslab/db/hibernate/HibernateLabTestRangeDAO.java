@@ -1,8 +1,11 @@
 package org.openmrs.module.jsslab.db.hibernate;
 
 import java.util.List;
+import java.util.Comparator;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabTestRange;
@@ -15,8 +18,8 @@ public class HibernateLabTestRangeDAO implements LabTestRangeDAO{
 	@Override
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory=sessionFactory;
-		
 	}
+	
 	@Override
 	public LabTestRange getLabTestRangeByUuid(String uuid) {
 		return (LabTestRange)this.sessionFactory.getCurrentSession().createCriteria(LabTestRange.class)
@@ -34,26 +37,34 @@ public class HibernateLabTestRangeDAO implements LabTestRangeDAO{
 		this.sessionFactory.getCurrentSession().delete(labTestRange);
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see org.openmrs.module.jsslab.db.LabTestRangeDAO#getLabTestRangeByName(java.lang.String)
-	 * 
-	 * Maybe the method doesn't need implement LabTestRange
-	 */
-	@Override
-	public LabTestRange getLabTestRangeByName(String labTestRange) {
-		return null;
-	}
-	
 	@Override
 	public List<LabTestRange> getAllLabTestRanges(Boolean ifVoided){
-		List <LabTestRange>list=this.sessionFactory.getCurrentSession().createCriteria(LabTestRange.class)
-				.add(Restrictions.eq("voided", ifVoided)).list();
+		return getLabTestRanges("", ifVoided, null, null);
+	}
+
+	@Override
+	public List<LabTestRange> getLabTestRanges(String search,
+			Boolean includeVoided, Integer start, Integer length) {
+		Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(LabTestRange.class)
+				.addOrder(Order.asc("labTest")).addOrder(Order.asc("sortWeight"));
+		if (!includeVoided)
+				criteria.add(Restrictions.ne("voided", true));
+		if (start != null)
+			criteria.setFirstResult(start);
+		if (length != null && length > 0)
+			criteria.setMaxResults(length);
+		List<LabTestRange> list = (List<LabTestRange>) criteria.list();
+		if ((search != null) && !search.isEmpty()) {
+			for (LabTestRange ltr : list) {
+				if (!ltr.getTest().getTestName().startsWith(search))
+					list.remove(ltr);
+			}
+		}
 		return list;
 	}
-	
 	@Override
-	public void purgeLabTestRange(LabTestRange labTestRange) {
-		this.sessionFactory.getCurrentSession().delete(labTestRange);
+	public Integer getCountOfLabTestRanges(String search, Boolean includeVoided) {
+		return getLabTestRanges(search, includeVoided, null, null).size();
 	}
+	
 }
