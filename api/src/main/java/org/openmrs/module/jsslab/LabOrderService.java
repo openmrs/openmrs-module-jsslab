@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabOrderSpecimen;
+import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
@@ -191,6 +192,72 @@ public interface LabOrderService extends OpenmrsService {
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public Integer getCountOfLabOrderSpecimens() throws APIException;
+
+//--------------------------------------------------------------------------------
+
+	/*
+	 * @param id
+	 * @return LabSpecimen if founded, or null.
+	 */
+	public LabSpecimen getLabSpecimen(Integer labSpecimenId);
 	
+	/*
+	 * @param uuid
+	 * @return LabSpecimen if founded, or null.
+	 */
+	public LabSpecimen getLabSpecimenByUuid(String uuid);
 	
-};
+	/*
+	 * @return save LabSpecimen to database.
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	public LabSpecimen saveLabSpecimen(LabSpecimen labLabSpecimen)throws APIException;
+	
+	/*
+	 *  Remove the LabSpecimen from database, most of the time we just voided the LabSpecimen.
+	 * @param the LabSpecimen that should be removed
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.PURGE_LAB_ORDER)
+	public void purgeLabSpecimen(LabSpecimen labLabSpecimen)throws APIException;
+	
+	/*
+	 * 
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.DELETE_LAB_ORDER)
+	public LabSpecimen deleteLabSpecimen(LabSpecimen labLabSpecimen, String reason)throws APIException;
+	
+	/*
+	 * Get all LabSpecimen list including voided if the ifVoided is true
+	 * 
+	 * @param if include voided LabSpecimen
+	 * @return LabSpecimen list(include voided list if ifVoided is true)
+	 * @throws APIException
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	public List<LabSpecimen> getAllLabSpecimens(Boolean ifVoided)throws APIException;
+	
+	/*
+	 * get the specific list of LabTests from String and index.
+	 */
+	public List<LabSpecimen> getLabSpecimens(String displayFragment, Boolean ifVoided, Integer index, Integer length);
+
+	/*
+	 * Get the length of the list that LabSpecimen return(include voided if ifVoided is true)
+	 * @param search is a String that represent DisplayFragment
+	 * @param if include voided resources
+	 * @return length of LabSpecimen(include voided if ifVoided is true) resource
+	 * throws Exception
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	public Integer getCountOfLabSpecimen(String search,Boolean ifVoided)throws APIException;
+	
+
+	
+}

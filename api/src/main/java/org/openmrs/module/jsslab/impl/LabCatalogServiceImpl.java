@@ -17,6 +17,7 @@ import org.openmrs.module.jsslab.db.LabTestDAO;
 import org.openmrs.module.jsslab.db.LabPreconditionDAO;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplateDAO;
+import org.openmrs.module.jsslab.db.LabTestPanel;
 
 public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		LabCatalogService {
@@ -45,50 +46,6 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	public void setLabSpecimenTemplateDAO(LabSpecimenTemplateDAO labSpecimenTemplateDAO) {
 		this.labSpecimenTemplateDAO = labSpecimenTemplateDAO;
-	}
-
-	public LabTestPanel saveLabTestPanel(LabTestPanel labTestPanel)
-			throws APIException {
-		return labTestPanelDAO.saveLabTestPanel(labTestPanel);
-
-	}
-
-	public LabTestPanel getLabTestPanelByUuid(String uuid) {
-		return labTestPanelDAO.getLabTestPanelByUuid(uuid);
-	}
-
-	public void purgeLabTestPanel(LabTestPanel labTestPanel)
-			throws APIException {
-		labTestPanelDAO.deleteLabTestPanel(labTestPanel);
-
-	}
-
-	public LabTestPanel retireLabTestPanel(LabTestPanel labTestPanel,
-			String retireReason) throws APIException {
-		labTestPanel.setRetired(true);
-		labTestPanel.setDateRetired(new Date());
-		labTestPanel.setRetireReason(retireReason);
-		return labTestPanelDAO.saveLabTestPanel(labTestPanel);
-	}
-
-	public List<LabTestPanel> getAllLabTestPanels(Boolean includeRetired)
-			throws APIException {
-		return labTestPanelDAO.getAllLabTestPanels(includeRetired);
-	}
-
-	public LabTestPanel getLabTestPanel(String idNumber) {
-		return labTestPanelDAO.getLabTestPanel(idNumber);
-	}
-
-
-	@Override
-	public void deleteLabTestPanel(LabTestPanel labTestPanel, String reason)
-			throws APIException {
-		labTestPanel.setDateRetired(new Date());
-		labTestPanel.setRetired(true);
-		labTestPanel.setRetireReason(reason);
-		labTestPanelDAO.saveLabTestPanel(labTestPanel);
-		return;
 	}
 
 // ------------------------------------------------------
@@ -201,9 +158,9 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	public LabSpecimenTemplate deleteLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate, String reason)
 			throws APIException {
-		labSpecimenTemplate.setVoided(true);
-		labSpecimenTemplate.setVoidReason(reason);
-		labSpecimenTemplate.setDateVoided(new Date());
+		labSpecimenTemplate.setRetired(true);
+		labSpecimenTemplate.setRetireReason(reason);
+		labSpecimenTemplate.setDateRetired(new Date());
 		return labSpecimenTemplateDAO.saveLabSpecimenTemplate(labSpecimenTemplate);
 	}
 
@@ -241,6 +198,67 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 			//
 			return labSpecimenTemplateDAO.getCountOfLabSpecimenTemplates(search, ifVoided);
 		}
+		//--------------------------------------------------------
+		
+		@Override
+		public LabTestPanel getLabTestPanel(Integer labTestPanelId) {
+			return labTestPanelDAO.getLabTestPanel(labTestPanelId);
+		}
+
+		@Override
+		public LabTestPanel getLabTestPanelByUuid(String uuid) {
+			return labTestPanelDAO.getLabTestPanelByUuid(uuid);
+		}
+
+		@Override
+		public LabTestPanel saveLabTestPanel(LabTestPanel labTestPanel)
+				throws APIException {
+			return labTestPanelDAO.saveLabTestPanel(labTestPanel);
+		}
+
+		@Override
+		public void purgeLabTestPanel(LabTestPanel labTestPanel)
+				throws APIException {
+			labTestPanelDAO.deleteLabTestPanel(labTestPanel);
+			
+		}
+
+		@Override
+		public LabTestPanel retireLabTestPanel(
+				LabTestPanel labTestPanel, String retireReason)
+				throws APIException {
+			labTestPanel.setRetired(true);
+			labTestPanel.setDateRetired(new Date());
+			labTestPanel.setRetireReason(retireReason);
+			return labTestPanelDAO.saveLabTestPanel(labTestPanel);
+		}
+
+		@Override
+		public List<LabTestPanel> getAllLabTestPanels(Boolean includeVoided)
+				throws APIException {
+			return labTestPanelDAO.getLabTestPanels("",includeVoided,null,null);
+		}
+
+		@Override
+		public List<LabTestPanel> getAllLabTestPanels() throws APIException {
+			return labTestPanelDAO.getLabTestPanels("",false,null,null);
+		}
+
+		@Override
+		public List<LabTestPanel> getLabTestPanels(String nameFragment,
+				Boolean includeVoided, Integer start, Integer length) {
+			return labTestPanelDAO.getLabTestPanels(nameFragment,
+					includeVoided, start, length);
+		}
+
+		@Override
+		public Integer getCountOfLabTestPanels(Boolean includeRetired)
+				throws APIException {
+			return labTestPanelDAO.getLabTestPanels("", includeRetired, null, null).size();
+		}
+
+
+		
 
 
 }

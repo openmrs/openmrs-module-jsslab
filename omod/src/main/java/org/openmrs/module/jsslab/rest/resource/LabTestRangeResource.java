@@ -71,7 +71,7 @@ public class LabTestRangeResource extends DataDelegatingCrudResource<LabTestRang
 			//			
 			Descri.addProperty("uuid");
 			Descri.addProperty("test",Representation.REF);
-			Descri.addProperty("logicRule",Representation.REF);
+			Descri.addProperty("sortWeight");
 			Descri.addProperty("voided");
 			Descri.addSelfLink();
 			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);

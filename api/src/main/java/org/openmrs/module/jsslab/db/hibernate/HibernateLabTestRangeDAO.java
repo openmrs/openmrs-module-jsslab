@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
-import org.openmrs.module.jsslab.db.LabPrecondition;
+import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.jsslab.db.LabTestRangeDAO;
 
@@ -20,6 +20,14 @@ public class HibernateLabTestRangeDAO implements LabTestRangeDAO{
 		this.sessionFactory=sessionFactory;
 	}
 	
+	/* (non-Javadoc)
+	 * @see org.openmrs.module.jsslab.db.LabTestRangeDAO#getLabTestRange(java.lang.Integer)
+	 */
+	@Override
+	public LabTestRange getLabTestRange(Integer preconditionId) {
+		return (LabTestRange) sessionFactory.getCurrentSession().get(LabTestRange.class, preconditionId);
+	}
+
 	@Override
 	public LabTestRange getLabTestRangeByUuid(String uuid) {
 		return (LabTestRange)this.sessionFactory.getCurrentSession().createCriteria(LabTestRange.class)

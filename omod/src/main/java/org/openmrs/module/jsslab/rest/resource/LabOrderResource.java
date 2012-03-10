@@ -44,7 +44,7 @@ public class LabOrderResource extends DataDelegatingCrudResource<LabOrder>{
 	@Override
 	public void delete(LabOrder labOrder, String reason,
 			RequestContext context) throws ResponseException {
-		if(labOrder!=null)
+		if (labOrder != null)
 		{
 			//
 			Context.getService(LabOrderService.class).deleteLabOrder(labOrder,reason);
@@ -54,17 +54,13 @@ public class LabOrderResource extends DataDelegatingCrudResource<LabOrder>{
 	@Override
 	public void purge(LabOrder labOrder, RequestContext context)
 			throws ResponseException {
-		if(labOrder!=null)
+		if (labOrder != null)
 		{
 			//
 			Context.getService(LabOrderService.class).purgeLabOrder(labOrder);
 		}				
 	}
 
-	public List<LabOrder> getAll() {
-		return Context.getService(LabOrderService.class).getAllLabOrders();
-	}
-	
 	@Override
 	public DelegatingResourceDescription getRepresentationDescription(
 			Representation rep) {
@@ -75,6 +71,8 @@ public class LabOrderResource extends DataDelegatingCrudResource<LabOrder>{
 			Descri.addProperty("uuid");
 			Descri.addProperty("labOrderId");
 			Descri.addProperty("concept",Representation.REF);
+			Descri.addProperty("orderer",Representation.REF);
+			Descri.addProperty("startDate");
 			Descri.addProperty("voided");
 			Descri.addSelfLink();
 			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);

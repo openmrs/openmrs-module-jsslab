@@ -11,9 +11,7 @@ import org.openmrs.module.jsslab.LabManagementService;
 import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.jsslab.db.LabInstrumentDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabInstrumentDAO;
 import org.openmrs.module.jsslab.db.LabSupplyItemDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabSupplyItemDAO;
 
 public class LabManagementServiceImpl extends BaseOpenmrsService implements
 		LabManagementService {

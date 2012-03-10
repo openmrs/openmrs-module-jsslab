@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 public interface LabTestingService extends OpenmrsService {
 
 	@Authorized( PrivilegeConstants.VIEW_LAB_TEST )
+	public LabTestRange getLabTestRange(Integer labTestRangeId);
+	
+	@Authorized( PrivilegeConstants.VIEW_LAB_TEST )
 	public LabTestRange getLabTestRangeByUuid(String uuid);
 	
 	@Authorized( { PrivilegeConstants.EDIT_LAB_TEST, PrivilegeConstants.ADD_LAB_TEST })
@@ -28,6 +31,22 @@ public interface LabTestingService extends OpenmrsService {
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
 	public List<LabTestRange> getAllLabTestRanges(Boolean ifVoided)throws APIException;
+	
+	/**
+	 * Returns a specified number of labTestRanges starting with a given string from the specified index
+	 */
+	public List<LabTestRange> getLabTestRanges(String nameFragment, Boolean includeVoided, Integer start, Integer length);
+	
+	/**
+	 * Get count of LabTestRange, only showing ones not marked as retired if includeVoided is true
+	 * 
+	 * @param includeVoided true/false whether to include retired LabTestRanges in this list
+	 * @return LabTestRanges list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
+	public Integer getCountOfLabTestRanges(Boolean includeVoided) throws APIException;
 	
 //-----------------------------------------------------------------------
 	
@@ -63,15 +82,15 @@ public interface LabTestingService extends OpenmrsService {
 	public LabTestSpecimen retireLabTestSpecimen(LabTestSpecimen labTestSpecimen, String retireReason) throws APIException;
 	
 	/**
-	 * Get all LabTestSpecimen, only showing ones not marked as retired if includeRetired is true
+	 * Get all LabTestSpecimen, only showing ones not marked as retired if includeVoided is true
 	 * 
-	 * @param includeRetired true/false whether to include retired LabTestSpecimens in this list
+	 * @param includeVoided true/false whether to include retired LabTestSpecimens in this list
 	 * @return LabTestSpecimens list
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
-	public List<LabTestSpecimen> getAllLabTestSpecimens(Boolean includeRetired) throws APIException;
+	public List<LabTestSpecimen> getAllLabTestSpecimens(Boolean includeVoided) throws APIException;
 	
 	/**
 	 * Get all unretired LabTestSpecimen
@@ -86,18 +105,18 @@ public interface LabTestingService extends OpenmrsService {
 	/**
 	 * Returns a specified number of labTestSpecimens starting with a given string from the specified index
 	 */
-	public List<LabTestSpecimen> getLabTestSpecimens(String nameFragment, Boolean includeRetired, Integer start, Integer length);
+	public List<LabTestSpecimen> getLabTestSpecimens(String nameFragment, Boolean includeVoided, Integer start, Integer length);
 	
 	/**
-	 * Get count of LabTestSpecimen, only showing ones not marked as retired if includeRetired is true
+	 * Get count of LabTestSpecimen, only showing ones not marked as retired if includeVoided is true
 	 * 
-	 * @param includeRetired true/false whether to include retired LabTestSpecimens in this list
+	 * @param includeVoided true/false whether to include retired LabTestSpecimens in this list
 	 * @return LabTestSpecimens list
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
-	public Integer getCountOfLabTestSpecimens(Boolean includeRetired) throws APIException;
+	public Integer getCountOfLabTestSpecimens(Boolean includeVoided) throws APIException;
 	
 
 }

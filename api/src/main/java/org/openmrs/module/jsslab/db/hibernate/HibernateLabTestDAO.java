@@ -31,7 +31,7 @@ import org.openmrs.api.APIException;
 import org.openmrs.api.ConceptService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabTestDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabTestPanelDAO;
+import org.openmrs.module.jsslab.db.LabTestPanelDAO;
 import org.openmrs.module.jsslab.db.LabTestRange;
 
 /**
@@ -50,18 +50,10 @@ public class HibernateLabTestDAO implements LabTestDAO {
 	
 	public class LabTestComparator implements Comparator<LabTest> {
 		  public int compare(LabTest lt1, LabTest lt2) {
-			  if (lt1.getTestPanel().getTestPanelConcept().getId()<lt2.getTestPanel().getTestPanelConcept().getId()) 
-				  return -1;
-			  else if (lt1.getTestPanel().getTestPanelConcept().getId()>lt2.getTestPanel().getTestPanelConcept().getId()) 
-				  return 1;
-			  else if ((lt1.getSortWeight()==null) && (lt2.getSortWeight()==null))
-				  return 0;
-			  else if ((lt1.getSortWeight()==null) || (lt1.getSortWeight()<lt2.getSortWeight()))
-				  return -1;
-			  else if ((lt2.getSortWeight()==null) || (lt1.getSortWeight()>lt2.getSortWeight()))
-				  return 1;
-			  else
-				  return 0;
+			  int i = lt1.getTestPanel().getTestPanelConcept().getId().compareTo(lt2.getTestPanel().getTestPanelConcept().getId());
+			  if (i != 0)
+				  return i;
+			  return lt1.getSortWeight().compareTo(lt2.getSortWeight());
 		  }
 		}
 

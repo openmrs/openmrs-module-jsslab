@@ -403,5 +403,4 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	public void setOrders(Set<LabOrder> orders) {
 		this.orders = orders;
 	}
-
 }

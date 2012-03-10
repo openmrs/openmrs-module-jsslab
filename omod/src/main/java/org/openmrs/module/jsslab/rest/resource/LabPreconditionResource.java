@@ -93,7 +93,7 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 	}
 	@Override
 	protected List<LabPrecondition> doGetAll(RequestContext context) {
-		return Context.getService(LabCatalogService.class).getLabPrecondition("",false,null,null);
+		return Context.getService(LabCatalogService.class).getLabPreconditions("",false,null,null);
 	}
 	
 	@Override

@@ -24,7 +24,7 @@ import java.lang.Comparable;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.BaseOpenmrsData;
+import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Concept;
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
@@ -36,7 +36,7 @@ import org.simpleframework.xml.Root;
  * 
  */
 @Root(strict = false)
-public class LabSpecimenTemplate extends BaseOpenmrsData implements Serializable {
+public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializable {
 	
 	public static final long serialVersionUID = 2L;
 	

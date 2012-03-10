@@ -9,6 +9,8 @@ public interface LabTestRangeDAO {
 	
 	public void setSessionFactory(SessionFactory sessionFactory);
 	
+	public LabTestRange getLabTestRange(Integer labTestRangeId);
+	
 	public LabTestRange getLabTestRangeByUuid(String uuid);
 	
 	public LabTestRange saveLabTestRange(LabTestRange labTestRange);

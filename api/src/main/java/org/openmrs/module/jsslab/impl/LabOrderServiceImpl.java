@@ -10,13 +10,12 @@ import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabOrderService;
 import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabOrderSpecimen;
+import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.jsslab.db.LabOrderDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabOrderDAO;
 import org.openmrs.module.jsslab.db.LabOrderSpecimenDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabOrderSpecimenDAO;
+import org.openmrs.module.jsslab.db.LabSpecimenDAO;
 import org.openmrs.module.jsslab.db.LabSupplyItemDAO;
-import org.openmrs.module.jsslab.db.hibernate.HibernateLabSupplyItemDAO;
 
 public class LabOrderServiceImpl extends BaseOpenmrsService implements
 		LabOrderService {
@@ -27,12 +26,18 @@ public class LabOrderServiceImpl extends BaseOpenmrsService implements
 
 	protected LabOrderSpecimenDAO labOrderSpecimenDAO;
 	
+	protected LabSpecimenDAO labSpecimenDAO;
+	
 	public void setLabOrderDAO(LabOrderDAO labOrderDAO) {
 		this.labOrderDAO = labOrderDAO;
 	}
 
 	public void setLabOrderSpecimenDAO(LabOrderSpecimenDAO labOrderSpecimenDAO) {
 		this.labOrderSpecimenDAO = labOrderSpecimenDAO;
+	}
+
+	public void setLabSpecimenDAO(LabSpecimenDAO labSpecimenDAO) {
+		this.labSpecimenDAO = labSpecimenDAO;
 	}
 
 	public LabOrder saveLabOrder(LabOrder labOrder)
@@ -144,6 +149,53 @@ public class LabOrderServiceImpl extends BaseOpenmrsService implements
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	//------------------------------------------------------------	
+		
+		public LabSpecimen getLabSpecimen(Integer labSpecimen) {
+			//
+			return labSpecimenDAO.getLabSpecimen(labSpecimen);
+		}
+
+		public LabSpecimen getLabSpecimenByUuid(String uuid) {
+			//
+			return labSpecimenDAO.getLabSpecimenByUuid(uuid);
+		}
+
+		public LabSpecimen saveLabSpecimen(LabSpecimen labSpecimen)
+				throws APIException {
+			//
+			return labSpecimenDAO.saveLabSpecimen(labSpecimen);
+		}
+
+		public LabSpecimen deleteLabSpecimen(LabSpecimen labSpecimen,
+				String deleteReason) throws APIException {
+			labSpecimen.setRetired(true);
+			labSpecimen.setDateRetired(new Date());
+			labSpecimen.setRetireReason(deleteReason);
+			return labSpecimenDAO.saveLabSpecimen(labSpecimen);
+		}
+
+		public void purgeLabSpecimen(LabSpecimen labSpecimen)
+				throws APIException {
+			//
+			labSpecimenDAO.deleteLabSpecimen(labSpecimen);
+		}
+
+		public List<LabSpecimen> getAllLabSpecimens(Boolean includeVoided) {
+			return labSpecimenDAO.getLabSpecimens("", includeVoided, null, null);
+		}
+			
+		public List<LabSpecimen> getLabSpecimens(String displayFragment,
+				Boolean ifVoided, Integer index, Integer length) {
+			return labSpecimenDAO.getLabSpecimens(displayFragment,
+					ifVoided, index, length);
+		}
+
+		public Integer getCountOfLabSpecimen(String search, Boolean ifVoided)
+				throws APIException {
+			return labSpecimenDAO.getCountOfLabSpecimens(search, ifVoided);
+		}
 
 
 }

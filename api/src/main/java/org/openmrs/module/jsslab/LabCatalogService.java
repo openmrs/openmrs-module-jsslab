@@ -6,6 +6,7 @@ import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
 import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.openmrs.module.jsslab.db.LabTest;
+import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
@@ -14,74 +15,76 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface LabCatalogService extends OpenmrsService {
 
-	/**
-	 * Save or update the given <code>LabTestPanel</code> in the database
-	 * 
-	 * @param labTestPanel the LabTestPanel to save
-	 * @return the LabTestPanel that was saved
-	 * @throws APIException
-	 * @should not save LabTestPanel if LabTestPanel doesn't validate
-	 */
-	@Authorized( { PrivilegeConstants.EDIT_LAB_CAT, PrivilegeConstants.ADD_LAB_CAT })
-	public LabTestPanel saveLabTestPanel(LabTestPanel labTestPanel) throws APIException;
+	//-----------------------------------------------------------------------
 	
-	/**
-	 * Get the <code>LabTestPanel</code> with the given uuid from the database
-	 * 
-	 * @param uuid the uuid to find
-	 * @return the LabTestPanel that was found or null
-	 */
-	@Authorized( PrivilegeConstants.VIEW_LAB_CAT )
-	public LabTestPanel getLabTestPanelByUuid(String uuid);
-	
-	/*
-	 * 
-	 */
-	@Transactional(readOnly=false)
-	@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
-	public void deleteLabTestPanel(LabTestPanel labTestPanel, String reason)throws APIException;
-	
-	/**
-	 * Completely delete an LabTestPanel from the database. This should not typically be used unless
-	 * desperately needed. Most LabTestPanels should just be retired. See {@link #retireLabTestPanel(LabTestPanel, String)}
-	 * 
-	 * @param labTestPanel The LabTestPanel to remove from the system
-	 * @throws APIException
-	 */
-	@Authorized(PrivilegeConstants.PURGE_LAB_CAT)
-	public void purgeLabTestPanel(LabTestPanel labTestPanel) throws APIException;
-	
-	/**
-	 * Mark an LabTestPanel as retired. This functionally removes the LabTestPanel from the system while keeping a
-	 * semblance
-	 * 
-	 * @param retireReason String reason
-	 * @param labTestPanel LabTestPanel to retire
-	 * @return the LabTestPanel that was retired
-	 * @throws APIException
-	 */
-	@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
-	public LabTestPanel retireLabTestPanel(LabTestPanel labTestPanel, String retireReason) throws APIException;
-	
-	/**
-	 * Get all LabTestPanel, only showing ones not marked as retired if includeRetired is true
-	 * 
-	 * @param includeRetired true/false whether to include retired LabTestPanels in this list
-	 * @return LabTestPanels list
-	 * @throws APIException
-	 */
-	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
-	public List<LabTestPanel> getAllLabTestPanels(Boolean includeRetired) throws APIException;
-	
-	/**
-	 * Get the <code>LabTestPanel</code> with the given propertyTag or serialNumber
-	 * 
-	 * @param propertyTag or serialNumber to find
-	 * @return the LabTestPanel that was found or null
-	 */
-	@Authorized( PrivilegeConstants.VIEW_LAB_CAT )
-	public LabTestPanel getLabTestPanel(String idNumber);
+		@Authorized( PrivilegeConstants.VIEW_LAB_CAT )
+		public LabTestPanel getLabTestPanel(Integer labTestPanel);
+		
+		@Authorized( PrivilegeConstants.VIEW_LAB_CAT )
+		public LabTestPanel getLabTestPanelByUuid(String uuid);
+		
+		@Authorized( { PrivilegeConstants.EDIT_LAB_CAT, PrivilegeConstants.ADD_LAB_CAT })
+		public LabTestPanel saveLabTestPanel(LabTestPanel labTestPanel)throws APIException;
+		
+		/**
+		 * Completely delete an LabTestPanel from the database. This should not typically be used unless
+		 * desperately needed. Most LabTestPanels should just be retired. See {@link #retireLabTestPanel(LabTestPanel, String)}
+		 * 
+		 * @param labTestPanel The LabTestPanel to remove from the system
+		 * @throws APIException
+		 */
+		@Authorized(PrivilegeConstants.PURGE_LAB_CAT)
+		public void purgeLabTestPanel(LabTestPanel labTestPanel) throws APIException;
+		
+		/**
+		 * Mark an LabTestPanel as retired. This functionally removes the LabTestPanel from the system while keeping a
+		 * semblance
+		 * 
+		 * @param retireReason String reason
+		 * @param labTestPanel LabTestPanel to retire
+		 * @return the LabTestPanel that was retired
+		 * @throws APIException
+		 */
+		@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
+		public LabTestPanel retireLabTestPanel(LabTestPanel labTestPanel, String retireReason) throws APIException;
+		
+		/**
+		 * Get all LabTestPanel, only showing ones not marked as retired if includeVoided is true
+		 * 
+		 * @param includeVoided true/false whether to include retired LabTestPanels in this list
+		 * @return LabTestPanels list
+		 * @throws APIException
+		 */
+		@Transactional(readOnly = true)
+		@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
+		public List<LabTestPanel> getAllLabTestPanels(Boolean includeVoided) throws APIException;
+		
+		/**
+		 * Get all unretired LabTestPanel
+		 * 
+		 * @return LabTestPanels list
+		 * @throws APIException
+		 */
+		@Transactional(readOnly = true)
+		@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
+		public List<LabTestPanel> getAllLabTestPanels() throws APIException;
+		
+		/**
+		 * Returns a specified number of labTestPanels starting with a given string from the specified index
+		 */
+		public List<LabTestPanel> getLabTestPanels(String nameFragment, Boolean includeVoided, Integer start, Integer length);
+		
+		/**
+		 * Get count of LabTestPanel, only showing ones not marked as retired if includeVoided is true
+		 * 
+		 * @param includeVoided true/false whether to include retired LabTestPanels in this list
+		 * @return LabTestPanels list
+		 * @throws APIException
+		 */
+		@Transactional(readOnly = true)
+		@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
+		public Integer getCountOfLabTestPanels(Boolean includeVoided) throws APIException;
+		
 	
 	/**
 	 * Save or update the given <code>LabTest</code> in the database

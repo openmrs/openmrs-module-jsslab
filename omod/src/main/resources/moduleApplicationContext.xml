@@ -150,6 +150,14 @@
 								</property>
 							</bean>
 						</property>
+					     <property name="labTestSpecimenDAO">
+							<bean
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestSpecimenDAO">
+								<property name="sessionFactory">
+									<ref bean="sessionFactory" />
+								</property>
+							</bean>
+						</property>
 					    </bean>
 					  </property>
 					  
@@ -180,6 +188,22 @@
 					     <property name="labOrderDAO">
 							<bean
 								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabOrderDAO">
+								<property name="sessionFactory">
+									<ref bean="sessionFactory" />
+								</property>
+							</bean>
+						</property>
+					     <property name="labOrderSpecimenDAO">
+							<bean
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabOrderSpecimenDAO">
+								<property name="sessionFactory">
+									<ref bean="sessionFactory" />
+								</property>
+							</bean>
+						</property>
+					     <property name="labSpecimenDAO">
+							<bean
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabSpecimenDAO">
 								<property name="sessionFactory">
 									<ref bean="sessionFactory" />
 								</property>
