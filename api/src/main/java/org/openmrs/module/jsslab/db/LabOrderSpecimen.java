@@ -171,7 +171,8 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 	}
 
 	/**
-	 * Get text corresponding to preconditionAnswerConcept
+	 * Get code corresponding to specimenRoleConcept
+	 * TODO: Put the code into the concept dictionary the right way.
 	 */
 	public String getSpecimenRoleCode() {
 		checkLocale();
@@ -195,7 +196,7 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 	}
 	
 	public String getDisplayString() {
-		return this.getName();
+		return this.getOrder().getUuid().toString() + " " + this.getSpecimenRoleCode() + " " + this.getSpecimen().getUuid().toString();
 	}
 
 }

@@ -45,6 +45,8 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 	 * @see org.openmrs.api.db.LabInstrumentDAO#saveLabInstrument(org.openmrs.LabInstrument)
 	 */
 	public LabInstrument saveLabInstrument(LabInstrument instrument) {
+/** 
+TODO: implement TestRuns
 		if (instrument.getTestRuns() != null && instrument.getId() != null) {
 			// Hibernate has a problem updating child collections
 			// if the parent object was already saved so we do it 
@@ -53,7 +55,7 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 				if (child.getId() == null)
 					saveLabTestRun(child);
 		}
-		
+*/		
 		sessionFactory.getCurrentSession().saveOrUpdate(instrument);
 		return instrument;
 	}
@@ -109,8 +111,11 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 	 * @see org.openmrs.api.db.LabInstrumentDAO#deleteLabInstrument(org.openmrs.LabInstrument)
 	 */
 	public void deleteLabInstrument(LabInstrument instrument) throws APIException {
+/*
+TODO: implement TestRuns 
 		if (instrument.getTestRuns().size() != 0)
 			throw new APIException("Cannot delete a referenced lab instrument");
+*/
 		sessionFactory.getCurrentSession().delete(instrument);
 	}
 	

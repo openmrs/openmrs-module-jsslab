@@ -79,7 +79,7 @@ public class HibernateLabTestSpecimenDAO implements LabTestSpecimenDAO {
 		// get candidates
 		List<LabTestSpecimen> labTestSpecimens = (List<LabTestSpecimen>) sessionFactory.getCurrentSession()
 				.createQuery("from LabTestSpecimen as lts where :name in (lts.labSpecimenId,lts.clientSpecimenId) and not lts.retired")
-				.setString("name", name);
+				.setString("name", name).list();
 
 		// if list is exhausted, return null
 		if (null == labTestSpecimens || labTestSpecimens.isEmpty()) {

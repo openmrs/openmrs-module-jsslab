@@ -67,7 +67,7 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 			description.addProperty("itemClassConcept",Representation.REF);
 			description.addProperty("lotNumber");
 			description.addProperty("expirationDate");
-			description.addProperty("testRuns", Representation.REF);
+//			description.addProperty("testRuns", Representation.REF);
 			description.addProperty("auditInfo", findMethod("getAuditInfo"));
 			description.addSelfLink();
 			return description;

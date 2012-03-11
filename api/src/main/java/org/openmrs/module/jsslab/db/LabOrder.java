@@ -61,7 +61,7 @@ public class LabOrder extends Order {
 	
 	private String retestReason;
 
-	protected Set<LabSpecimen> specimens = new HashSet<LabSpecimen>();
+	protected Set<LabOrderSpecimen> orderSpecimens = new HashSet<LabOrderSpecimen>();
 	
 	public LabOrder() {
 		super();
@@ -153,16 +153,16 @@ public class LabOrder extends Order {
 	 * @return Returns the specimens set.
 	 */
 	@Attribute(required = false)
-	public Set<LabSpecimen> getSpecimens() {
-		return specimens;
+	public Set<LabOrderSpecimen> getOrderSpecimens() {
+		return orderSpecimens;
 	}
 	
 	/**
 	 * @param specimens The set of specimens to set.
 	 */
 	@Attribute(required = false)
-	public void setSpecimens(Set<LabSpecimen> specimens) {
-		this.specimens = specimens;
+	public void setOrderSpecimens(Set<LabOrderSpecimen> orderSpecimens) {
+		this.orderSpecimens = orderSpecimens;
 	}
 
 	public boolean isDrugOrder() {
@@ -187,5 +187,17 @@ public class LabOrder extends Order {
 
 	public String toString() {
 		return "LabOrder " + super.getOrderId() + " " + (super.getConcept().getName());
+	}
+
+	@Override
+	public String getUuid() {
+		// TODO Auto-generated method stub
+		return super.getUuid();
+	}
+
+	@Override
+	public void setUuid(String uuid) {
+		// TODO Auto-generated method stub
+		super.setUuid(uuid);
 	}
 }

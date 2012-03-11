@@ -66,8 +66,15 @@ public class HibernateLabTestRangeDAO implements LabTestRangeDAO{
 			for (LabTestRange ltr : list) {
 				if (!ltr.getTest().getTestName().startsWith(search))
 					list.remove(ltr);
-			}
+			if ((start == 0) && (length <= 0)) 
+				return list;
+
+			if (length <= 0) 
+				return list.subList(start, list.size()-1);
+
+			return list.subList(start, start+length-1);
 		}
+	}
 		return list;
 	}
 	@Override

@@ -101,7 +101,7 @@ public class LabTestSpecimenResource extends MetadataDelegatingCrudResource<LabT
 			Descri.addProperty("rackPosition");
 			Descri.addProperty("testTech",Representation.REF);
 			Descri.addProperty("testTime");
-			Descri.addProperty("testRun",Representation.REF);
+//			Descri.addProperty("testRun",Representation.REF);
 			Descri.addProperty("wellPosition",Representation.REF);
 			Descri.addProperty("retired");
 			Descri.addSelfLink();

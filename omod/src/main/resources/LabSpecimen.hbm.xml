@@ -36,9 +36,9 @@
             <key column="specimen_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.db.LabTestSpecimen" />
         </set>
-        <set name="orders" table="jsslab_specimen_order">
+        <set name="orderSpecimens" table="jsslab_order_specimen">
         	<key column="specimen_id" not-null="false" />
-        	<many-to-many class="org.openmrs.module.jsslab.db.LabOrder" />
+        	<one-to-many class="org.openmrs.module.jsslab.db.LabOrderSpecimen" />
         </set>
         
     </class>

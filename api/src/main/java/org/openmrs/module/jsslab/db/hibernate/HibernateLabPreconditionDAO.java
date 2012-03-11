@@ -77,7 +77,7 @@ public class HibernateLabPreconditionDAO implements LabPreconditionDAO {
 	public LabPrecondition getLabPreconditionByName(String name) {
 		// get candidates
 		List<LabPrecondition> labPreconditions = (List<LabPrecondition>) sessionFactory.getCurrentSession()
-				.createQuery("from LabPrecondition as lp where lp.preconditionQuestionConcept.names.name=:name and not lp.retired" )
+				.createQuery("from LabPrecondition as lp where lp.preconditionQuestionConcept.names.name=:name and not lp.voided" )
 				.setString("name", name);
 
 		// eliminate those that don't really match (perhaps wrong locale)
@@ -100,27 +100,25 @@ public class HibernateLabPreconditionDAO implements LabPreconditionDAO {
 	 */
 	@Override
 	public List<LabPrecondition> getLabPreconditions(String search,
-			Boolean includeRetired, Integer start, Integer length) {
+			Boolean includeVoided, Integer start, Integer length) {
 		// get candidates
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabPrecondition.class, "lp");
 
-		if (!includeRetired) 
-			criteria.add(Restrictions.ne("retired", true));
-
-		if (StringUtils.isNotBlank(search))
-			criteria.add(Restrictions.disjunction()
-			.add(Restrictions.ilike("lp.preconditionQuestionConcept.names.name", search, MatchMode.START))
-			.add(Restrictions.ilike("lp.testPanelConcept.names.name", search, MatchMode.START))
-			);
+		if (!includeVoided) 
+			criteria.add(Restrictions.ne("voided", true));
 
 		List<LabPrecondition> labPreconditions = (List<LabPrecondition>) criteria.list();
 		
-		// eliminate those that don't really match (perhaps wrong locale)
-		for (LabPrecondition labPrecondition : labPreconditions) {
-			if (! ((labPrecondition.getPreconditionQuestionText().startsWith(search)) 
-			|| (labPrecondition.getTestPanel().getName().startsWith(search))))
-				labPreconditions.remove(labPrecondition);
-		}
+		// eliminate those that don't match
+		if (StringUtils.isNotBlank(search))
+			for (LabPrecondition labPrecondition : labPreconditions) {
+				if (! ((labPrecondition.getPreconditionQuestionText().startsWith(search)) 
+				|| (labPrecondition.getTestPanel().getName().startsWith(search))))
+					labPreconditions.remove(labPrecondition);
+			}
+
+		if (labPreconditions.size()==0)
+			return null;
 		
 		// sort the possible returns and take the first
 		Collections.sort(labPreconditions,new LabPreconditionComparator());
@@ -147,8 +145,8 @@ public class HibernateLabPreconditionDAO implements LabPreconditionDAO {
 	 */
 	@Override
 	public Integer getCountOfLabPreconditions(String search,
-			Boolean includeRetired) {
-		List<LabPrecondition> labPreconditions = getLabPreconditions(search, includeRetired,0,0);
+			Boolean includeVoided) {
+		List<LabPrecondition> labPreconditions = getLabPreconditions(search, includeVoided,0,0);
 		return labPreconditions.size();
 	}
 

@@ -75,7 +75,7 @@ public class HibernateLabSpecimenDAO implements LabSpecimenDAO {
 	public LabSpecimen getLabSpecimenByName(String name) {
 		List<LabSpecimen> labSpecimens = (List<LabSpecimen>) sessionFactory.getCurrentSession()
 				.createQuery("from LabSpecimen as ls where :name in (ls.labSpecimenId,ls.clientSpecimenId) and not ls.retired")
-				.setString("name", name);
+				.setString("name", name).list();
 
 		// if list is exhausted, return null
 		if (null == labSpecimens || labSpecimens.isEmpty()) {

@@ -77,7 +77,7 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	
 	protected Set<LabTestSpecimen> testSpecimens = new HashSet<LabTestSpecimen>();
 	
-	protected Set<LabOrder> orders = new HashSet<LabOrder>();
+	protected Set<LabOrderSpecimen> orderSpecimens = new HashSet<LabOrderSpecimen>();
 	
 	public void LabSpecimen() {
 		
@@ -392,15 +392,15 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	 * @return Returns the orders set.
 	 */
 	@Attribute(required = false)
-	public Set<LabOrder> getOrders(){
-		return orders;
+	public Set<LabOrderSpecimen> getOrderSpecimens(){
+		return orderSpecimens;
 	}
 	
 	/**
 	 * @param orders The set of orders to set.
 	 */
 	@Attribute(required = false)
-	public void setOrders(Set<LabOrder> orders) {
-		this.orders = orders;
+	public void setOrderSpecimens(Set<LabOrderSpecimen> orderSpecimens) {
+		this.orderSpecimens = orderSpecimens;
 	}
 }

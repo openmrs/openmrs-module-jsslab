@@ -56,14 +56,16 @@ public class HibernateLabOrderSpecimenDAO implements LabOrderSpecimenDAO{
 	 */
 	@SuppressWarnings("unchecked")
 	public List<LabOrderSpecimen> getLabOrderSpecimens(String nameFragment, Boolean includeVoided, Integer start, Integer length) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabOrderSpecimen.class);
+		Criteria criteria = sessionFactory.getCurrentSession()
+			.createCriteria(LabOrderSpecimen.class)
+			.createAlias("LabOrder","o").createAlias("LabSpecimen", "s");
 		if (!includeVoided)
 			criteria.add(Restrictions.ne("voided", true));
 		
 		if (StringUtils.isNotBlank(nameFragment))
 			criteria.add(Restrictions.disjunction()
-				.add(Restrictions.eq("order.uuid", nameFragment))
-				.add(Restrictions.eq("specimen.uuid", nameFragment))
+				.add(Restrictions.eq("o.uuid", nameFragment))
+				.add(Restrictions.eq("s.uuid", nameFragment))
 			);
 		
 		criteria.addOrder(Order.asc("order.uuid")).addOrder(Order.asc("specimen.uuid"));

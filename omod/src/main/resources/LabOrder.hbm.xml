@@ -11,7 +11,7 @@
 	<property name="physicianRetest" type="java.lang.Boolean" not-null="false" column="physician_retest" />
 	<property name="retestReason" type="java.lang.String" column="retest_reason" length="255" />
 
-	<set name="specimens" inverse="true" >
+	<set name="orderSpecimens" inverse="true" >
 		<key column="order_id" not-null="true" />
 		<one-to-many class="org.openmrs.module.jsslab.db.LabOrderSpecimen" />
 	</set>

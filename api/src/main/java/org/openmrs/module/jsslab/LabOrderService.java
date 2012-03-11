@@ -199,7 +199,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @param id
 	 * @return LabSpecimen if founded, or null.
 	 */
-	public LabSpecimen getLabSpecimen(Integer labSpecimenId);
+	public LabSpecimen getLabSpecimen(Integer specimenId);
 	
 	/*
 	 * @param uuid

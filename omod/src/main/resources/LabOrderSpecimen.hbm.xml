@@ -8,8 +8,8 @@
     		<generator class="native" />
     	</id>
     	
-    	<many-to-one name="specimen" class="org.openmrs.module.jsslab.db.LabSpecimen" column="lab_specimen_id" not-null="true" />
-		<many-to-one name="order" class="org.openmrs.module.jsslab.db.LabOrder" column="lab_order_id" not-null="true" />
+    	<many-to-one name="specimen" class="org.openmrs.module.jsslab.db.LabSpecimen" column="specimen_id" not-null="true" />
+		<many-to-one name="order" class="org.openmrs.module.jsslab.db.LabOrder" column="order_id" not-null="true" />
 		<many-to-one name="specimenRoleConcept"  class="org.openmrs.Concept" column="specimen_role_concept" />
 
 		<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>

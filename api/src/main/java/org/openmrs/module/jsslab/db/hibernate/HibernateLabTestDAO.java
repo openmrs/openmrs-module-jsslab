@@ -98,7 +98,7 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		// get candidates
 		List<LabTest> labTests= (List<LabTest>) sessionFactory.getCurrentSession()
 				.createQuery("from LabTest as lt where lt.testConcept.names.name=:name and not lt.retired" )
-				.setString("name", name);
+				.setString("name", name).list();
 
 		// eliminate those that don't really match (perhaps wrong locale)
 		for (LabTest labTest : labTests)
@@ -138,7 +138,7 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		// get candidates
 		List<LabTest> labTests= (List<LabTest>) sessionFactory.getCurrentSession()
 				.createQuery("from LabTest as lt where upper(lt.testConcept.names.name) like concat(upper(:name),'%') and not lt.retired" )
-				.setString("name", name);
+				.setString("name", name).list();
 
 		// eliminate those that don't really match (perhaps wrong locale)
 		for (LabTest labTest : labTests)
@@ -173,7 +173,7 @@ public class HibernateLabTestDAO implements LabTestDAO {
 		// get candidates
 		List<LabTest> labTests= (List<LabTest>) sessionFactory.getCurrentSession()
 				.createQuery("from LabTest as lt where upper(lt.testConcept.names.name) like concat(upper(:name),'%') and (:retired or not lt.retired" )
-				.setString("name", name).setBoolean("retired", includeRetired);
+				.setString("name", name).setBoolean("retired", includeRetired).list();
 
 		// eliminate those that don't really match (perhaps wrong locale)
 		for (LabTest labTest : labTests)

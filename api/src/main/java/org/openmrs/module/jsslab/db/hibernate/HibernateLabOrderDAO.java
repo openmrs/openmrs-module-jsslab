@@ -90,13 +90,15 @@ public class HibernateLabOrderDAO implements LabOrderDAO {
 	 * @see org.openmrs.api.db.LabOrderDAO#getLabOrderByUuid(java.lang.String)
 	 */
 	public LabOrder getLabOrderByUuid(String uuid) {
-		return (LabOrder) sessionFactory.getCurrentSession().createQuery("from LabOrder o where o.uuid = :uuid").setString("uuid",
-		    uuid).uniqueResult();
+		return (LabOrder) sessionFactory.getCurrentSession()
+				.createQuery("from LabOrder o where o.uuid = :uuid")
+				.setString("uuid",uuid).uniqueResult();
 	}
 	
 	public List<LabOrder> getLabOrders(String search, Boolean includeDeleted, Integer start, Integer length)
 			throws APIException {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(LabOrder.class);
+
 		if ((search != null) && ! search.isEmpty()) {
 			crit.add(Restrictions.ilike("labOrderId", search, MatchMode.START));
 		}

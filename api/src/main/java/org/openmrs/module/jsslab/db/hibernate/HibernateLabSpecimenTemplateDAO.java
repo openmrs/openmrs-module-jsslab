@@ -72,7 +72,8 @@ public class HibernateLabSpecimenTemplateDAO implements LabSpecimenTemplateDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	public LabSpecimenTemplate getLabSpecimenTemplateByName(String name) {
-		List<LabSpecimenTemplate> specimenTemplates = (List<LabSpecimenTemplate>) sessionFactory.getCurrentSession().createQuery("from LabSpecimenTemplate").list();
+		List<LabSpecimenTemplate> specimenTemplates = (List<LabSpecimenTemplate>) sessionFactory.getCurrentSession()
+				.createQuery("from LabSpecimenTemplate").list();
 		for (LabSpecimenTemplate specimenTemplate : specimenTemplates) {
 			if (specimenTemplate.getName().equalsIgnoreCase(name))
 				return specimenTemplate;
@@ -146,7 +147,7 @@ public class HibernateLabSpecimenTemplateDAO implements LabSpecimenTemplateDAO {
 	public List<LabSpecimenTemplate> getLabSpecimenTemplates(String nameFragment, Boolean includeVoided, Integer start, Integer length) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabSpecimenTemplate.class);
 		if (!includeVoided)
-			criteria.add(Restrictions.ne("voided", true));
+			criteria.add(Restrictions.ne("retired", true));
 		
 		if (StringUtils.isNotBlank(nameFragment))
 			criteria.add(Restrictions.disjunction()
