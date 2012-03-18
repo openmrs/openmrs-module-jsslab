@@ -30,6 +30,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * 
 	 * @param uuid the uuid to find
 	 * @return the LabOrder that was found or null
+	 * @should get by uuid
 	 */
 	@Authorized( PrivilegeConstants.VIEW_LAB_ORDER )
 	public LabOrder getLabOrderByUuid(String uuid);
@@ -203,7 +204,7 @@ public interface LabOrderService extends OpenmrsService {
 	
 	/*
 	 * @param uuid
-	 * @return LabSpecimen if founded, or null.
+	 * @return LabSpecimen if found, or null.
 	 */
 	public LabSpecimen getLabSpecimenByUuid(String uuid);
 	

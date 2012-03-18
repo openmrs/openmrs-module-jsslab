@@ -11,10 +11,11 @@
 	<property name="physicianRetest" type="java.lang.Boolean" not-null="false" column="physician_retest" />
 	<property name="retestReason" type="java.lang.String" column="retest_reason" length="255" />
 
+<!-- Hold off on set for now 
 	<set name="orderSpecimens" inverse="true" >
 		<key column="order_id" not-null="true" />
 		<one-to-many class="org.openmrs.module.jsslab.db.LabOrderSpecimen" />
 	</set>
-
+-->
 	</joined-subclass>
 </hibernate-mapping>
