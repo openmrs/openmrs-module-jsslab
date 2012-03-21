@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<dataset>
-  <jsslab_order order_id="33333001" lab_order_id="2012.01/0001" urgent="0"/>
-  <orders order_id="33333001" order_type_id="2" concept_id="5089" orderer="3" 
-      start_date="2012-01-01 00:00:00.0" discontinued="0" creator="501" 
-      date_created="2012-01-01 00:00:00.0" voided="0" patient_id="7"
-      uuid="ee8b270c-49b9-11e1-812a-0024e8c61285" />
-</dataset>
