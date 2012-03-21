@@ -12,15 +12,15 @@
 		<property name="specimenSubId" type="java.lang.Integer" not-null="true" column="specimen_sub_id" />
 		<property name="parentSubId" type="java.lang.Integer" not-null="true" column="parent_sub_id" />
 		<many-to-one name="parentRelationConcept" class="org.openmrs.Concept" column="parent_relation_concept" not-null="true" />
-		<many-to-one name="analysisSpecimenTypeConcept" class="org.openmrs.Concept" column="analysis_specimen_type_concept" not-null="false" />
+		<many-to-one name="analysisSpecimenTypeConcept" class="org.openmrs.Concept" column="analysis_specimen_concept" not-null="false" />
 		<many-to-one name="testPanel" class="org.openmrs.module.jsslab.db.LabTestPanel" not-null="false" column="test_panel_id"/>
 		<many-to-one name="testRoleConcept" class="org.openmrs.Concept" column="test_role_concept" not-null="false" />
 		<many-to-one name="supplyItem" class="org.openmrs.module.jsslab.db.LabSupplyItem" not-null="false" column="supply_item_id"/>
 		<many-to-one name="prepTech" class="org.openmrs.User" column="prep_tech_id" not-null="false" />
-		<property name="prepTime" type="java.util.Date" column="prep_time" not-null="false" />
+		<property name="prepTime" type="java.util.Date" column="prep_date" not-null="false" />
 		<property name="rackPosition" type="java.lang.String" column="rack_position" length="5" unique="false" not-null="false" />
-		<many-to-one name="testTech" class="org.openmrs.User" column="test_tech_id" not-null="false" />
-		<property name="testTime" type="java.util.Date" column="test_time" not-null="false" />
+		<many-to-one name="testTech" class="org.openmrs.User" column="lab_tech_id" not-null="false" />
+		<property name="testTime" type="java.util.Date" column="test_date" not-null="false" />
 		<many-to-one name="testRun" class="org.openmrs.module.jsslab.db.LabTestRun" not-null="false" column="test_run_id"/>
 		<property name="wellPosition" type="java.lang.String" column="well_position" length="5" unique="false" not-null="false" />
 
@@ -29,6 +29,7 @@
 		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
 		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
 		<property name="retired" type="java.lang.Boolean" column="retired" length="1" not-null="true" />
+		<many-to-one name="retiredBy" class="org.openmrs.User" column="retired_by" />
 		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
 		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />

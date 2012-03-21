@@ -205,6 +205,7 @@ public interface LabOrderService extends OpenmrsService {
 	/*
 	 * @param uuid
 	 * @return LabSpecimen if found, or null.
+	 * @should return specimen by uuid
 	 */
 	public LabSpecimen getLabSpecimenByUuid(String uuid);
 	
@@ -238,6 +239,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @param if include voided LabSpecimen
 	 * @return LabSpecimen list(include voided list if ifVoided is true)
 	 * @throws APIException
+	 * @should return specimens
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)

@@ -30,6 +30,8 @@ UNTIL PROBLEM IS RESOLVED
 		<property name="testNormalHigh" type="java.lang.Double" not-null="false" column="test_normal_high" />
 		<property name="testCriticalLow" type="java.lang.Double" not-null="false" column="test_critical_low" />
 		<property name="testCriticalHigh" type="java.lang.Double" not-null="false" column="test_critical_high" />
+		<property name="approved" type="java.lang.Boolean" length="1" not-null="false" column="approved" />
+		<many-to-one name="approvedBy" class="org.openmrs.User" column="approved_by" />
 		<property name="hidden" type="java.lang.Boolean" not-null="false" column="hidden" />
 				
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
@@ -37,6 +39,7 @@ UNTIL PROBLEM IS RESOLVED
 		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
 		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
 		<property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true" />
+		<many-to-one name="voidedBy" class="org.openmrs.User" column="voided_by" />
 		<property name="dateVoided" type="java.util.Date" column="date_voided" length="19" />
 		<property name="voidReason" type="java.lang.String" column="void_reason" length="255" />
 		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />

@@ -12,7 +12,7 @@
 		<property name="specimenSubId" type="java.lang.Integer" not-null="true" column="specimen_sub_id" />
 		<property name="parentSubId" type="java.lang.Integer" not-null="true" column="parent_sub_id" />
 		<many-to-one name="parentRelationConcept" class="org.openmrs.Concept" column="parent_relation_concept" not-null="true" />
-		<many-to-one name="analysisSpecimenTypeConcept" class="org.openmrs.Concept" column="analysis_specimen_type_concept" not-null="false" />
+		<many-to-one name="analysisSpecimenTypeConcept" class="org.openmrs.Concept" column="analysis_specimen_concept" not-null="false" />
 		<many-to-one name="testPanel" class="org.openmrs.module.jsslab.db.LabTestPanel" not-null="false" column="test_panel_id"/>
 		<many-to-one name="testRoleConcept" class="org.openmrs.Concept" column="test_role_concept" not-null="false" />
 		<many-to-one name="supplyItem" class="org.openmrs.module.jsslab.db.LabSupplyItem" not-null="false" column="supply_item_id"/>
@@ -23,6 +23,7 @@
 		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
 		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
 		<property name="retired" type="java.lang.Boolean" column="retired" length="1" not-null="true" />
+		<many-to-one name="retiredBy" class="org.openmrs.User" column="retired_by" />
 		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
 		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
  
