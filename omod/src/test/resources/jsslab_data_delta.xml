@@ -1,5 +1,159 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dataset>
+  <privilege privilege="Add Allergies" description="Add allergies" uuid="fa2a8ee4-d183-4f7f-acc4-287b5e6d4740"/>
+  <privilege privilege="Add Cohorts" description="Able to add a cohort to the system" uuid="83594f9a-4e61-4932-a8e8-e2fcaf951ed6"/>
+  <privilege privilege="Add Concept Proposals" description="Able to add concept proposals to the system" uuid="4d91f8b4-cd68-4056-b85e-aafaccfb1a70"/>
+  <privilege privilege="Add Concepts" description="Core Privilege" uuid="df19008f-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add Encounters" description="Core Privilege" uuid="df1902b6-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add FormEntry Archive" description="Allows the user to add the formentry archive" uuid="86cea885-879a-441d-a22d-2ce2de25c7a9"/>
+  <privilege privilege="Add FormEntry Error" description="Allows a user to add a formentry error item" uuid="9c39e263-fae5-4d1d-b7ea-a019e34e5ed6"/>
+  <privilege privilege="Add FormEntry Queue" description="Allows user to add a queue item to database" uuid="f0d373fb-74dd-4166-855e-8c7b16ba52e7"/>
+  <privilege privilege="Add Forms" description="Core Privilege" uuid="df190415-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add Observations" description="Core Privilege" uuid="df19057c-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add Orders" description="Core Privilege" uuid="df1906df-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add Patient Identifiers" description="Able to add patient identifiers" uuid="db44c400-d02f-4cdb-ae4e-8ca5a4c21d37"/>
+  <privilege privilege="Add Patient Programs" description="Able to add patients to programs" uuid="df642570-dafb-4333-830f-907e8812d126"/>
+  <privilege privilege="Add Patients" description="Core Privilege" uuid="df19083e-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add People" description="Able to add person objects" uuid="df1909a5-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add Problems" description="Add problems" uuid="fa1a3488-df00-4c46-87a6-daf303a52882"/>
+  <privilege privilege="Add Relationships" description="Able to add relationships" uuid="c6491ed8-cb18-4a72-838d-9c41e9b3a3c0"/>
+  <privilege privilege="Add Report Objects" description="Able to add report objects" uuid="e87e5b87-d3b6-4807-8e6d-e0dc43d8c2dc"/>
+  <privilege privilege="Add Reports" description="Core Privilege" uuid="df190aea-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add Users" description="Core Privilege" uuid="df190c38-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Add/Edit Integrity Checks" description="Ability to add or edit integrity checks" uuid="189adcef-4f81-45a0-b861-cc85e97957bd"/>
+  <privilege privilege="Delete Cohorts" description="Able to add a cohort to the system" uuid="892835f3-e8e4-4656-8907-8911c27e1052"/>
+  <privilege privilege="Delete Concept Proposals" description="Able to delete concept proposals from the system" uuid="92df796b-9b12-4af6-819e-bfff4af8ee3a"/>
+  <privilege privilege="Delete Concepts" description="Core Privilege" uuid="df190d8e-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Delete Encounters" description="Core Privilege" uuid="df190ee4-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Delete FormEntry Archive" description="Allows the user to delete a formentry archive" uuid="fff7204e-ddbe-47dc-a54a-cd3df223b296"/>
+  <privilege privilege="Delete FormEntry Error" description="Allows a user to delete a formentry error item" uuid="80a2db02-ddf5-4c68-9f85-6038f18475ee"/>
+  <privilege privilege="Delete FormEntry Queue" description="Allows the user to delete formentry queue items" uuid="1ee7d773-6e27-408b-a4ed-e0a82ac92bae"/>
+  <privilege privilege="Delete Forms" description="Core Privilege" uuid="df191036-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Delete Integrity Checks" description="Ability to delete data integrity checks" uuid="6e63c726-45cb-406f-934f-4dd7a824caaa"/>
+  <privilege privilege="Delete Observations" description="Core Privilege" uuid="df19118d-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Delete Orders" description="Core Privilege" uuid="df1912e7-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Delete Patient Identifiers" description="Able to delete patient identifiers" uuid="6d030de8-57b6-4ab1-adda-421e0cce5e38"/>
+  <privilege privilege="Delete Patient Programs" description="Able to delete patients from programs" uuid="a30b1ac3-1339-46fc-9780-b7fab3724cd4"/>
+  <privilege privilege="Delete Patients" description="Core Privilege" uuid="df191446-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Delete People" description="Able to delete objects" uuid="df191593-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Delete Relationships" description="Able to delete relationships" uuid="d104ac9e-8b7b-48d3-b276-f3c0fe2cb2bc"/>
+  <privilege privilege="Delete Report Objects" description="Able to delete report objects" uuid="fa4415fe-a8ef-4232-9c50-d887ee21a6dc"/>
+  <privilege privilege="Delete Reports" description="Core Privilege" uuid="df1916ea-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Delete Users" description="Core Privilege" uuid="df191848-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit Allergies" description="Able to edit allergies" uuid="f2211555-c22d-4189-b2b6-1a93e4878138"/>
+  <privilege privilege="Edit Cohorts" description="Able to add a cohort to the system" uuid="e8db1a41-5d60-4aa6-8e25-565f3d255f87"/>
+  <privilege privilege="Edit Concept Proposals" description="Able to edit concept proposals in the system" uuid="dc81a4e7-d95e-466c-83ab-a1eb52c7a213"/>
+  <privilege privilege="Edit Concepts" description="Core Privilege" uuid="df191b01-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit Encounters" description="Core Privilege" uuid="df191c53-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit FormEntry Archive" description="Allows the user to edit a formentry archive" uuid="8c6c5470-6703-4bfa-ac7c-5cb364a5345c"/>
+  <privilege privilege="Edit FormEntry Error" description="Allows a user to edit a formentry error item" uuid="802f9081-e4d8-4624-bb2f-abee73f7b20f"/>
+  <privilege privilege="Edit FormEntry Queue" description="Allows the user to edit the formentry queue" uuid="8e83fd6c-c80e-4cea-8a69-68ae255260cd"/>
+  <privilege privilege="Edit Forms" description="Core Privilege" uuid="df191dd4-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit Observations" description="Core Privilege" uuid="df191f2f-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit Orders" description="Core Privilege" uuid="df192812-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit Patient Identifiers" description="Able to edit patient identifiers" uuid="515e7cc2-5ea2-429a-a483-32a1bf600df8"/>
+  <privilege privilege="Edit Patient Programs" description="Core Privilege" uuid="df192969-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit Patients" description="Core Privilege" uuid="df192acc-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit People" description="Able to edit person objects" uuid="df192c22-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit Problems" description="Able to edit problems" uuid="90169504-8ee9-4fad-a27d-0b4e6ef1b82a"/>
+  <privilege privilege="Edit Relationships" description="Able to edit relationships" uuid="a2b60887-fb25-49d4-a7af-7d5b5df4e4c6"/>
+  <privilege privilege="Edit Report Objects" description="Able to edit report objects" uuid="4369ee43-9e90-4731-812e-9569929ea9ad"/>
+  <privilege privilege="Edit Reports" description="Core Privilege" uuid="df192d6f-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit User Passwords" description="Able to change the passwords of users in OpenMRS" uuid="df192ec6-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Edit Users" description="Core Privilege" uuid="df193024-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Form Entry" description="Core Privilege" uuid="df19317f-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Alerts" description="Able to add/edit/delete user alerts" uuid="df1932c8-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Cohort Definitions" description="Add/Edit/Remove Cohort Definitions" uuid="0cce45a7-5dea-4384-b8f1-001f39b1c42e"/>
+  <privilege privilege="Manage Concept Classes" description="Core Privilege" uuid="df19342f-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Concept Datatypes" description="Core Privilege" uuid="df19359f-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Concept Name tags" description="Able to add/edit/delete concept name tags" uuid="9376303f-8536-47d1-b29b-0e8a62a03318"/>
+  <privilege privilege="Manage Concept Sources" description="Able to add/edit/delete concept sources" uuid="d393f17b-4289-47d9-9195-563bed262af7"/>
+  <privilege privilege="Manage Concepts" description="Able to add/edit/delete concept entries" uuid="43e18f93-53df-4f17-935d-aa2bbc7c2648"/>
+  <privilege privilege="Manage Data Set Definitions" description="Add/Edit/Remove Data Set Definitions" uuid="279c963a-ab2f-4b5b-b0a3-7462fd8c1b24"/>
+  <privilege privilege="Manage Dimension Definitions" description="Add/Edit/Remove Dimension Definitions" uuid="906c4d8f-5ac5-4fd6-b14f-b92b687adb85"/>
+  <privilege privilege="Manage Encounter Types" description="Core Privilege" uuid="df1936fe-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Field Types" description="Core Privilege" uuid="df193850-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage FormEntry XSN" description="Allows user to upload and edit the xsns stored on the server" uuid="b7ffc1be-a9fc-401a-86a6-b01a2cee605d"/>
+  <privilege privilege="Manage Forms" description="Able to add/edit/delete forms" uuid="eb5ed9c5-c054-4380-964f-c39410bcbcb8"/>
+  <privilege privilege="Manage Global Properties" description="Core Privilege" uuid="df1939af-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Identifier Types" description="Core Privilege" uuid="df193b12-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Implementation Id" description="Able to view/add/edit the implementation id for the system" uuid="43b3e2bb-c1e7-447c-897f-9bd8eddd96a6"/>
+  <privilege privilege="Manage Indicator Definitions" description="Add/Edit/Remove Indicator Definitions" uuid="d559d521-749d-4ea6-8f25-91d399a69eab"/>
+  <privilege privilege="Manage Integrity Checks" description="Ability to manage data integrity checks" uuid="97d091e9-93f1-4284-8870-46ecef59d86a"/>
+  <privilege privilege="Manage Location Tags" description="Able to add/edit/delete location tags" uuid="9b8daafa-8f83-4e20-ba53-bfee90fb49a3"/>
+  <privilege privilege="Manage Locations" description="Core Privilege" uuid="df193c79-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Modules" description="Able to add/remove modules to the system" uuid="df193dcb-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Order Types" description="Core Privilege" uuid="df193f21-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Person Attribute Types" description="Able to add/edit/delete person attribute tyeps" uuid="df194091-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Privileges" description="Core Privilege" uuid="df1941f4-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Programs" description="Core Privilege" uuid="df194346-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Relationship Types" description="Core Privilege" uuid="df1944c2-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Relationships" description="Core Privilege" uuid="df194625-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Report Definitions" description="Add/Edit/Remove Report Definitions" uuid="ea5093bb-44c6-4502-b51f-55fc02ea0c6c"/>
+  <privilege privilege="Manage Report Designs" description="Add/Edit/Remove Report Designs" uuid="3bf02940-acf5-49b7-82d4-ddd19762dc80"/>
+  <privilege privilege="Manage Reports" description="Base privilege for add/edit/delete reporting definitions. This gives access to the administrative menus, but you need to grant additional privileges to manage each specific type of reporting definition" uuid="6528112c-1b37-4032-990c-15879b6af651"/>
+  <privilege privilege="Manage Roles" description="Able to add/edit/delete user roles" uuid="b7c8f8ec-b18a-4767-addf-e6a3d6624e74"/>
+  <privilege privilege="Manage Rule Definitions" description="Allows creation and editing of user-defined rules" uuid="cd401fe4-16c4-465b-8de4-ec148f15652a"/>
+  <privilege privilege="Manage Scheduler" description="Able to add/edit/remove scheduled tasks" uuid="df194f2b-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Manage Tokens" description="Allows registering and removal of tokens" uuid="4b0dce61-be70-4ca6-a17d-2ec565b83126"/>
+  <privilege privilege="Patient Dashboard - View Demographics Section" description="Core Privilege" uuid="df19508a-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Patient Dashboard - View Encounters Section" description="Core Privilege" uuid="df1951fa-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Patient Dashboard - View Forms Section" description="Core Privilege" uuid="df19536a-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Patient Dashboard - View Graphs Section" description="Core Privilege" uuid="df1954de-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Patient Dashboard - View Overview Section" description="Core Privilege" uuid="df195641-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Patient Dashboard - View Patient Summary" description="Able to view the &apos;Summary&apos; tab on the patient dashboard" uuid="df1957b5-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Patient Dashboard - View Regimen Section" description="Core Privilege" uuid="df195932-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="Purge Field Types" description="Able to purge field types" uuid="b1d2a789-333a-43e4-b5ed-b0e514402698"/>
+  <privilege privilege="Remove Allergies" description="Remove allergies" uuid="32b00fb1-ead7-404c-b05e-4701bbd3c67c"/>
+  <privilege privilege="Remove Problems" description="Remove problems" uuid="997b885d-e42d-4932-a2ec-180394ceb9cf"/>
+  <privilege privilege="Run Data Integrity Checks" description="Ability to run data integrity checks" uuid="b7803a23-2b68-4daf-bbff-2bece4b7d677"/>
+  <privilege privilege="Run Reports" description="Able to run reports" uuid="6b8a5aa0-bf3f-4050-8669-a131a9536733"/>
+  <privilege privilege="Upload XSN" description="Allows user to upload/overwrite the XSNs defined for forms" uuid="df195aae-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Administration Functions" description="Core Privilege" uuid="df195bfc-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Allergies" description="Able to view allergies" uuid="86829387-aa1c-43cc-a040-87628578aa1e"/>
+  <privilege privilege="View Concept Classes" description="Core Privilege" uuid="df195d56-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Concept Datatypes" description="Core Privilege" uuid="df195ebe-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Concept Proposals" description="Able to view concept proposals to the system" uuid="038ea1d5-ef88-4dc8-8847-090502ef7ae1"/>
+  <privilege privilege="View Concept Sources" description="Able to view concept sources" uuid="30f8f95b-f838-4c69-9ec3-5c7781143237"/>
+  <privilege privilege="View Concepts" description="Core Privilege" uuid="df1962cd-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Data Entry Statistics" description="Able to View Data Entry Statistics" uuid="1b1bce51-847d-461f-9fd5-4f5735150520"/>
+  <privilege privilege="View Database Changes" description="Able to view database changes from the admin screen" uuid="e0f8f013-4646-4f68-8015-974d1502a8de"/>
+  <privilege privilege="View Encounter Types" description="Core Privilege" uuid="df196434-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Encounters" description="Core Privilege" uuid="df1965a4-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Field Types" description="Core Privilege" uuid="df196718-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View FormEntry Archive" description="Allows the user to view the formentry archive" uuid="4ae85719-e94f-4490-adf9-ec6190d150bc"/>
+  <privilege privilege="View FormEntry Error" description="Allows a user to view a formentry error" uuid="956028c7-f663-4543-b22e-eb6601e5d0e9"/>
+  <privilege privilege="View FormEntry Queue" description="Allows user to view the queue items" uuid="d52d464c-7257-4843-926e-b3702ccd5cb7"/>
+  <privilege privilege="View Forms" description="Core Privilege" uuid="df19688c-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Global Properties" description="Able to view global properties on the administration screen" uuid="439903f3-66ff-401c-8338-27fa0bbde22f"/>
+  <privilege privilege="View Identifier Types" description="Core Privilege" uuid="df1969eb-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Locations" description="Core Privilege" uuid="df196b64-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Navigation Menu" description="Ability to see the navigation menu" uuid="df196cd3-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Observations" description="Core Privilege" uuid="df196e48-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Order Types" description="Core Privilege" uuid="df196faf-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Orders" description="Core Privilege" uuid="df197134-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Patient Cohorts" description="Able to view patient cohorts" uuid="df197a4f-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Patient Identifiers" description="Able to view patient identifiers" uuid="9d1d3a2a-615f-4130-82d0-99aa71a08bd2"/>
+  <privilege privilege="View Patient Programs" description="Able to see which programs that patients are in" uuid="5cb8ac7b-661a-48f8-be98-70213fb568f4"/>
+  <privilege privilege="View Patient Sets" description="Core Privilege" uuid="df197bd0-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Patients" description="Core Privilege" uuid="df197d3c-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View People" description="Able to view person objects" uuid="df197eb0-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Person Attribute Types" description="Core Privilege" uuid="df198031-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Privileges" description="Core Privilege" uuid="df1981ad-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Problems" description="Able to view problems" uuid="7a452096-11b6-49d0-a71e-0dd96a6b34b5"/>
+  <privilege privilege="View Programs" description="Core Privilege" uuid="df19831d-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Relationship Types" description="Core Privilege" uuid="df198491-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Relationships" description="Able to view relationships" uuid="d41b59f1-6f81-4b2c-9705-2c0b52eb4472"/>
+  <privilege privilege="View Report Objects" description="Able to view report objects" uuid="e87b0cac-219a-453b-8ec1-298bfd7844c7"/>
+  <privilege privilege="View Reports" description="Core Privilege" uuid="df19860a-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Roles" description="Core Privilege" uuid="df19878b-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Rule Definitions" description="Allows viewing of user-defined rules. (This privilege is not necessary to run rules under normal usage.)" uuid="c5d6df3d-24a0-45aa-be1e-c3971cf0837c"/>
+  <privilege privilege="View Unpublished Forms" description="Core Privilege" uuid="df198910-1691-11df-97a5-7038c432aabf"/>
+  <privilege privilege="View Users" description="Core Privilege" uuid="df198a9a-1691-11df-97a5-7038c432aabf"/>
+  <role role="Anonymous" description="Privileges for non-authenticated users." uuid="774b2af3-6437-4e5a-a310-547554c7c65c"/>
+  <role role="Authenticated" description="Core Role" uuid="f7fd42ef-880e-40c5-972d-e4ae7c990de2"/>
+  <role role="Provider" description="Providers in the system" uuid="8d94f280-c2cc-11de-8d13-0010c6dffd0f"/>
+  <role role="System Developer" description="Assigned to Administrators of OpenMRS. Gives additional access to change core aspects of the system." uuid="b3a01b5e-fbff-11df-b97d-005056a916f7"/>
   <concept concept_id="33333001" datatype_id="4" class_id="8" is_set="1" creator="1" date_created="2011-12-11 00:00:00.0" retired="0" uuid="b816ce52-4873-11e1-b5ed-0024e8c61285"/>
   <concept concept_id="33333002" datatype_id="4" class_id="8" is_set="1" creator="1" date_created="2011-12-11 00:00:00.0" retired="0" uuid="b816d1ac-4873-11e1-b5ed-0024e8c61285"/>
   <concept concept_id="33333003" datatype_id="4" class_id="8" is_set="1" creator="1" date_created="2011-12-11 00:00:00.0" retired="0" uuid="b816d3d8-4873-11e1-b5ed-0024e8c61285"/>
@@ -595,16 +749,19 @@
   <person_name person_name_id="33333008" preferred="1" person_id="33333008" given_name="Mithun" family_name="Chakraborty" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="d5982abb-721a-11e1-9be3-00265e1c945c"/>
   <person_name person_name_id="33333009" preferred="1" person_id="33333009" given_name="Amitabh" family_name="Bachchan" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="d5982d8c-721a-11e1-9be3-00265e1c945c"/>
   <person_name person_name_id="33333010" preferred="1" person_id="33333010" given_name="Nana" family_name="Patekar" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="d59835c6-721a-11e1-9be3-00265e1c945c"/>
-  <users user_id="33333001" system_id="" username="Urmila Matondkar" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333001" uuid="290d3fe4-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333002" system_id="" username="Karisma Kapoor" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333002" uuid="29110897-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333003" system_id="" username="Raveena Tandon" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333003" uuid="29110a48-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333004" system_id="" username="Manoj Bajpai" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333004" uuid="29110ba2-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333005" system_id="" username="Aamir Khan" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333005" uuid="29110cf1-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333006" system_id="" username="Salman Khan" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333006" uuid="29110e38-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333007" system_id="" username="Shahrukh Khan" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333007" uuid="29110f85-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333008" system_id="" username="Mithun Chakraborty" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333008" uuid="291110d4-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333009" system_id="" username="Amitabh Bachchan" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333009" uuid="29111223-7111-11e1-8cf8-00265e1c945c"/>
-  <users user_id="33333010" system_id="" username="Nana Patekar" creator="1" date_created="2011-12-01 00:00:00.0" retired="false" person_id="33333010" uuid="29111372-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="1" system_id="admin" username="admin" password="4a1750c8607dfa237de36c6305715c223415189" salt="c788c6ad82a157b712392ca695dfcf2eed193d7f" creator="1" date_created="2005-01-01 00:00:00.0" retired="0" retired_by="0" person_id="1" uuid="842f4bae-1692-11df-97a5-7038c432aabf"/>
+  <users user_id="2" system_id="daemon" username="daemon" creator="1" date_created="2010-04-26 13:25:00.0" retired="0" retired_by="0" person_id="1" uuid="A4F30A1B-5EB9-11DF-A648-37A07F9C90FB"/>
+  <users user_id="3" system_id="3-4" username="roger" password="12a1e130835374a8802325ec3e1a9775d6b9e9b7fbfec4b436ea5ca3d7ab1042b77b0cedb9eacab03ce7e093713c1c70cd88c917de3a79576168bf534eb39b53" salt="f5c2bb460b1be19d31e63e21ef3b350a7bca5c850c2ab1824c71f8f68ca84aec1ed1da03a0b04eb60b1e93bef0bd1480c484f96f3f91528ebf46987332d0d47b" creator="1" date_created="2011-12-29 13:35:32.0" changed_by="1" date_changed="2011-12-29 13:35:32.0" retired="0" retired_by="0" person_id="3" uuid="f6fe6186-c364-4fb4-a1c5-f8bf016d01eb"/>
+  <users user_id="33333001" system_id="" username="Urmila Matondkar" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333001" uuid="290d3fe4-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333002" system_id="" username="Karisma Kapoor" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333002" uuid="29110897-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333003" system_id="" username="Raveena Tandon" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333003" uuid="29110a48-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333004" system_id="" username="Manoj Bajpai" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333004" uuid="29110ba2-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333005" system_id="" username="Aamir Khan" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333005" uuid="29110cf1-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333006" system_id="" username="Salman Khan" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333006" uuid="29110e38-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333007" system_id="" username="Shahrukh Khan" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333007" uuid="29110f85-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333008" system_id="" username="Mithun Chakraborty" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333008" uuid="291110d4-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333009" system_id="" username="Amitabh Bachchan" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333009" uuid="29111223-7111-11e1-8cf8-00265e1c945c"/>
+  <users user_id="33333010" system_id="" username="Nana Patekar" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333010" uuid="29111372-7111-11e1-8cf8-00265e1c945c"/>
   <jsslab_instrument instrument_id="33333001" manufacturer="Shenzen Mindray" model="BC-3600" serial_number="M2345-6428" received_date="2009-01-01" received_from="CARE" received_value="120000" condition_date="2011-09-10" maintenance_vendor="All-India Medical Supplies" maintenance_description="Quarterly inspection and cleaning" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" uuid="72a26526-21d2-11e1-9815-00265e639063"/>
   <jsslab_order order_id="33333001" lab_order_id="2012.01/0001" urgent="0" retest_reason=""/>
   <jsslab_order_specimen order_specimen_id="33333001" order_id="33333001" specimen_id="33333001" specimen_role_concept="33333112" creator="1" date_created="0002-11-30 00:00:00.0" voided="0" uuid="1cd2ae32-49be-11e1-812a-0024e8c61285"/>

@@ -22,7 +22,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 * @should not save LabOrder if LabOrder doesn't validate
 	 */
-	@Authorized( { PrivilegeConstants.EDIT_LAB_ORDER, PrivilegeConstants.ADD_LAB_ORDER })
+	//  @Authorized( { PrivilegeConstants.EDIT_LAB_ORDER, PrivilegeConstants.ADD_LAB_ORDER })
 	public LabOrder saveLabOrder(LabOrder labOrder) throws APIException;
 	
 	/**
@@ -32,7 +32,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @return the LabOrder that was found or null
 	 * @should get by uuid
 	 */
-	@Authorized( PrivilegeConstants.VIEW_LAB_ORDER )
+	//  @Authorized( PrivilegeConstants.VIEW_LAB_ORDER )
 	public LabOrder getLabOrderByUuid(String uuid);
 	
 	/**
@@ -42,7 +42,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @param labOrder The LabOrder to remove from the system
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.PURGE_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.PURGE_LAB_ORDER)
 	public void purgeLabOrder(LabOrder labOrder) throws APIException;
 	
 	/**
@@ -54,7 +54,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @return the LabOrder that was retired
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.DELETE_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.DELETE_LAB_ORDER)
 	public LabOrder deleteLabOrder(LabOrder labOrder, String retireReason) throws APIException;
 	
 	/**
@@ -65,7 +65,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public List<LabOrder> getAllLabOrders(Boolean includeRetired) throws APIException;
 	
 	/**
@@ -75,7 +75,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public List<LabOrder> getAllLabOrders() throws APIException;
 	
 	/**
@@ -91,7 +91,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public Integer getCountOfLabOrders(Boolean includeRetired) throws APIException;
 	
 	/**
@@ -101,7 +101,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public Integer getCountOfLabOrders() throws APIException;
 	
 //----------------------------------------------------------------
@@ -113,7 +113,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 * @should not save LabOrderSpecimen if LabOrderSpecimen doesn't validate
 	 */
-	@Authorized( { PrivilegeConstants.EDIT_LAB_ORDER, PrivilegeConstants.ADD_LAB_ORDER })
+	//  @Authorized( { PrivilegeConstants.EDIT_LAB_ORDER, PrivilegeConstants.ADD_LAB_ORDER })
 	public LabOrderSpecimen saveLabOrderSpecimen(LabOrderSpecimen labOrderSpecimen) throws APIException;
 	
 	/**
@@ -122,7 +122,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @param uuid the uuid to find
 	 * @return the LabOrderSpecimen that was found or null
 	 */
-	@Authorized( PrivilegeConstants.VIEW_LAB_ORDER )
+	//  @Authorized( PrivilegeConstants.VIEW_LAB_ORDER )
 	public LabOrderSpecimen getLabOrderSpecimenByUuid(String uuid);
 	
 	/**
@@ -132,7 +132,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @param labOrderSpecimen The LabOrderSpecimen to remove from the system
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.PURGE_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.PURGE_LAB_ORDER)
 	public void purgeLabOrderSpecimen(LabOrderSpecimen labOrderSpecimen) throws APIException;
 	
 	/**
@@ -144,7 +144,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @return the LabOrderSpecimen that was voided
 	 * @throws APIException
 	 */
-	@Authorized(PrivilegeConstants.DELETE_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.DELETE_LAB_ORDER)
 	public LabOrderSpecimen deleteLabOrderSpecimen(LabOrderSpecimen labOrderSpecimen, String retireReason) throws APIException;
 	
 	/**
@@ -155,7 +155,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public List<LabOrderSpecimen> getAllLabOrderSpecimens(Boolean includeVoided) throws APIException;
 	
 	/**
@@ -165,7 +165,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public List<LabOrderSpecimen> getAllLabOrderSpecimens() throws APIException;
 	
 	/**
@@ -181,7 +181,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public Integer getCountOfLabOrderSpecimens(Boolean includeRetired) throws APIException;
 	
 	/**
@@ -191,7 +191,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public Integer getCountOfLabOrderSpecimens() throws APIException;
 
 //--------------------------------------------------------------------------------
@@ -214,7 +214,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly=true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public LabSpecimen saveLabSpecimen(LabSpecimen labLabSpecimen)throws APIException;
 	
 	/*
@@ -223,14 +223,14 @@ public interface LabOrderService extends OpenmrsService {
 	 * @throws APIException
 	 */
 	@Transactional(readOnly=false)
-	@Authorized(PrivilegeConstants.PURGE_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.PURGE_LAB_ORDER)
 	public void purgeLabSpecimen(LabSpecimen labLabSpecimen)throws APIException;
 	
 	/*
 	 * 
 	 */
 	@Transactional(readOnly=false)
-	@Authorized(PrivilegeConstants.DELETE_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.DELETE_LAB_ORDER)
 	public LabSpecimen deleteLabSpecimen(LabSpecimen labLabSpecimen, String reason)throws APIException;
 	
 	/*
@@ -242,7 +242,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * @should return specimens
 	 */
 	@Transactional(readOnly=true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public List<LabSpecimen> getAllLabSpecimens(Boolean ifVoided)throws APIException;
 	
 	/*
@@ -258,7 +258,7 @@ public interface LabOrderService extends OpenmrsService {
 	 * throws Exception
 	 */
 	@Transactional(readOnly=true)
-	@Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public Integer getCountOfLabSpecimen(String search,Boolean ifVoided)throws APIException;
 	
 
