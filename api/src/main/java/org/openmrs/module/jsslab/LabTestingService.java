@@ -6,6 +6,7 @@ import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
 import org.openmrs.module.jsslab.db.LabInstrument;
+import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.module.jsslab.db.LabTestRange;
 import org.springframework.transaction.annotation.Transactional;
@@ -117,6 +118,82 @@ public interface LabTestingService extends OpenmrsService {
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
 	public Integer getCountOfLabTestSpecimens(Boolean includeVoided) throws APIException;
+	
+	//-----------------------------------------------------------------------
+	
+	@Authorized( PrivilegeConstants.VIEW_LAB_TEST )
+	public LabReport getLabReport(Integer labReport);
+	
+	@Authorized( PrivilegeConstants.VIEW_LAB_TEST )
+	public LabReport getLabReportByUuid(String uuid);
+	
+	@Authorized( { PrivilegeConstants.EDIT_LAB_TEST, PrivilegeConstants.ADD_LAB_TEST })
+	public LabReport saveLabReport(LabReport labReport)throws APIException;
+	
+	/**
+	 * Completely delete an LabReport from the database. This should not typically be used unless
+	 * desperately needed. Most LabReports should just be retired. See {@link #retireLabReport(LabReport, String)}
+	 * 
+	 * @param labReport The LabReport to remove from the system
+	 * @throws APIException
+	 * @should delete given LabReport
+	 */
+	@Authorized(PrivilegeConstants.PURGE_LAB_TEST)
+	public void purgeLabReport(LabReport labReport) throws APIException;
+	
+	/**
+	 * Mark an LabReport as retired. This functionally removes the LabReport from the system while keeping a
+	 * semblance
+	 * 
+	 * @param retireReason String reason
+	 * @param labReport LabReport to retire
+	 * @return the LabReport that was retired
+	 * @throws APIException
+	 * @should retire LabReport
+	 */
+	@Authorized(PrivilegeConstants.DELETE_LAB_TEST)
+	public LabReport retireLabReport(LabReport labReport, String retireReason) throws APIException;
+	
+	/**
+	 * Get all LabReport, only showing ones not marked as retired if includeVoided is true
+	 * 
+	 * @param includeVoided true/false whether to include retired LabReports in this list
+	 * @return LabReports list
+	 * @throws APIException
+	 * @should get all LabReport by includeVoided
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
+	public List<LabReport> getAllLabReports(Boolean includeVoided) throws APIException;
+	
+	/**
+	 * Get all unretired LabReport
+	 * 
+	 * @return LabReports list
+	 * @throws APIException
+	 * @should get all LabReport
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
+	public List<LabReport> getAllLabReports() throws APIException;
+	
+	/**
+	 * Returns a specified number of labReports starting with a given string from the specified index
+	 * @should return LabReport by String nameFragment, Boolean includeVoided, Integer start, Integer length
+	 */
+	public List<LabReport> getLabReports(String nameFragment, Boolean includeVoided, Integer start, Integer length);
+	
+	/**
+	 * Get count of LabReport, only showing ones not marked as retired if includeVoided is true
+	 * 
+	 * @param includeVoided true/false whether to include retired LabReports in this list
+	 * @return LabReports list
+	 * @throws APIException
+	 * @should get number of LabReport
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
+	public Integer getCountOfLabReports(Boolean includeVoided) throws APIException;
 	
 
 }

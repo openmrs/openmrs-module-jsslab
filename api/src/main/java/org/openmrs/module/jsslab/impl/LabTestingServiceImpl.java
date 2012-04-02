@@ -10,10 +10,13 @@ import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabTestingService;
 import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSpecimen;
+import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.jsslab.db.LabTestRangeDAO;
 import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.module.jsslab.db.LabTestSpecimenDAO;
+import org.openmrs.module.jsslab.db.LabReport;
+import org.openmrs.module.jsslab.db.LabReportDAO;
 
 
 
@@ -25,6 +28,8 @@ public class LabTestingServiceImpl extends BaseOpenmrsService implements LabTest
 	
 	protected LabTestSpecimenDAO labTestSpecimenDAO;
 	
+	protected LabReportDAO labReportDAO;
+	
 	public void setLabTestRangeDAO(LabTestRangeDAO labTestRangeDAO)
 	{
 		this.labTestRangeDAO=labTestRangeDAO;
@@ -33,6 +38,11 @@ public class LabTestingServiceImpl extends BaseOpenmrsService implements LabTest
 	public void setLabTestSpecimenDAO(LabTestSpecimenDAO labTestSpecimenDAO)
 	{
 		this.labTestSpecimenDAO=labTestSpecimenDAO;
+	}
+	
+	public void setLabReportDAO(LabReportDAO labReportDAO)
+	{
+		this.labReportDAO=labReportDAO;
 	}
 	
 	@Override
@@ -142,4 +152,63 @@ public class LabTestingServiceImpl extends BaseOpenmrsService implements LabTest
 		return labTestSpecimenDAO.getLabTestSpecimens("", includeRetired, null, null).size();
 	}
 	
+	//--------------------------------------------------------
+	
+	@Override
+	public LabReport getLabReport(Integer labReportId) {
+		return labReportDAO.getLabReport(labReportId);
+	}
+
+	@Override
+	public LabReport getLabReportByUuid(String uuid) {
+		return labReportDAO.getLabReportByUuid(uuid);
+	}
+
+	@Override
+	public LabReport saveLabReport(LabReport labReport)
+			throws APIException {
+		return labReportDAO.saveLabReport(labReport);
+	}
+
+	@Override
+	public void purgeLabReport(LabReport labReport)
+			throws APIException {
+		labReportDAO.deleteLabReport(labReport);
+		
+	}
+
+	@Override
+	public LabReport retireLabReport(
+			LabReport labReport, String retireReason)
+			throws APIException {
+		labReport.setRetired(true);
+		labReport.setDateRetired(new Date());
+		labReport.setRetireReason(retireReason);
+		return labReportDAO.saveLabReport(labReport);
+	}
+
+	@Override
+	public List<LabReport> getAllLabReports(Boolean includeVoided)
+			throws APIException {
+		return labReportDAO.getLabReports("",includeVoided,null,null);
+	}
+
+	@Override
+	public List<LabReport> getAllLabReports() throws APIException {
+		return labReportDAO.getLabReports("",false,null,null);
+	}
+
+	@Override
+	public List<LabReport> getLabReports(String nameFragment,
+			Boolean includeVoided, Integer start, Integer length) {
+		return labReportDAO.getLabReports(nameFragment,
+				includeVoided, start, length);
+	}
+
+	@Override
+	public Integer getCountOfLabReports(Boolean includeRetired)
+			throws APIException {
+		return labReportDAO.getLabReports("", includeRetired, null, null).size();
+	}
+
 }
