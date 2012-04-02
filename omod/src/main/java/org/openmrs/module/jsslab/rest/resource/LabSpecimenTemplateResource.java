@@ -47,7 +47,7 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 		if(labSpecimenTemplate!=null)
 		{
 			//
-			Context.getService(LabCatalogService.class).deleteLabSpecimenTemplate(labSpecimenTemplate,reason);
+			Context.getService(LabCatalogService.class).retireLabSpecimenTemplate(labSpecimenTemplate,reason);
 		}		
 		
 	}

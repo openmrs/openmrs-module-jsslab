@@ -32,6 +32,7 @@ public interface LabCatalogService extends OpenmrsService {
 		 * 
 		 * @param labTestPanel The LabTestPanel to remove from the system
 		 * @throws APIException
+		 * @should delete given LabTestPanel
 		 */
 		@Authorized(PrivilegeConstants.PURGE_LAB_CAT)
 		public void purgeLabTestPanel(LabTestPanel labTestPanel) throws APIException;
@@ -44,6 +45,7 @@ public interface LabCatalogService extends OpenmrsService {
 		 * @param labTestPanel LabTestPanel to retire
 		 * @return the LabTestPanel that was retired
 		 * @throws APIException
+		 * @should retire LabTestPanel
 		 */
 		@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
 		public LabTestPanel retireLabTestPanel(LabTestPanel labTestPanel, String retireReason) throws APIException;
@@ -54,6 +56,7 @@ public interface LabCatalogService extends OpenmrsService {
 		 * @param includeVoided true/false whether to include retired LabTestPanels in this list
 		 * @return LabTestPanels list
 		 * @throws APIException
+		 * @should get all LabTestPanel by includeVoided
 		 */
 		@Transactional(readOnly = true)
 		@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -64,6 +67,7 @@ public interface LabCatalogService extends OpenmrsService {
 		 * 
 		 * @return LabTestPanels list
 		 * @throws APIException
+		 * @should get all LabTestPanel
 		 */
 		@Transactional(readOnly = true)
 		@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -71,6 +75,7 @@ public interface LabCatalogService extends OpenmrsService {
 		
 		/**
 		 * Returns a specified number of labTestPanels starting with a given string from the specified index
+		 * @should return LabTestPanel by String nameFragment, Boolean includeVoided, Integer start, Integer length
 		 */
 		public List<LabTestPanel> getLabTestPanels(String nameFragment, Boolean includeVoided, Integer start, Integer length);
 		
@@ -80,6 +85,7 @@ public interface LabCatalogService extends OpenmrsService {
 		 * @param includeVoided true/false whether to include retired LabTestPanels in this list
 		 * @return LabTestPanels list
 		 * @throws APIException
+		 * @should get number of LabTestPanel
 		 */
 		@Transactional(readOnly = true)
 		@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -102,6 +108,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * 
 	 * @param uuid the uuid to find
 	 * @return the LabTest that was found or null
+	 * @should get LabTest by uuid
 	 */
 	@Authorized( PrivilegeConstants.VIEW_LAB_CAT )
 	public LabTest getLabTestByUUID(String uuid);
@@ -119,6 +126,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * 
 	 * @param labTest The LabTest to remove from the system
 	 * @throws APIException
+	 * @should delete given LabTest
 	 */
 	@Authorized(PrivilegeConstants.PURGE_LAB_CAT)
 	public void purgeLabTest(LabTest labTest) throws APIException;
@@ -131,6 +139,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * @param labTest LabTest to retire
 	 * @return the LabTest that was retired
 	 * @throws APIException
+	 * @should retire LabTest
 	 */
 	@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
 	public LabTest retireLabTest(LabTest labTest, String retireReason) throws APIException;
@@ -141,6 +150,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * @param includeRetired true/false whether to include retired LabTests in this list
 	 * @return LabTests list
 	 * @throws APIException
+	 * @should get all LabTest by if includeRetired
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -156,18 +166,21 @@ public interface LabCatalogService extends OpenmrsService {
 	/*
 	 * @param id
 	 * @return LabPrecondition if founded, or null.
+	 * @should return LabPrecondition by LabPreconditionId
 	 */
 	public LabPrecondition getLabPrecondition(Integer labPreconditionId);
 	
 	/*
 	 * @param uuid
 	 * @return LabPrecondition if founded, or null.
-	 */
+	 * @should return LabPrecondition by uuid
+	 * */
 	public LabPrecondition getLabPreconditionByUuid(String uuid);
 	
 	/*
 	 * @return save LabPrecondition to database.
 	 * @throws APIException
+	 * @should save record
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -177,6 +190,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 *  Remove the LabPrecondition from database, most of the time we just voided the LabPrecondition.
 	 * @param the LabPrecondition that should be removed
 	 * @throws APIException
+	 * @should delete LabPrecondition by given LabPrecondition
 	 */
 	@Transactional(readOnly=false)
 	@Authorized(PrivilegeConstants.PURGE_LAB_CAT)
@@ -187,7 +201,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 */
 	@Transactional(readOnly=false)
 	@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
-	public LabPrecondition deleteLabPrecondition(LabPrecondition labLabPrecondition, String reason)throws APIException;
+	public LabPrecondition voidLabPrecondition(LabPrecondition labLabPrecondition, String reason)throws APIException;
 	
 	/*
 	 * Get all LabPrecondition list including voided if the ifVoided is true
@@ -195,6 +209,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * @param if include voided LabPrecondition
 	 * @return LabPrecondition list(include voided list if ifVoided is true)
 	 * @throws APIException
+	 * @should get all LabPrecondition
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -211,6 +226,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * @param if include voided resources
 	 * @return length of LabPrecondition(include voided if ifVoided is true) resource
 	 * throws Exception
+	 * @should get the number of LabPrecondition in database
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -218,6 +234,7 @@ public interface LabCatalogService extends OpenmrsService {
 	
 	/*
 	 * @param use ID to search LabSpecimenTemplate
+	 * @should get LabSpecimenTemplate by LabSpecimenTemplateId
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -225,6 +242,7 @@ public interface LabCatalogService extends OpenmrsService {
 	
 	/*
 	 * @param use name to search LabSpecimenTemplate
+	 * @should get LabSpecimenTemplate by LabSpecimenTemplateName
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -232,17 +250,20 @@ public interface LabCatalogService extends OpenmrsService {
 
 	/*
 	 * get the specific list of LabSpecimenTemplate from String and index.
+	 * @should get all LabSpecimenTemplate by ifVoided
 	 */
 	public List<LabSpecimenTemplate> getLabSpecimenTemplate(String displayFragment, Boolean ifVoided, Integer index, Integer length);
 	/*
 	 * @param uuid
 	 * @return LabSpecimenTemplate if founded, or null.
+	 * @should get LabSpecimenTemplate by uuid
 	 */
 	public LabSpecimenTemplate getLabSpecimenTemplateByUuid(String uuid);
 	
 	/*
 	 * @return save LabSpecimenTemplate to database.
 	 * @throws APIException
+	 * @should save given LabSpecimenTemplate
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -252,6 +273,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 *  Remove the LabSpecimenTemplate from database, most of the time we just voided the LabSpecimenTemplate.
 	 * @param the LabSpecimenTemplate that should be removed
 	 * @throws APIException
+	 * @should delete given LabSpecimenTemplate
 	 */
 	@Transactional(readOnly=false)
 	@Authorized(PrivilegeConstants.PURGE_LAB_CAT)
@@ -262,13 +284,14 @@ public interface LabCatalogService extends OpenmrsService {
 	 */
 	@Transactional(readOnly=false)
 	@Authorized(PrivilegeConstants.DELETE_LAB_CAT)
-	public LabSpecimenTemplate deleteLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate, String reason)throws APIException;
+	public LabSpecimenTemplate retireLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate, String reason)throws APIException;
 	
 	/*
 	 * Get all not voided LabSpecimenTemplate
 	 * 
 	 * @return LabSpecimenTemplate list
 	 * @throws APIException
+	 * @should get all LabSpecimenTemplate
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -280,6 +303,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * @param if include voided LabSpecimenTemplate
 	 * @return LabSpecimenTemplate list(include voided list if ifVoided is true)
 	 * @throws APIException
+	 * @should get all unvoided LabSpecimenTemplate
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -291,6 +315,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * @param if include voided resources
 	 * @return length of LabSpecimenTemplate(include voided if ifVoided is true) resource
 	 * throws Exception
+	 * @should get number of LabSpecimenTemplate
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)

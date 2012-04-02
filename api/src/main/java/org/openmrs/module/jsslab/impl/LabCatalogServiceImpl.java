@@ -109,7 +109,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labPreconditionDAO.saveLabPrecondition(labPrecondition);
 	}
 
-	public LabPrecondition deleteLabPrecondition(LabPrecondition labPrecondition,
+	public LabPrecondition voidLabPrecondition(LabPrecondition labPrecondition,
 			String deleteReason) throws APIException {
 		labPrecondition.setVoided(true);
 		labPrecondition.setDateVoided(new Date());
@@ -124,7 +124,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	}
 
 	public List<LabPrecondition> getAllLabPreconditions(Boolean includeVoided) {
-		return labPreconditionDAO.getLabPreconditions("", includeVoided, null, null);
+		return labPreconditionDAO.getLabPreconditions("", includeVoided, 0, 0);
 	}
 		
 	public List<LabPrecondition> getLabPreconditions(String displayFragment,
@@ -156,7 +156,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		return labSpecimenTemplateDAO.saveLabSpecimenTemplate(labSpecimenTemplate);
 	}
 
-	public LabSpecimenTemplate deleteLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate, String reason)
+	public LabSpecimenTemplate retireLabSpecimenTemplate(LabSpecimenTemplate labSpecimenTemplate, String reason)
 			throws APIException {
 		labSpecimenTemplate.setRetired(true);
 		labSpecimenTemplate.setRetireReason(reason);
@@ -177,13 +177,13 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	@Override
 	public List<LabSpecimenTemplate> getAllLabSpecimenTemplates() throws APIException {
-		return labSpecimenTemplateDAO.getLabSpecimenTemplates("", false, null, null);
+		return labSpecimenTemplateDAO.getLabSpecimenTemplates("", false, 0, 0);
 	}
 
 	@Override
 	public List<LabSpecimenTemplate> getAllLabSpecimenTemplates(Boolean ifVoided)
 			throws APIException {
-		return labSpecimenTemplateDAO.getLabSpecimenTemplates("", ifVoided, null, null);
+		return labSpecimenTemplateDAO.getLabSpecimenTemplates("", ifVoided, 0, 0);
 	}
 
 		public List<LabSpecimenTemplate> getLabSpecimenTemplate(String displayFragment,

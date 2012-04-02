@@ -50,9 +50,9 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	
 	private String parentRoleName;
 
-	private String specimenSubId;
+	private Integer specimenSubId;
 	
-	private String parentSubId;
+	private Integer parentSubId;
 	
 	private Concept parentRelationConcept;
 	
@@ -138,7 +138,7 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	 * @return Returns the specimen id suffix.
 	 */
 	@Attribute(required = true)
-	public String getSpecimenSubId() {
+	public Integer getSpecimenSubId() {
 		return specimenSubId;
 	}
 	
@@ -146,7 +146,7 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	 * @param specimenSubId The specimen suffix to set.
 	 */
 	@Attribute(required = true)
-	public void setSpecimenSubId(String specimenSubId) {
+	public void setSpecimenSubId(Integer specimenSubId) {
 		this.specimenSubId = specimenSubId;
 	}
 	
@@ -154,7 +154,7 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	 * @return Returns the parent id suffix.
 	 */
 	@Attribute(required = true)
-	public String getParentSubId() {
+	public Integer getParentSubId() {
 		return parentSubId;
 	}
 	
@@ -162,7 +162,7 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	 * @param parentSubId The parent's specimen suffix to set.
 	 */
 	@Attribute(required = true)
-	public void setParentSubId(String parentSubId) {
+	public void setParentSubId(Integer parentSubId) {
 		this.parentSubId = parentSubId;
 	}
 	

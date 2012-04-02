@@ -45,7 +45,7 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 		if(labPrecondition!=null)
 		{
 			//
-			Context.getService(LabCatalogService.class).deleteLabPrecondition(labPrecondition,reason);
+			Context.getService(LabCatalogService.class).voidLabPrecondition(labPrecondition,reason);
 		}		
 		
 	}
