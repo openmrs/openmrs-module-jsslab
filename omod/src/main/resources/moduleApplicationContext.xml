@@ -160,7 +160,7 @@
 						</property>
 					     <property name="labTestResultDAO">
 							<bean
-								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestSpecimenDAO">
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestResultDAO">
 								<property name="sessionFactory">
 									<ref bean="sessionFactory" />
 								</property>
@@ -168,7 +168,7 @@
 						</property>
 					     <property name="labReportDAO">
 							<bean
-								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestSpecimenDAO">
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabReportDAO">
 								<property name="sessionFactory">
 									<ref bean="sessionFactory" />
 								</property>
