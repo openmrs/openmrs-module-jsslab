@@ -161,9 +161,12 @@ public class HibernateLabTestPanelDAO implements LabTestPanelDAO {
 			criteria.setMaxResults(length);
 		
 		List<LabTestPanel> list = (List<LabTestPanel>) criteria.list();
-		for (LabTestPanel lp : list) {
+		for (int i = 0; i < list.size(); ) {
+			LabTestPanel lp = list.get(i);
 			if (!lp.getTestPanelConcept().getName().getName().startsWith(nameFragment))
 				list.remove(lp);
+			else
+				i++;
 		}
 		return list;
 	}

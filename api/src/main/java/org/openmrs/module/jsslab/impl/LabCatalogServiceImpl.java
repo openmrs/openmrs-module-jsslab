@@ -6,6 +6,7 @@ import java.util.Date;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.APIException;
+import org.openmrs.api.context.Context;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.db.LabOrder;
@@ -52,6 +53,15 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	
 	public LabTest saveLabTest(LabTest labTest) throws APIException {
+		if (labTest.getTestPanel() == null) {
+			throw new APIException(Context.getMessageSourceService().getMessage("JSSLab.LabCatalogServiceImpl.saveLabTest.TestPanelRequired", null,
+			    "Reference to a LabTestPanel is required", Context.getLocale()));
+		}
+		if (labTest.getTestConcept() == null) {
+			throw new APIException(Context.getMessageSourceService().getMessage("JSSLab.LabCatalogServiceImpl.saveLabTest.TestConceptRequired", null,
+				"Reference to a Concept is required", Context.getLocale()));
+		}
+		
 		return labTestDAO.saveLabTest(labTest);
 	}
 

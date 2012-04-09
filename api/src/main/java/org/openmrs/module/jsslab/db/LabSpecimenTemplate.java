@@ -270,7 +270,14 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	 * Check for a locale change
 	 */
 	private void checkLocale() {
-		if (! textLocale.equals(Context.getLocale())) {
+		if (textLocale == null) {
+			parentRoleName = "";
+			parentRelationName = "";
+			analysisSpecimenTypeName = "";
+			testRoleName = "";
+			textLocale = Context.getLocale();
+		}
+		else if (! textLocale.equals(Context.getLocale())) {
 			parentRoleName = "";
 			parentRelationName = "";
 			analysisSpecimenTypeName = "";

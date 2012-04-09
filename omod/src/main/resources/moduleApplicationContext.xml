@@ -158,8 +158,24 @@
 								</property>
 							</bean>
 						</property>
-					    </bean>
-					  </property>
+					     <property name="labTestResultDAO">
+							<bean
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestSpecimenDAO">
+								<property name="sessionFactory">
+									<ref bean="sessionFactory" />
+								</property>
+							</bean>
+						</property>
+					     <property name="labReportDAO">
+							<bean
+								class="org.openmrs.module.jsslab.db.hibernate.HibernateLabTestSpecimenDAO">
+								<property name="sessionFactory">
+									<ref bean="sessionFactory" />
+								</property>
+							</bean>
+						</property>
+				    </bean>
+				  </property>
 					  
 			    <property name="preInterceptors">
 					<ref bean="serviceInterceptors" />

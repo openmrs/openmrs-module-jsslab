@@ -148,7 +148,12 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 	 * Check for a locale change
 	 */
 	private void checkLocale() {
-		if (! textLocale.equals(Context.getLocale())) {
+		if (textLocale == null) {
+			specimenRoleText = "";
+			specimenRoleCode = "";
+			textLocale = Context.getLocale();
+		}
+		else if (! textLocale.equals(Context.getLocale())) {
 			specimenRoleText = "";
 			specimenRoleCode = "";
 			textLocale = Context.getLocale();

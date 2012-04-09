@@ -6,6 +6,7 @@ import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.db.LabPrecondition;
+import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
@@ -103,4 +104,7 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 	}
 
 
+	public String getDisplayString(LabPrecondition labPrecondition) {
+		return labPrecondition.getDisplayString();
+	}
 }

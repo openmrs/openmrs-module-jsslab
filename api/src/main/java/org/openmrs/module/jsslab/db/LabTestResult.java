@@ -14,12 +14,18 @@
 package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.UUID;
+import java.lang.Math;
 
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Concept;
 import org.openmrs.User;
+import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabResultType;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
@@ -72,13 +78,24 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	
 	private Boolean hidden;
 	
+	private Locale textLocale;
+	
+	private String testResultText;
+	
+	private String testAnswerConceptText;
+	
 	/**
-	 * constructor from testSpecimen
+	 * constructor 
 	 */
 
-	public void LabTestResult() {
-		
+	public LabTestResult() {
 		this.setUuid(UUID.randomUUID().toString());
+	}
+	
+	public LabTestResult(LabTestSpecimen testSpecimen) {
+		this.setUuid(UUID.randomUUID().toString());
+		this.testSpecimen = testSpecimen;
+		testSpecimen.getTestResults().add(this);
 	}
 	
 	@Override
@@ -97,11 +114,6 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 		}
 	}
 
-	public LabTestResult(LabTestSpecimen testSpecimen) {
-		this.testSpecimen = testSpecimen;
-		testSpecimen.getTestResults().add(this);
-	}
-	
 	public Integer getId() {
 		return testResultId;
 	}
@@ -412,6 +424,124 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	public void setHidden(Boolean hidden) {
 		this.hidden = hidden;
 	}
+	/**
+	 * Check for a locale change
+	 */
+	private void checkLocale() {
+		if (textLocale == null) {
+			testResultText = "";
+			testAnswerConceptText = "";
+			textLocale = Context.getLocale();
+		}
+		else if (! textLocale.equals(Context.getLocale())) {
+			testResultText = "";
+			testAnswerConceptText = "";
+			textLocale = Context.getLocale();
+		}
+		return;
+	}
 	
+	/**
+	 * Get text corresponding to testResultConcept
+	 */
+	public String getTestResultText() {
+		checkLocale();
+		if (StringUtils.isEmpty(testResultText)) {
+			if (! (testResultConcept == null)) {
+				testResultText = Context.getConceptService().getConceptName(this.getTestResultConcept().getId()).getName();
+			}
+		}
+		return testResultText;
+	}
+
+	/**
+	 * Get text corresponding to testAnswerConcept
+	 */
+	public String getTestAnswerConceptText() {
+		checkLocale();
+		if (StringUtils.isEmpty(testAnswerConceptText)) {
+			if (! (testAnswerConcept == null)) {
+				testAnswerConceptText = Context.getConceptService().getConceptName(this.getTestAnswerConcept().getId()).getName();
+				}
+			}
+		return testAnswerConceptText;
+		}
+	
+	public String getTestValueText() {
+		String s="";
+		Double d1, d2;
+		if (this.getResultType()==LabResultType.CONCEPT)
+			return getTestAnswerConceptText();
+		else if (this.getResultType()==LabResultType.DURATION) {
+			if (this.getTestAnswerDuration()==null)
+				return "";
+			d1=this.getTestAnswerDuration() % 3600;
+			d2=this.getTestAnswerDuration() - 3600 * d1;
+			if (d1!=0)
+				s=d1.toString() + "h ";
+			d1= d2 % 60;
+			d2= d2 - 60 * d1;
+			s= s + d1.toString() + "m ";
+			if (d2!=0)
+				s= s+ d2.toString() +"s ";
+			return s;
+		} else if (this.getResultType()==LabResultType.NUMERIC) {
+			d1=this.getTestAnswerNumeric();
+			if (d1==null)
+				return "";
+			d2=Math.ceil(d1);
+			if (Math.abs(d1-d2)<.001)
+				return d2.toString();
+			else
+				return d1.toString();
+		} else if (this.getResultType()==LabResultType.TITER) {
+			if (this.getTestAnswerTiter()==null)
+				return "";
+			else
+				return "1:" + this.getTestAnswerTiter();
+		} else if (this.getResultType()==LabResultType.TEXT)
+			if (this.getTestAnswerString()==null)
+				return "";
+			else 
+				return this.getTestAnswerString();
+		else
+			return null;
+	}
+
+	public String getDisplayString() {
+		String s=this.getTestResultText() + ": " + this.getTestValueText();
+		if (this.getTestSpecimen()!=null) 
+			if (this.getTestSpecimen().getSpecimen()!=null)
+				return this.getTestSpecimen().getSpecimen().getLabSpecimenId() + " " + s;
+		return s;
+	}
+	
+	public String toString() {
+		return "Result " + this.getId() + this.getTestValueText();
+	}
+
+	public void SetFlagFromValues() {
+		String sH = "H";
+		String sL = "L";
+		Double d = this.getTestAnswerNumeric();
+		if (this.getResultType()==LabResultType.TITER) {
+			sH="L";
+			sL="H";
+			d=this.getTestAnswerTiter().doubleValue();
+		} else if (this.getResultType()!=LabResultType.NUMERIC)
+			return;
+		if (d<this.getTestCriticalLow())
+			this.setTestAnswerFlag(sL + sL);
+		else if (d>this.getTestCriticalHigh())
+			this.setTestAnswerFlag(sH + sH);
+		else if (d<this.getTestNormalLow())
+			this.setTestAnswerFlag(sL);
+		else if (d>this.getTestNormalHigh())
+			this.setTestAnswerFlag(sH);
+		else
+			this.setTestAnswerFlag("");
+		return;
+	}
+
 }
 

@@ -169,7 +169,12 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 	 * Check for a locale change
 	 */
 	private void checkLocale() {
-		if (! textLocale.equals(Context.getLocale())) {
+		if (textLocale == null) {
+			preconditionQuestionText = "";
+			preconditionAnswerText = "";
+			textLocale = Context.getLocale();
+		}
+		else if (! textLocale.equals(Context.getLocale())) {
 			preconditionQuestionText = "";
 			preconditionAnswerText = "";
 			textLocale = Context.getLocale();

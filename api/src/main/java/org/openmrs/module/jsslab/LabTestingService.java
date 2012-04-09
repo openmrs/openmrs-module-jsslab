@@ -6,6 +6,7 @@ import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
 import org.openmrs.module.jsslab.db.LabInstrument;
+import org.openmrs.module.jsslab.db.LabTestResult;
 import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.module.jsslab.db.LabTestRange;
@@ -194,6 +195,78 @@ public interface LabTestingService extends OpenmrsService {
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
 	public Integer getCountOfLabReports(Boolean includeVoided) throws APIException;
+
+//--------------------------------------------------------------------------------------------------
+
+	/*
+	 * @param id
+	 * @return LabTestResult if founded, or null.
+	 * @should return LabTestResult by LabTestResultId
+	 */
+	public LabTestResult getLabTestResult(Integer labTestResultId);
 	
+	/*
+	 * @param uuid
+	 * @return LabTestResult if founded, or null.
+	 * @should return LabTestResult by uuid
+	 * */
+	public LabTestResult getLabTestResultByUuid(String uuid);
+	
+	/*
+	 * @return save LabTestResult to database.
+	 * @throws APIException
+	 * @should save record
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
+	public LabTestResult saveLabTestResult(LabTestResult labLabTestResult)throws APIException;
+	
+	/*
+	 *  Remove the LabTestResult from database, most of the time we just voided the LabTestResult.
+	 * @param the LabTestResult that should be removed
+	 * @throws APIException
+	 * @should delete LabTestResult by given LabTestResult
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.PURGE_LAB_TEST)
+	public void purgeLabTestResult(LabTestResult labLabTestResult)throws APIException;
+	
+	/*
+	 * 
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.DELETE_LAB_TEST)
+	public LabTestResult voidLabTestResult(LabTestResult labLabTestResult, String reason)throws APIException;
+	
+	/*
+	 * Get all LabTestResult list including voided if the ifVoided is true
+	 * 
+	 * @param if include voided LabTestResult
+	 * @return LabTestResult list(include voided list if ifVoided is true)
+	 * @throws APIException
+	 * @should get all LabTestResult
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
+	public List<LabTestResult> getAllLabTestResults(Boolean ifVoided)throws APIException;
+	
+	/*
+	 * get the specific list of LabTests from String and index.
+	 */
+	public List<LabTestResult> getLabTestResults(String displayFragment, Boolean ifVoided, Integer index, Integer length);
+
+	/*
+	 * Get the length of the list that LabTestResult return(include voided if ifVoided is true)
+	 * @param search is a String that represent DisplayFragment
+	 * @param if include voided resources
+	 * @return length of LabTestResult(include voided if ifVoided is true) resource
+	 * throws Exception
+	 * @should get the number of LabTestResult in database
+	 */
+	@Transactional(readOnly=true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
+	public Integer getCountOfLabTestResult(String search,Boolean ifVoided)throws APIException;
+	
+
 
 }

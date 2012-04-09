@@ -9,6 +9,7 @@ import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabTestingService;
 import org.openmrs.module.jsslab.db.LabInstrument;
+import org.openmrs.module.jsslab.db.LabTestResult;
 import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabTestRange;
@@ -17,6 +18,8 @@ import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.module.jsslab.db.LabTestSpecimenDAO;
 import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabReportDAO;
+import org.openmrs.module.jsslab.db.LabTestResult;
+import org.openmrs.module.jsslab.db.LabTestResultDAO;
 
 
 
@@ -29,6 +32,8 @@ public class LabTestingServiceImpl extends BaseOpenmrsService implements LabTest
 	protected LabTestSpecimenDAO labTestSpecimenDAO;
 	
 	protected LabReportDAO labReportDAO;
+	
+	protected LabTestResultDAO labTestResultDAO;
 	
 	public void setLabTestRangeDAO(LabTestRangeDAO labTestRangeDAO)
 	{
@@ -43,6 +48,11 @@ public class LabTestingServiceImpl extends BaseOpenmrsService implements LabTest
 	public void setLabReportDAO(LabReportDAO labReportDAO)
 	{
 		this.labReportDAO=labReportDAO;
+	}
+	
+	public void setLabTestResultDAO(LabTestResultDAO labTestResultDAO)
+	{
+		this.labTestResultDAO=labTestResultDAO;
 	}
 	
 	@Override
@@ -210,5 +220,52 @@ public class LabTestingServiceImpl extends BaseOpenmrsService implements LabTest
 			throws APIException {
 		return labReportDAO.getLabReports("", includeRetired, null, null).size();
 	}
+	//------------------------------------------------------------	
+	
+		public LabTestResult getLabTestResult(Integer labTestResult) {
+			//
+			return labTestResultDAO.getLabTestResult(labTestResult);
+		}
+
+		public LabTestResult getLabTestResultByUuid(String uuid) {
+			//
+			return labTestResultDAO.getLabTestResultByUuid(uuid);
+		}
+
+		public LabTestResult saveLabTestResult(LabTestResult labTestResult)
+				throws APIException {
+			//
+			return labTestResultDAO.saveLabTestResult(labTestResult);
+		}
+
+		public LabTestResult voidLabTestResult(LabTestResult labTestResult,
+				String deleteReason) throws APIException {
+			labTestResult.setVoided(true);
+			labTestResult.setDateVoided(new Date());
+			labTestResult.setVoidReason(deleteReason);
+			return labTestResultDAO.saveLabTestResult(labTestResult);
+		}
+
+		public void purgeLabTestResult(LabTestResult labTestResult)
+				throws APIException {
+			//
+			labTestResultDAO.deleteLabTestResult(labTestResult);
+		}
+
+		public List<LabTestResult> getAllLabTestResults(Boolean includeVoided) {
+			return labTestResultDAO.getLabTestResults("", includeVoided, 0, 0);
+		}
+			
+		public List<LabTestResult> getLabTestResults(String displayFragment,
+				Boolean ifVoided, Integer index, Integer length) {
+			return labTestResultDAO.getLabTestResults(displayFragment,
+					ifVoided, index, length);
+		}
+
+		public Integer getCountOfLabTestResult(String search, Boolean ifVoided)
+				throws APIException {
+			return labTestResultDAO.getCountOfLabTestResults(search, ifVoided);
+		}
+
 
 }
