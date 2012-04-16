@@ -4,6 +4,7 @@ import java.util.List;
 
 import junit.framework.Assert;
 
+import org.hibernate.PropertyValueException;
 import org.junit.Before;
 import org.junit.Test;
 import org.openmrs.api.APIException;
@@ -16,7 +17,7 @@ import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.openmrs.test.SkipBaseSetup;
 import org.openmrs.module.jsslab.LabCatalogService;
 
-public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest{
+public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 
 	@Before
 	public void before() throws Exception {
@@ -257,56 +258,6 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest{
 	
 	
 	/**
-	 * @see LabCatalogService#getAllLabTestPanels()
-	 * @verifies get all LabTestPanel
-	 */
-	@Test
-	public void getAllLabTestPanels_shouldGetAllLabTestPanel() throws Exception {
-		List<LabTestPanel> list= Context.getService(LabCatalogService.class).getAllLabTestPanels(false);
-		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
-		Assert.assertEquals("getAllLabTestPanels should return the right objects", 3, list.size());
-	}
-
-	/**
-	 * @see LabCatalogService#getAllLabTestPanels(Boolean)
-	 * @verifies get all LabTestPanel by includeVoided
-	 */
-	@Test
-	public void getAllLabTestPanels_shouldGetAllLabTestPanelByIncludeVoided() throws Exception {
-		List<LabTestPanel> list = Context.getService(LabCatalogService.class).getAllLabTestPanels(true);
-		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
-		Assert.assertEquals("getAllLabTestPanels should return the right objects", 4, list.size());
-	}
-
-	/**
-	 * @see LabCatalogService#getAllLabTests(Boolean)
-	 * @verifies get all LabTest by if includeRetired
-	 */
-	@Test
-	public void getAllLabTests_shouldGetAllLabTestByIfIncludeRetired() throws Exception {
-		List<LabTest> list;
-		
-		list = Context.getService(LabCatalogService.class).getAllLabTests(false);
-		Assert.assertNotNull("getAllLabTests should not return null", list);
-		Assert.assertEquals("getAllLabTests (excluding retired) should return the right objects", 23, list.size());
-
-		list = Context.getService(LabCatalogService.class).getAllLabTests(true);
-		Assert.assertNotNull("getAllLabTests should not return null", list);
-		Assert.assertEquals("getAllLabTests (including retired) should return the right objects", 24, list.size());
-	}
-
-	/**
-	 * @see LabCatalogService#getCountOfLabTestPanels(Boolean)
-	 * @verifies get number of LabTestPanel
-	 */
-	@Test
-	public void getCountOfLabTestPanels_shouldGetNumberOfLabTestPanel() throws Exception {
-		int count = Context.getService(LabCatalogService.class).getCountOfLabTestPanels(false);
-		Assert.assertNotNull("getCountOfLabTestPanels should not return null", count);
-		Assert.assertEquals("getCountOfLabTestPanels should return the right number", 3, count);
-	}
-
-	/**
 	 * @see LabCatalogService#getLabTestByUUID(String)
 	 * @verifies get LabTest by uuid
 	 */
@@ -317,28 +268,6 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest{
 		LabTest labTest = Context.getService(LabCatalogService.class).getLabTestByUUID(uuid);
 		Assert.assertNotNull("getLabTestByUUID should not return null", labTest);
 		Assert.assertEquals("getLabTestByUUID should return the correct object", uuid, labTest.getUuid());
-	}
-
-	/**
-	 * @see LabCatalogService#getLabTestPanels(String,Boolean,Integer,Integer)
-	 * @verifies return LabTestPanel by String nameFragment, Boolean includeVoided, Integer start, Integer length
-	 */
-	@Test
-	public void getLabTestPanels_shouldReturnLabTestPanelByStringNameFragmentBooleanIncludeVoidedIntegerStartIntegerLength()
-			throws Exception {
-		List<LabTestPanel> list;
-		
-		list = Context.getService(LabCatalogService.class).getLabTestPanels("", Boolean.FALSE, 0, 4);
-		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
-		Assert.assertEquals("getAllLabTestPanels should return the right objects", 3, list.size());
-		
-		list = Context.getService(LabCatalogService.class).getLabTestPanels("Hematology Panel", Boolean.TRUE, 0, 4);
-		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
-		Assert.assertEquals("getAllLabTestPanels should return the right object when using name fragment", "5d1545bb-486e-11e1-b5ed-0024e8c61285", list.get(0).getUuid());
-		
-		list = Context.getService(LabCatalogService.class).getLabTestPanels("Hematology Panel", Boolean.FALSE, 1, 2);
-		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
-		Assert.assertEquals("getAllLabTestPanels should return the right objects when using start and length filters", 2, list.size());
 	}
 
 	/**
@@ -354,6 +283,154 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest{
 		
 		labTest = Context.getService(LabCatalogService.class).getLabTestByUUID(uuid);
 		Assert.assertNull("purgeLabTest should return null", labTest);
+	}
+
+	/**
+	 * @see LabCatalogService#retireLabTest(LabTest,String)
+	 * @verifies retire LabTest
+	 */
+	@Test
+	public void retireLabTest_shouldRetireLabTest() throws Exception {
+		String uuid = "5d1eab19-486e-11e1-b5ed-0024e8c61285";
+		
+		LabTest labTest;
+		labTest = Context.getService(LabCatalogService.class).getLabTestByUUID(uuid);
+		Context.getService(LabCatalogService.class).retireLabTest(labTest, "testing retire");
+		
+		labTest = Context.getService(LabCatalogService.class).getLabTestByUUID(uuid);
+		Assert.assertNotNull("getLabTest should not return null for retired test", labTest);
+		Assert.assertEquals("retireLabTest should return the right object with voided true", Boolean.TRUE, labTest.getRetired());
+		Assert.assertEquals("retireLabTest should return the right object with retire reason", "testing retire", labTest.getRetireReason());
+		Assert.assertNotNull("LabTestPanel should have retire date", labTest.getDateRetired());
+	}
+
+	/**
+	 * @see LabCatalogService#saveLabTest(LabTest)
+	 * @verifies not save LabTest if LabTest doesn't validate
+	 */
+	@Test
+	public void saveLabTest_shouldNotSaveLabTestIfLabTestDoesntValidate()
+			throws Exception {
+		LabTest labTest = new LabTest();
+		String uuid = labTest.getUuid();
+		
+		LabTest labTestSaved = null;
+		try {
+			labTestSaved = Context.getService(LabCatalogService.class).saveLabTest(labTest);
+			Assert.fail("should fail saving invalid labTest");
+		} catch (Exception e) {
+			try {
+				labTestSaved = Context.getService(LabCatalogService.class).getLabTestByUUID(uuid);
+				Assert.assertNull("LabTest should not be saved, hence be null when loaded", labTestSaved);
+			} catch (Exception ex) {
+				Assert.fail("failed to execute getLabTest - invalid data was written");
+			}
+		}
+	}
+
+	/**
+	 * @see LabCatalogService#getAllLabTests(Boolean)
+	 * @verifies get all LabTest by if includeRetired
+	 */
+	@Test
+	public void getAllLabTests_shouldGetAllLabTestByIfIncludeRetired() throws Exception {
+		LabTest labTest = Context.getService(LabCatalogService.class).getLabTestByUUID("5d1545bb-486e-11e1-b5ed-0024e8c61285");
+		Context.getService(LabCatalogService.class).retireLabTest(labTest, "testing retire");
+		
+		List<LabTest> list;
+		
+		list = Context.getService(LabCatalogService.class).getAllLabTests(false);
+		Assert.assertNotNull("getAllLabTests should not return null", list);
+		Assert.assertEquals("getAllLabTests (excluding retired) should return the right objects", 23, list.size());
+	
+		list = Context.getService(LabCatalogService.class).getAllLabTests(true);
+		Assert.assertNotNull("getAllLabTests should not return null", list);
+		Assert.assertEquals("getAllLabTests (including retired) should return the right objects", 24, list.size());
+	}
+
+	/**
+	 * @see LabCatalogService#retireLabTestPanel(LabTestPanel,String)
+	 * @verifies retire LabTestPanel
+	 */
+	@Test
+	public void retireLabTestPanel_shouldRetireLabTestPanel() throws Exception {
+		LabTestPanel labTestPanel = Context.getService(LabCatalogService.class).getLabTestPanelByUuid("05dec1ac-46d9-11e1-99f4-0024e8c61285");
+		Context.getService(LabCatalogService.class).retireLabTestPanel(labTestPanel, "testing retire");
+		
+		LabTestPanel labTestPanelFromDB = Context.getService(LabCatalogService.class).getLabTestPanelByUuid(labTestPanel.getUuid());
+		Assert.assertNotNull("LabTestPanel should still exist", labTestPanelFromDB);
+		Assert.assertEquals("LabTestPanel should still exist", Boolean.TRUE, labTestPanelFromDB.isRetired());
+		Assert.assertEquals("LabTestPanel should have retire reason", "testing retire", labTestPanelFromDB.getRetireReason());
+		Assert.assertNotNull("LabTestPanel should have retire date", labTestPanelFromDB.getDateRetired());
+	}
+
+	/**
+	 * @see LabCatalogService#getAllLabTestPanels()
+	 * @verifies get all LabTestPanel
+	 */
+	@Test
+	public void getAllLabTestPanels_shouldGetAllLabTestPanel() throws Exception {
+		List<LabTestPanel> list= Context.getService(LabCatalogService.class).getAllLabTestPanels(false);
+		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
+		Assert.assertEquals("getAllLabTestPanels should return the right objects", 4, list.size());
+	}
+
+	/**
+	 * @see LabCatalogService#getAllLabTestPanels(Boolean)
+	 * @verifies get all LabTestPanel by includeVoided
+	 */
+	@Test
+	public void getAllLabTestPanels_shouldGetAllLabTestPanelByIncludeVoided() throws Exception {
+		LabTestPanel labTestPanel = Context.getService(LabCatalogService.class).getLabTestPanelByUuid("05de81e6-46d9-11e1-99f4-0024e8c61285");
+		Context.getService(LabCatalogService.class).retireLabTestPanel(labTestPanel, "testing retire");
+		
+		List<LabTestPanel> list;
+		
+		list = Context.getService(LabCatalogService.class).getAllLabTestPanels(false);
+		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
+		Assert.assertEquals("getAllLabTestPanels should return the right objects", 3, list.size());
+	
+		list = Context.getService(LabCatalogService.class).getAllLabTestPanels(true);
+		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
+		Assert.assertEquals("getAllLabTestPanels should return the right objects", 4, list.size());
+	}
+
+	/**
+	 * @see LabCatalogService#getLabTestPanels(String,Boolean,Integer,Integer)
+	 * @verifies return LabTestPanel by String nameFragment, Boolean includeVoided, Integer start, Integer length
+	 */
+	@Test
+	public void getLabTestPanels_shouldReturnLabTestPanelByStringNameFragmentBooleanIncludeVoidedIntegerStartIntegerLength()
+			throws Exception {
+		List<LabTestPanel> list;
+		
+		//verify default case works like getAllLabTestPanels()
+		list = Context.getService(LabCatalogService.class).getLabTestPanels("", Boolean.FALSE, 0, 4);
+		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
+		Assert.assertEquals("getAllLabTestPanels should return the right objects", 4, list.size());
+		
+		//verify get by nameFragment
+		list = Context.getService(LabCatalogService.class).getLabTestPanels("Hematology Panel", Boolean.FALSE, 0, 4);
+		Assert.assertNotNull("getLabTestPanels should not return null", list);
+		Assert.assertEquals("getLabTestPanels should return the right object when using name fragment", "05de81e6-46d9-11e1-99f4-0024e8c61285", list.get(0).getUuid());
+		
+		//verify start and length restrictions
+		list = Context.getService(LabCatalogService.class).getLabTestPanels("", Boolean.FALSE, 1, 2);
+		Assert.assertNotNull("getLabTestPanels should not return null", list);
+		Assert.assertEquals("getLabTestPanels should return the right amount of objects", 2, list.size());
+		Assert.assertEquals("getLabTestPanels should return the right object", "05dec1ac-46d9-11e1-99f4-0024e8c61285", list.get(0).getUuid());
+		Assert.assertEquals("getLabTestPanels should return the right object", "05df00e1-46d9-11e1-99f4-0024e8c61285", list.get(1).getUuid());
+	}
+
+	/**
+	 * @see LabCatalogService#getCountOfLabTestPanels(Boolean)
+	 * @verifies get number of LabTestPanel
+	 */
+	@Test
+	public void getCountOfLabTestPanels_shouldGetNumberOfLabTestPanel() throws Exception {
+		int count = Context.getService(LabCatalogService.class).getCountOfLabTestPanels(false);
+		Assert.assertNotNull("getCountOfLabTestPanels should not return null", count);
+		Assert.assertEquals("getCountOfLabTestPanels should return the right count", 4, count);
 	}
 
 	/**
@@ -378,66 +455,6 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest{
 			labTestPanel = Context.getService(LabCatalogService.class).getLabTestPanelByUuid(uuid);
 			Assert.assertNull("purgeLabTestPanel should return null", labTestPanel);
 		} 
-	}
-
-	/**
-	 * @see LabCatalogService#retireLabTest(LabTest,String)
-	 * @verifies retire LabTest
-	 */
-	@Test
-	public void retireLabTest_shouldRetireLabTest() throws Exception {
-		String uuid = "5d1eab19-486e-11e1-b5ed-0024e8c61285";
-		
-		LabTest labTest;
-		labTest = Context.getService(LabCatalogService.class).getLabTestByUUID(uuid);
-		Context.getService(LabCatalogService.class).retireLabTest(labTest, "testing retire");
-		
-		labTest = Context.getService(LabCatalogService.class).getLabTestByUUID(uuid);
-		Assert.assertNotNull("getLabTest should not return null for retired test", labTest);
-		Assert.assertEquals("retireLabTest should return the right object with voided true", Boolean.TRUE, labTest.getRetired());
-		Assert.assertEquals("retireLabTest should return the right object with retire reason", "testing retire", labTest.getRetireReason());
-	}
-
-	/**
-	 * @see LabCatalogService#retireLabTestPanel(LabTestPanel,String)
-	 * @verifies retire LabTestPanel
-	 */
-	@Test
-	public void retireLabTestPanel_shouldRetireLabTestPanel() throws Exception {
-		LabTestPanel labTestPanel = Context.getService(LabCatalogService.class).getLabTestPanelByUuid("05dec1ac-46d9-11e1-99f4-0024e8c61285");
-		
-		Context.getService(LabCatalogService.class).retireLabTestPanel(labTestPanel, "testing retire");
-		
-		LabTestPanel labTestPanelFromDB = Context.getService(LabCatalogService.class).getLabTestPanelByUuid(labTestPanel.getUuid());
-		Assert.assertNotNull("LabTestPanel should still exist", labTestPanelFromDB);
-		Assert.assertEquals("LabTestPanel should still exist", Boolean.TRUE, labTestPanelFromDB.isRetired());
-		Assert.assertEquals("LabTestPanel should have retire reason", "testing retire", labTestPanelFromDB.getRetireReason());
-		Assert.assertNotNull("LabTestPanel should have retire date", labTestPanelFromDB.getDateRetired());
-	}
-
-	/**
-	 * @see LabCatalogService#saveLabTest(LabTest)
-	 * @verifies not save LabTest if LabTest doesn't validate
-	 */
-	@Test
-	public void saveLabTest_shouldNotSaveLabTestIfLabTestDoesntValidate()
-			throws Exception {
-		//TODO under which conditions would a LabTest fail validation? what would happen? 
-		//the save method in the DAO does not indicate any behaviour for such a case
-		LabTest labTest = new LabTest();
-		labTest.setUuid("43");
-		LabTest labTestSaved = null;
-		try {
-			labTestSaved = Context.getService(LabCatalogService.class).saveLabTest(labTest);
-			Assert.fail("should fail saving invalid labTest");
-		} catch (Exception e) {
-			try {
-				labTestSaved = Context.getService(LabCatalogService.class).getLabTestByUUID("43");
-				Assert.assertNull("LabTestPanel should not be saved, hence be null", labTestSaved);
-			} catch (Exception ex) {
-				Assert.fail("failed to execute getLabTest - invalid data was written");
-			}
-		}
 	}
 	
 	

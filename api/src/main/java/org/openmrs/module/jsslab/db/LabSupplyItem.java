@@ -230,7 +230,11 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 	 */
 	@Attribute(required = false)
 	public String getName() {
-		return itemName;
+		return this.getManufacturer()+" "+this.getItemName()+" "+this.getLotNumber().trim();
+	}
+	
+	public String getDisplayString() {
+		return this.getName();
 	}
 	
 }

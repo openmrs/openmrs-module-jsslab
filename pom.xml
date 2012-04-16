@@ -80,14 +80,21 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-api</artifactId>
-				<version>0.8</version>
+				<version>0.9-SNAPSHOT</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-omod</artifactId>
-				<version>0.8</version>
+				<version>0.9-SNAPSHOT</version>
 				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>webservices.rest-omod</artifactId>
+				<version>0.9-SNAPSHOT</version>
+				<scope>provided</scope>
+				<classifier>test</classifier>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -120,6 +127,17 @@
                         <lineEnding>CRLF</lineEnding>
                     </configuration>
                 </plugin>
+				<plugin>					
+					<groupId>org.apache.maven.plugins</groupId>					
+					<artifactId>maven-jar-plugin</artifactId>					
+					<executions>						
+						<execution>							
+							<goals>								
+								<goal>test-jar</goal>							
+							</goals>						
+						</execution>					
+					</executions>				
+				</plugin>			
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -144,7 +162,7 @@
 	</pluginRepositories>
 
 	<properties>
-		<openMRSVersion>1.8.1</openMRSVersion>
+		<openMRSVersion>1.8.3</openMRSVersion>
 	</properties>
 
 </project>

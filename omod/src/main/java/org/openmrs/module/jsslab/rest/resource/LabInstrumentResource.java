@@ -154,4 +154,8 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 		    context);
 	}
 	
+	public String getDisplayString(LabInstrument labInstrument) {
+		return labInstrument.getDisplayString();
+	}
+	
 }

@@ -365,8 +365,10 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	 */
 	@Attribute(required = false)
 	public String getName() {
-		return name;
+		return this.getManufacturer()+" "+this.getModel()+" "+this.getSerialNumber();
 	}
 	
-
+	public String getDisplayString() {
+		return this.getName();
+	}
 }

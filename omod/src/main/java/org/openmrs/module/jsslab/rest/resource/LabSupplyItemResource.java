@@ -15,6 +15,7 @@ package org.openmrs.module.jsslab.rest.resource;
 
 import java.util.List;
 
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.annotation.Handler;
@@ -142,5 +143,10 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 		return new ServiceSearcher<LabSupplyItem>(LabManagementService.class, "getLabSupplyItems", "getCountOfLabSupplyItems").search(query,
 		    context);
 	}
+	
+	public String getDisplayString(LabSupplyItem labSupplyItem) {
+		return labSupplyItem.getDisplayString();
+	}
+	
 	
 }

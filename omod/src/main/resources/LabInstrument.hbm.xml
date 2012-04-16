@@ -46,9 +46,13 @@ NOT IMPLEMENTING MAINTENANCE NOW
         </set>
 -->
 
+<!-- 
+DO IN POJO
 	    <property name="name" type="java.lang.String" insert="false" update="false" lazy="true">
 	    	<formula>concat(manufacturer," ",model," ",serial_number)</formula> 
 	    </property>
 	    		
     </class>
+<!-- 
+
 </hibernate-mapping>

@@ -10,7 +10,7 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.rest.controller.LabPreconditionController;
-//import org.openmrs.module.webservices.rest.test.Util;
+import org.openmrs.module.webservices.rest.test.Util;
 import org.openmrs.web.test.BaseModuleWebContextSensitiveTest;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;

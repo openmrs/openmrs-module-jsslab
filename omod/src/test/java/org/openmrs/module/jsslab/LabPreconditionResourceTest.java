@@ -5,7 +5,7 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.rest.resource.LabPreconditionResource;
-//import org.openmrs.module.webservices.rest.web.resource.impl.BaseDelegatingResourceTest;
+import org.openmrs.module.webservices.rest.web.resource.impl.BaseDelegatingResourceTest;
 
 
 public class LabPreconditionResourceTest extends BaseDelegatingResourceTest<LabPreconditionResource,LabPrecondition>{
@@ -37,7 +37,7 @@ public class LabPreconditionResourceTest extends BaseDelegatingResourceTest<LabP
 	
 	@Override
 	public void validateFullRepresentation() throws Exception {
-		super.validateDefaultRepresentation();
+		super.validateFullRepresentation();
 		assertPropEquals("voided", getObject().getVoided());
 		assertPropPresent("testPanel");
 		assertPropPresent("preconditionQuestionConcept");

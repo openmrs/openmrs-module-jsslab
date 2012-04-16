@@ -40,7 +40,7 @@ public class HibernateLabTestSpecimenDAO implements LabTestSpecimenDAO {
 			  if (i != 0)
 				  return i;
 			  else
-				  return lts1.getSpecimenSubId().compareToIgnoreCase(lts2.getSpecimenSubId());
+				  return lts1.getSpecimenSubId().compareTo(lts2.getSpecimenSubId());
 		}
 	}
 
