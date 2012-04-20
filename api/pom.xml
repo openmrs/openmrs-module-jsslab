@@ -23,9 +23,7 @@
 		<dependency>
 			<groupId>org.openmrs.api</groupId>
 			<artifactId>openmrs-api</artifactId>
-			<version>${openMRSVersion}</version>
 			<type>test-jar</type>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openmrs.web</groupId>
@@ -56,7 +54,6 @@
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>logic-api</artifactId>
-			<version>0.5.2</version>
 		</dependency>
 	</dependencies>
 

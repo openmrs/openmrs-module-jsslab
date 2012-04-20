@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.openmrs.module.jsslab.db.LabTest" table="jsslab_test">
+        <id name="testId" type="int">
+            <column name="test_id" />
+            <generator class="native" />
+        </id>
+		<many-to-one name="testPanel" class="org.openmrs.module.jsslab.db.LabTestPanel" column="test_panel_id" not-null="true" />
+		<many-to-one name="testConcept" class="org.openmrs.Concept" column="test_concept" not-null="true" />
+		<property name="resultFormat" type="java.lang.String" column="result_format" length="24" not-null="false" />
+		<property name="sortWeight" type="java.lang.Double" not-null="false" column="sort_weight" />
+		<many-to-one name="confirmTest" class="org.openmrs.module.jsslab.db.LabTest" column="confirm_test_id" not-null="false" />
+				
+      	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
+		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
+		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
+		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
+		<property name="retired" type="java.lang.Boolean" column="retired" length="1" not-null="true" />
+		<many-to-one name="retiredBy" class="org.openmrs.User" column="retired_by" />
+		<property name="dateRetired" type="java.util.Date" column="date_retired" length="19" />
+		<property name="retireReason" type="java.lang.String" column="retire_reason" length="255" />
+		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
+  
+        <set name="testRanges" inverse="true" >
+            <key column="test_id" not-null="false" />
+            <one-to-many class="org.openmrs.module.jsslab.db.LabTestRange" />
+        </set>
+
+    </class>
+</hibernate-mapping>

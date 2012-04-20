@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<mapping resource="LabInstrument.hbm.xml" />
+		<mapping resource="LabSupplyItem.hbm.xml" />
+		<mapping resource="LabTestPanel.hbm.xml" />
+		<mapping resource="LabTest.hbm.xml" />
+		<mapping resource="LabPrecondition.hbm.xml" />
+		<mapping resource="LabSpecimenTemplate.hbm.xml" />
+		<mapping resource="LabTestRange.hbm.xml" />
+		<mapping resource="LabReport.hbm.xml" />
+		<mapping resource="LabSpecimen.hbm.xml" />
+		<mapping resource="LabTestSpecimen.hbm.xml" />
+<!--  
+-->
+		<mapping resource="LabTestRun.hbm.xml" />
+		<mapping resource="LabTestResult.hbm.xml" />
+		<mapping resource="LabOrderSpecimen.hbm.xml" />
+		<mapping resource="LabOrder.hbm.xml" />
+		<mapping resource="RuleDefinition.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
