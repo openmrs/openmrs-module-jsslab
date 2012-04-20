@@ -94,7 +94,7 @@
 				<artifactId>webservices.rest-omod</artifactId>
 				<version>0.9-SNAPSHOT</version>
 				<scope>provided</scope>
-				<classifier>test</classifier>
+				<classifier>tests</classifier>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
