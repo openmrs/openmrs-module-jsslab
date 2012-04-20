@@ -45,17 +45,12 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 	 * @see org.openmrs.api.db.LabInstrumentDAO#saveLabInstrument(org.openmrs.LabInstrument)
 	 */
 	public LabInstrument saveLabInstrument(LabInstrument instrument) {
-/** 
-TODO: implement TestRuns
-		if (instrument.getTestRuns() != null && instrument.getId() != null) {
-			// Hibernate has a problem updating child collections
-			// if the parent object was already saved so we do it 
-			// explicitly here
-			for (LabTestRun child : instrument.getTestRuns())
-				if (child.getId() == null)
-					saveLabTestRun(child);
-		}
-*/		
+		/**
+		 * TODO: implement TestRuns if (instrument.getTestRuns() != null && instrument.getId() !=
+		 * null) { // Hibernate has a problem updating child collections // if the parent object was
+		 * already saved so we do it // explicitly here for (LabTestRun child :
+		 * instrument.getTestRuns()) if (child.getId() == null) saveLabTestRun(child); }
+		 */
 		sessionFactory.getCurrentSession().saveOrUpdate(instrument);
 		return instrument;
 	}
@@ -71,21 +66,21 @@ TODO: implement TestRuns
 	 * @see org.openmrs.api.db.LabInstrumentDAO#getLabInstrumentByUuid(java.lang.String)
 	 */
 	public LabInstrument getLabInstrumentByUuid(String uuid) {
-		return (LabInstrument) sessionFactory.getCurrentSession().createQuery("from LabInstrument l where l.uuid = :uuid").setString(
-		    "uuid", uuid).uniqueResult();
+		return (LabInstrument) sessionFactory.getCurrentSession().createCriteria(LabInstrument.class)
+		        .add(Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
-
+	
 	/**
 	 * @see org.openmrs.api.db.LabInstrumentDAO#getLabInstrument(java.lang.String)
 	 */
 	@SuppressWarnings("unchecked")
 	public LabInstrument getLabInstrument(String name) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabInstrument.class)
-		.add(Restrictions.disjunction()
-		    .add(Restrictions.eq("propertyTag", name))
-		    .add(Restrictions.eq("serialNumber", name))
-		    .add(Restrictions.eq("model", name))
-		);
+		Criteria criteria = sessionFactory
+		        .getCurrentSession()
+		        .createCriteria(LabInstrument.class)
+		        .add(
+		            Restrictions.disjunction().add(Restrictions.eq("propertyTag", name))
+		                    .add(Restrictions.eq("serialNumber", name)).add(Restrictions.eq("model", name)));
 		
 		List<LabInstrument> instruments = criteria.list();
 		if (null == instruments || instruments.isEmpty()) {
@@ -111,11 +106,11 @@ TODO: implement TestRuns
 	 * @see org.openmrs.api.db.LabInstrumentDAO#deleteLabInstrument(org.openmrs.LabInstrument)
 	 */
 	public void deleteLabInstrument(LabInstrument instrument) throws APIException {
-/*
-TODO: implement TestRuns 
-		if (instrument.getTestRuns().size() != 0)
-			throw new APIException("Cannot delete a referenced lab instrument");
-*/
+		/*
+		TODO: implement TestRuns 
+				if (instrument.getTestRuns().size() != 0)
+					throw new APIException("Cannot delete a referenced lab instrument");
+		*/
 		sessionFactory.getCurrentSession().delete(instrument);
 	}
 	
@@ -128,17 +123,15 @@ TODO: implement TestRuns
 			criteria.add(Restrictions.eq("retired", false));
 		
 		if (StringUtils.isNotBlank(nameFragment))
-			criteria.add(Restrictions.disjunction()
-			   .add(Restrictions.ilike("propertyTag", nameFragment, MatchMode.START))
-			   .add(Restrictions.ilike("serialNumber", nameFragment, MatchMode.START))
-			   .add(Restrictions.ilike("model", nameFragment, MatchMode.START))
-			);
+			criteria.add(Restrictions.disjunction().add(Restrictions.ilike("propertyTag", nameFragment, MatchMode.START))
+			        .add(Restrictions.ilike("serialNumber", nameFragment, MatchMode.START))
+			        .add(Restrictions.ilike("model", nameFragment, MatchMode.START)));
 		
 		criteria.setProjection(Projections.rowCount());
 		
 		return (Integer) criteria.uniqueResult();
 	}
-
+	
 	/**
 	 * @see LabInstrumentDAO#getLabInstruments(String, Boolean, Integer, Integer)
 	 */
@@ -149,11 +142,9 @@ TODO: implement TestRuns
 			criteria.add(Restrictions.eq("retired", false));
 		
 		if (StringUtils.isNotBlank(nameFragment))
-			criteria.add(Restrictions.disjunction()
-			   .add(Restrictions.ilike("propertyTag", nameFragment, MatchMode.START))
-			   .add(Restrictions.ilike("serialNumber", nameFragment, MatchMode.START))
-			   .add(Restrictions.ilike("model", nameFragment, MatchMode.START))
-			);
+			criteria.add(Restrictions.disjunction().add(Restrictions.ilike("propertyTag", nameFragment, MatchMode.START))
+			        .add(Restrictions.ilike("serialNumber", nameFragment, MatchMode.START))
+			        .add(Restrictions.ilike("model", nameFragment, MatchMode.START)));
 		
 		criteria.addOrder(Order.asc("name"));
 		if (start != null)
@@ -163,9 +154,10 @@ TODO: implement TestRuns
 		
 		return (List<LabInstrument>) criteria.list();
 	}
-
-
-// TODO: replace stubs below with real methods in LabTestingService
-	private LabTestRun saveLabTestRun(LabTestRun testRun) { return testRun; }
+	
+	// TODO: replace stubs below with real methods in LabTestingService
+	private LabTestRun saveLabTestRun(LabTestRun testRun) {
+		return testRun;
+	}
 	
 }

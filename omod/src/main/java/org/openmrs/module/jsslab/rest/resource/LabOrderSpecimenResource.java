@@ -5,6 +5,7 @@ import java.util.List;
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabOrderService;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabOrderSpecimen;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.webservices.rest.web.RequestContext;
@@ -13,9 +14,11 @@ import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
+import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudResource;  
+import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
@@ -72,8 +75,8 @@ public class LabOrderSpecimenResource extends DataDelegatingCrudResource<LabOrde
 		return null;
 	}
 	@Override
-	protected List<LabOrderSpecimen> doGetAll(RequestContext context) {
-		return Context.getService(LabOrderService.class).getLabOrderSpecimens("",false,null,null);
+	protected PageableResult doGetAll(RequestContext context) {
+		return new NeedsPaging<LabOrderSpecimen>(Context.getService(LabOrderService.class).getLabOrderSpecimens("",false,null,null), context);
 	}
 	
 	@Override

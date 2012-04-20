@@ -16,9 +16,11 @@ import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
+import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.MetadataDelegatingCrudResource;
+import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
@@ -66,8 +68,8 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	}
 	
 	@Override
-	protected List<LabTest> doGetAll(RequestContext context) {
-		return Context.getService(LabCatalogService.class).getAllLabTests(false);
+	protected PageableResult doGetAll(RequestContext context) {
+		return  new NeedsPaging<LabTest>(Context.getService(LabCatalogService.class).getAllLabTests(false), context);
 	}
 	
 	@Override

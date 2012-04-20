@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
 <hibernate-mapping>
     <class name="org.openmrs.module.jsslab.db.LabInstrument" table="jsslab_instrument">
         <id name="instrumentId" type="int">
             <column name="instrument_id" />
             <generator class="native" />
         </id>
-
+        
 		<property name="propertyTag" type="java.lang.String" column="property_tag" length="45" unique="true" not-null="false" />
 		<property name="manufacturer" type="java.lang.String" column="manufacturer" length="45" unique="false" not-null="false" />
 		<property name="model" type="java.lang.String" column="model" length="45" unique="false" not-null="false" />
@@ -51,8 +53,7 @@ DO IN POJO
 	    <property name="name" type="java.lang.String" insert="false" update="false" lazy="true">
 	    	<formula>concat(manufacturer," ",model," ",serial_number)</formula> 
 	    </property>
-	    		
+-->	    		
     </class>
-<!-- 
 
 </hibernate-mapping>

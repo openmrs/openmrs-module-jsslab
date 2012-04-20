@@ -5,6 +5,7 @@ import java.util.List;
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabTest;
@@ -14,9 +15,11 @@ import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
+import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudResource;  
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
+import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 @Resource("LabPrecondition")
@@ -93,8 +96,8 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 		return null;
 	}
 	@Override
-	protected List<LabPrecondition> doGetAll(RequestContext context) {
-		return Context.getService(LabCatalogService.class).getLabPreconditions("",false,null,null);
+	protected PageableResult doGetAll(RequestContext context) {
+		return  new NeedsPaging<LabPrecondition>(Context.getService(LabCatalogService.class).getLabPreconditions("",false,null,null), context);
 	}
 	
 	@Override

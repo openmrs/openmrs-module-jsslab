@@ -6,6 +6,7 @@ import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabManagementService;
 import org.openmrs.module.jsslab.LabOrderService;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.webservices.rest.web.RequestContext;
@@ -14,9 +15,11 @@ import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
+import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
+import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
@@ -114,8 +117,8 @@ public class LabOrderResource extends DataDelegatingCrudResource<LabOrder>{
 	 * @see org.openmrs.module.webservices.rest.web.resource.impl.DelegatingCrudResource#doGetAll(org.openmrs.module.webservices.rest.web.RequestContext)
 	 */
 	@Override
-	protected List<LabOrder> doGetAll(RequestContext context) {
-		return Context.getService(LabOrderService.class).getAllLabOrders(false);
+	protected PageableResult doGetAll(RequestContext context) {
+		return  new NeedsPaging<LabOrder>(Context.getService(LabOrderService.class).getAllLabOrders(false), context);
 	}
 	
 	/**

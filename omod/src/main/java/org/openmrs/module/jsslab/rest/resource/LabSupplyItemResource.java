@@ -28,10 +28,12 @@ import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
+import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingCrudResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.MetadataDelegatingCrudResource;
+import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
@@ -130,8 +132,8 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	 * @see org.openmrs.module.webservices.rest.web.resource.impl.DelegatingCrudResource#doGetAll(org.openmrs.module.webservices.rest.web.RequestContext)
 	 */
 	@Override
-	protected List<LabSupplyItem> doGetAll(RequestContext context) {
-		return Context.getService(LabManagementService.class).getAllLabSupplyItems(false);
+	protected PageableResult doGetAll(RequestContext context) {
+		return  new NeedsPaging<LabSupplyItem>(Context.getService(LabManagementService.class).getAllLabSupplyItems(false), context);
 	}
 	
 	/**

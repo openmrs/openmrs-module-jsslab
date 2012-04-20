@@ -134,8 +134,6 @@ LabTestRun.hbm.xml
 LabTestResult.hbm.xml
 LabOrderSpecimen.hbm.xml
 LabOrder.hbm.xml
-<!--  
--->
 	</mappingFiles>
 
 	
@@ -155,6 +153,5 @@ LabOrder.hbm.xml
 	</messages>
 	<!-- /Internationalization -->
 	
-<context:component-scan base-package="org.openmrs.module.jsslab" /> 
 </module>
 

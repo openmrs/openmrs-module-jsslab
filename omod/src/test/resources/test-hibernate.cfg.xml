@@ -15,8 +15,6 @@
 		<mapping resource="LabReport.hbm.xml" />
 		<mapping resource="LabSpecimen.hbm.xml" />
 		<mapping resource="LabTestSpecimen.hbm.xml" />
-<!--  
--->
 		<mapping resource="LabTestRun.hbm.xml" />
 		<mapping resource="LabTestResult.hbm.xml" />
 		<mapping resource="LabOrderSpecimen.hbm.xml" />

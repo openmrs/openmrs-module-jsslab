@@ -6,6 +6,7 @@ import org.openmrs.Concept;
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.webservices.rest.web.RequestContext;
@@ -14,9 +15,11 @@ import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
+import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.MetadataDelegatingCrudResource;  
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
+import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
@@ -99,8 +102,8 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 		return null;
 	}
 	@Override
-	protected List<LabSpecimenTemplate> doGetAll(RequestContext context) {
-		return Context.getService(LabCatalogService.class).getLabSpecimenTemplate("",false,null,null);
+	protected PageableResult doGetAll(RequestContext context) {
+		return  new NeedsPaging<LabSpecimenTemplate>(Context.getService(LabCatalogService.class).getLabSpecimenTemplate("",false,null,null), context);
 	}
 	
 	@Override

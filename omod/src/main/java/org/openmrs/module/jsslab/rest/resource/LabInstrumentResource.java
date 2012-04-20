@@ -13,24 +13,23 @@
  */
 package org.openmrs.module.jsslab.rest.resource;
 
-import java.util.List;
-
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabTestRange;
+import org.openmrs.Location;
 import org.openmrs.annotation.Handler;
-import org.openmrs.module.jsslab.LabManagementService;
-import org.openmrs.module.jsslab.LabTestingService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.jsslab.LabManagementService;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.Resource;
 import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
+import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingCrudResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.MetadataDelegatingCrudResource;
+import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
@@ -140,8 +139,8 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 	 * @see org.openmrs.module.webservices.rest.web.resource.impl.DelegatingCrudResource#doGetAll(org.openmrs.module.webservices.rest.web.RequestContext)
 	 */
 	@Override
-	protected List<LabInstrument> doGetAll(RequestContext context) {
-		return Context.getService(LabManagementService.class).getAllLabInstruments(false);
+	protected PageableResult doGetAll(RequestContext context) {
+		return new NeedsPaging<LabInstrument>(Context.getService(LabManagementService.class).getAllLabInstruments(false), context);
 	}
 	
 	/**
