@@ -93,7 +93,7 @@
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-omod</artifactId>
 				<version>0.9-SNAPSHOT</version>
-				<scope>provided</scope>
+				<scope>test</scope>
 				<classifier>tests</classifier>
 			</dependency>
 		</dependencies>
