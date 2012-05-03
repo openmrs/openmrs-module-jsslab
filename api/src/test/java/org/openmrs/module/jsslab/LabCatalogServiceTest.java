@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.openmrs.api.APIException;
+import org.openmrs.validator.ValidateUtil;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
@@ -51,12 +52,30 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 		LabPrecondition labPrecondition = Context.getService(LabCatalogService.class).getLabPreconditionByUuid(
 		    "0100dc0a-46da-11e1-99f4-0024e8c61285");
 		labPrecondition.setUuid("12312312-1231-1231-1231-123123123");
+		labPrecondition.setTestPanel(null);
+		labPrecondition.setPreconditionQuestionConcept(null);
 		Context.getService(LabCatalogService.class).saveLabPrecondition(labPrecondition);
 		labPrecondition = Context.getService(LabCatalogService.class).getLabPreconditionByUuid(
 		    "12312312-1231-1231-1231-123123123");
 		Assert.assertNotNull("saveLabPrecondition should not return null", labPrecondition);
 		Assert.assertEquals("saveLabPrecondition should return the right object", "12312312-1231-1231-1231-123123123",
 		    labPrecondition.getUuid());
+	}
+
+	@Test(expected=APIException.class)
+	@SkipBaseSetup
+	public void saveLabPrecondition_shouldFailIfNull() throws Exception {
+		LabPrecondition o = null;
+		ValidateUtil.validate(o);
+		Assert.assertNotNull("saveLabPrecondition should fail if null",null);
+	}
+	
+	@Test(expected=APIException.class)
+	@SkipBaseSetup
+	public void saveLabPrecondition_shouldFailIfRequiredFieldsAreMissing() throws Exception {
+		LabPrecondition o = new LabPrecondition();
+		ValidateUtil.validate(o);
+		Assert.assertNotNull("saveLabPrecondition should fail if required fields are missing",null);
 	}
 	
 	/**

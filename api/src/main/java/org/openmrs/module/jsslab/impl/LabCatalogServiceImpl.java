@@ -6,6 +6,7 @@ import java.util.Date;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.APIException;
+import org.openmrs.validator.ValidateUtil;
 import org.openmrs.api.context.Context;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabCatalogService;
@@ -116,6 +117,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	public LabPrecondition saveLabPrecondition(LabPrecondition labPrecondition)
 			throws APIException {
 		//
+		ValidateUtil.validate(labPrecondition);
 		return labPreconditionDAO.saveLabPrecondition(labPrecondition);
 	}
 
