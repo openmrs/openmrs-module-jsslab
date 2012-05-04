@@ -34,12 +34,12 @@ public class LabTestRangeResource extends DataDelegatingCrudResource<LabTestRang
 	}
 
 	@Override
-	protected LabTestRange newDelegate() {
+	public LabTestRange newDelegate() {
 		return new LabTestRange();
 	}
 
 	@Override
-	protected LabTestRange save(LabTestRange delegate) {
+	public LabTestRange save(LabTestRange delegate) {
 		LabTestRange labTestRange=Context.getService(LabTestingService.class).saveLabTestRange(delegate);
 		return labTestRange;
 	}

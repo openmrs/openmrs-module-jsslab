@@ -117,6 +117,8 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	public LabPrecondition saveLabPrecondition(LabPrecondition labPrecondition)
 			throws APIException {
 		//
+		if (labPrecondition == null)
+			throw new APIException(Context.getMessageSourceService().getMessage("error.null"));
 		ValidateUtil.validate(labPrecondition);
 		return labPreconditionDAO.saveLabPrecondition(labPrecondition);
 	}

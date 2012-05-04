@@ -33,12 +33,12 @@ public class LabOrderSpecimenResource extends DataDelegatingCrudResource<LabOrde
 	}
 
 	@Override
-	protected LabOrderSpecimen newDelegate() {
+	public LabOrderSpecimen newDelegate() {
 		return new LabOrderSpecimen();
 	}
 
 	@Override
-	protected LabOrderSpecimen save(LabOrderSpecimen delegate) {
+	public LabOrderSpecimen save(LabOrderSpecimen delegate) {
 		LabOrderSpecimen labOrderSpecimen=Context.getService(LabOrderService.class).saveLabOrderSpecimen(delegate);
 		return labOrderSpecimen;
 	}

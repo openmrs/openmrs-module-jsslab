@@ -54,15 +54,15 @@ public class LabPreconditionValidator implements Validator {
 		
 		LabPrecondition o = (LabPrecondition) obj;
 		if (o == null) {
-			errors.rejectValue("LabPrecondition", "JSSLab.Validation.NullObject");
+			errors.rejectValue("LabPrecondition", "jsslab.Validation.NullObject");
 		} else {
 			// for the following elements LabPrecondition.hbm.xml says: not-null="true"
-			ValidationUtils.rejectIfEmpty(errors, "testPanel", "JSSLab.Validation.NullTestPanel");
-			ValidationUtils.rejectIfEmpty(errors, "preconditionQuestionConcept", "JSSLab.Validation.NullConcept");
-			ValidationUtils.rejectIfEmpty(errors, "preconditionAnswerConcept", "JSSLab.Validation.NullConcept");
-			ValidationUtils.rejectIfEmpty(errors, "creator", "JSSLab.Validation.NullField");
-			ValidationUtils.rejectIfEmpty(errors, "dateCreated", "JSSLab.Validation.NullField");
-			ValidationUtils.rejectIfEmpty(errors, "voided", "JSSLab.Validation.NullField");
+			ValidationUtils.rejectIfEmpty(errors, "testPanel", "jsslab.Validation.NullTestPanel");
+			ValidationUtils.rejectIfEmpty(errors, "preconditionQuestionConcept", "jsslab.Validation.NullConcept");
+			ValidationUtils.rejectIfEmpty(errors, "preconditionAnswerConcept", "jsslab.Validation.NullConcept");
+			ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.Validation.NullField");
+			ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.Validation.NullField");
+			ValidationUtils.rejectIfEmpty(errors, "voided", "jsslab.Validation.NullField");
 		}
 	}
 }

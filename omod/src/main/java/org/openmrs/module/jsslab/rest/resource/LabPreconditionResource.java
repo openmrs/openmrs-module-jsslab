@@ -33,12 +33,12 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 	}
 
 	@Override
-	protected LabPrecondition newDelegate() {
+	public LabPrecondition newDelegate() {
 		return new LabPrecondition();
 	}
 
 	@Override
-	protected LabPrecondition save(LabPrecondition delegate) {
+	public LabPrecondition save(LabPrecondition delegate) {
 		LabPrecondition labPrecondition=Context.getService(LabCatalogService.class).saveLabPrecondition(delegate);
 		return labPrecondition;
 	}

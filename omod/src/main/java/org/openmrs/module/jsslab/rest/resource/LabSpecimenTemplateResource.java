@@ -34,12 +34,12 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 	}
 
 	@Override
-	protected LabSpecimenTemplate newDelegate() {
+	public LabSpecimenTemplate newDelegate() {
 		return new LabSpecimenTemplate();
 	}
 
 	@Override
-	protected LabSpecimenTemplate save(LabSpecimenTemplate delegate) {
+	public LabSpecimenTemplate save(LabSpecimenTemplate delegate) {
 		LabSpecimenTemplate labSpecimenTemplate=Context.getService(LabCatalogService.class).saveLabSpecimenTemplate(delegate);
 		return labSpecimenTemplate;
 	}

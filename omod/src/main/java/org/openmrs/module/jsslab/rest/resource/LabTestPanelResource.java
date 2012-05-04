@@ -42,12 +42,12 @@ public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTest
 	}
 
 	@Override
-	protected LabTestPanel newDelegate() {
+	public LabTestPanel newDelegate() {
 		return new LabTestPanel();
 	}
 
 	@Override
-	protected LabTestPanel save(LabTestPanel delegate) {
+	public LabTestPanel save(LabTestPanel delegate) {
 		LabTestPanel labTestPanel=Context.getService(LabCatalogService.class).saveLabTestPanel(delegate);
 		return labTestPanel;
 	}

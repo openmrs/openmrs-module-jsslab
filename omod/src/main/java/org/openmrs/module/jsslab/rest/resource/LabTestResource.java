@@ -35,12 +35,12 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	}
 
 	@Override
-	protected LabTest newDelegate() {
+	public LabTest newDelegate() {
 		return new LabTest();
 	}
 
 	@Override
-	protected LabTest save(LabTest delegate) {
+	public LabTest save(LabTest delegate) {
 		LabTest labTest=Context.getService(LabCatalogService.class).saveLabTest(delegate);
 		return labTest;
 	}

@@ -52,8 +52,6 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 		LabPrecondition labPrecondition = Context.getService(LabCatalogService.class).getLabPreconditionByUuid(
 		    "0100dc0a-46da-11e1-99f4-0024e8c61285");
 		labPrecondition.setUuid("12312312-1231-1231-1231-123123123");
-		labPrecondition.setTestPanel(null);
-		labPrecondition.setPreconditionQuestionConcept(null);
 		Context.getService(LabCatalogService.class).saveLabPrecondition(labPrecondition);
 		labPrecondition = Context.getService(LabCatalogService.class).getLabPreconditionByUuid(
 		    "12312312-1231-1231-1231-123123123");
@@ -65,16 +63,16 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 	@Test(expected=APIException.class)
 	@SkipBaseSetup
 	public void saveLabPrecondition_shouldFailIfNull() throws Exception {
-		LabPrecondition o = null;
-		ValidateUtil.validate(o);
+		LabPrecondition labPrecondition = null;
+		Context.getService(LabCatalogService.class).saveLabPrecondition(labPrecondition);
 		Assert.assertNotNull("saveLabPrecondition should fail if null",null);
 	}
 	
 	@Test(expected=APIException.class)
 	@SkipBaseSetup
 	public void saveLabPrecondition_shouldFailIfRequiredFieldsAreMissing() throws Exception {
-		LabPrecondition o = new LabPrecondition();
-		ValidateUtil.validate(o);
+		LabPrecondition labPrecondition = new LabPrecondition();
+		Context.getService(LabCatalogService.class).saveLabPrecondition(labPrecondition);
 		Assert.assertNotNull("saveLabPrecondition should fail if required fields are missing",null);
 	}
 	
