@@ -47,22 +47,17 @@ public class LabPreconditionValidator implements Validator {
 	 * 
 	 * @see org.springframework.validation.Validator#validate(java.lang.Object,
 	 *      org.springframework.validation.Errors)
-	 * @should fail validation if object is null
 	 * @should fail validation if required fields are missing
 	 */
 	public void validate(Object obj, Errors errors) {
 		
 		LabPrecondition o = (LabPrecondition) obj;
-		if (o == null) {
-			errors.rejectValue("LabPrecondition", "jsslab.Validation.NullObject");
-		} else {
-			// for the following elements LabPrecondition.hbm.xml says: not-null="true"
-			ValidationUtils.rejectIfEmpty(errors, "testPanel", "jsslab.Validation.NullTestPanel");
-			ValidationUtils.rejectIfEmpty(errors, "preconditionQuestionConcept", "jsslab.Validation.NullConcept");
-			ValidationUtils.rejectIfEmpty(errors, "preconditionAnswerConcept", "jsslab.Validation.NullConcept");
-			ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.Validation.NullField");
-			ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.Validation.NullField");
-			ValidationUtils.rejectIfEmpty(errors, "voided", "jsslab.Validation.NullField");
-		}
+		// for the following elements LabPrecondition.hbm.xml says: not-null="true"
+		ValidationUtils.rejectIfEmpty(errors, "testPanel", "jsslab.Validation.NullTestPanel");
+		ValidationUtils.rejectIfEmpty(errors, "preconditionQuestionConcept", "jsslab.Validation.NullConcept");
+		ValidationUtils.rejectIfEmpty(errors, "preconditionAnswerConcept", "jsslab.Validation.NullConcept");
+		ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.Validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.Validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "voided", "jsslab.Validation.NullField");
 	}
 }

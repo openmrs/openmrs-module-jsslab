@@ -30,9 +30,6 @@ import org.springframework.validation.Validator;
 @Handler(supports = { LabOrder.class }, order = 50)
 public class LabOrderValidator extends OrderValidator implements Validator {
 	
-	/** Log for this class and subclasses */
-	protected final Log log = LogFactory.getLog(getClass());
-	
 	/**
 	 * Determines if the command object being submitted is a valid type
 	 * 
@@ -48,22 +45,12 @@ public class LabOrderValidator extends OrderValidator implements Validator {
 	 * 
 	 * @see org.springframework.validation.Validator#validate(java.lang.Object,
 	 *      org.springframework.validation.Errors)
-	 * @should fail validation if prn is null
-	 * @should fail validation if complex is null
-	 * @should fail validation if drug is null
-	 * @should pass validation if all fields are correct
+	 * @should fail validation if required fields are missing
 	 */
 	public void validate(Object obj, Errors errors) {
 		super.validate(obj, errors);
 		
 		LabOrder order = (LabOrder) obj;
-		if (order == null) {
-			errors.rejectValue("order", "error.general");
-		} else {
-			// for the following elements Order.hbm.xml says: not-null="true"
-//			ValidationUtils.rejectIfEmpty(errors, "prn", "error.null");
-//			ValidationUtils.rejectIfEmpty(errors, "complex", "error.null");
-			ValidationUtils.rejectIfEmpty(errors, "drug", "error.null");
-		}
+		// for the following elements Order.hbm.xml says: not-null="true"
 	}
 }
