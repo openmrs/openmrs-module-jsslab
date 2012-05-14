@@ -2,10 +2,12 @@ package org.openmrs.module.jsslab;
 
 import java.util.List;
 
+import org.openmrs.Patient;
 import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabOrderSpecimen;
 import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
+import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
@@ -24,6 +26,16 @@ public interface LabOrderService extends OpenmrsService {
 	 */
 	//  @Authorized( { PrivilegeConstants.EDIT_LAB_ORDER, PrivilegeConstants.ADD_LAB_ORDER })
 	public LabOrder saveLabOrder(LabOrder labOrder) throws APIException;
+	
+	/**
+	 * Get the <code>LabOrder</code> with the given id from the database
+	 * 
+	 * @param id the id to find
+	 * @return the LabOrder that was found or null
+	 * @should get by id
+	 */
+	//  @Authorized( PrivilegeConstants.VIEW_LAB_ORDER )
+	public LabOrder getLabOrder(Integer id);
 	
 	/**
 	 * Get the <code>LabOrder</code> with the given uuid from the database
@@ -79,6 +91,16 @@ public interface LabOrderService extends OpenmrsService {
 	public List<LabOrder> getAllLabOrders() throws APIException;
 	
 	/**
+	 * Get all unretired LabOrders for a specified patient
+	 * 
+	 * @return LabOrders list
+	 * @throws APIException
+	 */
+	@Transactional(readOnly = true)
+	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
+	public List<LabOrder> getLabOrdersByPatient(Patient patient) throws APIException;
+	
+	/**
 	 * Returns a specified number of labOrders starting with a given string from the specified index
 	 */
 	public List<LabOrder> getLabOrders(String nameFragment, Boolean includeRetired, Integer start, Integer length);
@@ -103,6 +125,13 @@ public interface LabOrderService extends OpenmrsService {
 	@Transactional(readOnly = true)
 	//  @Authorized(PrivilegeConstants.VIEW_LAB_ORDER)
 	public Integer getCountOfLabOrders() throws APIException;
+	
+	/*
+	 * 
+	 */
+	@Transactional(readOnly=false)
+	@Authorized(PrivilegeConstants.DELETE_LAB_TEST)
+	public LabOrder voidLabOrder(LabOrder labLabOrder, String reason)throws APIException;
 	
 //----------------------------------------------------------------
 	/**

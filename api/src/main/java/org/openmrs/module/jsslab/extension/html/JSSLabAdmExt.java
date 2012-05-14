@@ -11,13 +11,13 @@ public class JSSLabAdmExt extends AdministrationSectionExt {
 	@Override
 	public Map<String, String> getLinks() {
 		Map<String, String> map = new LinkedHashMap<String, String>(); 
-		map.put("jsslabForm.jsp", "JSSLab.settings.link");   
+		map.put("jsslabForm.jsp", "jsslab.settings.link");   
 		return map;   
 	}
 
 	@Override
 	public String getTitle() {
-		return "JSSLab.title";
+		return "jsslab.title";
 	}
 
 }

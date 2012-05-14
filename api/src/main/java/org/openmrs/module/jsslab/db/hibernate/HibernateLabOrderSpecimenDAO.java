@@ -26,12 +26,14 @@ public class HibernateLabOrderSpecimenDAO implements LabOrderSpecimenDAO{
 	@Override
 	public LabOrderSpecimen getLabOrderSpecimenByUuid(String uuid) {
 		return (LabOrderSpecimen)this.sessionFactory.getCurrentSession().createCriteria(LabOrderSpecimen.class)
-				.add(Restrictions.eq("uuid", uuid)).list();
+				.add(Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
 
 	@Override
 	public LabOrderSpecimen saveLabOrderSpecimen(LabOrderSpecimen labOrderSpecimen) {
 		this.sessionFactory.getCurrentSession().saveOrUpdate(labOrderSpecimen);
+		labOrderSpecimen.getOrder().getOrderSpecimens().add(labOrderSpecimen);
+		labOrderSpecimen.getSpecimen().getOrderSpecimens().add(labOrderSpecimen);
 		return labOrderSpecimen;
 	}
 

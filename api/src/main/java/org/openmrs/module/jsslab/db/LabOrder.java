@@ -22,8 +22,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import junit.framework.Assert;
+
 import org.openmrs.BaseOpenmrsObject;
 import org.openmrs.Auditable;
+import org.openmrs.GlobalProperty;
 import org.openmrs.Voidable;
 import org.openmrs.Encounter;
 import org.openmrs.Order;
@@ -45,7 +48,10 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 public class LabOrder extends Order {
 	
+//	private static final String LAB_ORDER_TYPE_PROPERTY_NAME = "anNzbGFiLkxhYk9yZGVy";   
 	private static final String LAB_ORDER_TYPE_PROPERTY_NAME = "jsslab.LabOrder";   
+
+	private static final String LAB_ORDER_TYPE_PROPERTY_DESCRIPTION = "Order type for lab orders";
 	
 	public static final long serialVersionUID = 4334343L;
 	
@@ -65,7 +71,33 @@ public class LabOrder extends Order {
 	
 	public LabOrder() {
 		super();
-		this.setOrderType(Context.getOrderService().getOrderType(Integer.parseInt(Context.getAdministrationService().getGlobalProperty(LAB_ORDER_TYPE_PROPERTY_NAME))));
+//		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(LAB_ORDER_TYPE_PROPERTY_NAME);
+
+		GlobalProperty gpx = null;
+		List<GlobalProperty> gpList = Context.getAdministrationService().getGlobalProperties();
+		for (GlobalProperty g : gpList)
+			if (g.getDescription().equals(LAB_ORDER_TYPE_PROPERTY_DESCRIPTION)) {
+				gpx = g;
+				break;
+			}
+/*
+		List<GlobalProperty> gppList = Context.getAdministrationService().getGlobalPropertiesByPrefix(LAB_ORDER_TYPE_PROPERTY_NAME);
+		if (gppList.size() == 1) 
+				gpx = gppList.get(0);
+		else {
+			List<GlobalProperty> gpsList = Context.getAdministrationService().getGlobalPropertiesBySuffix(LAB_ORDER_TYPE_PROPERTY_NAME);
+			for (GlobalProperty g : gppList)
+				if (gpsList.contains(g)) {
+					gpx = g;
+					break;
+				}
+		}
+*/
+		
+		
+		Integer orderTypeId = Integer.parseInt(gpx.getPropertyValue());
+		OrderType orderType = Context.getOrderService().getOrderType(orderTypeId);
+		super.setOrderType(orderType);
 		return;
 	}
 	
@@ -186,7 +218,10 @@ public class LabOrder extends Order {
 	}
 
 	public String toString() {
-		return "LabOrder " + super.getOrderId() + " " + (super.getConcept().getName());
+		String s = "";
+		if (super.getConcept() != null) 
+			s = super.getConcept().getName().getName();
+		return "LabOrder " + super.getOrderId() + " " + s;
 	}
 
 	@Override

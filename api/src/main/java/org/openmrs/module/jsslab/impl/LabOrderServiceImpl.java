@@ -6,7 +6,9 @@ import java.util.Date;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Order;
+import org.openmrs.Patient;
 import org.openmrs.api.APIException;
+import org.openmrs.api.context.Context;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabOrderService;
 import org.openmrs.module.jsslab.db.LabOrder;
@@ -17,6 +19,10 @@ import org.openmrs.module.jsslab.db.LabOrderDAO;
 import org.openmrs.module.jsslab.db.LabOrderSpecimenDAO;
 import org.openmrs.module.jsslab.db.LabSpecimenDAO;
 import org.openmrs.module.jsslab.db.LabSupplyItemDAO;
+import org.openmrs.module.jsslab.db.LabOrder;
+import org.openmrs.module.jsslab.db.LabOrder;
+import org.openmrs.validator.ValidateUtil;
+import org.springframework.transaction.annotation.Transactional;
 
 public class LabOrderServiceImpl extends BaseOpenmrsService implements
 		LabOrderService {
@@ -43,7 +49,15 @@ public class LabOrderServiceImpl extends BaseOpenmrsService implements
 
 	public LabOrder saveLabOrder(LabOrder labOrder)
 			throws APIException {
+		if (labOrder == null)
+			throw new APIException(Context.getMessageSourceService().getMessage("error.null"));
+		ValidateUtil.validate(labOrder);
 		return labOrderDAO.saveLabOrder(labOrder);
+	}
+
+	@Override
+	public LabOrder getLabOrder(Integer labOrderId) {		
+		return labOrderDAO.getLabOrder(labOrderId);
 	}
 
 	public LabOrder getLabOrderByUuid(String uuid) {
@@ -74,6 +88,16 @@ public class LabOrderServiceImpl extends BaseOpenmrsService implements
 		return labOrderDAO.getLabOrders("",false,null,null);
 	}
 
+	/**
+	 * Get all unretired LabOrders for a specified patient
+	 * 
+	 * @return LabOrders list
+	 * @throws APIException
+	 */
+	public List<LabOrder> getLabOrdersByPatient(Patient patient) throws APIException {
+		return labOrderDAO.getLabOrdersByPatient(patient,false);
+	}
+	
 	public Integer getCountOfLabOrders(Boolean includeDeleted)
 			throws APIException {
 		return labOrderDAO.getCountOfLabOrders("", includeDeleted);
@@ -94,6 +118,14 @@ public class LabOrderServiceImpl extends BaseOpenmrsService implements
 		
 	}
 	
+	public LabOrder voidLabOrder(LabOrder labOrder,
+			String deleteReason) throws APIException {
+		labOrder.setVoided(true);
+		labOrder.setDateVoided(new Date());
+		labOrder.setVoidReason(deleteReason);
+		return labOrderDAO.saveLabOrder(labOrder);
+	}
+
 	@Override
 	public LabOrderSpecimen saveLabOrderSpecimen(
 			LabOrderSpecimen labOrderSpecimen) throws APIException {

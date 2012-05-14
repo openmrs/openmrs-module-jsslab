@@ -23,8 +23,11 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
+import org.openmrs.Patient;
 import org.openmrs.api.APIException;
+import org.openmrs.api.context.Context;
 import org.openmrs.api.db.DAOException;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabOrderDAO;
 import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabOrderSpecimen;
@@ -90,23 +93,9 @@ public class HibernateLabOrderDAO implements LabOrderDAO {
 	 * @see org.openmrs.api.db.LabOrderDAO#getLabOrderByUuid(java.lang.String)
 	 */
 	public LabOrder getLabOrderByUuid(String uuid) {
-		List<LabOrder> los = getLabOrders(null,false,null,null);
-		for (LabOrder lo : los) {
-			if (lo.getUuid().equalsIgnoreCase(uuid))
-				return lo;
+		return (LabOrder) sessionFactory.getCurrentSession().createCriteria(LabOrder.class)
+		        .add(Restrictions.eq("uuid", uuid)).uniqueResult();
 		}
-		return null;
-/* VERSION 2
-		Criteria crit = sessionFactory.getCurrentSession().createCriteria(org.openmrs.Order.class);
-		crit.add(Restrictions.eq("uuid", uuid));
-		return (LabOrder) crit.uniqueResult();
-*/
-/* VERSION 1 
-//		return (LabOrder) sessionFactory.getCurrentSession()
-//				.createQuery("from LabOrder o where o.uuid = :uuid")
-//				.setString("uuid",uuid).uniqueResult();
-*/
-	}
 	
 	public List<LabOrder> getLabOrders(String search, Boolean includeDeleted, Integer start, Integer length)
 			throws APIException {
@@ -127,6 +116,22 @@ public class HibernateLabOrderDAO implements LabOrderDAO {
 		return (List<LabOrder>) crit.list();
 	}
 
+	/**
+	 * Returns all labOrders for a given patient, retired orders included based on flag
+	 */
+	public List<LabOrder> getLabOrdersByPatient(Patient patient, Boolean includeVoided) {
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(LabOrder.class);
+
+		if (patient != null ) {
+			crit.add(Restrictions.eq("Patient", patient));
+		}
+		if (!includeVoided) {
+			crit.add(Restrictions.ne("voided", true));
+		}
+	
+		return (List<LabOrder>) crit.list();
+	}
+	
 	public Integer getCountOfLabOrders(String search,Boolean includeDeleted)
 			throws APIException {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(LabOrder.class);

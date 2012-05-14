@@ -723,7 +723,6 @@
   <location_tag location_tag_id="33333001" name="Lab" description="Laboratories" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" uuid="a0f71212-24d1-11e1-a648-0024e8dbd743"/>
   <location_tag_map location_id="33333005" location_tag_id="33333001"/>
   <location_tag_map location_id="33333011" location_tag_id="33333001"/>
-  <orders order_id="33333001" order_type_id="33333001" concept_id="33333065" orderer="3" instructions="This is a test order" start_date="2012-01-01 00:00:00.0" discontinued="0" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" patient_id="33" uuid="ee8b270c-49b9-11e1-812a-0024e8c61285"/>
   <order_type order_type_id="33333001" name="LabOrder" description="Order for lab test" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" uuid="417919b3-2721-11e1-9d19-0024e8dbd743"/>
   <person person_id="1" gender="F" birthdate_estimated="0" dead="0" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="0047814a-721b-11e1-9be3-00265e1c945c"/>
   <person person_id="3" gender="M" birthdate_estimated="0" dead="0" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="00478674-721b-11e1-9be3-00265e1c945c"/>
@@ -763,8 +762,6 @@
   <users user_id="33333009" system_id="" username="Amitabh Bachchan" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333009" uuid="29111223-7111-11e1-8cf8-00265e1c945c"/>
   <users user_id="33333010" system_id="" username="Nana Patekar" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333010" uuid="29111372-7111-11e1-8cf8-00265e1c945c"/>
   <jsslab_instrument instrument_id="33333001" manufacturer="Shenzen Mindray" model="BC-3600" serial_number="M2345-6428" received_date="2009-01-01" received_from="CARE" received_value="120000" condition_date="2011-09-10" maintenance_vendor="All-India Medical Supplies" maintenance_description="Quarterly inspection and cleaning" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" uuid="72a26526-21d2-11e1-9815-00265e639063"/>
-  <jsslab_order order_id="33333001" lab_order_id="2012.01/0001" urgent="0" retest_reason=""/>
-  <jsslab_order_specimen order_specimen_id="33333001" order_id="33333001" specimen_id="33333001" specimen_role_concept="33333112" creator="1" date_created="0002-11-30 00:00:00.0" voided="0" uuid="1cd2ae32-49be-11e1-812a-0024e8c61285"/>
   <jsslab_precondition precondition_id="33333067" test_panel_id="33333067" precondition_question_concept="33333117" precondition_answer_concept="33333120" sort_weight="1.0" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="0100dc0a-46da-11e1-99f4-0024e8c61285"/>
   <jsslab_report report_id="33333001" lab_report_id="2012/01-0001" creator="1" date_created="2012-01-01 00:00:00.0" retired="0" uuid="ac0e7819-49bb-11e1-812a-0024e8c61285"/>
   <jsslab_specimen specimen_id="33333001" lab_specimen_id="33 WBC 20120101" client_specimen_id="33 WBC 20120101" ordered_by="3" ordered_by_facility="33333006" person_id="33" patient_id="33" specimen_date="2012-01-01 09:00:00.0" received_date="2012-01-01 09:01:00.0" received_specimen_concept="33333012" report_id="33333001" urgent="0" hidden="0" creator="1" date_created="2012-01-01 00:00:00.0" retired="0" uuid="cbbf4eae-49bc-11e1-812a-0024e8c61285"/>

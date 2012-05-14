@@ -16,6 +16,7 @@ package org.openmrs.module.jsslab.db;
 
 import java.util.List;
 
+import org.openmrs.Patient;
 import org.openmrs.api.APIException;
 import org.openmrs.api.db.DAOException;
 
@@ -47,7 +48,12 @@ public interface LabOrderDAO {
 	/**
 	 * Returns a specified number of labOrders starting with a given string from the specified index
 	 */
-	public List<LabOrder> getLabOrders(String nameFragment, Boolean includeRetired, Integer start, Integer length);
+	public List<LabOrder> getLabOrders(String nameFragment, Boolean includeVoided, Integer start, Integer length);
+
+	/**
+	 * Returns all labOrders for a given patient, voided orders included based on flag
+	 */
+	public List<LabOrder> getLabOrdersByPatient(Patient patient, Boolean includeVoided);
 	
 	/**
 	 * Get count of LabOrder

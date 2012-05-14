@@ -51,6 +51,7 @@ public class LabOrderValidator extends OrderValidator implements Validator {
 		super.validate(obj, errors);
 		
 		LabOrder order = (LabOrder) obj;
-		// for the following elements Order.hbm.xml says: not-null="true"
+		// for the following elements LabOrder.hbm.xml says: not-null="true"
+		ValidationUtils.rejectIfEmpty(errors, "urgent", "jsslab.Validation.NullField");
 	}
 }
