@@ -129,6 +129,9 @@ public class LabOrderServiceImpl extends BaseOpenmrsService implements
 	@Override
 	public LabOrderSpecimen saveLabOrderSpecimen(
 			LabOrderSpecimen labOrderSpecimen) throws APIException {
+		if (labOrderSpecimen == null)
+			throw new APIException(Context.getMessageSourceService().getMessage("error.null"));
+		ValidateUtil.validate(labOrderSpecimen);
 		return labOrderSpecimenDAO.saveLabOrderSpecimen(labOrderSpecimen);
 	}
 
@@ -198,6 +201,9 @@ public class LabOrderServiceImpl extends BaseOpenmrsService implements
 		public LabSpecimen saveLabSpecimen(LabSpecimen labSpecimen)
 				throws APIException {
 			//
+			if (labSpecimen == null)
+				throw new APIException(Context.getMessageSourceService().getMessage("error.null"));
+			ValidateUtil.validate(labSpecimen);
 			return labSpecimenDAO.saveLabSpecimen(labSpecimen);
 		}
 

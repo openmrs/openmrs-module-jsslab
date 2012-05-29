@@ -6,12 +6,14 @@ import java.util.Date;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.APIException;
+import org.openmrs.api.context.Context;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabManagementService;
 import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.jsslab.db.LabInstrumentDAO;
 import org.openmrs.module.jsslab.db.LabSupplyItemDAO;
+import org.openmrs.validator.ValidateUtil;
 
 public class LabManagementServiceImpl extends BaseOpenmrsService implements
 		LabManagementService {
@@ -31,6 +33,9 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 
 	public LabInstrument saveLabInstrument(LabInstrument labInstrument)
 			throws APIException {
+		if (labInstrument == null)
+			throw new APIException(Context.getMessageSourceService().getMessage("error.null"));
+		ValidateUtil.validate(labInstrument);
 		return labInstrumentDAO.saveLabInstrument(labInstrument);
 		
 	}
@@ -89,6 +94,9 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 	
 	public LabSupplyItem saveLabSupplyItem(LabSupplyItem labSupplyItem)
 			throws APIException {
+		if (labSupplyItem == null)
+			throw new APIException(Context.getMessageSourceService().getMessage("error.null"));
+		ValidateUtil.validate(labSupplyItem);
 		return labSupplyItemDAO.saveLabSupplyItem(labSupplyItem);
 	}
 

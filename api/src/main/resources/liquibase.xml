@@ -9,8 +9,95 @@
         See http://www.liquibase.org/manual/home#available_database_refactorings
         for a list of supported elements and attributes
     -->
- 	<changeSet id="jsslab" author="rfriedman">
- 
+ 	<changeSet id="jsslab-instrument" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not><tableExists tableName="jsslab_instrument"/></not>
+		</preConditions>
+		<comment>
+			Creating the instruments table
+		</comment>
+		
+		<createTable tableName="jsslab_instrument">
+            <column name="instrument_id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="property_tag" type="VARCHAR(45)"/>
+            <column name="manufacturer" type="VARCHAR(45)"/>
+            <column name="model" type="VARCHAR(45)"/>
+            <column name="serial_number" type="VARCHAR(45)"/>
+            <column name="location_id" type="INT"/>
+            <column name="received_date" type="DATE"/>
+            <column name="received_from" type="VARCHAR(45)"/>
+            <column name="received_cost" type="DECIMAL(10,0)"/>
+            <column name="received_value" type="DECIMAL(10,0)"/>
+            <column name="condition_date" type="DATE"/>
+            <column name="condition_concept" type="INT"/>
+            <column name="maintenance_vendor" type="VARCHAR(45)"/>
+            <column name="maintenance_phone" type="VARCHAR(45)"/>
+            <column name="maintenance_description" type="VARCHAR(225)"/>
+            <column name="creator" type="INT" defaultValueNumeric="0" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="DATETIME" defaultValueDate="0002-11-30T00:00:00.0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="changed_by" type="INT"/>
+            <column name="date_changed" type="DATETIME"/>
+            <column name="retired" type="SMALLINT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retired_by" type="INT"/>
+            <column name="date_retired" type="DATETIME"/>
+            <column name="retire_reason" type="VARCHAR(255)"/>
+            <column name="uuid" type="CHAR(38)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+			
  	</changeSet> 
- 
+
+	<changeSet author="martingielow" id="jsslab_supply_item">
+        <createTable tableName="jsslab_supply_item">
+            <column name="supply_item_id" type="INT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="lab_stock_number" type="VARCHAR(45)"/>
+            <column name="manufacturer" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="manufacturer_stock_number" type="VARCHAR(45)"/>
+            <column name="item_name" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_class_concept" type="INT"/>
+            <column name="lot_number" type="VARCHAR(45)"/>
+            <column name="expiration_date" type="TIMESTAMP"/>
+            <column name="creator" type="INT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="DATETIME" defaultValueDate="0002-11-30T00:00:00.0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="changed_by" type="INT"/>
+            <column name="date_changed" type="DATETIME"/>
+            <column name="retired" type="SMALLINT" defaultValueNumeric="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="retired_by" type="INT"/>
+            <column name="date_retired" type="DATETIME"/>
+            <column name="retire_reason" type="VARCHAR(255)"/>
+            <column name="uuid" type="CHAR(38)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+	<changeSet author="martingielow" id="indexes">
+	
+	</changeSet>
+	
+	<changeSet author="martingielow" id="foreign_key_constraints">
+	
+	</changeSet>
+	
 </databaseChangeLog>
