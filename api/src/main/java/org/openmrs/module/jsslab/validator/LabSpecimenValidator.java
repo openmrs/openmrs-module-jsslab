@@ -13,11 +13,9 @@
  */
 package org.openmrs.module.jsslab.validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.openmrs.module.jsslab.db.LabSpecimen;
-import org.openmrs.validator.OrderValidator;
 import org.openmrs.annotation.Handler;
+import org.openmrs.module.jsslab.db.LabOrder;
+import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -28,14 +26,14 @@ import org.springframework.validation.Validator;
  * @since 1.5
  */
 @Handler(supports = { LabSpecimen.class }, order = 50)
-public class LabSpecimenValidator extends OrderValidator implements Validator {
+public class LabSpecimenValidator implements Validator {
 	
 	/**
 	 * Determines if the command object being submitted is a valid type
 	 * 
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean supports(Class c) {
 		return LabSpecimen.class.isAssignableFrom(c);
 	}
@@ -48,21 +46,23 @@ public class LabSpecimenValidator extends OrderValidator implements Validator {
 	 * @should fail validation if required fields are missing
 	 */
 	public void validate(Object obj, Errors errors) {
-		super.validate(obj, errors);
-		
 		LabSpecimen specimen = (LabSpecimen) obj;
+		
+		if (specimen == null) {
+			errors.rejectValue("specimen", "jsslab.validation.error.null");
+		}
 		// for the following elements Order.hbm.xml says: not-null="true"NULLLocation
-		ValidationUtils.rejectIfEmpty(errors, "labSpecimenId", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "orderedBy", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "orderedByFacility", "jsslab.Validation.NUllLocation");
-		ValidationUtils.rejectIfEmpty(errors, "specimenDate", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "receivedDate", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "receivedSpecimenTypeConcept", "jsslab.Validation.NullConcept");		
-		ValidationUtils.rejectIfEmpty(errors, "report", "jsslab.Validation.NullReport");	
-		ValidationUtils.rejectIfEmpty(errors, "urgent", "jsslab.Validation.NullField");		
-		ValidationUtils.rejectIfEmpty(errors, "hidden", "jsslab.Validation.NullField");		
-		ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.Validation.NullField");		
-		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.Validation.NullField");		
-		ValidationUtils.rejectIfEmpty(errors, "retired", "jsslab.Validation.NullField");			
+		ValidationUtils.rejectIfEmpty(errors, "labSpecimenId", "jsslab.validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "orderedBy", "jsslab.validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "orderedByFacility", "jsslab.validation.NullLocation");
+		ValidationUtils.rejectIfEmpty(errors, "specimenDate", "jsslab.validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "receivedDate", "jsslab.validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "receivedSpecimenTypeConcept", "jsslab.validation.NullConcept");		
+		ValidationUtils.rejectIfEmpty(errors, "report", "jsslab.validation.NullReport");	
+		ValidationUtils.rejectIfEmpty(errors, "urgent", "jsslab.validation.NullField");		
+		ValidationUtils.rejectIfEmpty(errors, "hidden", "jsslab.validation.NullField");		
+		ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.validation.NullField");		
+		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.validation.NullField");		
+		ValidationUtils.rejectIfEmpty(errors, "retired", "jsslab.validation.NullField");			
 	}
 }

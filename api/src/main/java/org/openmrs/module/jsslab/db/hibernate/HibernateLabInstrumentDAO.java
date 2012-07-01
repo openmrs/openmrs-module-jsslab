@@ -18,12 +18,12 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
-import org.openmrs.module.jsslab.db.LabInstrument;
+import org.hibernate.criterion.Restrictions;
 import org.openmrs.api.APIException;
+import org.openmrs.api.context.Context;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabInstrumentDAO;
 import org.openmrs.module.jsslab.db.LabTestRun;
 
@@ -45,6 +45,10 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 	 * @see org.openmrs.api.db.LabInstrumentDAO#saveLabInstrument(org.openmrs.LabInstrument)
 	 */
 	public LabInstrument saveLabInstrument(LabInstrument instrument) {
+		if (instrument.getInstrumentId() == null) {
+			throw new APIException(Context.getMessageSourceService().getMessage("JSSLab.HibernateLabInstrumentDAO.saveLabInstrument.instrumentIdRequired", null,
+			    "Attribute 'instrumentId' is required", Context.getLocale()));
+		}
 		/**
 		 * TODO: implement TestRuns if (instrument.getTestRuns() != null && instrument.getId() !=
 		 * null) { // Hibernate has a problem updating child collections // if the parent object was
@@ -98,7 +102,6 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 		if (!includeRetired) {
 			criteria.add(Restrictions.eq("retired", false));
 		}
-		criteria.addOrder(Order.asc("name"));
 		return criteria.list();
 	}
 	
@@ -146,7 +149,7 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 			        .add(Restrictions.ilike("serialNumber", nameFragment, MatchMode.START))
 			        .add(Restrictions.ilike("model", nameFragment, MatchMode.START)));
 		
-		criteria.addOrder(Order.asc("name"));
+		
 		if (start != null)
 			criteria.setFirstResult(start);
 		if (length != null && length > 0)

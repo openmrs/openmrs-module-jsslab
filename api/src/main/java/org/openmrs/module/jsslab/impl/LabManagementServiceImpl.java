@@ -78,7 +78,7 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 		return labInstrumentDAO.getCountOfLabInstruments("", false);
 	}
 
-	public LabInstrument getLabInstrument(String idNumber) {
+	public LabInstrument getLabInstrument(Integer idNumber) {
 		return labInstrumentDAO.getLabInstrument(idNumber);
 	}
 

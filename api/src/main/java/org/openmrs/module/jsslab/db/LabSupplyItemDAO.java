@@ -16,10 +16,6 @@ package org.openmrs.module.jsslab.db;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
-import org.openmrs.api.APIException;
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabSupplyItem;
-import org.openmrs.module.jsslab.LabManagementService;
 
 /**
  * Lab supply item related database functions

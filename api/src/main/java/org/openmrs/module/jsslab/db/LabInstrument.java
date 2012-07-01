@@ -1,27 +1,18 @@
 package org.openmrs.module.jsslab.db;
 
-import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.math.BigDecimal;
 
-import org.openmrs.BaseOpenmrsMetadata;
-import org.openmrs.Patient;
-import org.openmrs.Person;
-import org.openmrs.User;
-import org.openmrs.Location;
-import org.openmrs.Concept;
-import org.openmrs.Order;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.BaseOpenmrsMetadata;
+import org.openmrs.Concept;
+import org.openmrs.Location;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 /**
@@ -69,8 +60,8 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	
 	private String name;
 
-	public void LabInstrument() {
-		
+	public LabInstrument() {
+		super();
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	

@@ -13,11 +13,9 @@
  */
 package org.openmrs.module.jsslab.validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.openmrs.module.jsslab.db.LabOrderSpecimen;
-import org.openmrs.validator.OrderValidator;
 import org.openmrs.annotation.Handler;
+import org.openmrs.module.jsslab.db.LabOrder;
+import org.openmrs.module.jsslab.db.LabOrderSpecimen;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -28,14 +26,14 @@ import org.springframework.validation.Validator;
  * @since 1.5
  */
 @Handler(supports = { LabOrderSpecimen.class }, order = 50)
-public class LabOrderSpecimenValidator extends OrderValidator implements Validator {
+public class LabOrderSpecimenValidator implements Validator {
 	
 	/**
 	 * Determines if the command object being submitted is a valid type
 	 * 
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean supports(Class c) {
 		return LabOrderSpecimen.class.isAssignableFrom(c);
 	}
@@ -48,9 +46,11 @@ public class LabOrderSpecimenValidator extends OrderValidator implements Validat
 	 * @should fail validation if required fields are missing
 	 */
 	public void validate(Object obj, Errors errors) {
-		super.validate(obj, errors);
+		LabOrderSpecimen labOrderSpecimen = (LabOrderSpecimen) obj;
+		if (labOrderSpecimen == null) {
+			errors.rejectValue("labOrderSpecimen", "jsslab.validation.error.null");
+		}
 		
-		LabOrderSpecimen sp = (LabOrderSpecimen) obj;
 		// for the following elements Order.hbm.xml says: not-null="true"
 		ValidationUtils.rejectIfEmpty(errors, "specimen", "jsslab.Validation.NullSpecimen");
 		ValidationUtils.rejectIfEmpty(errors, "order", "jsslab.Validation.NullOrder");

@@ -151,11 +151,10 @@ public class HibernateLabSpecimenTemplateDAO implements LabSpecimenTemplateDAO {
 		
 		if (StringUtils.isNotBlank(nameFragment))
 			criteria.add(Restrictions.disjunction()
-				.add(Restrictions.eq("order.uuid", nameFragment))
-				.add(Restrictions.eq("specimen.uuid", nameFragment))
+				.add(Restrictions.eq("uuid", nameFragment))
 			);
 		
-		criteria.addOrder(Order.asc("order.uuid")).addOrder(Order.asc("specimen.uuid"));
+		criteria.addOrder(Order.asc("uuid"));
 		
 		if (start != null)
 			criteria.setFirstResult(start);

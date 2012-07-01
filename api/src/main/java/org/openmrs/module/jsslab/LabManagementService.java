@@ -2,13 +2,11 @@ package org.openmrs.module.jsslab;
 
 import java.util.List;
 
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabPrecondition;
-import org.openmrs.module.jsslab.db.LabSupplyItem;
-import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
+import org.openmrs.module.jsslab.db.LabInstrument;
+import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.springframework.transaction.annotation.Transactional;
 
 public interface LabManagementService extends OpenmrsService {
@@ -18,7 +16,9 @@ public interface LabManagementService extends OpenmrsService {
 	 * 
 	 * @param labInstrument the LabInstrument to save
 	 * @return the LabInstrument that was saved
+	 * 
 	 * @throws APIException
+	 * 
 	 * @should not save LabInstrument if LabInstrument doesn't validate
 	 */
 	@Authorized( { PrivilegeConstants.EDIT_LAB_MGMT, PrivilegeConstants.ADD_LAB_MGMT })
@@ -38,6 +38,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * desperately needed. Most LabInstruments should just be retired. See {@link #retireLabInstrument(LabInstrument, String)}
 	 * 
 	 * @param labInstrument The LabInstrument to remove from the system
+	 * 
 	 * @throws APIException
 	 */
 	@Authorized(PrivilegeConstants.PURGE_LAB_MGMT)
@@ -50,6 +51,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * @param retireReason String reason
 	 * @param labInstrument LabInstrument to retire
 	 * @return the LabInstrument that was retired
+	 * 
 	 * @throws APIException
 	 */
 	@Authorized(PrivilegeConstants.DELETE_LAB_MGMT)
@@ -60,7 +62,10 @@ public interface LabManagementService extends OpenmrsService {
 	 * 
 	 * @param includeRetired true/false whether to include retired LabInstruments in this list
 	 * @return LabInstruments list
+	 * 
 	 * @throws APIException
+	 * 
+	 * @should get all <code>LabInstrument</code>s by if includeRetired
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
@@ -71,6 +76,8 @@ public interface LabManagementService extends OpenmrsService {
 	 * 
 	 * @return LabInstruments list
 	 * @throws APIException
+	 * 
+	 * @should get all <code>LabInstrument</code>s
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_MGMT)
@@ -78,6 +85,12 @@ public interface LabManagementService extends OpenmrsService {
 	
 	/**
 	 * Returns a specified number of labInstruments starting with a given string from the specified index
+	 * 
+	 * @param nameFragment The name or part of a name that retrieved <code>LabInstrument</code>s should match
+	 * @param includeRetired Whether or not retired <code>LabInstrument</code>s should be included
+	 * @param start The index of the first <code>LabInstrument</code> to retrieve from all matching items
+	 * @param length The amount of <code>LabInstrument</code>s to retrieve 
+	 * @return A list of <code>LabInstrument</code>s matching the conditions
 	 */
 	public List<LabInstrument> getLabInstruments(String nameFragment, Boolean includeRetired, Integer start, Integer length);
 	
@@ -86,6 +99,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * 
 	 * @param includeRetired true/false whether to include retired LabInstruments in this list
 	 * @return LabInstruments list
+	 * 
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
@@ -101,6 +115,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * Get count of unretired LabInstrument
 	 * 
 	 * @return LabInstruments list
+	 * 
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
@@ -114,14 +129,16 @@ public interface LabManagementService extends OpenmrsService {
 	 * @return the LabInstrument that was found or null
 	 */
 	@Authorized( PrivilegeConstants.VIEW_LAB_MGMT )
-	public LabInstrument getLabInstrument(String idNumber);
+	public LabInstrument getLabInstrument(Integer idNumber);
 	
 	/**
 	 * Save or update the given <code>LabSupplyItem</code> in the database
 	 * 
 	 * @param labSupplyItem the LabSupplyItem to save
 	 * @return the LabSupplyItem that was saved
+	 * 
 	 * @throws APIException
+	 * 
 	 * @should not save LabSupplyItem if LabSupplyItem doesn't validate
 	 */
 	@Authorized( { PrivilegeConstants.EDIT_LAB_MGMT, PrivilegeConstants.ADD_LAB_MGMT })
@@ -141,6 +158,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * desperately needed. Most LabSupplyItems should just be retired. See {@link #retireLabSupplyItem(LabSupplyItem, String)}
 	 * 
 	 * @param labSupplyItem The LabSupplyItem to remove from the system
+	 * 
 	 * @throws APIException
 	 */
 	@Authorized(PrivilegeConstants.PURGE_LAB_MGMT)
@@ -153,6 +171,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * @param retireReason String reason
 	 * @param labSupplyItem LabSupplyItem to retire
 	 * @return the LabSupplyItem that was retired
+	 * 
 	 * @throws APIException
 	 */
 	@Authorized(PrivilegeConstants.DELETE_LAB_MGMT)
@@ -163,6 +182,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * 
 	 * @param includeRetired true/false whether to include retired LabSupplyItems in this list
 	 * @return LabSupplyItems list
+	 * 
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
@@ -173,6 +193,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * Get all unretired LabSupplyItem
 	 * 
 	 * @return LabSupplyItems list
+	 * 
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
@@ -184,6 +205,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * 
 	 * @param includeRetired true/false whether to include retired LabSupplyItems in this list
 	 * @return LabSupplyItems list
+	 * 
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
@@ -194,6 +216,7 @@ public interface LabManagementService extends OpenmrsService {
 	 * Get count of unretired LabSupplyItem
 	 * 
 	 * @return LabSupplyItems list
+	 * 
 	 * @throws APIException
 	 */
 	@Transactional(readOnly = true)
