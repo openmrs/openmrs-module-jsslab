@@ -3,27 +3,26 @@
  */
 package org.openmrs.module.jsslab.db.hibernate;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.SessionFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.module.jsslab.db.LabTestSpecimenDAO;
-import org.openmrs.module.jsslab.db.LabTest;
 
 /**
  *
  */
 public class HibernateLabTestSpecimenDAO implements LabTestSpecimenDAO {
 
+	/**
+	 * Hibernate session factory
+	 */
 	private SessionFactory sessionFactory;
 	
 	/* (non-Javadoc)
@@ -101,10 +100,11 @@ public class HibernateLabTestSpecimenDAO implements LabTestSpecimenDAO {
 			criteria.add(Restrictions.ne("retired", true));
 
 		if (StringUtils.isNotBlank(search))
+			//TODO review criteria - the ones commented out seem to belong to LabSpecimen
 			criteria.add(Restrictions.disjunction()
-			.add(Restrictions.ilike("lts.labSpecimenId", search, MatchMode.START))
-			.add(Restrictions.ilike("lts.clientSpecimenId", search, MatchMode.START))
-			.add(Restrictions.ilike("lts.orderSpecimen.labOrder.labOrderID", search, MatchMode.START))
+			.add(Restrictions.ilike("lts.testSpecimenId", search, MatchMode.START))
+//			.add(Restrictions.ilike("lts.clientSpecimenId", search, MatchMode.START))
+//			.add(Restrictions.ilike("lts.orderSpecimen.labOrder.labOrderID", search, MatchMode.START))
 			);
 
 		if (start != null)
@@ -112,10 +112,10 @@ public class HibernateLabTestSpecimenDAO implements LabTestSpecimenDAO {
 		if (length != null && length > 0)
 			criteria.setMaxResults(length);
 		
-		criteria.addOrder(Order.asc("labSpecimenId"));
+		criteria.addOrder(Order.asc("testSpecimenId"));
 		return (List<LabTestSpecimen>) criteria.list();
 		
-		}
+	}
 
 
 	/* (non-Javadoc)

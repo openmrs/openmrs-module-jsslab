@@ -122,7 +122,7 @@ public class HibernateLabPreconditionDAO implements LabPreconditionDAO {
 		
 		// sort the possible returns and take the first
 		Collections.sort(labPreconditions,new LabPreconditionComparator());
-		if ((start == 0) && (length <= 0)) 
+		if ((start == null || start == 0) && (length == null || length <= 0)) 
 			return labPreconditions;
 
 		if (length <= 0) 

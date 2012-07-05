@@ -72,8 +72,7 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	
 	private String instructions;
 	
-	public void LabSpecimenTemplate() {
-		
+	public LabSpecimenTemplate() {
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	

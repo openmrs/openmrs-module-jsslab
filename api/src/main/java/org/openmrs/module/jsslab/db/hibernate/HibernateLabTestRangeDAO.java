@@ -1,13 +1,11 @@
 package org.openmrs.module.jsslab.db.hibernate;
 
 import java.util.List;
-import java.util.Comparator;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
-import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
-import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.jsslab.db.LabTestRangeDAO;
 
@@ -54,7 +52,7 @@ public class HibernateLabTestRangeDAO implements LabTestRangeDAO{
 	public List<LabTestRange> getLabTestRanges(String search,
 			Boolean includeVoided, Integer start, Integer length) {
 		Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(LabTestRange.class)
-				.addOrder(Order.asc("labTest")).addOrder(Order.asc("sortWeight"));
+				.addOrder(Order.asc("test")).addOrder(Order.asc("sortWeight"));
 		if (!includeVoided)
 				criteria.add(Restrictions.ne("voided", true));
 		if (start != null)

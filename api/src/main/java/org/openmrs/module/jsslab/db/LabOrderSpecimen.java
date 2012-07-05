@@ -1,29 +1,15 @@
 package org.openmrs.module.jsslab.db;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
 import java.util.Locale;
-import org.apache.commons.lang.StringUtils;  
+import java.util.UUID;
 
-import org.openmrs.api.context.Context;
-import org.openmrs.BaseOpenmrsData;
-import org.openmrs.Patient;
-import org.openmrs.Person;
-import org.openmrs.User;
-import org.openmrs.Location;
-import org.openmrs.Concept;
-import org.openmrs.Order;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.BaseOpenmrsData;
+import org.openmrs.Concept;
+import org.openmrs.api.context.Context;
 import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 /**
@@ -51,8 +37,7 @@ public class LabOrderSpecimen extends BaseOpenmrsData {
 	
 	private String specimenRoleCode;
 	
-	public void LabOrderSpecimen() {
-		
+	public LabOrderSpecimen() {
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	

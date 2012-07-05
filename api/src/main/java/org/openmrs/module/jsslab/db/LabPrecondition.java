@@ -217,7 +217,7 @@ public class LabPrecondition extends BaseOpenmrsData implements Serializable {
 	}
 	
 	public String getDisplayString() {
-		return this.getPreconditionQuestionText();
+		return this.getPreconditionQuestionText() == null ? "" : this.getPreconditionQuestionText();
 	}
 
 }

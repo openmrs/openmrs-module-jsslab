@@ -15,22 +15,18 @@ package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsMetadata;
-import org.openmrs.Order;
+import org.openmrs.Concept;
+import org.openmrs.Location;
 import org.openmrs.Patient;
 import org.openmrs.Person;
 import org.openmrs.User;
-import org.openmrs.Concept;
-import org.openmrs.Location;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -79,8 +75,7 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	
 	protected Set<LabOrderSpecimen> orderSpecimens = new HashSet<LabOrderSpecimen>();
 	
-	public void LabSpecimen() {
-		
+	public LabSpecimen() {
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	

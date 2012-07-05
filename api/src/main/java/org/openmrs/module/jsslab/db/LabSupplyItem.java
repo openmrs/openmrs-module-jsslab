@@ -1,26 +1,15 @@
 package org.openmrs.module.jsslab.db;
 
-import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.openmrs.BaseOpenmrsMetadata;
-import org.openmrs.Patient;
-import org.openmrs.Person;
-import org.openmrs.User;
-import org.openmrs.Location;
-import org.openmrs.Concept;
-import org.openmrs.Order;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.BaseOpenmrsMetadata;
+import org.openmrs.Concept;
 import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 /**
@@ -52,10 +41,9 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 	
 	protected Set<LabTestSpecimen> testSpecimens = new HashSet<LabTestSpecimen>();
 	
-	private String name;
+//	private String name;
 	
-	public void LabSupplyItem() {
-		
+	public LabSupplyItem() {
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	
@@ -230,7 +218,12 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 	 */
 	@Attribute(required = false)
 	public String getName() {
-		return this.getManufacturer()+" "+this.getItemName()+" "+this.getLotNumber().trim();
+		StringBuilder name = new StringBuilder();
+		if (this.getManufacturer() != null) name.append(this.getManufacturer()).append(" ");
+		if (this.getItemName() != null) name.append(this.getItemName()).append(" ");
+		if (this.getLotNumber() != null) name.append(this.getLotNumber().trim()).append(" ");
+		
+		return name.toString();
 	}
 	
 	public String getDisplayString() {

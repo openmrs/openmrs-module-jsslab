@@ -16,11 +16,19 @@ package org.openmrs.module.jsslab.db;
 
 import java.util.List;
 
+import org.hibernate.SessionFactory;
 import org.openmrs.Patient;
 import org.openmrs.api.APIException;
 import org.openmrs.api.db.DAOException;
 
 public interface LabOrderDAO {
+	
+	/**
+	 * Set the Hibernate SessionFactory to connect to the database.
+	 * 
+	 * @param sessionFactory
+	 */
+	public void setSessionFactory(SessionFactory sessionFactory);
 	
 	/**
 	 * @see org.openmrs.api.LabOrderService#saveLabOrder(LabOrder)

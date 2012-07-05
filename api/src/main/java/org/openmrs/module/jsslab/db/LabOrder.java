@@ -13,31 +13,16 @@
  */
 package org.openmrs.module.jsslab.db;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
 
-import junit.framework.Assert;
-
-import org.openmrs.BaseOpenmrsObject;
-import org.openmrs.Auditable;
-import org.openmrs.GlobalProperty;
-import org.openmrs.Voidable;
-import org.openmrs.Encounter;
-import org.openmrs.Order;
-import org.openmrs.OrderType;
-import org.openmrs.Patient;
-import org.openmrs.Person;
-import org.openmrs.User;
-import org.openmrs.Concept;
-import org.openmrs.api.context.Context;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.GlobalProperty;
+import org.openmrs.Order;
+import org.openmrs.OrderType;
+import org.openmrs.api.context.Context;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -74,7 +59,7 @@ public class LabOrder extends Order {
 //		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(LAB_ORDER_TYPE_PROPERTY_NAME);
 
 		GlobalProperty gpx = null;
-		List<GlobalProperty> gpList = Context.getAdministrationService().getGlobalProperties();
+		List<GlobalProperty> gpList = Context.getAdministrationService().getAllGlobalProperties();
 		for (GlobalProperty g : gpList)
 			if (g.getDescription().equals(LAB_ORDER_TYPE_PROPERTY_DESCRIPTION)) {
 				gpx = g;
@@ -224,15 +209,4 @@ public class LabOrder extends Order {
 		return "LabOrder " + super.getOrderId() + " " + s;
 	}
 
-	@Override
-	public String getUuid() {
-		// TODO Auto-generated method stub
-		return super.getUuid();
-	}
-
-	@Override
-	public void setUuid(String uuid) {
-		// TODO Auto-generated method stub
-		super.setUuid(uuid);
-	}
 }

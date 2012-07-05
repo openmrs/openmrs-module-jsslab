@@ -14,20 +14,16 @@
 package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.UUID;
-import java.lang.Math;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Concept;
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.jsslab.db.LabResultType;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 

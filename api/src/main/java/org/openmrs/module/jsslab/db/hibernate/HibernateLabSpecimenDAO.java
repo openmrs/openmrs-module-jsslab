@@ -3,21 +3,17 @@
  */
 package org.openmrs.module.jsslab.db.hibernate;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.SessionFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.openmrs.module.jsslab.db.LabSpecimenDAO;
-import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.jsslab.db.LabTestSpecimen;
 
 /**
@@ -91,16 +87,16 @@ public class HibernateLabSpecimenDAO implements LabSpecimenDAO {
 	public List<LabSpecimen> getLabSpecimens(String search,
 			Boolean includeRetired, Integer start, Integer length) {
 		// get candidates
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabTestSpecimen.class, "lts");
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabSpecimen.class, "ls");
 
 		if (!includeRetired) 
 			criteria.add(Restrictions.ne("retired", true));
 
 		if (StringUtils.isNotBlank(search))
 			criteria.add(Restrictions.disjunction()
-			.add(Restrictions.ilike("lts.labSpecimenId", search, MatchMode.START))
-			.add(Restrictions.ilike("lts.clientSpecimenId", search, MatchMode.START))
-			.add(Restrictions.ilike("lts.orderSpecimen.labOrder.labOrderID", search, MatchMode.START))
+			.add(Restrictions.ilike("ls.labSpecimenId", search, MatchMode.START))
+			.add(Restrictions.ilike("ls.clientSpecimenId", search, MatchMode.START))
+			.add(Restrictions.ilike("ls.orderSpecimen.labOrder.labOrderID", search, MatchMode.START))
 			);
 
 		if (start != null)

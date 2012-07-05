@@ -56,14 +56,12 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 	
 	private Double rangeCriticalHigh;
 	
-	public void LabTestRange() {
-		
+	public LabTestRange() {
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	
 	@Override
 	public int hashCode() {
-		
 		return this.getUuid().hashCode();
 	}
 	

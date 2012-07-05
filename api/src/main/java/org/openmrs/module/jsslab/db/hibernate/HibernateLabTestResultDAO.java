@@ -8,16 +8,11 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.SessionFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
 import org.openmrs.module.jsslab.db.LabTestResult;
 import org.openmrs.module.jsslab.db.LabTestResultDAO;
-import org.openmrs.module.jsslab.db.LabTest;
 
 /**
  *
@@ -124,7 +119,7 @@ public class HibernateLabTestResultDAO implements LabTestResultDAO {
 		
 		// sort the possible returns and take the first
 		Collections.sort(labTestResults,new LabTestResultComparator());
-		if ((start == 0) && (length <= 0)) 
+		if ((start == null || start == 0) && (length == null || length <= 0)) 
 			return labTestResults;
 
 		if (length <= 0) 

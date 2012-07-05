@@ -50,14 +50,12 @@ public class HibernateLabOrderDAO implements LabOrderDAO {
 	 */
 	private SessionFactory sessionFactory;
 	
-	public HibernateLabOrderDAO() {
-	}
-	
 	/**
 	 * Set session factory
 	 * 
 	 * @param sessionFactory
 	 */
+	@Override
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -91,9 +89,10 @@ public class HibernateLabOrderDAO implements LabOrderDAO {
 	 * @see org.openmrs.api.db.LabOrderDAO#getLabOrderByUuid(java.lang.String)
 	 */
 	public LabOrder getLabOrderByUuid(String uuid) {
-		return (LabOrder) sessionFactory.getCurrentSession().createCriteria(LabOrder.class)
-		        .add(Restrictions.eq("uuid", uuid)).uniqueResult();
-		}
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(LabOrder.class, "lo")
+				.add(Restrictions.eq("lo.uuid", uuid));
+		return (LabOrder) crit.uniqueResult();
+	}
 	
 	public List<LabOrder> getLabOrders(String search, Boolean includeDeleted, Integer start, Integer length)
 			throws APIException {
