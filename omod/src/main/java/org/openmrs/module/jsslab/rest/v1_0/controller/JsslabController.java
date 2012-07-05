@@ -1,4 +1,4 @@
-package org.openmrs.module.jsslab.rest.controller;
+package org.openmrs.module.jsslab.rest.v1_0.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,8 +8,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
-import org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver;
 
 @Controller
 @RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/jsslab")

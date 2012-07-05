@@ -1,9 +1,8 @@
-package org.openmrs.module.jsslab.rest.resource;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabTestingService;
-import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
@@ -19,7 +18,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("LabTestSpecimen")
+@Resource("labTestSpecimen")
 @Handler(supports = LabTestSpecimen.class, order = 0)
 public class LabTestSpecimenResource extends MetadataDelegatingCrudResource<LabTestSpecimen> {
 	
@@ -103,8 +102,8 @@ public class LabTestSpecimenResource extends MetadataDelegatingCrudResource<LabT
 	}
 	
 	@Override
-	protected AlreadyPaged<LabTest> doSearch(String query, RequestContext context) {
-		return new ServiceSearcher<LabTest>(LabTestingService.class, "getLabTestSpecimens", "getCountOfLabTestSpecimen")
+	protected AlreadyPaged<LabTestSpecimen> doSearch(String query, RequestContext context) {
+		return new ServiceSearcher<LabTestSpecimen>(LabTestingService.class, "getLabTestSpecimens", "getCountOfLabTestSpecimen")
 		        .search(query, context);
 	}
 	

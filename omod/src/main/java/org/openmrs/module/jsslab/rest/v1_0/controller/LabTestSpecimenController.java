@@ -1,9 +1,9 @@
-package org.openmrs.module.jsslab.rest.controller;
+package org.openmrs.module.jsslab.rest.v1_0.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.jsslab.rest.resource.LabTestSpecimenResource;
+import org.openmrs.module.jsslab.rest.v1_0.resource.LabTestSpecimenResource;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.api.RestService;
 import org.openmrs.module.webservices.rest.web.v1_0.controller.BaseCrudController;

@@ -1,16 +1,14 @@
-package org.openmrs.module.jsslab.rest.controller;
+package org.openmrs.module.jsslab.rest.v1_0.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.jsslab.rest.v1_0.resource.LabSupplyItemResource;
 import org.openmrs.module.webservices.rest.web.RestConstants;
-import org.openmrs.module.jsslab.rest.resource.LabInstrumentResource;
-import org.openmrs.module.jsslab.rest.resource.LabSupplyItemResource;
-import org.openmrs.module.jsslab.db.LabSupplyItem;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.openmrs.module.webservices.rest.web.api.RestService;
 import org.openmrs.module.webservices.rest.web.v1_0.controller.BaseCrudController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Controller for REST web service access to the LabSupplyItem. Supports CRUD on the resource itself.

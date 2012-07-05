@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.jsslab.rest.resource;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
 import org.openmrs.Location;
 import org.openmrs.annotation.Handler;
@@ -108,7 +108,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 		LabInstrument labInstrument = Context.getService(LabManagementService.class).getLabInstrumentByUuid(uuid);
 		//We assume the caller was fetching by propertyTag or serialNumber
 		if (labInstrument == null)
-			labInstrument = Context.getService(LabManagementService.class).getLabInstrument(uuid);
+			labInstrument = Context.getService(LabManagementService.class).getLabInstrumentByUuid(uuid);
 		
 		return labInstrument;
 	}

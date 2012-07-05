@@ -11,17 +11,13 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.jsslab.rest.resource;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
-import java.util.List;
-
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabSupplyItem;
-import org.openmrs.module.jsslab.db.LabTestRange;
+import org.openmrs.Location;
 import org.openmrs.annotation.Handler;
-import org.openmrs.module.jsslab.LabManagementService;
-import org.openmrs.module.jsslab.LabTestingService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.jsslab.LabManagementService;
+import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.Resource;

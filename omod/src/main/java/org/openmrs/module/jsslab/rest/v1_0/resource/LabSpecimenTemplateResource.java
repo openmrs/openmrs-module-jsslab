@@ -1,12 +1,8 @@
-package org.openmrs.module.jsslab.rest.resource;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
-import java.util.List;
-
-import org.openmrs.Concept;
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
-import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.webservices.rest.web.RequestContext;
@@ -17,13 +13,13 @@ import org.openmrs.module.webservices.rest.web.representation.FullRepresentation
 import org.openmrs.module.webservices.rest.web.representation.Representation;
 import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
-import org.openmrs.module.webservices.rest.web.resource.impl.MetadataDelegatingCrudResource;  
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
+import org.openmrs.module.webservices.rest.web.resource.impl.MetadataDelegatingCrudResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("LabSpecimenTemplate")
+@Resource("labSpecimenTemplate")
 @Handler(supports = LabSpecimenTemplate.class, order = 0)
 public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<LabSpecimenTemplate>{
 
@@ -76,8 +72,8 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 			Descri.addProperty("uuid");
 			Descri.addProperty("testPanel",Representation.REF);
 			Descri.addProperty("testRoleConcept",Representation.REF);
-			Descri.addProperty("parentSubID");
-			Descri.addProperty("specimenSubID");
+			Descri.addProperty("parentSubId");
+			Descri.addProperty("specimenSubId");
 			Descri.addProperty("retired");
 			Descri.addSelfLink();
 			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
@@ -89,8 +85,8 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 			Descri.addProperty("uuid");
 			Descri.addProperty("testPanel",Representation.REF);
 			Descri.addProperty("testRoleConcept",Representation.REF);
-			Descri.addProperty("parentSubID");
-			Descri.addProperty("specimenSubID");
+			Descri.addProperty("parentSubId");
+			Descri.addProperty("specimenSubId");
 			Descri.addProperty("parentRelationConcept",Representation.REF);
 			Descri.addProperty("analysisSpecimenTypeConcept",Representation.REF);
 			Descri.addProperty("parentRoleConcept",Representation.REF);

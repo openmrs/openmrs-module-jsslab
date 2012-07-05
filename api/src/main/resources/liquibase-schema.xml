@@ -77,9 +77,6 @@
 			<column defaultValue="" name="retest_reason" type="VARCHAR(255)">
 				<constraints nullable="false"/>
 			</column>
-			<column name="uuid" type="CHAR(38)">
-				<constraints nullable="false"/>
-			</column>
 		</createTable>
 	</changeSet>
 

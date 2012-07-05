@@ -11,17 +11,17 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.jsslab.rest.resource;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
 import java.lang.reflect.Method;
 import java.util.List;
 
-import org.openmrs.module.jsslab.LabOrderService;
-import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.Order;
 import org.openmrs.Patient;
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.jsslab.LabOrderService;
+import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.PropertyGetter;
@@ -30,14 +30,12 @@ import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentat
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
 import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
-import org.openmrs.module.webservices.rest.web.resource.impl.BaseDelegatingResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.BaseDelegatingSubclassHandler;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingSubclassHandler;
 import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.response.ResourceDoesNotSupportOperationException;
 import org.openmrs.module.webservices.rest.web.v1_0.resource.OrderResource;
-import org.openmrs.util.OpenmrsConstants;
 import org.springframework.util.ReflectionUtils;
 
 /**
@@ -51,7 +49,7 @@ public class LabOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order
 	 */
 	@Override
 	public String getTypeName() {
-		return "laborder";
+		return "labOrder";
 	}
 	
 	/**
@@ -65,7 +63,6 @@ public class LabOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order
 	/**
 	 * @see org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceHandler#getAllByType(org.openmrs.module.webservices.rest.web.RequestContext)
 	 */
-	@SuppressWarnings("deprecation")
 	@Override
 	public PageableResult getAllByType(RequestContext context) throws ResourceDoesNotSupportOperationException {
 		return new NeedsPaging<LabOrder>(Context.getService(LabOrderService.class).getAllLabOrders(), context);
@@ -98,7 +95,7 @@ public class LabOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order
 			Descri.addProperty("retestOf",Representation.REF);
 			Descri.addProperty("physicianRetest");
 			Descri.addProperty("retestReason");
-			Descri.addProperty("orderTypeId",Representation.REF);
+			Descri.addProperty("orderType",Representation.REF);
 			Descri.addProperty("concept",Representation.REF);
 			Descri.addProperty("orderer",Representation.REF);
 			Descri.addProperty("encounter",Representation.REF);

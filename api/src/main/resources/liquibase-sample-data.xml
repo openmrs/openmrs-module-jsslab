@@ -142,7 +142,6 @@
 			<column name="retest_of"/>
 			<column name="physician_retest"/>
 			<column name="retest_reason" value=""/>
-			<column name="uuid" value="b5fdf8e6-49bd-11e1-812a-0024e8c61285"/>
 		</insert>
 	</changeSet>
 	<changeSet author="martingielow" id="1340117334338-4">
@@ -6737,6 +6736,24 @@
 	</changeSet>
 
 	<changeSet author="martingielow" id="1340117334338-15">
+		<insert tableName="users">
+			<column name="user_id" valueNumeric="3"/>
+			<column name="system_id" value=""/>
+			<column name="username" value="Test User"/>
+			<column name="password"/>
+			<column name="salt"/>
+			<column name="secret_question"/>
+			<column name="secret_answer"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueBoolean="false"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="63b59970-c629-11e1-9b21-0800200c9a66" />
+		</insert>
 		<insert tableName="users">
 			<column name="user_id" valueNumeric="33333001"/>
 			<column name="system_id" value=""/>

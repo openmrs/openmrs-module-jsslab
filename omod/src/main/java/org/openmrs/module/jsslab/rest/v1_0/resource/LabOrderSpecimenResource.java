@@ -1,48 +1,29 @@
-package org.openmrs.module.jsslab.rest.resource;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.openmrs.Order;
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabOrderService;
-import org.openmrs.module.jsslab.db.LabInstrument;
+import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabOrderSpecimen;
-import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
-import org.openmrs.module.webservices.rest.web.annotation.Resource;
+import org.openmrs.module.webservices.rest.web.annotation.SubResource;
 import org.openmrs.module.webservices.rest.web.representation.DefaultRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.FullRepresentation;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
-import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
-import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
-import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudResource;  
+import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingSubResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
-import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
+import org.openmrs.module.webservices.rest.web.v1_0.resource.OrderResource;
 
-@Resource("labOrderSpecimen")
+@SubResource(parent = OrderResource.class, path = "orderSpecimen")
 @Handler(supports = LabOrderSpecimen.class, order = 0)
-public class LabOrderSpecimenResource extends DataDelegatingCrudResource<LabOrderSpecimen> {
-
-		@Override
-	public LabOrderSpecimen getByUniqueId(String uniqueId) {
-		LabOrderSpecimen labOrderSpecimen=Context.getService(LabOrderService.class).getLabOrderSpecimenByUuid(uniqueId);
-		return labOrderSpecimen;
-	}
-
-	@Override
-	public LabOrderSpecimen newDelegate() {
-		return new LabOrderSpecimen();
-	}
-
-	@Override
-	public LabOrderSpecimen save(LabOrderSpecimen delegate) {
-		LabOrderSpecimen labOrderSpecimen=Context.getService(LabOrderService.class).saveLabOrderSpecimen(delegate);
-		return labOrderSpecimen;
-	}
-
+public class LabOrderSpecimenResource extends DelegatingSubResource<LabOrderSpecimen, Order, OrderResource> {
 
 	@Override
 	public DelegatingResourceDescription getRepresentationDescription(
@@ -74,15 +55,22 @@ public class LabOrderSpecimenResource extends DataDelegatingCrudResource<LabOrde
 		}
 		return null;
 	}
-	@Override
-	protected PageableResult doGetAll(RequestContext context) {
-		return new NeedsPaging<LabOrderSpecimen>(Context.getService(LabOrderService.class).getLabOrderSpecimens("",false,null,null), context);
-	}
 	
 	@Override
-	protected AlreadyPaged<LabOrderSpecimen> doSearch(String query, RequestContext context) {
-		return new ServiceSearcher<LabOrderSpecimen>(LabOrderService.class, "getLabOrderSpecimen", "getCountOfLabOrderSpecimen").search(query,
-		    context);
+	public LabOrderSpecimen getByUniqueId(String uniqueId) {
+		LabOrderSpecimen labOrderSpecimen=Context.getService(LabOrderService.class).getLabOrderSpecimenByUuid(uniqueId);
+		return labOrderSpecimen;
+	}
+
+	@Override
+	public LabOrderSpecimen newDelegate() {
+		return new LabOrderSpecimen();
+	}
+
+	@Override
+	public LabOrderSpecimen save(LabOrderSpecimen delegate) {
+		LabOrderSpecimen labOrderSpecimen=Context.getService(LabOrderService.class).saveLabOrderSpecimen(delegate);
+		return labOrderSpecimen;
 	}
 
 	@Override
@@ -106,4 +94,36 @@ public class LabOrderSpecimenResource extends DataDelegatingCrudResource<LabOrde
 	public String getDisplayString(LabOrderSpecimen labOrderSpecimen) {
 		return labOrderSpecimen.getDisplayString();
 	}
+
+	/**
+	 * @see org.openmrs.module.webservices.rest.web.resource.impl.DelegatingSubResource#getParent(java.lang.Object)
+	 */
+	@Override
+	public Order getParent(LabOrderSpecimen instance) {
+		return instance.getOrder();
+	}
+	
+	/**
+	 * @see org.openmrs.module.webservices.rest.web.resource.impl.DelegatingSubResource#setParent(java.lang.Object,
+	 *      java.lang.Object)
+	 */
+	@Override
+	public void setParent(LabOrderSpecimen instance, Order order) {
+		instance.setOrder((LabOrder) order);
+	}
+	
+	/**
+	 * @see org.openmrs.module.webservices.rest.web.resource.api.SubResource#doGetAll(java.lang.Object,
+	 *      org.openmrs.module.webservices.rest.web.RequestContext)
+	 */
+	@Override
+	public NeedsPaging<LabOrderSpecimen> doGetAll(Order parent, RequestContext context) throws ResponseException {
+		List<LabOrderSpecimen> labOrderSpecimens = new ArrayList<LabOrderSpecimen>();
+		LabOrder parentLabOrder = (LabOrder) parent;
+		if (parent != null) {
+			labOrderSpecimens.addAll(parentLabOrder.getOrderSpecimens());
+		}
+		return new NeedsPaging<LabOrderSpecimen>(labOrderSpecimens, context);
+	}
+	
 }

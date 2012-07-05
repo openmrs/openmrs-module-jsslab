@@ -1,13 +1,9 @@
-package org.openmrs.module.jsslab.rest.resource;
-
-import java.util.List;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.LabTestingService;
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.jsslab.db.LabTestRange;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
@@ -23,7 +19,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("LabTestRange")
+@Resource("labTestRange")
 @Handler(supports = LabTestRange.class, order = 0)
 public class LabTestRangeResource extends DataDelegatingCrudResource<LabTestRange>{
 

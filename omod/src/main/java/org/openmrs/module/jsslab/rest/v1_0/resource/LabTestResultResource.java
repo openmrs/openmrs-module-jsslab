@@ -1,13 +1,10 @@
-package org.openmrs.module.jsslab.rest.resource;
-
-import java.util.List;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabTestingService;
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabTestResult;
 import org.openmrs.module.jsslab.db.LabTest;
+import org.openmrs.module.jsslab.db.LabTestResult;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.Resource;
@@ -16,12 +13,13 @@ import org.openmrs.module.webservices.rest.web.representation.FullRepresentation
 import org.openmrs.module.webservices.rest.web.representation.Representation;
 import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
-import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudResource;  
+import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
-@Resource("LabTestResult")
+
+@Resource("labTestResult")
 @Handler(supports = LabTestResult.class, order = 0)
 public class LabTestResultResource extends DataDelegatingCrudResource<LabTestResult>{
 
@@ -65,7 +63,6 @@ public class LabTestResultResource extends DataDelegatingCrudResource<LabTestRes
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public DelegatingResourceDescription getRepresentationDescription(
 			Representation rep) {
 		DelegatingResourceDescription Descri=new DelegatingResourceDescription();
@@ -74,7 +71,7 @@ public class LabTestResultResource extends DataDelegatingCrudResource<LabTestRes
 			//			
 			Descri.addProperty("uuid");
 			Descri.addProperty("testResultConcept",Representation.REF);
-			Descri.addProperty("resultValue");
+			Descri.addProperty("testResultText");
 			Descri.addProperty("testAnswerFlag");
 			Descri.addProperty("voided");
 			Descri.addSelfLink();
@@ -88,7 +85,7 @@ public class LabTestResultResource extends DataDelegatingCrudResource<LabTestRes
 			Descri.addProperty("testSpecimen",Representation.REF);
 			Descri.addProperty("testResultConcept",Representation.REF);
 			Descri.addProperty("resultTypeString");
-			Descri.addProperty("resultValue");
+			Descri.addProperty("testResultText");
 			Descri.addProperty("testAnswerFlag");
 			Descri.addProperty("testAnswerNote");
 			Descri.addProperty("approved");

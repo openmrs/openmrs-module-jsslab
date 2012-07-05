@@ -1,18 +1,8 @@
-package org.openmrs.module.jsslab.rest.resource;
+package org.openmrs.module.jsslab.rest.v1_0.resource;
 
-import java.util.Date;
-import java.util.List;
-
-import org.openmrs.Concept;
-import org.openmrs.Location;
-import org.openmrs.Patient;
-import org.openmrs.Person;
-import org.openmrs.User;
 import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabTestingService;
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.webservices.rest.web.RequestContext;
@@ -23,12 +13,13 @@ import org.openmrs.module.webservices.rest.web.representation.FullRepresentation
 import org.openmrs.module.webservices.rest.web.representation.Representation;
 import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
 import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
-import org.openmrs.module.webservices.rest.web.resource.impl.MetadataDelegatingCrudResource;  
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
+import org.openmrs.module.webservices.rest.web.resource.impl.MetadataDelegatingCrudResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
-@Resource("LabReport")
+
+@Resource("labReport")
 @Handler(supports = LabReport.class, order = 0)
 public class LabReportResource extends MetadataDelegatingCrudResource<LabReport>{
 
@@ -80,7 +71,7 @@ public class LabReportResource extends MetadataDelegatingCrudResource<LabReport>
 			//			
 			Descri.addProperty("uuid");
 			Descri.addProperty("labReportId");
-			Descri.addProperty("voided");
+			Descri.addProperty("retired");
 			Descri.addSelfLink();
 			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
 			return Descri;
@@ -97,7 +88,7 @@ public class LabReportResource extends MetadataDelegatingCrudResource<LabReport>
 			Descri.addProperty("resultDeliveryDate");
 			Descri.addProperty("resultDeliveryConcept",Representation.REF);
 			Descri.addProperty("specimens",Representation.REF);
-			Descri.addProperty("voided");
+			Descri.addProperty("retired");
 			Descri.addSelfLink();
 			Descri.addProperty("auditInfo",findMethod("getAuditInfo"));
 			return Descri;
