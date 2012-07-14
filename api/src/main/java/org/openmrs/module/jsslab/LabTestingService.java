@@ -12,6 +12,7 @@ import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.module.jsslab.db.LabTestRange;
 import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public interface LabTestingService extends OpenmrsService {
 
 	@Authorized( PrivilegeConstants.VIEW_LAB_TEST )

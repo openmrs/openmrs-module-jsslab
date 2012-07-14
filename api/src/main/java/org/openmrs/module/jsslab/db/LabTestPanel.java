@@ -14,21 +14,17 @@
 package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashMap;
+import java.math.BigDecimal;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.math.BigDecimal;
 
-import org.openmrs.BaseOpenmrsMetadata;
-import org.openmrs.Location;
-import org.openmrs.Concept;
-import org.openmrs.api.context.Context;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.BaseOpenmrsMetadata;
+import org.openmrs.Concept;
+import org.openmrs.Location;
+import org.openmrs.api.context.Context;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -75,14 +71,12 @@ public class LabTestPanel extends BaseOpenmrsMetadata implements Serializable {
 	
 	private Set<LabSpecimenTemplate> specimenTemplates = new HashSet<LabSpecimenTemplate>();
 	
-	public void LabTestPanel() {
-		
+	public LabTestPanel() {
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	
 	@Override
 	public int hashCode() {
-		
 		return this.getUuid().hashCode();
 	}
 	

@@ -58,13 +58,11 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable {
 	private Set<LabTestRange> testRanges = new HashSet<LabTestRange>();
 	
 	public LabTest() {
-		
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	
 	@Override
 	public int hashCode() {
-		
 		return this.getUuid().hashCode();
 	}
 	

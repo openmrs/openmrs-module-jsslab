@@ -58,7 +58,7 @@ public interface LabInstrumentDAO {
 	/**
 	 * Get a labInstrument by name
 	 * 
-	 * @param name String name of the <code>LabInstrument</code> to get
+	 * @param name String value of the propertyTag, serialNumber or model properties of <code>LabInstrument</code> to match
 	 * @return the requested <code>LabInstrument</code>
 	 */
 	public LabInstrument getLabInstrument(String name);

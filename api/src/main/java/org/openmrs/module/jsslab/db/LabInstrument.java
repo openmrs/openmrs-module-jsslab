@@ -58,7 +58,8 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	
 	protected Set<LabTestRun> testRuns = new HashSet<LabTestRun>();
 	
-	private String name;
+//	TODO decide if needed - currently unused
+//	private String name;
 
 	public LabInstrument() {
 		super();
@@ -219,7 +220,7 @@ public class LabInstrument extends BaseOpenmrsMetadata {
 	 * @param receivedFrom The receivedFrom to set.
 	 */
 	@Attribute(required = false)
-	public void setreceivedFrom(String ReceivedFrom) {
+	public void setReceivedFrom(String receivedFrom) {
 		this.receivedFrom = receivedFrom;
 	}
 	

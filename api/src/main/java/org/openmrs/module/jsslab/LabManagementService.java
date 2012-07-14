@@ -9,6 +9,7 @@ import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public interface LabManagementService extends OpenmrsService {
 
 	/**
@@ -125,11 +126,11 @@ public interface LabManagementService extends OpenmrsService {
 	/**
 	 * Get the <code>LabInstrument</code> with the given propertyTag or serialNumber
 	 * 
-	 * @param propertyTag or serialNumber to find
+	 * @param name propertyTag, serialNumber or model to find
 	 * @return the LabInstrument that was found or null
 	 */
 	@Authorized( PrivilegeConstants.VIEW_LAB_MGMT )
-	public LabInstrument getLabInstrument(Integer idNumber);
+	public LabInstrument getLabInstrument(String name);
 	
 	/**
 	 * Save or update the given <code>LabSupplyItem</code> in the database

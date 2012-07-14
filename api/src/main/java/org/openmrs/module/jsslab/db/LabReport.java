@@ -15,25 +15,17 @@ package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
-import org.openmrs.BaseOpenmrsMetadata;
-import org.openmrs.Patient;
-import org.openmrs.Person;
-import org.openmrs.User;
-import org.openmrs.Location;
-import org.openmrs.Concept;
-import org.openmrs.Order;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.BaseOpenmrsMetadata;
+import org.openmrs.Concept;
+import org.openmrs.User;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
-import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 /**
@@ -66,14 +58,12 @@ public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 	
 	protected Set<LabSpecimen> specimens = new HashSet<LabSpecimen>();
 	
-	public void LabReport() {
-		
+	public LabReport() {
 		this.setUuid(UUID.randomUUID().toString());
 	}
 	
 	@Override
 	public int hashCode() {
-		
 		return this.getUuid().hashCode();
 	}
 	
@@ -87,28 +77,25 @@ public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.openmrs.OpenmrsObject#getId()
-	 */
+	@Override
 	public Integer getId() {
 		return reportId;
 	}
 
-	public void setReportId(Integer reportId) {
-		this.reportId = reportId;
+	@Override
+	public void setId(Integer id) {
+		this.reportId = id;
+		
 	}
 
 	public Integer getReportId() {
 		return reportId;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.openmrs.OpenmrsObject#setId(java.lang.Integer)
-	 */
-	public void setId(Integer reportId) {
+	public void setReportId(Integer reportId) {
 		this.reportId = reportId;
 	}
-
+	
 	/**
 	 * @return Returns the labReportId.
 	 */
@@ -238,6 +225,5 @@ public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 	public void setSpecimens(Set<LabSpecimen> specimens) {
 		this.specimens = specimens;
 	}
-	
 
 }

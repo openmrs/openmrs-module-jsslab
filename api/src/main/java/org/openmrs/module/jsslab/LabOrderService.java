@@ -14,6 +14,7 @@ import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
 import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public interface LabOrderService extends OpenmrsService {
 
 	/**

@@ -371,7 +371,7 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	 * @return Returns the testspecimens set.
 	 */
 	@Attribute(required = false)
-	public Set<LabTestSpecimen> getTestSpecimens(){
+	public Set<LabTestSpecimen> getTestSpecimens() {
 		return testSpecimens;
 	}
 	
@@ -379,7 +379,7 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	 * @param testspecimens The set of testspecimens to set.
 	 */
 	@Attribute(required = false)
-	public void setTestSpecimens(Set<LabTestSpecimen> TestSpecimens) {
+	public void setTestSpecimens(Set<LabTestSpecimen> testSpecimens) {
 		this.testSpecimens = testSpecimens;
 	}
 	

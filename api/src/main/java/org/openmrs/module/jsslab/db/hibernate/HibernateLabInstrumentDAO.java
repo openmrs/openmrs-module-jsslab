@@ -22,7 +22,6 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.api.APIException;
-import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.module.jsslab.db.LabInstrumentDAO;
 import org.openmrs.module.jsslab.db.LabTestRun;
@@ -45,10 +44,10 @@ public class HibernateLabInstrumentDAO implements LabInstrumentDAO {
 	 * @see org.openmrs.api.db.LabInstrumentDAO#saveLabInstrument(org.openmrs.LabInstrument)
 	 */
 	public LabInstrument saveLabInstrument(LabInstrument instrument) {
-		if (instrument.getInstrumentId() == null) {
-			throw new APIException(Context.getMessageSourceService().getMessage("JSSLab.HibernateLabInstrumentDAO.saveLabInstrument.instrumentIdRequired", null,
-			    "Attribute 'instrumentId' is required", Context.getLocale()));
-		}
+//		if (instrument.getInstrumentId() == null) {
+//			throw new APIException(Context.getMessageSourceService().getMessage("JSSLab.HibernateLabInstrumentDAO.saveLabInstrument.instrumentIdRequired", null,
+//			    "Attribute 'instrumentId' is required", Context.getLocale()));
+//		}
 		/**
 		 * TODO: implement TestRuns if (instrument.getTestRuns() != null && instrument.getId() !=
 		 * null) { // Hibernate has a problem updating child collections // if the parent object was

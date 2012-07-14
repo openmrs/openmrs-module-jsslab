@@ -49,7 +49,6 @@ public class LabSupplyItem extends BaseOpenmrsMetadata {
 	
 	@Override
 	public int hashCode() {
-		
 		return this.getUuid().hashCode();
 	}
 	

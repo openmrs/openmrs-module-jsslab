@@ -14,19 +14,14 @@
 package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
 import java.util.Locale;
-import java.lang.Comparable;
+import java.util.UUID;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Concept;
-import org.openmrs.User;
 import org.openmrs.api.context.Context;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
@@ -42,9 +37,9 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	
 	private static final Log log = LogFactory.getLog(LabSpecimenTemplate.class);
 	
-	private Locale textLocale;
-	
 	private Integer specimenTemplateId;
+	
+	private Locale textLocale;
 	
 	private Concept parentRoleConcept;
 	
@@ -105,14 +100,6 @@ public class LabSpecimenTemplate extends BaseOpenmrsMetadata implements Serializ
 	}
 
 	public void setSpecimenTemplateId(Integer specimenTemplateId) {
-		this.specimenTemplateId = specimenTemplateId;
-	}
-
-	public Integer getTestSpecimenId() {
-		return specimenTemplateId;
-	}
-
-	public void setTestSpecimenId(Integer specimenTemplateId) {
 		this.specimenTemplateId = specimenTemplateId;
 	}
 
