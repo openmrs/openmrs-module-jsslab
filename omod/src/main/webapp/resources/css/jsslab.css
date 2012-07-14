@@ -1,0 +1,48 @@
+#codeListSelection {
+	float:left;
+	margin-right: 20px;
+}
+
+#codeListSelection #radioPanel {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#codeTable {
+	float:left;
+	margin-right: 20px;
+}
+
+#codeEditForm {
+	float:left;
+}
+
+/*
+tr:nth-child(even) {
+	background-color: white;
+}
+
+tr:nth-child(odd) {
+	background-color: #E2E4FF;
+}
+*/
+
+#instrumentsTable {
+	margin: 10px 0 10px 0;
+}
+
+#instrumentsTable td {
+	margin: 2px;
+}
+
+#instrumentEditForm {
+	display: none;
+}
+
+#instrumentAdd {
+	margin: 5px 0 0 0
+}
+
+#supplyItemEditForm {
+	display: none;
+}

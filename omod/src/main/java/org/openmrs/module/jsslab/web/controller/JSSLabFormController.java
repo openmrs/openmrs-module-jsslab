@@ -13,15 +13,10 @@
  */
 package org.openmrs.module.jsslab.web.controller;
 
-import java.util.Collection;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.Patient;
-import org.openmrs.api.context.Context;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,14 +27,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * This class configured as controller using annotation and mapped with the URL of 'module/JSSLab/JSSLabLink.form'.
  */
 @Controller
-@RequestMapping(value = "module/JSSLab/JSSLabLink.form")
+@RequestMapping(value = "module/jsslab/JSSLabLink.form")
 public class JSSLabFormController {
 	
 	/** Logger for this class and subclasses */
 	protected final Log log = LogFactory.getLog(getClass());
 	
 	/** Success form view name */
-	private final String SUCCESS_FORM_VIEW = "/module/JSSLab/JSSLabForm";
+	private final String SUCCESS_FORM_VIEW = "/module/jsslab/JSSLabForm";
 	
 	/**
 	 * Initially called after the formBackingObject method to get the landing form name  
