@@ -96,6 +96,28 @@ public class LabTestSpecimenResource extends MetadataDelegatingCrudResource<LabT
 	}
 	
 	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addRequiredProperty("specimen");
+		d.addRequiredProperty("specimenSubId");
+		d.addRequiredProperty("parentSubId");
+		d.addRequiredProperty("parentRelationConcept");
+		d.addProperty("analysisSpecimenTypeConcept");
+		d.addProperty("testPanel");
+		d.addProperty("testRoleConcept");
+		d.addProperty("supplyItem");
+		d.addProperty("prepTech");
+		d.addProperty("prepTime");
+		d.addProperty("rackPosition");
+		d.addProperty("testTech");
+		d.addProperty("testTime");
+		d.addProperty("testRun");
+		d.addProperty("wellPosition");
+		d.addProperty("testResults");
+		return d;
+	}
+	
+	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return new NeedsPaging<LabTestSpecimen>(Context.getService(LabTestingService.class).getLabTestSpecimens("", false,
 		    null, null), context);

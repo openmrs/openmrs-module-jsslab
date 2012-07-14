@@ -102,4 +102,17 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 		}
 		return null;
 	}
+	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addRequiredProperty("testPanel");
+		d.addRequiredProperty("testConcept");
+//		d.addProperty("testName");
+		d.addProperty("resultFormat");
+		d.addProperty("confirmTest");
+		d.addProperty("sortWeight");
+		d.addProperty("testRanges");
+		return d;
+	}
 }

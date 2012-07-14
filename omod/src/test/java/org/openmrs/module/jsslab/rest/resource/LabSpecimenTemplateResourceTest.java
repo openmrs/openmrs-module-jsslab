@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
-import org.openmrs.module.jsslab.rest.resource.LabSpecimenTemplateResource;
+import org.openmrs.module.jsslab.rest.v1_0.resource.LabSpecimenTemplateResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.BaseDelegatingResourceTest;
 
 public class LabSpecimenTemplateResourceTest extends BaseDelegatingResourceTest<LabSpecimenTemplateResource,LabSpecimenTemplate>{

@@ -57,6 +57,18 @@ public class LabOrderSpecimenResource extends DelegatingSubResource<LabOrderSpec
 	}
 	
 	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addRequiredProperty("specimen");
+		d.addRequiredProperty("order");
+		d.addProperty("textLocale");
+		d.addProperty("specimenRoleConcept");
+		d.addProperty("specimenRoleText");
+		d.addProperty("specimenRoleCode");
+		return d;
+	}
+	
+	@Override
 	public LabOrderSpecimen getByUniqueId(String uniqueId) {
 		LabOrderSpecimen labOrderSpecimen=Context.getService(LabOrderService.class).getLabOrderSpecimenByUuid(uniqueId);
 		return labOrderSpecimen;

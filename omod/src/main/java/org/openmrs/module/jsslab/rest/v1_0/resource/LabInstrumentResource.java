@@ -80,6 +80,32 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 		return null;
 	}
 	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addProperty("retired");
+		
+		d.addProperty("propertyTag");
+		d.addProperty("manufacturer");
+		d.addProperty("model");
+		d.addProperty("serialNumber");
+		d.addProperty("location");
+		d.addProperty("condition");
+		d.addProperty("receivedDate");
+		d.addProperty("receivedFrom");
+		d.addProperty("receivedCost");
+		d.addProperty("receivedValue");
+		d.addProperty("conditionDate");
+		d.addProperty("conditionConcept");
+		d.addProperty("maintenanceVendor");
+		d.addProperty("maintenancePhone");
+		d.addProperty("maintenanceDescription");
+		d.addProperty("testRuns");
+//		TODO is not used in the object currently 
+//		d.addProperty("name");
+		return d;
+	}
+	
 	/**
 	 * @see DelegatingCrudResource#newDelegate()
 	 */
@@ -94,7 +120,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 	@Override
 	public LabInstrument save(LabInstrument labInstrument) {
 		return Context.getService(LabManagementService.class)
-.saveLabInstrument(labInstrument);
+				.saveLabInstrument(labInstrument);
 	}
 	
 	/**
@@ -108,7 +134,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 		LabInstrument labInstrument = Context.getService(LabManagementService.class).getLabInstrumentByUuid(uuid);
 		//We assume the caller was fetching by propertyTag or serialNumber
 		if (labInstrument == null)
-			labInstrument = Context.getService(LabManagementService.class).getLabInstrumentByUuid(uuid);
+			labInstrument = Context.getService(LabManagementService.class).getLabInstrument(uuid);
 		
 		return labInstrument;
 	}

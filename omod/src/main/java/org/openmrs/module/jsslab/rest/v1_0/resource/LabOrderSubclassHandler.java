@@ -73,44 +73,43 @@ public class LabOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order
 	 */
 	@Override
 	public DelegatingResourceDescription getRepresentationDescription(Representation rep) {
-		DelegatingResourceDescription Descri=new DelegatingResourceDescription();
-		if(rep instanceof DefaultRepresentation)
-		{
+		DelegatingResourceDescription description = new DelegatingResourceDescription();
+		if (rep instanceof DefaultRepresentation) {
 			//			
-			Descri.addProperty("uuid");
-			Descri.addProperty("labOrderId");
-			Descri.addProperty("concept",Representation.REF);
-			Descri.addProperty("orderer",Representation.REF);
-			Descri.addProperty("startDate");
-			Descri.addProperty("voided");
-			Descri.addSelfLink();
-			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
-			return Descri;
+			description.addProperty("uuid");
+			description.addProperty("labOrderId");
+			description.addProperty("concept",Representation.REF);
+			description.addProperty("orderer",Representation.REF);
+			description.addProperty("startDate");
+			description.addProperty("voided");
+			description.addSelfLink();
+			description.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
+			return description;
 		}
-		else if(rep instanceof FullRepresentation)
-		{
-			Descri.addProperty("uuid");
-			Descri.addProperty("labOrderId");
-			Descri.addProperty("urgent");
-			Descri.addProperty("retestOf",Representation.REF);
-			Descri.addProperty("physicianRetest");
-			Descri.addProperty("retestReason");
-			Descri.addProperty("orderType",Representation.REF);
-			Descri.addProperty("concept",Representation.REF);
-			Descri.addProperty("orderer",Representation.REF);
-			Descri.addProperty("encounter",Representation.REF);
-			Descri.addProperty("instructions");
-			Descri.addProperty("startDate");
-			Descri.addProperty("autoExpireDate");
-			Descri.addProperty("discontinued");
-			Descri.addProperty("discontinuedDate");
-			Descri.addProperty("discontinuedBy",Representation.REF);
-			Descri.addProperty("discontinuedReason");
-			Descri.addProperty("voided");
-			Descri.addSelfLink();
+		else if (rep instanceof FullRepresentation) {
+			description.addProperty("uuid");
+			description.addProperty("labOrderId");
+			description.addProperty("urgent");
+			description.addProperty("retestOf", Representation.REF);
+			description.addProperty("physicianRetest");
+			description.addProperty("retestReason");
+			description.addProperty("orderType", Representation.REF);
+			description.addProperty("patient", Representation.REF);
+			description.addProperty("concept",Representation.REF);
+			description.addProperty("orderer",Representation.REF);
+			description.addProperty("encounter",Representation.REF);
+			description.addProperty("instructions");
+			description.addProperty("startDate");
+			description.addProperty("autoExpireDate");
+			description.addProperty("discontinued");
+			description.addProperty("discontinuedDate");
+			description.addProperty("discontinuedBy",Representation.REF);
+			description.addProperty("discontinuedReason");
+			description.addProperty("voided");
+			description.addSelfLink();
 			Method m = ReflectionUtils.findMethod(getResource().getClass(), "getAuditInfo",(Class<?>[]) null);
-			Descri.addProperty("auditInfo",m);
-			return Descri;
+			description.addProperty("auditInfo",m);
+			return description;
 		}
 		return null;
 	}
@@ -123,7 +122,7 @@ public class LabOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order
 		OrderResource orderResource = Context.getService(RestService.class).getResource(OrderResource.class);
 		DelegatingResourceDescription d = orderResource.getCreatableProperties();
 		d.addRequiredProperty("labOrderId");
-		d.addProperty("urgent");
+		d.addRequiredProperty("urgent");
 		d.addProperty("retestOf");
 		d.addProperty("physicianRetest");
 		d.addProperty("retestReason");

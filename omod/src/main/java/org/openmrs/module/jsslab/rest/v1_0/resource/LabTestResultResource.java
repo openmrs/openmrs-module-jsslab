@@ -102,6 +102,33 @@ public class LabTestResultResource extends DataDelegatingCrudResource<LabTestRes
 		}
 		return null;
 	}
+	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addRequiredProperty("testSpecimen");
+		d.addRequiredProperty("testResultConcept");
+		d.addRequiredProperty("resultType");
+		d.addProperty("testAnswerConcept");
+		d.addProperty("testAnswerDuration");
+		d.addProperty("testAnswerTiter");
+		d.addProperty("testAnswerNumeric");
+		d.addProperty("testAnswerString");
+		d.addProperty("testAnswerFlag");
+		d.addProperty("testAnswerNote");
+		d.addProperty("testNormalLow");
+		d.addProperty("testNormalHigh");
+		d.addProperty("testCriticalLow");
+		d.addProperty("testCriticalHigh");
+		d.addProperty("approved");
+		d.addProperty("approvedBy");
+		d.addProperty("hidden");
+		d.addProperty("textLocale");
+		d.addProperty("testResultText");
+		d.addProperty("testAnswerConceptText");
+		return d;
+	}
+	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabTestResult>(Context.getService(LabTestingService.class).getLabTestResults("",false,null,null), context);

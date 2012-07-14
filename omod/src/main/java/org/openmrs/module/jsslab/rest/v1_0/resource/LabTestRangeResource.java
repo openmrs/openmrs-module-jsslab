@@ -97,6 +97,22 @@ public class LabTestRangeResource extends DataDelegatingCrudResource<LabTestRang
 	}
 	
 	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addRequiredProperty("test");
+		d.addRequiredProperty("sortWeight");
+		d.addProperty("rangeSex");
+		d.addProperty("rangeAgeMin");
+		d.addProperty("rangeAgeMax");
+		d.addProperty("logicRule");
+		d.addProperty("rangeNormalLow");
+		d.addProperty("rangeNormalHigh");
+		d.addProperty("rangeCriticalLow");
+		d.addProperty("rangeCriticalHigh");
+		return d;
+	}
+	
+	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabTestRange>(Context.getService(LabTestingService.class).getAllLabTestRanges(false), context);
 	}

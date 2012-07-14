@@ -92,6 +92,20 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 		}
 		return null;
 	}
+	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addRequiredProperty("testPanel");
+		d.addRequiredProperty("preconditionQuestionConcept");
+		d.addRequiredProperty("preconditionAnswerConcept");
+//		d.addProperty("preconditionQuestionText");
+//		d.addProperty("preconditionAnswerText");
+		d.addProperty("sortWeight");
+		d.addProperty("textLocale");
+		return d;
+	}
+	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabPrecondition>(Context.getService(LabCatalogService.class).getLabPreconditions("",false,null,null), context);

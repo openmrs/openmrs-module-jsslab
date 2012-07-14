@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.db.LabPrecondition;
-import org.openmrs.module.jsslab.rest.resource.LabPreconditionResource;
+import org.openmrs.module.jsslab.rest.v1_0.resource.LabPreconditionResource;
 import org.openmrs.module.webservices.rest.web.resource.impl.BaseDelegatingResourceTest;
 
 

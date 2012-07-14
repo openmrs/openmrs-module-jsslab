@@ -101,6 +101,29 @@ public class LabSpecimenResource extends MetadataDelegatingCrudResource<LabSpeci
 		}
 		return null;
 	}
+	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addRequiredProperty("labSpecimenId");
+		d.addProperty("clientSpecimenId");
+		d.addRequiredProperty("orderedBy");
+		d.addRequiredProperty("orderedByFacility");
+		d.addProperty("person");
+		d.addProperty("patient");
+		d.addRequiredProperty("specimenDate");
+		d.addRequiredProperty("receivedDate");
+		d.addProperty("receivedConditionConcept");
+		d.addRequiredProperty("receivedSpecimenTypeConcept");
+		d.addRequiredProperty("report");
+		d.addRequiredProperty("urgent");
+		d.addProperty("physicianRetest");
+		d.addProperty("hidden");
+		d.addProperty("testSpecimens");
+		d.addProperty("orderSpecimens");
+		return d;
+	}
+	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabSpecimen>(Context.getService(LabOrderService.class).getLabSpecimens("",false,null,null), context);

@@ -95,6 +95,21 @@ public class LabReportResource extends MetadataDelegatingCrudResource<LabReport>
 		}
 		return null;
 	}
+	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addProperty("labReportId");
+		d.addProperty("reportStatusConcept");
+		d.addProperty("approvedBy");
+		d.addProperty("approvedDate");
+		d.addProperty("comments");
+		d.addProperty("resultDeliveryDate");
+		d.addProperty("resultDeliveryConcept");
+		d.addProperty("specimens");
+		return d;
+	}
+	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabReport>(Context.getService(LabTestingService.class).getLabReports("",false,null,null), context);

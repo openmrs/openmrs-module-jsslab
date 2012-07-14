@@ -74,6 +74,23 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 		return null;
 	}
 	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addProperty("retired");
+		
+		d.addProperty("labStockNumber");
+		d.addProperty("manufacturer");
+		d.addRequiredProperty("itemName");
+		d.addProperty("lotNumber");
+		d.addProperty("manufacturerStockNumber");
+		d.addProperty("expirationDate");
+		d.addProperty("itemClassConcept");
+		d.addProperty("testSpecimens");
+		
+		return d;
+	}
+	
 	/**
 	 * @see DelegatingCrudResource#newDelegate()
 	 */
@@ -88,7 +105,7 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	@Override
 	public LabSupplyItem save(LabSupplyItem labSupplyItem) {
 		return Context.getService(LabManagementService.class)
-.saveLabSupplyItem(labSupplyItem);
+				.saveLabSupplyItem(labSupplyItem);
 	}
 	
 	/**

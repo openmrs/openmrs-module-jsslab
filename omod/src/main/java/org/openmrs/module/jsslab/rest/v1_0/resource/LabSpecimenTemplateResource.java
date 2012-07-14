@@ -97,6 +97,27 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 		}
 		return null;
 	}
+	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addProperty("textLocale");
+		d.addRequiredProperty("specimenSubId");
+		d.addRequiredProperty("parentSubId");
+		d.addProperty("testPanel");
+		d.addProperty("supplyItem");
+		d.addProperty("instructions");
+		d.addRequiredProperty("parentRoleConcept");
+//		d.addProperty("parentRoleName");
+		d.addRequiredProperty("parentRelationConcept");
+//		d.addProperty("parentRelationName");
+		d.addProperty("analysisSpecimenTypeConcept");
+//		d.addProperty("analysisSpecimenTypeName");
+		d.addProperty("testRoleConcept");
+//		d.addProperty("testRoleName");
+		return d;
+	}
+	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabSpecimenTemplate>(Context.getService(LabCatalogService.class).getLabSpecimenTemplate("",false,null,null), context);

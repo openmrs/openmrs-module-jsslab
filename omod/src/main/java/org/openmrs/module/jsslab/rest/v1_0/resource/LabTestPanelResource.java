@@ -97,6 +97,28 @@ public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTest
 		}
 		return null;
 	}
+	
+	@Override
+	public DelegatingResourceDescription getCreatableProperties() {
+		DelegatingResourceDescription d = new DelegatingResourceDescription();
+		d.addRequiredProperty("labLocation");
+//		d.addRequiredProperty("labLocationName");
+		d.addRequiredProperty("testGroupConcept");
+//		d.addProperty("testGroupName");
+		d.addRequiredProperty("testPanelConcept");
+//		d.addProperty("testPanelName");
+		d.addProperty("testPanelCode");
+		d.addProperty("receivedSpecimenTypeConcept");
+		d.addProperty("analysisSpecimenTypeConcept");
+		d.addProperty("cost");
+		d.addProperty("turnaround");
+		d.addProperty("holdTime");
+		d.addProperty("tests");
+		d.addProperty("preconditions");
+		d.addProperty("specimenTemplates");
+		return d;
+	}
+	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabTestPanel>(Context.getService(LabCatalogService.class).getLabTestPanels("",false,null,null), context);
