@@ -37,7 +37,7 @@ public class LabPreconditionValidator implements Validator {
 	 * 
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean supports(Class c) {
 		return LabPrecondition.class.isAssignableFrom(c);
 	}
@@ -51,13 +51,17 @@ public class LabPreconditionValidator implements Validator {
 	 */
 	public void validate(Object obj, Errors errors) {
 		
-		LabPrecondition o = (LabPrecondition) obj;
+		LabPrecondition precondition = (LabPrecondition) obj;
+		if (precondition == null) {
+			errors.rejectValue("precondition", "jsslab.validation.error.null");
+		}
+		
 		// for the following elements LabPrecondition.hbm.xml says: not-null="true"
-		ValidationUtils.rejectIfEmpty(errors, "testPanel", "jsslab.Validation.NullTestPanel");
-		ValidationUtils.rejectIfEmpty(errors, "preconditionQuestionConcept", "jsslab.Validation.NullConcept");
-		ValidationUtils.rejectIfEmpty(errors, "preconditionAnswerConcept", "jsslab.Validation.NullConcept");
-		ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "voided", "jsslab.Validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "testPanel", "jsslab.validation.NullTestPanel");
+		ValidationUtils.rejectIfEmpty(errors, "preconditionQuestionConcept", "jsslab.validation.NullConcept");
+		ValidationUtils.rejectIfEmpty(errors, "preconditionAnswerConcept", "jsslab.validation.NullConcept");
+		ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.validation.NullField");
+		ValidationUtils.rejectIfEmpty(errors, "voided", "jsslab.validation.NullField");
 	}
 }

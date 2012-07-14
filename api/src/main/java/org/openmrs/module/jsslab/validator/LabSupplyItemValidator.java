@@ -37,7 +37,7 @@ public class LabSupplyItemValidator implements Validator {
 	 * 
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean supports(Class c) {
 		return LabSupplyItem.class.isAssignableFrom(c);
 	}
@@ -51,14 +51,17 @@ public class LabSupplyItemValidator implements Validator {
 	 */
 	public void validate(Object obj, Errors errors) {
 		
-		LabSupplyItem i = (LabSupplyItem) obj;
-		// for the following elements LabPrecondition.hbm.xml says: not-null="true"
-	    ValidationUtils.rejectIfEmpty(errors, "itemName", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "retired", "jsslab.Validation.NullField");
-		//not sure if I need to handle the supply_item_id?
-		//ValidationUtils.rejectIfEmpty(errors, "supply_item_id", "jsslab.Validation.NullField");
+		LabSupplyItem supplyItem = (LabSupplyItem) obj;
+		if (supplyItem == null) {
+			errors.rejectValue("supplyItem", "jsslab.validation.error.null");
+		}
+
+		ValidationUtils.rejectIfEmpty(errors, "itemName", "jsslab.validation.nullField");
+		
+	    // for the following elements LabPrecondition.hbm.xml says: not-null="true"
+//		ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.validation.nullField");
+//		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.validation.nullField");
+//		ValidationUtils.rejectIfEmpty(errors, "retired", "jsslab.validation.nullField");
 		
 	}
 }

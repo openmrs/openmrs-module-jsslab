@@ -1,28 +1,22 @@
 package org.openmrs.module.jsslab.impl;
 
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.Order;
 import org.openmrs.Patient;
 import org.openmrs.api.APIException;
 import org.openmrs.api.context.Context;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabOrderService;
 import org.openmrs.module.jsslab.db.LabOrder;
-import org.openmrs.module.jsslab.db.LabOrderSpecimen;
-import org.openmrs.module.jsslab.db.LabSpecimen;
-import org.openmrs.module.jsslab.db.LabSupplyItem;
 import org.openmrs.module.jsslab.db.LabOrderDAO;
+import org.openmrs.module.jsslab.db.LabOrderSpecimen;
 import org.openmrs.module.jsslab.db.LabOrderSpecimenDAO;
+import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.openmrs.module.jsslab.db.LabSpecimenDAO;
-import org.openmrs.module.jsslab.db.LabSupplyItemDAO;
-import org.openmrs.module.jsslab.db.LabOrder;
-import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.validator.ValidateUtil;
-import org.springframework.transaction.annotation.Transactional;
 
 public class LabOrderServiceImpl extends BaseOpenmrsService implements
 		LabOrderService {

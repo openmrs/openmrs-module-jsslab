@@ -1,5 +1,6 @@
 package org.openmrs.module.jsslab.impl;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Date;
 
@@ -35,6 +36,15 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 			throws APIException {
 		if (labInstrument == null)
 			throw new APIException(Context.getMessageSourceService().getMessage("error.null"));
+		
+		//TODO consider moving these to a more appropriate place
+		labInstrument.setDateChanged(
+				Calendar.getInstance().getTime()
+		);
+		labInstrument.setChangedBy(
+				Context.getUserContext().getAuthenticatedUser()
+		);
+		
 		ValidateUtil.validate(labInstrument);
 		return labInstrumentDAO.saveLabInstrument(labInstrument);
 		
@@ -78,8 +88,8 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 		return labInstrumentDAO.getCountOfLabInstruments("", false);
 	}
 
-	public LabInstrument getLabInstrument(Integer idNumber) {
-		return labInstrumentDAO.getLabInstrument(idNumber);
+	public LabInstrument getLabInstrument(String name) {
+		return labInstrumentDAO.getLabInstrument(name);
 	}
 
 	/**
@@ -96,6 +106,14 @@ public class LabManagementServiceImpl extends BaseOpenmrsService implements
 			throws APIException {
 		if (labSupplyItem == null)
 			throw new APIException(Context.getMessageSourceService().getMessage("error.null"));
+		
+		labSupplyItem.setDateChanged(
+				Calendar.getInstance().getTime()
+		);
+		labSupplyItem.setChangedBy(
+				Context.getUserContext().getAuthenticatedUser()
+		);
+		
 		ValidateUtil.validate(labSupplyItem);
 		return labSupplyItemDAO.saveLabSupplyItem(labSupplyItem);
 	}

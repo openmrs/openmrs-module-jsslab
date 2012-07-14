@@ -15,10 +15,9 @@ package org.openmrs.module.jsslab.validator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.module.jsslab.db.LabInstrument;
 import org.openmrs.annotation.Handler;
+import org.openmrs.module.jsslab.db.LabInstrument;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 /**
@@ -37,7 +36,7 @@ public class LabInstrumentValidator implements Validator {
 	 * 
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean supports(Class c) {
 		return LabInstrument.class.isAssignableFrom(c);
 	}
@@ -51,11 +50,15 @@ public class LabInstrumentValidator implements Validator {
 	 */
 	public void validate(Object obj, Errors errors) {
 		
-		LabInstrument instr = (LabInstrument) obj;
+		LabInstrument instrument = (LabInstrument) obj;
+		if (instrument == null) {
+			errors.rejectValue("instrument", "jsslab.validation.error.null");
+		}
+		
 		// for the following elements LabPrecondition.hbm.xml says: not-null="true"
-		ValidationUtils.rejectIfEmpty(errors, "creator", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "jsslab.Validation.NullField");
-		ValidationUtils.rejectIfEmpty(errors, "retired", "jsslab.Validation.NullField");
+//		ValidationUtils.rejectIfEmpty(errors, "creator", "The field 'creator' cannot be null");
+//		ValidationUtils.rejectIfEmpty(errors, "dateCreated", "The field 'dateCreated' cannot be null");
+//		ValidationUtils.rejectIfEmpty(errors, "retired", "The field 'retired' cannot be null");
 
 		
 	}

@@ -13,13 +13,10 @@
  */
 package org.openmrs.module.jsslab.validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.openmrs.annotation.Handler;
 import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.validator.OrderValidator;
-import org.openmrs.annotation.Handler;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 /**
@@ -35,7 +32,7 @@ public class LabOrderValidator extends OrderValidator implements Validator {
 	 * 
 	 * @see org.springframework.validation.Validator#supports(java.lang.Class)
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public boolean supports(Class c) {
 		return LabOrder.class.isAssignableFrom(c);
 	}
@@ -51,7 +48,11 @@ public class LabOrderValidator extends OrderValidator implements Validator {
 		super.validate(obj, errors);
 		
 		LabOrder order = (LabOrder) obj;
+		if (order == null) {
+			errors.rejectValue("order", "jsslab.validation.error.null");
+		}
+		
 		// for the following elements LabOrder.hbm.xml says: not-null="true"
-		ValidationUtils.rejectIfEmpty(errors, "urgent", "jsslab.Validation.NullField");
+//		ValidationUtils.rejectIfEmpty(errors, "urgent", "jsslab.validation.nullField");
 	}
 }
