@@ -1,0 +1,1013 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+	<changeSet author="martingielow" id="samples_jsslab_instrument">
+		<insert tableName="jsslab_instrument">
+			<column name="instrument_id" valueNumeric="33333001"/>
+			<column name="property_tag"/>
+			<column name="manufacturer" value="Shenzen Mindray"/>
+			<column name="model" value="BC-3600"/>
+			<column name="serial_number" value="M2345-6428"/>
+			<column name="location_id"/>
+			<column name="received_date" valueDate="2009-01-01"/>
+			<column name="received_from" value="CARE"/>
+			<column name="received_cost"/>
+			<column name="received_value" valueNumeric="120000"/>
+			<column name="condition_date" valueDate="2011-09-10"/>
+			<column name="condition_concept"/>
+			<column name="maintenance_vendor" value="All-India Medical Supplies"/>
+			<column name="maintenance_phone"/>
+			<column name="maintenance_description" value="Quarterly inspection and cleaning"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="72a26526-21d2-11e1-9815-00265e639063"/>
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_jsslab_test_panel">
+		<insert tableName="jsslab_test_panel">
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="lab_location_id" valueNumeric="33333005"/>
+			<column name="test_group_concept" valueNumeric="33333062"/>
+			<column name="test_panel_concept" valueNumeric="33333065"/>
+			<column name="test_panel_code" value="WBC"/>
+			<column name="received_specimen_concept" valueNumeric="33333112"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333112"/>
+			<column name="cost" valueNumeric="12"/>
+			<column name="turnaround" valueNumeric="0.5"/>
+			<column name="hold_time" valueNumeric="4.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="05de81e6-46d9-11e1-99f4-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test_panel">
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="lab_location_id" valueNumeric="33333005"/>
+			<column name="test_group_concept" valueNumeric="33333063"/>
+			<column name="test_panel_concept" valueNumeric="33333066"/>
+			<column name="test_panel_code" value="BCULT"/>
+			<column name="received_specimen_concept" valueNumeric="33333116"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333113"/>
+			<column name="cost" valueNumeric="19"/>
+			<column name="turnaround" valueNumeric="72.0"/>
+			<column name="hold_time" valueNumeric="8.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="05dec1ac-46d9-11e1-99f4-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test_panel">
+			<column name="test_panel_id" valueNumeric="33333067"/>
+			<column name="lab_location_id" valueNumeric="33333005"/>
+			<column name="test_group_concept" valueNumeric="33333064"/>
+			<column name="test_panel_concept" valueNumeric="33333067"/>
+			<column name="test_panel_code" value="URPRO"/>
+			<column name="received_specimen_concept" valueNumeric="33333114"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333115"/>
+			<column name="cost" valueNumeric="2"/>
+			<column name="turnaround" valueNumeric="2.0"/>
+			<column name="hold_time" valueNumeric="1.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="05df00e1-46d9-11e1-99f4-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test_panel">
+			<column name="test_panel_id" valueNumeric="33333167"/>
+			<column name="lab_location_id" valueNumeric="33333011"/>
+			<column name="test_group_concept" valueNumeric="33333064"/>
+			<column name="test_panel_concept" valueNumeric="33333067"/>
+			<column name="test_panel_code" value="URPRO"/>
+			<column name="received_specimen_concept" valueNumeric="33333114"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333115"/>
+			<column name="cost" valueNumeric="8"/>
+			<column name="turnaround" valueNumeric="4.0"/>
+			<column name="hold_time" valueNumeric="4.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="05df4577-46d9-11e1-99f4-0024e8c61285"/>
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_jsslab_order">
+		<insert tableName="jsslab_order">
+			<column name="order_id" valueNumeric="33333001"/>
+			<column name="lab_order_id" value="2012.01/0001"/>
+			<column name="urgent" valueNumeric="0"/>
+			<column name="retest_of"/>
+			<column name="physician_retest"/>
+			<column name="retest_reason" value=""/>
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_jsslab_report">
+		<insert tableName="jsslab_report">
+			<column name="report_id" valueNumeric="33333001"/>
+			<column name="lab_report_id" value="2012/01-0001"/>
+			<column name="report_status_concept"/>
+			<column name="approved_by"/>
+			<column name="approved_date"/>
+			<column name="comments"/>
+			<column name="result_delivery_date"/>
+			<column name="result_delivery_concept"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="ac0e7819-49bb-11e1-812a-0024e8c61285"/>
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_jsslab_order_specimen">
+		<insert tableName="jsslab_order_specimen">
+			<column name="order_specimen_id" valueNumeric="33333001"/>
+			<column name="order_id" valueNumeric="33333001"/>
+			<column name="specimen_id" valueNumeric="33333001"/>
+			<column name="specimen_role_concept" valueNumeric="33333112"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="0002-11-30T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="voided" valueNumeric="0"/>
+			<column name="voided_by"/>
+			<column name="date_voided"/>
+			<column name="void_reason"/>
+			<column name="uuid" value="1cd2ae32-49be-11e1-812a-0024e8c61285"/>
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_jsslab_precondition">
+		<insert tableName="jsslab_precondition">
+			<column name="precondition_id" valueNumeric="33333067"/>
+			<column name="test_panel_id" valueNumeric="33333067"/>
+			<column name="precondition_question_concept" valueNumeric="33333117"/>
+			<column name="precondition_answer_concept" valueNumeric="33333120"/>
+			<column name="sort_weight" valueNumeric="1.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="voided" valueNumeric="0"/>
+			<column name="voided_by"/>
+			<column name="date_voided"/>
+			<column name="void_reason"/>
+			<column name="uuid" value="0100dc0a-46da-11e1-99f4-0024e8c61285"/>
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_jsslab_test_result">
+		<insert tableName="jsslab_test_result">
+			<column name="test_result_id" valueNumeric="33333001"/>
+			<column name="test_specimen_id" valueNumeric="33333001"/>
+			<column name="test_result_concept" valueNumeric="33333068"/>
+			<column name="test_result_type" value="NUMERIC"/>
+			<column name="test_answer_concept"/>
+			<column name="test_answer_duration"/>
+			<column name="test_answer_titer"/>
+			<column name="test_answer_numeric" valueNumeric="333.0"/>
+			<column name="test_answer_string"/>
+			<column name="test_answer_flag"/>
+			<column name="test_answer_note" value="Notional data"/>
+			<column name="test_normal_low"/>
+			<column name="test_normal_high"/>
+			<column name="test_critical_low"/>
+			<column name="test_critical_high"/>
+			<column name="approved" valueNumeric="2010"/>
+			<column name="approved_by" valueNumeric="3"/>
+			<column name="hidden" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="voided" valueNumeric="0"/>
+			<column name="voided_by"/>
+			<column name="date_voided"/>
+			<column name="void_reason"/>
+			<column name="uuid" value="ace6f816-49c1-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test_result">
+			<column name="test_result_id" valueNumeric="33333002"/>
+			<column name="test_specimen_id" valueNumeric="33333001"/>
+			<column name="test_result_concept" valueNumeric="33333069"/>
+			<column name="test_result_type" value="NUMERIC"/>
+			<column name="test_answer_concept"/>
+			<column name="test_answer_duration"/>
+			<column name="test_answer_titer"/>
+			<column name="test_answer_numeric" valueNumeric="33.0"/>
+			<column name="test_answer_string"/>
+			<column name="test_answer_flag"/>
+			<column name="test_answer_note" value="Also notional data"/>
+			<column name="test_normal_low"/>
+			<column name="test_normal_high"/>
+			<column name="test_critical_low"/>
+			<column name="test_critical_high"/>
+			<column name="approved" valueNumeric="2010"/>
+			<column name="approved_by" valueNumeric="3"/>
+			<column name="hidden" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="voided" valueNumeric="0"/>
+			<column name="voided_by"/>
+			<column name="date_voided"/>
+			<column name="void_reason"/>
+			<column name="uuid" value="ace74370-49c1-11e1-812a-0024e8c61285"/>
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_jsslab_test">
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333001"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333068"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="1.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1545bb-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333002"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333069"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="2.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1c9300-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333003"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333070"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="3.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1ca9ff-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333004"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333071"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="4.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1cc09e-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333005"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333072"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="5.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1cd80c-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333006"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333073"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="6.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1ceff7-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333007"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333074"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="7.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1d04f4-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333008"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333075"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="8.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1d1af6-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333009"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333076"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="9.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1d307b-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333010"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333077"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="10.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1d46f1-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333011"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333078"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="11.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1d5c76-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333012"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333079"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="12.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1d737f-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333013"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333080"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="13.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1d8a6d-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333014"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333081"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="14.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1da0df-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333015"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333082"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="15.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1dbba4-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333016"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333083"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="16.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1dd584-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333017"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_concept" valueNumeric="33333084"/>
+			<column name="result_format" value="NUMERIC"/>
+			<column name="sort_weight" valueNumeric="17.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1df216-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333101"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_concept" valueNumeric="33333085"/>
+			<column name="result_format" value="CONCEPT"/>
+			<column name="sort_weight" valueNumeric="1.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1e090c-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333102"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_concept" valueNumeric="33333086"/>
+			<column name="result_format" value="CONCEPT"/>
+			<column name="sort_weight" valueNumeric="2.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1e206c-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333103"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_concept" valueNumeric="33333087"/>
+			<column name="result_format" value="CONCEPT"/>
+			<column name="sort_weight" valueNumeric="3.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1e3d91-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333104"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_concept" valueNumeric="33333088"/>
+			<column name="result_format" value="CONCEPT"/>
+			<column name="sort_weight" valueNumeric="4.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1e55a7-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333105"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_concept" valueNumeric="33333089"/>
+			<column name="result_format" value="CONCEPT"/>
+			<column name="sort_weight" valueNumeric="5.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1e6fe3-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333106"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_concept" valueNumeric="33333090"/>
+			<column name="result_format" value="CONCEPT"/>
+			<column name="sort_weight" valueNumeric="6.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1e8cfe-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test">
+			<column name="test_id" valueNumeric="33333201"/>
+			<column name="test_panel_id" valueNumeric="33333067"/>
+			<column name="test_concept" valueNumeric="33333093"/>
+			<column name="result_format" value="CONCEPT"/>
+			<column name="sort_weight" valueNumeric="1.0"/>
+			<column name="confirm_test_id"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="5d1eab19-486e-11e1-b5ed-0024e8c61285"/>
+		</insert>
+	</changeSet>
+
+	<changeSet author="martingielow" id="samples_jsslab_test_specimen">
+		<insert tableName="jsslab_test_specimen">
+			<column name="test_specimen_id" valueNumeric="33333001"/>
+			<column name="specimen_id" valueNumeric="33333001"/>
+			<column name="specimen_sub_id" valueNumeric="0"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
+			<column name="parent_relation_concept"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333112"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_role_concept" valueNumeric="33333104"/>
+			<column name="supply_item_id"/>
+			<column name="prep_tech_id" valueNumeric="3"/>
+			<column name="rack_position"/>
+			<column name="prep_date" valueDate="2012-01-01T16:00:00.0"/>
+			<column name="lab_tech_id" valueNumeric="3"/>
+			<column name="test_date" valueDate="2012-01-01T16:05:00.0"/>
+			<column name="test_run_id"/>
+			<column name="well_position"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="df4988f9-49bf-11e1-812a-0024e8c61285"/>
+		</insert>
+	</changeSet>
+
+	<changeSet author="martingielow" id="samples_jsslab_specimen">
+		<insert tableName="jsslab_specimen">
+			<column name="specimen_id" valueNumeric="33333001"/>
+			<column name="lab_specimen_id" value="33 WBC 20120101"/>
+			<column name="client_specimen_id" value="33 WBC 20120101"/>
+			<column name="ordered_by" valueNumeric="3"/>
+			<column name="ordered_by_facility" valueNumeric="33333006"/>
+			<column name="person_id" valueNumeric="33"/>
+			<column name="patient_id" valueNumeric="33"/>
+			<column name="specimen_date" valueDate="2012-01-01T15:00:00.0"/>
+			<column name="received_date" valueDate="2012-01-01T15:01:00.0"/>
+			<column name="received_condition_concept"/>
+			<column name="received_specimen_concept" valueNumeric="33333012"/>
+			<column name="report_id" valueNumeric="33333001"/>
+			<column name="urgent" valueNumeric="0"/>
+			<column name="physician_retest"/>
+			<column name="hidden" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="cbbf4eae-49bc-11e1-812a-0024e8c61285"/>
+		</insert>
+	</changeSet>
+
+	<changeSet author="martingielow" id="samples_jsslab_specimen_template">
+		<insert tableName="jsslab_specimen_template">
+			<column name="specimen_template_id" valueNumeric="33333001"/>
+			<column name="parent_role_concept" valueNumeric="33333104"/>
+			<column name="specimen_sub_id" valueNumeric="0"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
+			<column name="parent_relation_concept"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333112"/>
+			<column name="test_panel_id" valueNumeric="33333065"/>
+			<column name="test_role_concept" valueNumeric="33333104"/>
+			<column name="supply_item_id"/>
+			<column name="instructions" value="Specimen used directly in hematology instrument"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="35442792-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_specimen_template">
+			<column name="specimen_template_id" valueNumeric="33333011"/>
+			<column name="parent_role_concept" valueNumeric="33333110"/>
+			<column name="specimen_sub_id" valueNumeric="0"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
+			<column name="parent_relation_concept"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333116"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_role_concept"/>
+			<column name="supply_item_id"/>
+			<column name="instructions" value="First skin site"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="3578a65a-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_specimen_template">
+			<column name="specimen_template_id" valueNumeric="33333012"/>
+			<column name="parent_role_concept" valueNumeric="33333111"/>
+			<column name="specimen_sub_id" valueNumeric="0"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
+			<column name="parent_relation_concept"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333116"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_role_concept"/>
+			<column name="supply_item_id"/>
+			<column name="instructions" value="Second skin site"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="3578bee2-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_specimen_template">
+			<column name="specimen_template_id" valueNumeric="33333013"/>
+			<column name="parent_role_concept" valueNumeric="33333110"/>
+			<column name="specimen_sub_id" valueNumeric="0"/>
+			<column name="parent_sub_id" valueNumeric="1"/>
+			<column name="parent_relation_concept" valueNumeric="33333053"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333113"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_role_concept" valueNumeric="33333104"/>
+			<column name="supply_item_id"/>
+			<column name="instructions" value="Aliquot from collection bottle to culture bottle"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="3578d8a9-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_specimen_template">
+			<column name="specimen_template_id" valueNumeric="33333014"/>
+			<column name="parent_role_concept" valueNumeric="33333111"/>
+			<column name="specimen_sub_id" valueNumeric="0"/>
+			<column name="parent_sub_id" valueNumeric="1"/>
+			<column name="parent_relation_concept" valueNumeric="33333053"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333113"/>
+			<column name="test_panel_id" valueNumeric="33333066"/>
+			<column name="test_role_concept" valueNumeric="33333106"/>
+			<column name="supply_item_id"/>
+			<column name="instructions" value="Aliquot from collection bottle to culture bottle"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="3578f3cf-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_specimen_template">
+			<column name="specimen_template_id" valueNumeric="33333021"/>
+			<column name="parent_role_concept" valueNumeric="33333104"/>
+			<column name="specimen_sub_id" valueNumeric="0"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
+			<column name="parent_relation_concept"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333114"/>
+			<column name="test_panel_id" valueNumeric="33333067"/>
+			<column name="test_role_concept"/>
+			<column name="supply_item_id"/>
+			<column name="instructions"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="35785ac8-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_specimen_template">
+			<column name="specimen_template_id" valueNumeric="33333022"/>
+			<column name="parent_role_concept" valueNumeric="33333104"/>
+			<column name="specimen_sub_id" valueNumeric="1"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
+			<column name="parent_relation_concept" valueNumeric="33333053"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333115"/>
+			<column name="test_panel_id" valueNumeric="33333067"/>
+			<column name="test_role_concept" valueNumeric="33333104"/>
+			<column name="supply_item_id"/>
+			<column name="instructions" value="Aliquot from collection bottle to test tube, label T, add 2 drops of the Sulfosalicylic acid solution "/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="35787121-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_specimen_template">
+			<column name="specimen_template_id" valueNumeric="33333023"/>
+			<column name="parent_role_concept" valueNumeric="33333104"/>
+			<column name="specimen_sub_id" valueNumeric="2"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
+			<column name="parent_relation_concept" valueNumeric="33333053"/>
+			<column name="analysis_specimen_concept" valueNumeric="33333115"/>
+			<column name="test_panel_id" valueNumeric="33333067"/>
+			<column name="test_role_concept" valueNumeric="33333101"/>
+			<column name="supply_item_id"/>
+			<column name="instructions" value="Aliquot from collection bottle to test tube, label C"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="35790ec9-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+	</changeSet>
+
+	<changeSet author="martingielow" id="samples_jsslab_supply_item">
+		<insert tableName="jsslab_supply_item">
+			<column name="supply_item_id" valueNumeric="1"/>
+			<column name="lab_stock_number"/>
+			<column name="manufacturer" value="Mindray Biomedical"/>
+			<column name="manufacturer_stock_number" value="M-30D"/>
+			<column name="item_name" value="Diluent for BC-3600"/>
+			<column name="item_class_concept"/>
+			<column name="lot_number" value="13579"/>
+			<column name="expiration_date" valueDate="2012-06-30T06:00:00.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="36fa7e2a-21d4-11e1-9815-00265e639063"/>
+		</insert>
+		<insert tableName="jsslab_supply_item">
+			<column name="supply_item_id" valueNumeric="2"/>
+			<column name="lab_stock_number"/>
+			<column name="manufacturer" value="Mindray Biomedical"/>
+			<column name="manufacturer_stock_number" value="M-30CFL"/>
+			<column name="item_name" value="Lyse for BC-3600"/>
+			<column name="item_class_concept"/>
+			<column name="lot_number" value="13840"/>
+			<column name="expiration_date" valueDate="2012-06-30T06:00:00.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="36fabc07-21d4-11e1-9815-00265e639063"/>
+		</insert>
+		<insert tableName="jsslab_supply_item">
+			<column name="supply_item_id" valueNumeric="3"/>
+			<column name="lab_stock_number"/>
+			<column name="manufacturer" value="Mindray Biomedical"/>
+			<column name="manufacturer_stock_number" value="M-30R"/>
+			<column name="item_name" value="Rinse for BC-3600"/>
+			<column name="item_class_concept"/>
+			<column name="lot_number" value="14021"/>
+			<column name="expiration_date" valueDate="2012-06-30T06:00:00.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="36faf945-21d4-11e1-9815-00265e639063"/>
+		</insert>
+		<insert tableName="jsslab_supply_item">
+			<column name="supply_item_id" valueNumeric="4"/>
+			<column name="lab_stock_number"/>
+			<column name="manufacturer" value="Mindray Biomedical"/>
+			<column name="manufacturer_stock_number" value="B-30"/>
+			<column name="item_name" value="Control for BC-3600"/>
+			<column name="item_class_concept"/>
+			<column name="lot_number" value="16366"/>
+			<column name="expiration_date" valueDate="2012-06-30T06:00:00.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="36fb3b16-21d4-11e1-9815-00265e639063"/>
+		</insert>
+		<insert tableName="jsslab_supply_item">
+			<column name="supply_item_id" valueNumeric="5"/>
+			<column name="lab_stock_number"/>
+			<column name="manufacturer" value="Mindray Biomedical"/>
+			<column name="manufacturer_stock_number" value="S-30"/>
+			<column name="item_name" value="Calibrator for BC-3600"/>
+			<column name="item_class_concept"/>
+			<column name="lot_number" value="15525"/>
+			<column name="expiration_date" valueDate="2012-06-30T06:00:00.0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="36fb80cb-21d4-11e1-9815-00265e639063"/>
+		</insert>
+		<insert tableName="jsslab_supply_item">
+			<column name="supply_item_id" valueNumeric="6"/>
+			<column name="lab_stock_number"/>
+			<column name="manufacturer" value="Mindray Biomedical"/>
+			<column name="manufacturer_stock_number"/>
+			<column name="item_name" value="Probe Cleanser for BC-3600"/>
+			<column name="item_class_concept"/>
+			<column name="lot_number"/>
+			<column name="expiration_date"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="36fbc925-21d4-11e1-9815-00265e639063"/>
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>

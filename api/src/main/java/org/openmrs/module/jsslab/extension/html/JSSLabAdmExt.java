@@ -10,11 +10,11 @@ public class JSSLabAdmExt extends AdministrationSectionExt {
 	@Override
 	public Map<String, String> getLinks() {
 		Map<String, String> map = new LinkedHashMap<String, String>(); 
-		map.put("module/jsslab/admin/settings.htm", "jsslab.settings.link");
-		map.put("module/jsslab/admin/catalog.htm", "jsslab.catalog.link");
-		map.put("module/jsslab/admin/templates.htm", "jsslab.templates.link");
-		map.put("module/jsslab/admin/instruments.htm", "jsslab.instruments.link");
-		map.put("module/jsslab/admin/reports.htm", "jsslab.reports.link");
+		map.put("module/jsslab/admin/settings.form", "jsslab.settings.link");
+		map.put("module/jsslab/admin/catalog.form", "jsslab.catalog.link");
+		map.put("module/jsslab/admin/templates.form", "jsslab.templates.link");
+		map.put("module/jsslab/admin/instruments.form", "jsslab.instruments.link");
+		map.put("module/jsslab/admin/reports.form", "jsslab.reports.link");
 		return map;   
 	}
 

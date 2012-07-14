@@ -28,6 +28,31 @@
 		<description>Location id of lab supported by this instance</description>
 	</globalProperty>
 
+	<globalProperty>
+		<property>jsslab.laborder.type</property>
+		<description>The id of the type of order that is associated with LabOrder objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.laborder.idPattern</property>
+		<description>The pattern that is used for IDs of LabOrder objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.labspecimen.idPattern</property>
+		<description>The pattern that is used for IDs of LabSpecimen objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.labreport.idPattern</property>
+		<description>The pattern that is used for IDs of LabReport objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.setup</property>
+		<description>Whether the initial setup for this module has been run</description>
+	</globalProperty>
+
 	<!-- Privileges -->
 	<permission>
 		<name>Add LabManagement Records</name>
@@ -109,7 +134,7 @@
 		<name>Purge LabTesting Records</name>
 		<description>Purge LabTesting Records</description>
 	</permission>
-		
+
 	<!-- Add link to admin page --> 
 	<extension>
 		<point>org.openmrs.admin.list</point>
