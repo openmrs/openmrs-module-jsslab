@@ -1,3 +1,36 @@
+/*
+	CSS styles for the JSS Lab Module admin pages
+*/
+
+
+/* 
+ *	=============================================
+ *	Settings Screen
+ *	=============================================
+ */
+
+#locationTreePanel {
+	float: left;
+	max-height: 350px;
+	overflow-y: scroll;
+}
+#locationTreePanel fieldset {
+}
+
+#addLocationPanel {
+}
+#editLocationPanel {
+	display:none;
+	margin: 10px 0 0 0;
+}
+
+.locationsLabel {
+	width: 200px;
+}
+
+
+
+
 #codeListSelection {
 	float:left;
 	margin-right: 20px;
@@ -8,24 +41,48 @@
 	margin-bottom: 10px;
 }
 
-#codeTable {
+#codeTablePanel {
 	float:left;
 	margin-right: 20px;
 }
-
-#codeEditForm {
-	float:left;
+#codeTable {
+	border-spacing: 0;
 }
 
-/*
-tr:nth-child(even) {
+#codeTable tbody tr {
+	cursor: pointer;
+}
+
+#codeTable tbody tr:nth-child(even) {
 	background-color: white;
 }
-
-tr:nth-child(odd) {
+#codeTable tbody tr:nth-child(odd) {
 	background-color: #E2E4FF;
 }
-*/
+#codeTable tbody tr:hover, #codeTable tbody tr.selected {
+	background-color: khaki;
+}
+#codeTable td {
+	padding: 0 5px 0 5px;
+}
+
+#codeEditPanel {
+	float:left;
+	display: none;
+}
+
+#editTextConcept {
+	width: 250px;
+}
+#editCode {
+	width: 250px;
+}
+
+/* 
+ *	=============================================
+ *	Instruments and Supplies Screen
+ *	=============================================
+ */ 
 
 #instrumentsTable {
 	margin: 10px 0 10px 0;

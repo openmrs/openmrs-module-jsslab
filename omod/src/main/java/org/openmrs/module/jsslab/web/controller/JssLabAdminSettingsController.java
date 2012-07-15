@@ -13,20 +13,15 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.openmrs.Concept;
+import org.openmrs.ConceptClass;
 import org.openmrs.Location;
 import org.openmrs.LocationTag;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.jsslab.LabManagementService;
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabSupplyItem;
-import org.openmrs.util.OpenmrsConstants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "module/jsslab/admin/settings")
@@ -62,6 +57,11 @@ public class JssLabAdminSettingsController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public void showForm(ModelMap model) throws IOException {
+		
+		ConceptClass labSetClass = Context.getConceptService().getConceptClassByName("LabSet");
+		List<Concept> conceptSets = Context.getConceptService().getConceptsByClass(labSetClass);
+		
+		model.addAttribute("conceptSets", conceptSets);
 		model.addAttribute("json", getHierarchyAsJson());
 	}
 	

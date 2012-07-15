@@ -18,9 +18,6 @@
 	<openmrs:htmlInclude file="/scripts/jquery/jsTree/jquery.tree.min.js" />
 	<openmrs:htmlInclude file="/scripts/jquery/jsTree/themes/classic/style.css" />
 	
-	<openmrs:htmlInclude file="/moduleResources/jsslab/js/settings.js"/>
-	<openmrs:htmlInclude file="/moduleResources/jsslab/css/jsslab.css"/>
-	
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			jQuery('#hierarchyTree').tree({
@@ -48,7 +45,17 @@
 			});
 			jQuery.tree.reference('#hierarchyTree').open_all();
 		});
+		
+		var jsslab = {
+			i18n : {
+				'settings.codelists.codetable.empty' : "<spring:message code='jsslab.settings.codelists.codetable.empty' javaScriptEscape='true' />",
+			},
+		};
 	</script>
+
+	<openmrs:htmlInclude file="/moduleResources/jsslab/js/settings.js"/>
+	<openmrs:htmlInclude file="/moduleResources/jsslab/css/jsslab.css"/>
+	
 	
 	<!-- ====================== --> 
 	<!-- Locations --> 
@@ -56,88 +63,151 @@
 	
 	<h2><spring:message code="jsslab.settings.locations.title" /></h2>
 	
-	<div style="float:left;">
+	<div id="locationTreePanel">
 		<fieldset>
-			<legend><spring:message code="jsslab.settings.Locations.hierarchy"/></legend>
+			<legend><spring:message code="jsslab.settings.locations.hierarchy"/></legend>
 			<div id="hierarchyTree"></div>
 		</fieldset>
 	</div>
-	<div style="float:left;">
-		<div>
-			<input type="submit" value="<spring:message code="jsslab.settings.Locations.btnmanaged"/>" />
-			<input type="submit" value="<spring:message code="jsslab.settings.Locations.btnreferral"/>" />
+	<div style="float:left; margin-left: 10px;">
+		
+		<div id="addLocationPanel">
+			<input type="submit" value="<spring:message code="jsslab.settings.locations.addLocation" />" />
 		</div>
-		<div>
-			<label for="editLocationName"><spring:message code="jsslab.settings.locations.locationname"/></label>
-			<input type="text" id="editLocationName" />
+		
+		<div id="editLocationPanel">
+		<span class="boxHeader">
+			<spring:message code="jsslab.settings.locations.header" />
+		</span>
+		<div class="box">
+			<input type="submit" value="<spring:message code="jsslab.settings.locations.btnmanaged"/>" />
+			<br />
+			<input type="submit" value="<spring:message code="jsslab.settings.locations.btnreferral"/>" />
+			<br />
+			<div>
+				<label class="locationsLabel" for="editLocationName"><spring:message code="jsslab.settings.locations.locationname" /></label>
+				<input type="text" id="editLocationName" />
+
+				<br />
+
+				<label class="locationsLabel" for="editLocationAddress"><spring:message code="jsslab.settings.locations.locationaddress" /></label>
+				<input type="text" id="editLocationAddress" />
+			</div>
+			<div>
+				<input type="submit" value="<spring:message code="jsslab.settings.locations.saveLocation" />" />
+				<input type="submit" value="<spring:message code="jsslab.settings.locations.cancelLocation" />" />
+			</div>
 		</div>
-		<div>
-			<label for="editLocationAddress"><spring:message code="jsslab.settings.locations.locationaddress" /></label>
-			<input type="text" id="editLocationAddress" />
-		</div>
-		<div>
-			<input type="submit" value="<spring:message code="jsslab.settings.locations.addLocation"/>" />
-			<input type="submit" value="<spring:message code="jsslab.settings.locations.saveLocation"/>" />
-			<input type="submit" value="<spring:message code="jsslab.settings.locations.cancel"/>" />
-			
 		</div>
 	</div>
 	<div style="clear:both;"></div>
 
-
+	<br />
+	
 	<!-- ====================== --> 
 	<!-- Global Properties --> 
 	<!-- ====================== --> 
 
 	<h2><spring:message code="jsslab.settings.globalproperties.title" /></h2>
 
-	<div>
-		<span><spring:message code="jsslab.settings.globalproperties.orderTypeLabel" /></span>
-		<span><select>
-			<option value="-1" selected="selected"><spring:message code="jsslab.settings.globalproperties.orderTypeSelect" /></option>
-		</select></span>
-		<span><input type="submit" value="<spring:message code='jsslab.settings.globalproperties.orderTypeCreate' />" /></span>
-	</div>
-
-	<h2><spring:message code="jsslab.settings.codelists.title" /></h2>
+	<table>
+		
+		<tr>
+			<td>
+				<label for="orderTypeSelect"><spring:message code="jsslab.settings.globalproperties.orderTypeLabel" /></label>
+			</td><td>
+				<select id="orderTypeSelect">
+					<option value="-1" selected="selected"><spring:message code="jsslab.settings.globalproperties.orderTypeSelect" /></option>
+				</select>
+				<input type="submit" value="<spring:message code='jsslab.settings.globalproperties.orderTypeCreate' />" />
+			</td>
+		</tr><tr>
+			<td>
+				<label for="orderIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.orderIdPatternLabel" /></label>
+			</td><td>
+			</td>		
+		</tr><tr>
+			<td>
+				<label for="specimenIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.specimenIdPatternLabel" /></label>
+			</td><td>
+			</td>		
+		</tr><tr>
+			<td>
+				<label for="reportIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.reportIdPatternLabel" /></label>
+			</td><td>
+			</td>		
+		</tr>
+	
+	</table>
+	
+	<br />
 	
 	<!-- ====================== --> 
 	<!-- Code Lists --> 
 	<!-- ====================== --> 
+
+	<h2><spring:message code="jsslab.settings.codelists.title" /></h2>
 	
-	<div>
-		<div id="codeListSelection">
+	<div id="codeListSelection">
+		<span class="boxHeader">
+			<spring:message code="jsslab.settings.codelists.codelist.title" />
+		</span>
+		<div class="box">
 			<div id="radioPanel">
-				<input type="radio" name="codeList" id="radioSpecimenTypeCodes" />
-				<label for="radioSpecimenTypeCodes">Specimen Type Codes</label>
+				<c:forEach var="conceptSet" items="${conceptSets}" varStatus="loop" >
+					<div>
+						<input type="radio" class="radioSpecimenTypeCode" name="codeList" id="radioSpecimenTypeCodes_${conceptSet.uuid}" ${loop.index == 0 ? 'checked="checked"' : ''} />
+						<label for="radioSpecimenTypeCodes">${conceptSet.name}</label>
+					</div>
+				</c:forEach>
 			</div>
 			<div>
-				<div>Substitute Concept Set</div>
+				<div><spring:message code="jsslab.settings.codelists.codelist.substitute" /></div>
 				<div><input type="text" /></div>
-				<div><input type="submit" value="Apply" /></div>
+				<div><input type="submit" value="<spring:message code="jsslab.settings.codelists.codelist.apply" />" /></div>
 			</div>
 		</div>
-		
-		<div id="codeTable">
-			<table>
-				<thead><tr>
-					<th></th>
-					<th><spring:message code="jsslab.settings.globalproperties.codetable.head.text" /></th>
-					<th><spring:message code="jsslab.settings.globalproperties.codetable.head.code" /></th>
-					<th><spring:message code="jsslab.settings.globalproperties.codetable.head.retired" /></th>
-				</tr></thead>
-				<tbody>
-					
-				</tbody>
-			</table>
-		</div>
-		<div id="codeEditForm">
-			<div><label for="editTextConcept"><spring:message code="jsslab.settings.globalproperties.codeeditform.text" /></label></div>
-			<div><input type="text" id="editTextConcept" /></div>
-			<div><label for="editCode"><spring:message code="jsslab.settings.globalproperties.codeeditform.code" /></label></div>
-			<div><input type="text" id="editCode" /></div>
-		</div>
-		<div style="clear:both;"></div>
 	</div>
+	
+	<div id="codeTablePanel">
+		<table id="codeTable">
+			<thead><tr>
+				<th><spring:message code="jsslab.settings.codelists.codetable.head.text" /></th>
+				<th><spring:message code="jsslab.settings.codelists.codetable.head.code" /></th>
+				<th><spring:message code="jsslab.settings.codelists.codetable.head.retired" /></th>
+			</tr></thead>
+			<tbody>
+				<tr><td colspan="3">
+					<spring:message code="jsslab.settings.codelists.codetable.empty" />
+				</td></tr>
+			</tbody>
+		</table>
+		
+		<br />
+		
+		<div>
+			<input type="submit" id="buttonAddNewCode" value="<spring:message code="jsslab.settings.codelists.codeeditform.add" />" />
+		</div>
+	</div>
+	
+	<div id="codeEditPanel">
+		<span class="boxHeader">
+			<spring:message code="jsslab.settings.codelists.codeeditform.title" />
+		</span>
+		<div class="box">
+			<div><label for="editTextConcept"><spring:message code="jsslab.settings.codelists.codeeditform.text" /></label></div>
+			<div><input type="text" id="editTextConcept" /></div>
+			<div><label for="editCode"><spring:message code="jsslab.settings.codelists.codeeditform.code" /></label></div>
+			<div><input type="text" id="editCode" /></div>
+			
+			<br />
+			
+			<div>
+				<input type="submit" id="buttonSaveCode" value="<spring:message code="jsslab.settings.codelists.codeeditform.save" />" />
+				<input type="submit" id="buttonCancelEditingCode" value="<spring:message code="jsslab.settings.codelists.codeeditform.cancel" />" />
+			</div>
+		</div>
+	</div>
+	<div style="clear:both;"></div>
 	
 <%@ include file="/WEB-INF/template/footer.jsp"%>

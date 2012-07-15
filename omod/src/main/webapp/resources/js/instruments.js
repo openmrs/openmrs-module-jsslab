@@ -106,7 +106,7 @@ jQuery(document).ready(function() {
 
 				var radioBtn = jQuery("<input type='radio' class='radioBtnSelectSupplyItem' name='supplyItemSelect' id='radioBtnSelectSupplyItem_" + instrumentPage.radioBtnId-- + "' />");
 				
-				addNewTableRow("tableSupplyItems", new Array( radioBtn, supplyItem.labStockNumber, supplyItem.manufacturer, supplyItem.itemName, supplyItem.lotNumber, supplyItem.retired ));
+				addNewTableRow("tableSupplyItems", new Array( radioBtn, supplyItem.labStockNumber, supplyItem.manufacturer, supplyItem.itemName, supplyItem.lotNumber, supplyItem.retired ? "true" : "false" ));
 				updateSupplyItemForm(supplyItem, true);
 
 				radioBtn.click(onRadioButtonClick);
@@ -252,7 +252,7 @@ function updateInstrumentsTable() {
 				var radioBtn = jQuery("<input type='radio' class='radioBtnSelectInstrument' name='instrumentSelect' id='radioBtnSelectInstrument_" + instrument.uuid + "' />");
 				radioBtn.click(onRadioButtonClick);
 				
-				addNewTableRow("tableInstruments", new Array( radioBtn, instrument.propertyTag, instrument.manufacturer, instrument.model, instrument.serialNumber, instrument.retired ));
+				addNewTableRow("tableInstruments", new Array( radioBtn, instrument.propertyTag, instrument.manufacturer, instrument.model, instrument.serialNumber, instrument.retired ? "true" : false ));
 			}
 		}
 	});
@@ -397,7 +397,7 @@ function updateSupplyItemsTable() {
 				var radioBtn = jQuery("<input type='radio' class='radioBtnSelectSupplyItem' name='supplyItemSelect' id='radioBtnSelectSupplyItem_" + supplyItem.uuid + "' />");
 				radioBtn.click(onRadioButtonClick);
 				
-				addNewTableRow("tableSupplyItems", new Array( radioBtn, supplyItem.labStockNumber, supplyItem.manufacturer, supplyItem.itemName, supplyItem.lotNumber, supplyItem.retired ));
+				addNewTableRow("tableSupplyItems", new Array( radioBtn, supplyItem.labStockNumber, supplyItem.manufacturer, supplyItem.itemName, supplyItem.lotNumber, supplyItem.retired ? "true" : "false" ));
 			}
 		}
 	});
@@ -472,7 +472,10 @@ function getSupplyItemFromForm() {
 		manufacturerStockNumber : jQuery('#supplyItemManufacturerStockNumber').val(),
 		expirationDate : jQuery.datepicker.parseDate('dd/mm/yy', jQuery('#supplyItemExpirationDate').val()),
 		
-		itemClassConcept : jQuery('#supplyItemType').val()
+		itemClassConcept : jQuery('#supplyItemType').val(),
+		
+		//TODO
+		retired : false,
 	};
 	
 }
