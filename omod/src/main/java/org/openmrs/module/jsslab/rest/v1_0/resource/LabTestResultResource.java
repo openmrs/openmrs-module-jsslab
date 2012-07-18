@@ -130,6 +130,11 @@ public class LabTestResultResource extends DataDelegatingCrudResource<LabTestRes
 	}
 	
 	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
+	}
+	
+	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabTestResult>(Context.getService(LabTestingService.class).getLabTestResults("",false,null,null), context);
 	}

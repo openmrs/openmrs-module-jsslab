@@ -107,6 +107,11 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 	}
 	
 	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
+	}
+	
+	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabPrecondition>(Context.getService(LabCatalogService.class).getLabPreconditions("",false,null,null), context);
 	}

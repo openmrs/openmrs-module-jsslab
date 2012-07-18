@@ -12,6 +12,25 @@ jsslab.settingsPage = {
 	radioBtnId : -1,
 	
 	concepts : null,
+
+	
+	saveGlobalProperty : function(property, value, resultElement) {
+		jQuery.ajax({
+			url : "settings/saveGlobalProperties.form",
+			type : "POST",
+			contentType : "application/x-www-form-urlencoded",
+			data: property + "=" + value,
+			success : function(result) {
+				jsslab.settingsPage.setSaveResult(resultElement, result)
+			}
+		});
+	},
+	
+	setSaveResult : function(element, result) {
+		element.text(result);
+		element.fadeIn();
+		setTimeout( function(){ element.fadeOut(); }, 2000 );
+	},
 	
 	isValidUuid : function(uuid) {
 		return uuid.length == 36;
@@ -69,6 +88,23 @@ jsslab.settingsPage = {
 };
 
 jQuery(document).ready(function() {
+	jQuery('#orderTypeSubmit').click(function(event) {
+		event.preventDefault();
+		jsslab.settingsPage.saveGlobalProperty( jQuery('#orderTypeSelect').attr('name'), jQuery('#orderTypeSelect').val(), jQuery('#orderTypeResult'));
+	});
+	jQuery('#orderIdPatternSubmit').click(function(event) {
+		event.preventDefault();
+		jsslab.settingsPage.saveGlobalProperty( jQuery('#orderIdPatternSelect').attr('name'), jQuery('#orderIdPatternSelect').val(), jQuery('#orderIdPatternResult') );
+	});
+	jQuery('#specimenIdPatternSubmit').click(function(event) {
+		event.preventDefault();
+		jsslab.settingsPage.saveGlobalProperty( jQuery('#specimenIdPatternSelect').attr('name'), jQuery('#specimenIdPatternSelect').val(), jQuery('#specimenIdPatternResult') );
+	});
+	jQuery('#reportIdPatternSubmit').click(function(event) {
+		event.preventDefault();
+		jsslab.settingsPage.saveGlobalProperty( jQuery('#reportIdPatternSelect').attr('name'), jQuery('#reportIdPatternSelect').val(), jQuery('#reportIdPatternResult') );
+	});
+	
 	jQuery('.radioSpecimenTypeCode').click(function(event) {
 		var uuid = jsslab.settingsPage.getSelectedRadioButtonID();
 		
@@ -82,13 +118,13 @@ jQuery(document).ready(function() {
 	});
 	
 	jQuery('buttonAddNewCode').click(function(event) {
-		
+		event.preventDefault();
 	});
 	jQuery('buttonSaveCode').click(function(event) {
-		
+		event.preventDefault();
 	});
 	jQuery('buttonCancelEditingCode').click(function(event) {
-		
+		event.preventDefault();
 	});
 	
 	

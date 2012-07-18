@@ -115,4 +115,9 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 		d.addProperty("testRanges");
 		return d;
 	}
+	
+	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
+	}
 }

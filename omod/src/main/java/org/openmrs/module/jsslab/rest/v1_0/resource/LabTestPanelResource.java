@@ -120,6 +120,11 @@ public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTest
 	}
 	
 	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
+	}
+	
+	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabTestPanel>(Context.getService(LabCatalogService.class).getLabTestPanels("",false,null,null), context);
 	}

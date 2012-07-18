@@ -27,6 +27,25 @@ instrumentPage = {
 			if (instrumentPage.instrumentConditions[i].uuid == uuid) return instrumentPage.instrumentConditions[i];
 		}
 		return null;
+	},
+	
+	deleteInstrument : function(uuid, reason) {
+		jQuery.ajax({
+			url : openmrsContextPath + "/ws/rest/v1/jsslab/labInstrument/" + uuid + "?reason="+reason,
+			type : "DELETE",
+			success : function() {
+				updateInstrumentsTable();
+			}
+		});
+	},
+	deleteSupplyItem : function(uuid, reason) {
+		jQuery.ajax({
+			url : openmrsContextPath + "/ws/rest/v1/jsslab/labSupplyItem/" + uuid + "?reason="+reason,
+			type : "DELETE",
+			success : function() {
+				updateSupplyItemsTable();
+			}
+		});
 	}
 };
 
@@ -47,6 +66,14 @@ jQuery(document).ready(function() {
 		addNewTableRow("tableInstruments", new Array( radioBtn, "", "", "", "", "" ));
 		instrumentPage.editing = true;
 		radioBtn.click();
+	});
+	
+	jQuery("#buttonRetireInstrument").click(function(event) {
+		event.preventDefault();
+		var uuid = getSelectedInstrumentUuid();
+		var retireReason = jQuery('#textBoxRetireReasonInstrument').val()
+		
+		instrumentPage.deleteInstrument(uuid, retireReason);
 	});
 	
 	jQuery("#buttonSaveInstrument").click(function(event) {
@@ -115,6 +142,14 @@ jQuery(document).ready(function() {
 		});
 		
 		
+	});
+	
+	jQuery("#buttonRetireSupplyItem").click(function(event) {
+		event.preventDefault();
+		var uuid = getSelectedSupplyItemUuid();
+		var retireReason = jQuery('#textBoxRetireReasonSupplyItem').val()
+		
+		instrumentPage.deleteSupplyItem(uuid, retireReason);
 	});
 	
 	jQuery("#buttonSaveSupplyItem").click(function(event) {

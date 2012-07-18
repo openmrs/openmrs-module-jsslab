@@ -20,7 +20,7 @@ import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
 @Resource("labSpecimen")
 @Handler(supports = LabSpecimen.class, order = 0)
-public class LabSpecimenResource extends MetadataDelegatingCrudResource<LabSpecimen>{
+public class LabSpecimenResource extends MetadataDelegatingCrudResource<LabSpecimen> {
 
 	@Override
 	public LabSpecimen getByUniqueId(String uniqueId) {
@@ -64,40 +64,39 @@ public class LabSpecimenResource extends MetadataDelegatingCrudResource<LabSpeci
 	@Override
 	public DelegatingResourceDescription getRepresentationDescription(
 			Representation rep) {
-		DelegatingResourceDescription Descri=new DelegatingResourceDescription();
-		if(rep instanceof DefaultRepresentation)
-		{
+		DelegatingResourceDescription description = new DelegatingResourceDescription();
+		if (rep instanceof DefaultRepresentation) {
 			//			
-			Descri.addProperty("uuid");
-			Descri.addProperty("labSpecimenId");
-			Descri.addProperty("clientSpecimenId");
-			Descri.addProperty("retired");
-			Descri.addSelfLink();
-			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
-			return Descri;
+			description.addProperty("uuid");
+			description.addProperty("labSpecimenId");
+			description.addProperty("clientSpecimenId");
+			description.addProperty("retired");
+			description.addSelfLink();
+			description.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
+			return description;
 		}
 		else if(rep instanceof FullRepresentation)
 		{
 			//
-			Descri.addProperty("uuid");
-			Descri.addProperty("labSpecimenId");
-			Descri.addProperty("clientSpecimenId");
-			Descri.addProperty("orderedBy",Representation.REF);
-			Descri.addProperty("orderedByFacility",Representation.REF);
-			Descri.addProperty("person",Representation.REF);
-			Descri.addProperty("patient",Representation.REF);
-			Descri.addProperty("specimenDate");
-			Descri.addProperty("receivedDate");
-			Descri.addProperty("receivedConditionConcept",Representation.REF);
-			Descri.addProperty("receivedSpecimenTypeConcept",Representation.REF);
-			Descri.addProperty("report",Representation.REF);
-			Descri.addProperty("urgent");
-			Descri.addProperty("physicianRetest");
-			Descri.addProperty("hidden");
-			Descri.addProperty("retired");
-			Descri.addSelfLink();
-			Descri.addProperty("auditInfo",findMethod("getAuditInfo"));
-			return Descri;
+			description.addProperty("uuid");
+			description.addProperty("labSpecimenId");
+			description.addProperty("clientSpecimenId");
+			description.addProperty("orderedBy",Representation.REF);
+			description.addProperty("orderedByFacility",Representation.REF);
+			description.addProperty("person",Representation.REF);
+			description.addProperty("patient",Representation.REF);
+			description.addProperty("specimenDate");
+			description.addProperty("receivedDate");
+			description.addProperty("receivedConditionConcept",Representation.REF);
+			description.addProperty("receivedSpecimenTypeConcept",Representation.REF);
+			description.addProperty("report",Representation.REF);
+			description.addProperty("urgent");
+			description.addProperty("physicianRetest");
+			description.addProperty("hidden");
+			description.addProperty("retired");
+			description.addSelfLink();
+			description.addProperty("auditInfo",findMethod("getAuditInfo"));
+			return description;
 		}
 		return null;
 	}
@@ -122,6 +121,11 @@ public class LabSpecimenResource extends MetadataDelegatingCrudResource<LabSpeci
 		d.addProperty("testSpecimens");
 		d.addProperty("orderSpecimens");
 		return d;
+	}
+	
+	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
 	}
 	
 	@Override

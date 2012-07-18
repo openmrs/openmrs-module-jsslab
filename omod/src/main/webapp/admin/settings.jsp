@@ -1,6 +1,7 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
 <%@ include file="/WEB-INF/template/header.jsp"%>
 
+
 <div id="jsslabSettings" 
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
@@ -8,6 +9,8 @@
 	xmlns:spring="http://www.springframework.org/tags"
 	xmlns:openmrs="urn:jsptld:/WEB-INF/taglibs/openmrs.tld"
 	version="2.0">
+	
+	<spring:message var="pageTitle" code="..." scope="page" />
 	
 	<%@ include file="localHeader.jsp" %>
 	
@@ -111,33 +114,47 @@
 	<h2><spring:message code="jsslab.settings.globalproperties.title" /></h2>
 
 	<table>
-		
 		<tr>
 			<td>
-				<label for="orderTypeSelect"><spring:message code="jsslab.settings.globalproperties.orderTypeLabel" /></label>
+				<label for="orderTypeSelect"><spring:message code="jsslab.settings.globalproperties.orderType.label" /></label>
 			</td><td>
-				<select id="orderTypeSelect">
-					<option value="-1" selected="selected"><spring:message code="jsslab.settings.globalproperties.orderTypeSelect" /></option>
-				</select>
-				<input type="submit" value="<spring:message code='jsslab.settings.globalproperties.orderTypeCreate' />" />
+				<input type="text" name="${gpOrderType.property}" id="orderTypeSelect" value="${gpOrderType.propertyValue}" />
+			</td><td>
+				<input type="submit" id="orderTypeSubmit" value="<spring:message code='jsslab.settings.globalproperties.orderType.save' />" />
+			</td><td>
+				<span id="orderTypeResult"></span>
 			</td>
 		</tr><tr>
 			<td>
-				<label for="orderIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.orderIdPatternLabel" /></label>
+				<label for="orderIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.orderIdPattern.label" /></label>
 			</td><td>
+				<input type="text" name="${gpOrderIdPattern.property}" id="orderIdPatternSelect" value="${gpOrderIdPattern.propertyValue}" />
+			</td><td>
+				<input type="submit" id="orderIdPatternSubmit" value="<spring:message code='jsslab.settings.globalproperties.orderIdPattern.save' />" />
+			</td><td>
+				<span id="orderIdPatternResult"></span>
 			</td>		
 		</tr><tr>
 			<td>
-				<label for="specimenIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.specimenIdPatternLabel" /></label>
+				<label for="specimenIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.specimenIdPattern.label" /></label>
 			</td><td>
+				<input type="text" name="${gpSpecimenIdPattern.property}" id="specimenIdPatternSelect" value="${gpSpecimenIdPattern.propertyValue}" />
+			</td><td>
+				<input type="submit" id="specimenIdPatternSubmit" value="<spring:message code='jsslab.settings.globalproperties.specimenIdPattern.save' />" />
+			</td><td>
+				<span id="specimenIdPatternResult"></span>
 			</td>		
 		</tr><tr>
 			<td>
-				<label for="reportIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.reportIdPatternLabel" /></label>
+				<label for="reportIdPatternSelect"><spring:message code="jsslab.settings.globalproperties.reportIdPattern.label" /></label>
 			</td><td>
+				<input type="text" name="${gpReportIdPattern.property}" id="reportIdPatternSelect" value="${gpReportIdPattern.propertyValue}" />
+			</td><td>
+				<input type="submit" id="reportIdPatternSubmit" value="<spring:message code='jsslab.settings.globalproperties.reportIdPattern.save' />" />
+			</td><td>
+				<span id="reportIdPatternResult"></span>
 			</td>		
 		</tr>
-	
 	</table>
 	
 	<br />

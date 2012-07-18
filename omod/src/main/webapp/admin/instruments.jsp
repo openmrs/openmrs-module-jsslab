@@ -33,11 +33,11 @@
 		<table id="tableInstruments">
 			<tr class="header">
 				<th></th>
-				<th>Property Tag</th>
-				<th>Manufacturer</th>
-				<th>Model</th>
-				<th>Serial No.</th>
-				<th>Retired</th>
+				<th><spring:message code="jsslab.instruments.field.propertyTag" /></th>
+				<th><spring:message code="jsslab.instruments.field.manufacturer" /></th>
+				<th><spring:message code="jsslab.instruments.field.model" /></th>
+				<th><spring:message code="jsslab.instruments.field.serialNumber" /></th>
+				<th><spring:message code="jsslab.instruments.field.retired" /></th>
 			</tr>
 			<c:forEach items="${instruments}" var="instrument" varStatus="loop">
 			<tr>
@@ -54,7 +54,11 @@
 		<br />
 
 		<div id="instrumentAdd">
-			<input type="submit" id="buttonAddNewInstrument" value="Add New Instrument" />
+			<input type="submit" id="buttonAddNewInstrument" value="<spring:message code="jsslab.instruments.list.add" />" />
+			
+			<label for="textBoxRetireReasonInstrument"><spring:message code="jsslab.instruments.list.retireReason" /></label>
+			<input type="text" id="textBoxRetireReasonInstrument" />
+			<input type="submit" id="buttonRetireInstrument" value="<spring:message code="jsslab.instruments.list.retire" />" />
 		</div>
 	</div>
 	
@@ -69,19 +73,19 @@
 		<div class="box">
 			<table>
 				<tr>
-					<td>Property Tag</td>
-					<td>Manufacturer</td>
-					<td>Model</td>
-					<td>Serial No.</td>
+					<td><spring:message code="jsslab.instruments.list.propertyTag" /></td>
+					<td><spring:message code="jsslab.instruments.field.manufacturer" /></dh>
+					<td><spring:message code="jsslab.instruments.field.model" /></td>
+					<td><spring:message code="jsslab.instruments.field.serialNumber" /></td>
 				</tr><tr>
 					<td><input type="text" id="instrumentPropertyTag" /></td>
 					<td><input type="text" id="instrumentManufacturer"/></td>
 					<td><input type="text" id="instrumentModel"/></td>
 					<td><input type="text" id="instrumentSerialNumber"/></td>
 				</tr><tr>
-					<td colspan="2">Location</td>
-					<td>Condition Date</td>
-					<td>Condition</td>
+					<td colspan="2"><spring:message code="jsslab.instruments.field.location" /></td>
+					<td><spring:message code="jsslab.instruments.field.conditionDate" /></td>
+					<td><spring:message code="jsslab.instruments.field.condition" /></td>
 				</tr><tr>
 					<td colspan="2">
 						<select id="instrumentLocation" >
@@ -95,19 +99,19 @@
 						</select>
 					</td>
 				</tr><tr>
-					<td>Received Date</td>
-					<td>Received From</td>
-					<td>Received Cost</td>
-					<td>Received Value</td>
+					<td><spring:message code="jsslab.instruments.field.receivedDate" /></td>
+					<td><spring:message code="jsslab.instruments.field.receivedFrom" /></td>
+					<td><spring:message code="jsslab.instruments.field.receivedCost" /></td>
+					<td><spring:message code="jsslab.instruments.field.receivedValue" /></td>
 				</tr><tr>
 					<td><input type="text" id="instrumentReceivedDate" onclick="showCalendar(this)" /></td>
 					<td><input type="text" id="instrumentReceivedFrom"/></td>
 					<td><input type="text" id="instrumentReceivedCost"/></td>
 					<td><input type="text" id="instrumentReceivedValue"/></td>
 				</tr><tr>
-					<td>Maintenance Vendor</td>
-					<td>Maintenance Phone</td>
-					<td colspan="2">Maintenance Description</td>
+					<td><spring:message code="jsslab.instruments.field.maintenanceVendor" /></td>
+					<td><spring:message code="jsslab.instruments.field.maintenancePhone" /></td>
+					<td colspan="2"><spring:message code="jsslab.instruments.field.maintenanceDescription" /></td>
 				</tr><tr>
 					<td><input type="text" id="instrumentMaintenanceVendor"/></td>
 					<td><input type="text" id="instrumentMaintenancePhone"/></td>
@@ -118,8 +122,8 @@
 			<br />
 			
 			<div>
-				<input type="submit" id="buttonSaveInstrument" value="Accept" />
-				<input type="submit" id="buttonCancelEditingInstrument" value="Cancel" />
+				<input type="submit" id="buttonSaveInstrument" value="<spring:message code="jsslab.instruments.edit.save" />" />
+				<input type="submit" id="buttonCancelEditingInstrument" value="<spring:message code="jsslab.instruments.cancel" />" />
 			</div>
 		</div>
 	</div>
@@ -138,11 +142,11 @@
 		<table id="tableSupplyItems">
 			<tr class="header">
 				<th></th>
-				<th>Lab Stock No.</th>
-				<th>Manufacturer</th>
-				<th>Item</th>
-				<th>Lot No.</th>
-				<th>Retired</th>
+				<th><spring:message code="jsslab.supplies.field.labStockNumber" /></th>
+				<th><spring:message code="jsslab.supplies.field.manufacturer" /></th>
+				<th><spring:message code="jsslab.supplies.field.item" /></th>
+				<th><spring:message code="jsslab.supplies.field.lotNumber" /></th>
+				<th><spring:message code="jsslab.supplies.field.retired" /></th>
 			</tr>
 			<c:forEach items="${supplies}" var="supplyItem" varStatus="loop">
 			<tr>
@@ -159,8 +163,12 @@
 		<br />
 		
 		<div id="supplyItemAdd">
-			<input type="submit" id="buttonAddNewSupplyItem" value="Add New Supply Item" />
-			<input type="submit" id="buttonDuplicateSupplyItem" value="Duplicate Supply Item" disabled="disabled" />
+			<input type="submit" id="buttonAddNewSupplyItem" value="<spring:message code="jsslab.supplies.list.add" />" />
+			<input type="submit" id="buttonDuplicateSupplyItem" value="<spring:message code="jsslab.supplies.list.duplicate" />" disabled="disabled" />
+			
+			<label for="textBoxRetireReasonSupplyItem"><spring:message code="jsslab.supplies.list.retireReason" /></label>
+			<input type="text" id="textBoxRetireReasonSupplyItem" />
+			<input type="submit" id="buttonRetireSupplyItem" value="<spring:message code="jsslab.supplies.list.retire" />" />
 		</div>
 	</div>
 
@@ -173,19 +181,19 @@
 		<div class="box">
 			<table>
 				<tr>
-					<td>Lab Stock No.</td>
-					<td>Manufacturer</td>
-					<td>Item</td>
-					<td>Lot No.</td>
+					<td><spring:message code="jsslab.supplies.field.labStockNumber" /></td>
+					<td><spring:message code="jsslab.supplies.field.manufacturer" /></td>
+					<td><spring:message code="jsslab.supplies.field.item" /></td>
+					<td><spring:message code="jsslab.supplies.field.lotNumber" /></td>
 				</tr><tr>
 					<td><input type="text" id="supplyItemStockNumber" /></td>
 					<td><input type="text" id="supplyItemManufacturer"/></td>
 					<td><input type="text" id="supplyItemName"/></td>
 					<td><input type="text" id="supplyItemLotNumber"/></td>
 				</tr><tr>
-					<td colspan="2">Supply Type</td>
-					<td>Manufacturer Stock No.</td>
-					<td>Expiration Date</td>
+					<td colspan="2"><spring:message code="jsslab.supplies.field.supplyType" /></td>
+					<td><spring:message code="jsslab.supplies.field.manufacurerStockNumber" /></td>
+					<td><spring:message code="jsslab.supplies.field.expirationDate" /></td>
 				</tr><tr>
 					<td colspan="2">
 						<select id="supplyItemType" >
@@ -200,8 +208,8 @@
 			<br />
 			
 			<div>
-				<input type="submit" id="buttonSaveSupplyItem" value="Accept" />
-				<input type="submit" id="buttonCancelEditingSupplyItem" value="Cancel" />
+				<input type="submit" id="buttonSaveSupplyItem" value="<spring:message code="jsslab.supplies.edit.save" />" />
+				<input type="submit" id="buttonCancelEditingSupplyItem" value="<spring:message code="jsslab.supplies.edit.cancel" />" />
 			</div>
 		</div>
 		

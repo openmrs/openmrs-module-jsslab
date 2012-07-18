@@ -113,6 +113,11 @@ public class LabTestRangeResource extends DataDelegatingCrudResource<LabTestRang
 	}
 	
 	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
+	}
+	
+	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabTestRange>(Context.getService(LabTestingService.class).getAllLabTestRanges(false), context);
 	}

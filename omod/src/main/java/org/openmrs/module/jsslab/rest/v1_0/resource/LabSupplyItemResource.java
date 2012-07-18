@@ -91,6 +91,11 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 		return d;
 	}
 	
+	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
+	}
+	
 	/**
 	 * @see DelegatingCrudResource#newDelegate()
 	 */

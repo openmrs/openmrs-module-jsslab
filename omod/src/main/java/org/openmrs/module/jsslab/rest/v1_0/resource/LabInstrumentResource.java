@@ -83,8 +83,6 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 	@Override
 	public DelegatingResourceDescription getCreatableProperties() {
 		DelegatingResourceDescription d = new DelegatingResourceDescription();
-		d.addProperty("retired");
-		
 		d.addProperty("propertyTag");
 		d.addProperty("manufacturer");
 		d.addProperty("model");
@@ -104,6 +102,11 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 //		TODO is not used in the object currently 
 //		d.addProperty("name");
 		return d;
+	}
+	
+	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
 	}
 	
 	/**

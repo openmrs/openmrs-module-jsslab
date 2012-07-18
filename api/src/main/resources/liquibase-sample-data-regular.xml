@@ -4223,6 +4223,124 @@
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="uuid" value="2679f659-5a47-11e1-8dde-0024e8c61285"/>
 		</insert>
+		
+	</changeSet>
+	<changeSet author="martingielow" id="samples_concept_set_temp">
+		<comment>
+			This changeset contains the a Concept Set containing all other JSS Lab specific
+			Concept Sets
+		</comment>
+		
+		<insert tableName="concept">
+			<column name="concept_id" valueNumeric="33333121"/>
+			<column name="retired" valueNumeric="0"/>
+			<column name="short_name" value="JSS Lab Concept Sets"/>
+			<column name="description" value="A super set containing all concept sets of the JSSLab module"/>
+			<column name="form_text"/>
+			<column name="datatype_id" valueNumeric="4"/>
+			<column name="class_id" valueNumeric="8"/>
+			<column name="is_set" valueNumeric="1"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="version"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="ecf14390-d049-11e1-9b23-0800200c9a66"/>
+		</insert>
+		
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333593"/>
+			<column name="concept_id" valueNumeric="33333002"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d0-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333594"/>
+			<column name="concept_id" valueNumeric="33333003"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d1-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333595"/>
+			<column name="concept_id" valueNumeric="33333004"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d2-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333596"/>
+			<column name="concept_id" valueNumeric="33333005"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d3-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333597"/>
+			<column name="concept_id" valueNumeric="33333006"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d4-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333598"/>
+			<column name="concept_id" valueNumeric="33333007"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d5-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333599"/>
+			<column name="concept_id" valueNumeric="33333008"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d6-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333600"/>
+			<column name="concept_id" valueNumeric="33333009"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d7-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333601"/>
+			<column name="concept_id" valueNumeric="33333010"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d8-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
+		<insert tableName="concept_set">
+			<column name="concept_set_id" valueNumeric="33333602"/>
+			<column name="concept_id" valueNumeric="33333011"/>
+			<column name="concept_set" valueNumeric="33333121"/>
+			<column name="sort_weight" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="uuid" value="150238d9-d04a-11e1-9b23-0800200c9a66"/>
+		</insert>
 	</changeSet>
 
 	<changeSet author="martingielow" id="samples_concept_map">

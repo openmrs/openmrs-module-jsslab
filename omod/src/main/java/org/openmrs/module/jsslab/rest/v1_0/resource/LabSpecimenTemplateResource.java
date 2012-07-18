@@ -119,6 +119,11 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 	}
 	
 	@Override
+	protected String getNamespacePrefix() {
+		return "jsslab";
+	}
+	
+	@Override
 	protected PageableResult doGetAll(RequestContext context) {
 		return  new NeedsPaging<LabSpecimenTemplate>(Context.getService(LabCatalogService.class).getLabSpecimenTemplate("",false,null,null), context);
 	}

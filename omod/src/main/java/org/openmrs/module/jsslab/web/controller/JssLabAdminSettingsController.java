@@ -9,12 +9,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.openmrs.Concept;
-import org.openmrs.ConceptClass;
+import org.openmrs.GlobalProperty;
 import org.openmrs.Location;
 import org.openmrs.LocationTag;
 import org.openmrs.api.context.Context;
@@ -22,6 +23,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "module/jsslab/admin/settings")
@@ -58,11 +61,41 @@ public class JssLabAdminSettingsController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void showForm(ModelMap model) throws IOException {
 		
-		ConceptClass labSetClass = Context.getConceptService().getConceptClassByName("LabSet");
-		List<Concept> conceptSets = Context.getConceptService().getConceptsByClass(labSetClass);
+		Concept labSet = Context.getConceptService().getConcept("33333121");
+		List<Concept> conceptSets = labSet.getSetMembers();
+		
+		GlobalProperty gpOrderType = Context.getAdministrationService().getGlobalPropertyObject("jsslab.laborder.type");
+		GlobalProperty gpOrderIdPattern = Context.getAdministrationService().getGlobalPropertyObject("jsslab.laborder.idPattern");
+		GlobalProperty gpSpecimenIdPattern = Context.getAdministrationService().getGlobalPropertyObject("jsslab.labspecimen.idPattern");
+		GlobalProperty gpReportIdPattern= Context.getAdministrationService().getGlobalPropertyObject("jsslab.labreport.idPattern");
 		
 		model.addAttribute("conceptSets", conceptSets);
 		model.addAttribute("json", getHierarchyAsJson());
+		model.addAttribute("gpOrderType", gpOrderType);
+		model.addAttribute("gpOrderIdPattern", gpOrderIdPattern);
+		model.addAttribute("gpSpecimenIdPattern", gpSpecimenIdPattern);
+		model.addAttribute("gpReportIdPattern", gpReportIdPattern);
+	}
+	
+	@RequestMapping(value = "/saveGlobalProperties.form", method = RequestMethod.POST)
+	@ResponseBody
+	public String saveGlobalProperties(HttpServletRequest request, 
+			@RequestParam(value = "labOrderType", required = false) String labOrderType,
+			@RequestParam(value = "labOrderIdPattern", required = false) String labOrderIdPattern,
+			@RequestParam(value = "labSpecimenIdPattern", required = false) String labSpecimenIdPattern,
+			@RequestParam(value = "labReportIdPattern", required = false) String labReportIdPattern) {
+
+		for (Object param : request.getParameterMap().entrySet()) {
+				Map.Entry<String, String[]> entry = (Map.Entry<String, String[]>) param;
+				GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(entry.getKey());
+				if (gp != null) {
+					gp.setPropertyValue(entry.getValue()[0]);
+					Context.getAdministrationService().saveGlobalProperty(gp);
+				} else {
+					return "failed";
+				}
+		}
+		return "success";
 	}
 	
 	/**
