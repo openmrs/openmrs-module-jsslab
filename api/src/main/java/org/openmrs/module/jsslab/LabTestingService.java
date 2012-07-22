@@ -157,16 +157,16 @@ public interface LabTestingService extends OpenmrsService {
 	public LabReport retireLabReport(LabReport labReport, String retireReason) throws APIException;
 	
 	/**
-	 * Get all LabReport, only showing ones not marked as retired if includeVoided is true
+	 * Get all <code>LabReport</code>s, only showing ones not marked as retired, unless includeRetired is true
 	 * 
-	 * @param includeVoided true/false whether to include retired LabReports in this list
+	 * @param includeRetired true/false whether to include retired LabReports in this list
 	 * @return LabReports list
 	 * @throws APIException
-	 * @should get all LabReport by includeVoided
+	 * @should get all LabReport by includeRetired
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
-	public List<LabReport> getAllLabReports(Boolean includeVoided) throws APIException;
+	public List<LabReport> getAllLabReports(Boolean includeRetired) throws APIException;
 	
 	/**
 	 * Get all unretired LabReport

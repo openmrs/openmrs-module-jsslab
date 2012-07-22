@@ -29,4 +29,7 @@ public class LabManagementServiceTest extends BaseModuleContextSensitiveTest{
 		Assert.assertNotNull("getLabInstrumentByUuid should not return null",labSupplyItem);
 		Assert.assertEquals("getLabInstrumentByUuid should return the right object","36fa7e2a-21d4-11e1-9815-00265e639063", labSupplyItem.getUuid());
 	}
+	
+	
+	
 }

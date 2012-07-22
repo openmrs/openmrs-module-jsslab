@@ -19,17 +19,14 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
-
-import org.openmrs.module.jsslab.db.LabTestPanel;
+import org.hibernate.criterion.Restrictions;
 import org.openmrs.api.APIException;
-import org.openmrs.api.context.Context;
-import org.openmrs.api.ConceptService;
-import org.openmrs.module.jsslab.db.LabTestPanelDAO;
 import org.openmrs.module.jsslab.db.LabTest;
+import org.openmrs.module.jsslab.db.LabTestPanel;
+import org.openmrs.module.jsslab.db.LabTestPanelDAO;
 
 /**
  * Hibernate lab labTestPanel related database functions
@@ -79,8 +76,8 @@ public class HibernateLabTestPanelDAO implements LabTestPanelDAO {
 	 * @see org.openmrs.api.db.LabTestPanelDAO#getLabTestPanelByUuid(java.lang.String)
 	 */
 	public LabTestPanel getLabTestPanelByUuid(String uuid) {
-		return (LabTestPanel) sessionFactory.getCurrentSession().createQuery("from LabTestPanel l where l.uuid = :uuid").setString(
-		    "uuid", uuid).uniqueResult();
+		return (LabTestPanel) sessionFactory.getCurrentSession().createCriteria(LabTestPanel.class)
+				.add(Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
 
 	/**

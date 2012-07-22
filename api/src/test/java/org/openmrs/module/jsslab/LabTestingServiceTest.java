@@ -1,15 +1,11 @@
-
 package org.openmrs.module.jsslab;
-/**
- * LabTestingServiceTest.java
- * Tests LabTestingService class 
- */
+
+
 import java.util.List;
 
 import junit.framework.Assert;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabReport;
@@ -19,7 +15,11 @@ import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.openmrs.test.SkipBaseSetup;
 
-public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{	
+/**
+ * LabTestingServiceTest.java
+ * Tests LabTestingService class 
+ */
+public class LabTestingServiceTest extends BaseModuleContextSensitiveTest {	
 	
 	@Before
 	public void before() throws Exception {
@@ -37,11 +37,10 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
-	public void getLabTestRange_shouldGetLabTestRange() throws Exception{
-		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRange(3333302);
-		Assert.assertNotNull("getLabTestRange by labTestRangeId should not return null",labTestRange);
-		Assert.assertEquals("getLabTestRange by labTestRangeId return the right object",new Integer(3333302), labTestRange.getId());
+	public void getLabTestRange_shouldGetLabTestRange() throws Exception {
+		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRange(33333002);
+		Assert.assertNotNull("getLabTestRange by labTestRangeId should not return null", labTestRange);
+		Assert.assertEquals("getLabTestRange by labTestRangeId return the right object", new Integer(33333002), labTestRange.getId());
 	}
 	
 	
@@ -52,11 +51,10 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
-	public void getLabTestRangeByUuid_shouldGetLabTestRangeByUuid() throws Exception{
-		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("cfe2da74-8887-11e1-b45c-0024e8c61285");
-		Assert.assertNotNull("getLabTestRange by uuid should not return null",labTestRange);
-		Assert.assertEquals("getLabTestRange by uuid return the right object","cfe2da74-8887-11e1-b45c-0024e8c61285", labTestRange.getUuid());
+	public void getLabTestRangeByUuid_shouldGetLabTestRangeByUuid() throws Exception {
+		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("ed3e6f73-a500-11e1-aecb-0024e8c61285");
+		Assert.assertNotNull("getLabTestRange by uuid should not return null", labTestRange);
+		Assert.assertEquals("getLabTestRange by uuid return the right object", "ed3e6f73-a500-11e1-aecb-0024e8c61285", labTestRange.getUuid());
 	}
 	
 	
@@ -68,12 +66,12 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
-	public void deleteLabTestRange_shouldDeleteLabTestRange() throws Exception{
-		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("cfe2da74-8887-11e1-b45c-0024e8c61285");
+	public void deleteLabTestRange_shouldDeleteLabTestRange() throws Exception {
+		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("ed3e6f73-a500-11e1-aecb-0024e8c61285");
 		Context.getService(LabTestingService.class).deleteLabTestRange(labTestRange, "");
-		labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("cfe2da74-8887-11e1-b45c-0024e8c61285");
-		Assert.assertNull("deleteLabTestRange should return null",labTestRange);
+		
+		labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("ed3e6f73-a500-11e1-aecb-0024e8c61285");
+		Assert.assertTrue(labTestRange.isVoided());
 	}
 	
 	
@@ -84,11 +82,10 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
-	public void getAllLabTestRanges_shouldGetAllLabTestRanges() throws Exception{
-		List<LabTestRange> list= Context.getService(LabTestingService.class).getAllLabTestRanges(false);		
-		Assert.assertNotNull("getAllLabTestRanges should not return null list",list);
-		Assert.assertEquals("getAllLabTestRanges the right number of LabTestRanges",2,list.size());
+	public void getAllLabTestRanges_shouldGetAllLabTestRanges() throws Exception {
+		List<LabTestRange> list = Context.getService(LabTestingService.class).getAllLabTestRanges(false);		
+		Assert.assertNotNull("getAllLabTestRanges should not return null list", list);
+		Assert.assertEquals("getAllLabTestRanges the right number of LabTestRanges", 4, list.size());
 	}
 	
 	/**
@@ -98,10 +95,9 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
-	public void getCountOfLabTestRanges_shouldGetCountOfLabTestRanges() throws Exception{
-		Integer count= Context.getService(LabTestingService.class).getCountOfLabTestRanges(false);	
-		Assert.assertEquals("getCountOfLabTestRanges should return right size",2,count.intValue());
+	public void getCountOfLabTestRanges_shouldGetCountOfLabTestRanges() throws Exception {
+		Integer count = Context.getService(LabTestingService.class).getCountOfLabTestRanges(false);	
+		Assert.assertEquals("getCountOfLabTestRanges should return right size", 4, count.intValue());
 	}
 	
 	/**
@@ -111,11 +107,10 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
-	public void getLabTestRanges_shouldGetLabTestRanges() throws Exception{
+	public void getLabTestRanges_shouldGetLabTestRanges() throws Exception {
 		List<LabTestRange> list= Context.getService(LabTestingService.class).getLabTestRanges("", false, 0, 2);		
-		Assert.assertNotNull("getLabTestRanges should not return null list",list);
-		Assert.assertEquals("getLabTestRanges should return right size",2,list.size());
+		Assert.assertNotNull("getLabTestRanges should not return null list", list);
+		Assert.assertEquals("getLabTestRanges should return right size", 2, list.size());
 	}
 	
 	
@@ -126,12 +121,12 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void purgeLabTestRange_shouldPurgeLabTestRange() throws Exception{
-		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("cfe2da74-8887-11e1-b45c-0024e8c61285");
+		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("ed3e6f73-a500-11e1-aecb-0024e8c61285");
 		Context.getService(LabTestingService.class).purgeLabTestRange(labTestRange);
-		labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("cfe2da74-8887-11e1-b45c-0024e8c61285");
-		Assert.assertNull("purgeLabTestRange should return null",labTestRange);
+		
+		labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("ed3e6f73-a500-11e1-aecb-0024e8c61285");
+		Assert.assertNull("purgeLabTestRange should return null", labTestRange);
 	}
 	
 	/**
@@ -141,14 +136,14 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
-	public void saveLabTestRange_shouldSaveLabTestRange() throws Exception{
-		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("cfe2da74-8887-11e1-b45c-0024e8c61285");
+	public void saveLabTestRange_shouldSaveLabTestRange() throws Exception {
+		LabTestRange labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("ed3e6f73-a500-11e1-aecb-0024e8c61285");
 		labTestRange.setUuid("12312312-1231-1231-1231-123123124");
 		Context.getService(LabTestingService.class).saveLabTestRange(labTestRange);
+		
 		labTestRange = Context.getService(LabTestingService.class).getLabTestRangeByUuid("12312312-1231-1231-1231-123123124");
-		Assert.assertNotNull("saveLabTestRange should not return null",labTestRange);
-		Assert.assertEquals("saveLabTestRange return the right object","12312312-1231-1231-1231-123123124", labTestRange.getId());
+		Assert.assertNotNull("saveLabTestRange should not return null", labTestRange);
+		Assert.assertEquals("saveLabTestRange return the right object", "12312312-1231-1231-1231-123123124", labTestRange.getUuid());
 	}
 	
 	
@@ -188,12 +183,12 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	@Test
 	@SkipBaseSetup
 	public void saveLabTestSpecimen_shouldSaveLabTestSpecimen() throws Exception {
-
 		LabTestSpecimen labTestSpecimen = Context.getService(LabTestingService.class).getLabTestSpecimenByUuid("df4988f9-49bf-11e1-812a-0024e8c61285");
 		labTestSpecimen.setUuid("12312312-1231-1231-1231-123123124");
 		Context.getService(LabTestingService.class).saveLabTestSpecimen(labTestSpecimen);
+		
 		labTestSpecimen = Context.getService(LabTestingService.class).getLabTestSpecimenByUuid("12312312-1231-1231-1231-123123124");
-		Assert.assertNotNull("saveLabTestSpecimen should not return null",labTestSpecimen);
+		Assert.assertNotNull("saveLabTestSpecimen should not return null", labTestSpecimen);
 		Assert.assertEquals("saveLabTestSpecimen should return the right object","12312312-1231-1231-1231-123123124", labTestSpecimen.getUuid());
 	}
 	
@@ -204,13 +199,12 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void purgeLabTestSpecimen_shouldPurgeLabTestSpecimen() throws Exception {
-
-		LabTestSpecimen labTestSpecimen = Context.getService(LabTestingService.class).getLabTestSpecimenByUuid("df4988f9-49bf-11e1-812a-0024e8c61285");		
+		LabTestSpecimen labTestSpecimen = Context.getService(LabTestingService.class).getLabTestSpecimenByUuid("21af8eb0-d3cf-11e1-9b23-0800200c9a66");		
 		Context.getService(LabTestingService.class).purgeLabTestSpecimen(labTestSpecimen);
-		labTestSpecimen = Context.getService(LabTestingService.class).getLabTestSpecimenByUuid("df4988f9-49bf-11e1-812a-0024e8c61285");
-		Assert.assertNull("purgeLabTestSpecimen should return null",labTestSpecimen);
+		
+		labTestSpecimen = Context.getService(LabTestingService.class).getLabTestSpecimenByUuid("21af8eb0-d3cf-11e1-9b23-0800200c9a66");
+		Assert.assertNull("purgeLabTestSpecimen should return null", labTestSpecimen);
 		
 	}
 	
@@ -224,9 +218,9 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	public void retireLabTestSpecimen_shouldRetireLabTestSpecimen() throws Exception {
 
 		LabTestSpecimen labTestSpecimen = Context.getService(LabTestingService.class).getLabTestSpecimenByUuid("df4988f9-49bf-11e1-812a-0024e8c61285");		
-		Context.getService(LabTestingService.class).retireLabTestSpecimen(labTestSpecimen,"");
+		Context.getService(LabTestingService.class).retireLabTestSpecimen(labTestSpecimen, "");
 		labTestSpecimen = Context.getService(LabTestingService.class).getLabTestSpecimenByUuid("df4988f9-49bf-11e1-812a-0024e8c61285");
-		Assert.assertEquals("retireLabTestSpecimen should return right object",Boolean.TRUE,labTestSpecimen.getRetired());
+		Assert.assertEquals("retireLabTestSpecimen should return right object", Boolean.TRUE, labTestSpecimen.getRetired());
 		
 	}
 	
@@ -237,11 +231,10 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void getAllLabTestSpecimens_shouldGetAllLabTestSpecimensWithoutVoided() throws Exception {
 		List<LabTestSpecimen> list=	Context.getService(LabTestingService.class).getAllLabTestSpecimens(false);	
 		Assert.assertNotNull("getAllLabTestSpecimens should not return null",list);
-		Assert.assertEquals("getAllLabTestSpecimens should return the right number of objects",1, list.size());	
+		Assert.assertEquals("getAllLabTestSpecimens should return the right number of objects", 2, list.size());	
 		
 	}
 	
@@ -252,11 +245,10 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void getAllLabTestSpecimens_shouldGetAllLabTestSpecimens() throws Exception {
 		List<LabTestSpecimen> list=	Context.getService(LabTestingService.class).getAllLabTestSpecimens();	
 		Assert.assertNotNull("getAllLabTestSpecimens should not return null",list);
-		Assert.assertEquals("getAllLabTestSpecimens should return the right objects",1, list.size());	
+		Assert.assertEquals("getAllLabTestSpecimens should return the right objects", 2, list.size());	
 		
 	}
 	
@@ -267,9 +259,8 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void getLabTestSpecimens_shouldGetLabTestSpecimens() throws Exception {
-		List<LabTestSpecimen> list=	Context.getService(LabTestingService.class).getLabTestSpecimens("", true, 0, 1);	
+		List<LabTestSpecimen> list = Context.getService(LabTestingService.class).getLabTestSpecimens("", true, 0, 1);	
 		Assert.assertNotNull("getLabTestSpecimens should not return null",list);
 		Assert.assertEquals("getLabTestSpecimens should return the right objects",1, list.size());	
 		
@@ -283,8 +274,8 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	@Test
 	@SkipBaseSetup
 	public void getCountOfLabTestSpecimens_shouldGetCountOfLabTestSpecimens() throws Exception {
-		Integer count=	Context.getService(LabTestingService.class).getCountOfLabReports(true);	
-		Assert.assertEquals("getCountOfLabTestSpecimens should return the right number objects",1, count.intValue());	
+		Integer count = Context.getService(LabTestingService.class).getCountOfLabReports(true);	
+		Assert.assertEquals("getCountOfLabTestSpecimens should return the right number objects", 2, count.intValue());	
 		
 	}
 	
@@ -297,9 +288,9 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	@Test
 	@SkipBaseSetup
 	public void getLabReport_shouldGetLabReportById() throws Exception {
-		LabReport labReport=	Context.getService(LabTestingService.class).getLabReport(33333001);	
-		Assert.assertNotNull("getLabReport should not return null",labReport);
-		Assert.assertEquals("getLabReport should return the right report",new Integer(33333001), labReport.getId());	
+		LabReport labReport = Context.getService(LabTestingService.class).getLabReport(33333001);	
+		Assert.assertNotNull("getLabReport should not return null", labReport);
+		Assert.assertEquals("getLabReport should return the right report", new Integer(33333001), labReport.getId());	
 		
 	}
 	/**
@@ -310,9 +301,9 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	@Test
 	@SkipBaseSetup
 	public void getLabReportByUuid_shouldGetLabReportByUuid() throws Exception {
-		LabReport labReport=	Context.getService(LabTestingService.class).getLabReportByUuid("ac0e7819-49bb-11e1-812a-0024e8c61285");	
-		Assert.assertNotNull("getLabReportByUuid should not return null",labReport);
-		Assert.assertEquals("getLabReportByUuid should return the right report","ac0e7819-49bb-11e1-812a-0024e8c61285", labReport.getUuid());	
+		LabReport labReport = Context.getService(LabTestingService.class).getLabReportByUuid("ac0e7819-49bb-11e1-812a-0024e8c61285");	
+		Assert.assertNotNull("getLabReportByUuid should not return null", labReport);
+		Assert.assertEquals("getLabReportByUuid should return the right report", "ac0e7819-49bb-11e1-812a-0024e8c61285", labReport.getUuid());	
 		
 	}
 	
@@ -323,7 +314,6 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void saveLabReport_shouldSaveLabReport() throws Exception {
 		LabReport labReport=	Context.getService(LabTestingService.class).getLabReportByUuid("ac0e7819-49bb-11e1-812a-0024e8c61285");	
 		labReport.setUuid("12312312-1231-1231-1231-123123124");
@@ -342,15 +332,14 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void purgeLabReport_shouldPurgeLabReport() throws Exception {
-
-		LabReport labReport = Context.getService(LabTestingService.class).getLabReportByUuid("ac0e7819-49bb-11e1-812a-0024e8c61285");		
+		LabReport labReport = Context.getService(LabTestingService.class).getLabReportByUuid("702cf650-d3e2-11e1-9b23-0800200c9a66");		
 		Context.getService(LabTestingService.class).purgeLabReport(labReport);
-		labReport = Context.getService(LabTestingService.class).getLabReportByUuid("ac0e7819-49bb-11e1-812a-0024e8c61285");
-		Assert.assertNull("purgeLabReport should return null",labReport);
 		
+		labReport = Context.getService(LabTestingService.class).getLabReportByUuid("702cf650-d3e2-11e1-9b23-0800200c9a66");
+		Assert.assertNull("purgeLabReport should return null",labReport);
 	}
+	
 	/**
 	 * @see LabTestSpecimen#retireLabReport(LabReport,String)
 	 * @verifies retireLabReport
@@ -358,15 +347,13 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void retireLabReport_shouldRetireLabReport() throws Exception {
-
 		LabReport labReport = Context.getService(LabTestingService.class).getLabReportByUuid("ac0e7819-49bb-11e1-812a-0024e8c61285");		
 		Context.getService(LabTestingService.class).retireLabReport(labReport,"");
+		
 		labReport = Context.getService(LabTestingService.class).getLabReportByUuid("ac0e7819-49bb-11e1-812a-0024e8c61285");
 		Assert.assertNotNull("getLabReport should not return null",labReport);
 		Assert.assertEquals("getLabReport should return the right object",Boolean.TRUE, labReport.getRetired());	
-		
 	}
 	
 	
@@ -377,10 +364,10 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	public void getAllLabReports_shouldGetAllLabReportsWithoutVoided() throws Exception {
-		List<LabReport> list=	Context.getService(LabTestingService.class).getAllLabReports(false);	
-		Assert.assertNotNull("getAllLabReports should not return null",list);
-		Assert.assertEquals("getAllLabReports should return the right objects",1, list.size());	
+	public void getAllLabReports_shouldGetAllLabReportsWithoutRetired() throws Exception {
+		List<LabReport> list = Context.getService(LabTestingService.class).getAllLabReports(false);	
+		Assert.assertNotNull("getAllLabReports should not return null", list);
+		Assert.assertEquals("getAllLabReports should return the right objects", 1, list.size());	
 		
 	}
 	
@@ -392,9 +379,9 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	@Test
 	@SkipBaseSetup
 	public void getAllLabReports_shouldGetAllLabReports() throws Exception {
-		List<LabReport> list=	Context.getService(LabTestingService.class).getAllLabReports();	
-		Assert.assertNotNull("getAllLabReports should not return null",list);
-		Assert.assertEquals("getAllLabReports should return the right objects",1, list.size());	
+		List<LabReport> list = Context.getService(LabTestingService.class).getAllLabReports();	
+		Assert.assertNotNull("getAllLabReports should not return null", list);
+		Assert.assertEquals("getAllLabReports should return the right objects", 1, list.size());	
 		
 	}
 	
@@ -436,7 +423,6 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void getLabTestResult_shouldGetLabTestResultById() throws Exception {
 		LabTestResult labTestResult=	Context.getService(LabTestingService.class).getLabTestResult(33333001);	
 		Assert.assertNotNull("getLabTestResult should not return null",labTestResult);
@@ -516,7 +502,7 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	@Test
 	@SkipBaseSetup
 	public void getAllLabTestResults_shouldGetAllLabTestResults() throws Exception {
-		List<LabTestResult> list=	Context.getService(LabTestingService.class).getAllLabTestResults(true);
+		List<LabTestResult> list = Context.getService(LabTestingService.class).getAllLabTestResults(true);
 		Assert.assertNotNull("getAllLabTestResults should not return null",list);
 		Assert.assertEquals("getAllLabTestResults should return the right objects",2, list.size());
 		
@@ -529,11 +515,10 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void getLabTestResults_shouldGetLabTestResults() throws Exception {
-		List<LabTestResult> list=	Context.getService(LabTestingService.class).getLabTestResults("", true, 0, 2);
-		Assert.assertNotNull("getLabTestResults should not return null",list);
-		Assert.assertEquals("getLabTestResults should return the right objects",2, list.size());
+		List<LabTestResult> list = Context.getService(LabTestingService.class).getLabTestResults("", true, 0, 2);
+		Assert.assertNotNull("getLabTestResults should not return null", list);
+		Assert.assertEquals("getLabTestResults should return the right objects", 2, list.size());
 		
 	}
 	
@@ -546,7 +531,7 @@ public class LabTestingServiceTest extends BaseModuleContextSensitiveTest{
 	@Test
 	@SkipBaseSetup
 	public void getCountOfLabTestResult_shouldGetCountOfLabTestResult() throws Exception {
-		Integer count=	Context.getService(LabTestingService.class).getCountOfLabTestResult("",false);
+		Integer count = Context.getService(LabTestingService.class).getCountOfLabTestResult("", false);
 		Assert.assertNotNull("getCountOfLabTestResult should not return null",count);
 		Assert.assertEquals("getCountOfLabTestResult should return the right objects",2, count.intValue());
 		

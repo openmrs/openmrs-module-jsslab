@@ -1,45 +1,24 @@
 package org.openmrs.module.jsslab;
 
-
-import java.io.FileOutputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.util.Date;
 import java.util.List;
 
 import junit.framework.Assert;
 
-import org.dbunit.database.DatabaseConnection;
-import org.dbunit.database.IDatabaseConnection;
-import org.dbunit.database.QueryDataSet;
-import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.hibernate.HibernateException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openmrs.Encounter;
-import org.openmrs.EncounterType;
-import org.openmrs.GlobalProperty;
-import org.openmrs.Location;
-import org.openmrs.Order;
-import org.openmrs.Patient;
-import org.openmrs.PatientIdentifier;
-import org.openmrs.PatientIdentifierType;
 import org.openmrs.api.APIException;
-import org.openmrs.api.EncounterService;
-import org.openmrs.api.OrderService;
-import org.openmrs.api.PatientService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabOrderSpecimen;
 import org.openmrs.module.jsslab.db.LabSpecimen;
-import org.openmrs.module.jsslab.db.LabReport;
-import org.openmrs.module.jsslab.impl.LabOrderServiceImpl;
-import org.openmrs.module.webservices.rest.test.Util;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.openmrs.test.SkipBaseSetup;
 import org.openmrs.test.TestUtil;
 
-public class LabOrderServiceTest extends BaseModuleContextSensitiveTest{
+public class LabOrderServiceTest extends BaseModuleContextSensitiveTest {
 
 	private final String EXISTING_LAB_ORDER_UUID = "ee8b270c-49b9-11e1-812a-0024e8c61285";
 	private final String EXISTING_SPECIMEN_UUID = "cbbf4eae-49bc-11e1-812a-0024e8c61285";
@@ -183,11 +162,14 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest{
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void purgeLabOrder_shouldPurgeLabOrder() throws Exception {
 		LabOrder labOrder = Context.getService(LabOrderService.class).getLabOrderByUuid(EXISTING_LAB_ORDER_UUID);
 		Context.getService(LabOrderService.class).purgeLabOrder(labOrder);
-		labOrder = Context.getService(LabOrderService.class).getLabOrderByUuid(EXISTING_LAB_ORDER_UUID);
+		try {
+			labOrder = Context.getService(LabOrderService.class).getLabOrderByUuid(EXISTING_LAB_ORDER_UUID);
+		} catch (HibernateException e) {
+			labOrder = null;
+		}
 		Assert.assertNull("purgeLabOrder should return null", labOrder);
 	}
 	
@@ -267,9 +249,11 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest{
 	@SkipBaseSetup
 	public void saveLabOrderSpecimen_ShouldAddToOrderSpecimen() throws Exception {
 		LabOrderService los = Context.getService(LabOrderService.class);
+		
 		LabOrder lo = new LabOrder();
 		fillLabOrder(lo);
 		los.saveLabOrder(lo);
+		
 		LabSpecimen ls = new LabSpecimen();
 		fillLabSpecimen(ls);
 		los.saveLabSpecimen(ls);
@@ -285,9 +269,9 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest{
 		os.setVoided(false);
 		los.saveLabOrderSpecimen(os);
 		
-		LabOrderSpecimen os2 = Context.getService(LabOrderService.class).getLabOrderSpecimenByUuid("12312312-1231-1231-1231-123123123");
-		Assert.assertNotNull("GetOrderSpecimenByUuid should not return null",os2);
-		Assert.assertEquals("GetOrderSpecimenByUuid should return the right object",os2.getUuid(), os.getUuid());
+		LabOrderSpecimen os2 = Context.getService(LabOrderService.class).getLabOrderSpecimenByUuid(os.getUuid());
+		Assert.assertNotNull("GetOrderSpecimenByUuid should not return null", os2);
+		Assert.assertEquals("GetOrderSpecimenByUuid should return the right object", os2.getUuid(), os.getUuid());
 		TestUtil.printOutTableContents(getConnection(), "jsslab_order_specimen");
 
 		LabOrder lo2 = los.getLabOrderByUuid(lo.getUuid());
@@ -303,12 +287,13 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest{
 	 */
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void saveLabOrderSpecimen_ShouldAddToLabOrder() throws Exception {
 		LabOrderService los = Context.getService(LabOrderService.class);
+		
 		LabOrder lo = new LabOrder();
 		fillLabOrder(lo);
 		los.saveLabOrder(lo);
+		
 		LabSpecimen ls = new LabSpecimen();
 		fillLabSpecimen(ls);
 		los.saveLabSpecimen(ls);
@@ -322,6 +307,8 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest{
 		if (os.getUuid() == null)
 			os.setUuid("12312312-1231-1231-1231-123123123");
 		os.setVoided(false);
+		los.saveLabOrderSpecimen(os);
+		
 		lo.getOrderSpecimens().add(os);
 		los.saveLabOrder(lo);
 		
@@ -342,12 +329,12 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest{
 	 */
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void saveLabOrderSpecimen_ShouldAddToSpecimen() throws Exception {
 		LabOrderService los = Context.getService(LabOrderService.class);
 		LabOrder lo = new LabOrder();
 		fillLabOrder(lo);
 		los.saveLabOrder(lo);
+		
 		LabSpecimen ls = new LabSpecimen();
 		fillLabSpecimen(ls);
 		los.saveLabSpecimen(ls);
@@ -361,10 +348,12 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest{
 		if (os.getUuid() == null)
 			os.setUuid("12312312-1231-1231-1231-123123123");
 		os.setVoided(false);
+		los.saveLabOrderSpecimen(os);
+		
 		ls.getOrderSpecimens().add(os);
 		los.saveLabSpecimen(ls);
 		
-		LabOrderSpecimen os2 = Context.getService(LabOrderService.class).getLabOrderSpecimenByUuid("12312312-1231-1231-1231-123123123");
+		LabOrderSpecimen os2 = Context.getService(LabOrderService.class).getLabOrderSpecimenByUuid(os.getUuid());
 		Assert.assertNotNull("GetOrderSpecimenByUuid should not return null",os2);
 		Assert.assertEquals("GetOrderSpecimenByUuid should return the right object",os2.getUuid(), os.getUuid());
 		TestUtil.printOutTableContents(getConnection(), "jsslab_order_specimen");

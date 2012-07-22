@@ -63,14 +63,13 @@ public interface LabReportDAO {
 	public LabReport getLabReportByName(String labReport);
 
 	/**
-	 * Get all labReports
+	 * Gets all <code>LabReport</code>s that match the given parameters
 	 * 
-	 * @param includeVoided
-	 *            Boolean - include voided labReports as well?
+	 * @param includeRetired Whether or not to include retired <code>LabReports</code>s
 	 * @return List<LabReport> object with all <code>LabReport</code>s, possibly
-	 *         included voided ones
+	 *         included retired ones
 	 */
-	public List<LabReport> getLabReports(String search, Boolean includeVoided, Integer start, Integer length);
+	public List<LabReport> getLabReports(String search, Boolean includeRetired, Integer start, Integer length);
 
 	/**
 	 * Completely remove the labReport from the database.
@@ -85,6 +84,6 @@ public interface LabReportDAO {
 	 *      Boolean)
 	 */
 	public Integer getCountOfLabReports(String search,
-			Boolean includeVoided);
+			Boolean includeRetired);
 
 }

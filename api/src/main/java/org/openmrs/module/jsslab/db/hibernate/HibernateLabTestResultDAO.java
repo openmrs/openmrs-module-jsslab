@@ -118,14 +118,14 @@ public class HibernateLabTestResultDAO implements LabTestResultDAO {
 			return null;
 		
 		// sort the possible returns and take the first
-		Collections.sort(labTestResults,new LabTestResultComparator());
+		Collections.sort(labTestResults, new LabTestResultComparator());
 		if ((start == null || start == 0) && (length == null || length <= 0)) 
 			return labTestResults;
 
 		if (length <= 0) 
-			return labTestResults.subList(start, labTestResults.size()-1);
+			return labTestResults.subList(start, labTestResults.size());
 
-		return labTestResults.subList(start, start+length-1);
+		return labTestResults.subList(start, start+length);
 	}
 
 	/* (non-Javadoc)

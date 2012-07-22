@@ -5,10 +5,8 @@ import java.util.List;
 import junit.framework.Assert;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.openmrs.api.APIException;
-import org.openmrs.validator.ValidateUtil;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
@@ -218,7 +216,6 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void getAllLabSpecimenTemplates_shouldGetAllLabSpecimenTemplates() throws Exception {
 		List<LabSpecimenTemplate> list = Context.getService(LabCatalogService.class).getAllLabSpecimenTemplates(false);
 		Assert.assertNotNull("getAllLabSpecimenTemplates should not return null", list);
@@ -233,7 +230,6 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 	
 	@Test
 	@SkipBaseSetup
-	@Ignore
 	public void LabSpecimenTemplate_shouldGetLabSpecimenTemplate() throws Exception {
 		List<LabSpecimenTemplate> list = Context.getService(LabCatalogService.class).getLabSpecimenTemplate("", false, 0, 0);
 		Assert.assertNotNull("getLabSpecimenTemplate should not return null", list);
@@ -320,7 +316,6 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 	 */
 	
 	@Test
-	@Ignore
 	public void purgeLabTest_shouldDeleteGivenLabTest() throws Exception {
 		String uuid = "5d1545bb-486e-11e1-b5ed-0024e8c61285";
 		
@@ -429,7 +424,7 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 	public void getAllLabTestPanels_shouldGetAllLabTestPanel() throws Exception {
 		List<LabTestPanel> list = Context.getService(LabCatalogService.class).getAllLabTestPanels(false);
 		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
-		Assert.assertEquals("getAllLabTestPanels should return the right objects", 4, list.size());
+		Assert.assertEquals("getAllLabTestPanels should return the right objects", 5, list.size());
 	}
 	
 	/**
@@ -447,11 +442,11 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 		
 		list = Context.getService(LabCatalogService.class).getAllLabTestPanels(false);
 		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
-		Assert.assertEquals("getAllLabTestPanels should return the right objects", 3, list.size());
+		Assert.assertEquals("getAllLabTestPanels should return the right objects", 4, list.size());
 		
 		list = Context.getService(LabCatalogService.class).getAllLabTestPanels(true);
 		Assert.assertNotNull("getAllLabTestPanels should not return null", list);
-		Assert.assertEquals("getAllLabTestPanels should return the right objects", 4, list.size());
+		Assert.assertEquals("getAllLabTestPanels should return the right objects", 5, list.size());
 	}
 	
 	/**
@@ -495,7 +490,7 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 	public void getCountOfLabTestPanels_shouldGetNumberOfLabTestPanel() throws Exception {
 		int count = Context.getService(LabCatalogService.class).getCountOfLabTestPanels(false);
 		Assert.assertNotNull("getCountOfLabTestPanels should not return null", count);
-		Assert.assertEquals("getCountOfLabTestPanels should return the right count", 4, count);
+		Assert.assertEquals("getCountOfLabTestPanels should return the right count", 5, count);
 	}
 	
 	/**

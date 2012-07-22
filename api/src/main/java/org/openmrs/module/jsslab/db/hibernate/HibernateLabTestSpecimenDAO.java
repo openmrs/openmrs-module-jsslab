@@ -65,9 +65,8 @@ public class HibernateLabTestSpecimenDAO implements LabTestSpecimenDAO {
 	 */
 	@Override
 	public LabTestSpecimen getLabTestSpecimenByUuid(String uuid) {
-		return (LabTestSpecimen) sessionFactory.getCurrentSession()
-			.createQuery("from LabTestSpecimen l where l.uuid = :uuid")
-			.setString("uuid", uuid).uniqueResult();
+		return (LabTestSpecimen) sessionFactory.getCurrentSession().createCriteria(LabTestSpecimen.class)
+				.add(Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
 
 	/* (non-Javadoc)
@@ -124,7 +123,6 @@ public class HibernateLabTestSpecimenDAO implements LabTestSpecimenDAO {
 	@Override
 	public void deleteLabTestSpecimen(LabTestSpecimen labTestSpecimen) {
 		sessionFactory.getCurrentSession().delete(labTestSpecimen);
-		return;
 	}
 
 	/* (non-Javadoc)

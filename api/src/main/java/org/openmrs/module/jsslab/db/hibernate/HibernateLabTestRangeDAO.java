@@ -29,7 +29,7 @@ public class HibernateLabTestRangeDAO implements LabTestRangeDAO{
 	@Override
 	public LabTestRange getLabTestRangeByUuid(String uuid) {
 		return (LabTestRange)this.sessionFactory.getCurrentSession().createCriteria(LabTestRange.class)
-				.add(Restrictions.eq("uuid", uuid)).list();
+				.add(Restrictions.eq("uuid", uuid)).uniqueResult();
 	}
 
 	@Override
