@@ -198,9 +198,9 @@ public class LabTestingServiceImpl extends BaseOpenmrsService implements LabTest
 	}
 
 	@Override
-	public List<LabReport> getAllLabReports(Boolean includeVoided)
+	public List<LabReport> getAllLabReports(Boolean includeRetired)
 			throws APIException {
-		return labReportDAO.getLabReports("",includeVoided,null,null);
+		return labReportDAO.getLabReports("", includeRetired, null, null);
 	}
 
 	@Override
