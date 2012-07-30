@@ -36,7 +36,7 @@ import org.openmrs.module.webservices.rest.web.response.ResponseException;
 /**
  * {@link Resource} for {@link Location}, supporting standard CRUD operations
  */
-@Resource("labInstrument")
+@Resource("labinstrument")
 @Handler(supports = LabInstrument.class, order = 0)
 public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabInstrument> {
 	
@@ -74,6 +74,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 			description.addProperty("maintenanceDescription");
 //			description.addProperty("testRuns", Representation.REF);
 			description.addProperty("auditInfo", findMethod("getAuditInfo"));
+			description.addProperty("retired");
 			description.addSelfLink();
 			return description;
 		}
@@ -169,7 +170,7 @@ public class LabInstrumentResource extends MetadataDelegatingCrudResource<LabIns
 	 */
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
-		return new NeedsPaging<LabInstrument>(Context.getService(LabManagementService.class).getAllLabInstruments(false), context);
+		return new NeedsPaging<LabInstrument>(Context.getService(LabManagementService.class).getAllLabInstruments(context.getIncludeAll()), context);
 	}
 	
 	/**

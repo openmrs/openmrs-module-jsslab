@@ -18,7 +18,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("labTestSpecimen")
+@Resource("labtestspecimen")
 @Handler(supports = LabTestSpecimen.class, order = 0)
 public class LabTestSpecimenResource extends MetadataDelegatingCrudResource<LabTestSpecimen> {
 	
@@ -124,7 +124,7 @@ public class LabTestSpecimenResource extends MetadataDelegatingCrudResource<LabT
 	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
-		return new NeedsPaging<LabTestSpecimen>(Context.getService(LabTestingService.class).getLabTestSpecimens("", false,
+		return new NeedsPaging<LabTestSpecimen>(Context.getService(LabTestingService.class).getLabTestSpecimens("", context.getIncludeAll(),
 		    null, null), context);
 	}
 	

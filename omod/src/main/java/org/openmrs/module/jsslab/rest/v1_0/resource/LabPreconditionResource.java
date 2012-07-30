@@ -19,7 +19,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("labPrecondition")
+@Resource("labprecondition")
 @Handler(supports = LabPrecondition.class, order = 0)
 public class LabPreconditionResource extends DataDelegatingCrudResource<LabPrecondition> {
 

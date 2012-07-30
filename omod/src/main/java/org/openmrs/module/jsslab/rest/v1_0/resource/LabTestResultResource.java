@@ -19,7 +19,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("labTestResult")
+@Resource("labtestresult")
 @Handler(supports = LabTestResult.class, order = 0)
 public class LabTestResultResource extends DataDelegatingCrudResource<LabTestResult>{
 

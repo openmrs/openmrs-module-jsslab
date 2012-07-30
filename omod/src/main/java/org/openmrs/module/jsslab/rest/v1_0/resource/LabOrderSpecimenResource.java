@@ -21,7 +21,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 import org.openmrs.module.webservices.rest.web.v1_0.resource.OrderResource;
 
-@SubResource(parent = OrderResource.class, path = "orderSpecimen")
+@SubResource(parent = OrderResource.class, path = "orderspecimen")
 @Handler(supports = LabOrderSpecimen.class, order = 0)
 public class LabOrderSpecimenResource extends DelegatingSubResource<LabOrderSpecimen, Order, OrderResource> {
 

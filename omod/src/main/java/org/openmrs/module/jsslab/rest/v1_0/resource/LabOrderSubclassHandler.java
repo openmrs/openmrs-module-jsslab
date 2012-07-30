@@ -49,7 +49,7 @@ public class LabOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order
 	 */
 	@Override
 	public String getTypeName() {
-		return "labOrder";
+		return "laborder";
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public class LabOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order
 			description.addProperty("physicianRetest");
 			description.addProperty("retestReason");
 			description.addProperty("orderType", Representation.REF);
-			description.addProperty("patient", Representation.REF);
+			description.addProperty("patient", Representation.DEFAULT);
 			description.addProperty("concept",Representation.REF);
 			description.addProperty("orderer",Representation.REF);
 			description.addProperty("encounter",Representation.REF);
@@ -121,7 +121,6 @@ public class LabOrderSubclassHandler extends BaseDelegatingSubclassHandler<Order
 	public DelegatingResourceDescription getCreatableProperties() {
 		OrderResource orderResource = Context.getService(RestService.class).getResource(OrderResource.class);
 		DelegatingResourceDescription d = orderResource.getCreatableProperties();
-		d.addRequiredProperty("labOrderId");
 		d.addRequiredProperty("urgent");
 		d.addProperty("retestOf");
 		d.addProperty("physicianRetest");

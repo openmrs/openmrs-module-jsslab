@@ -36,7 +36,7 @@ import org.openmrs.module.webservices.rest.web.response.ResponseException;
 /**
  * {@link Resource} for {@link Location}, supporting standard CRUD operations
  */
-@Resource("labSupplyItem")
+@Resource("labsupplyitem")
 @Handler(supports = LabSupplyItem.class, order = 0)
 public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSupplyItem> {
 	
@@ -77,8 +77,6 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	@Override
 	public DelegatingResourceDescription getCreatableProperties() {
 		DelegatingResourceDescription d = new DelegatingResourceDescription();
-		d.addProperty("retired");
-		
 		d.addProperty("labStockNumber");
 		d.addProperty("manufacturer");
 		d.addRequiredProperty("itemName");
@@ -151,7 +149,7 @@ public class LabSupplyItemResource extends MetadataDelegatingCrudResource<LabSup
 	 */
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
-		return  new NeedsPaging<LabSupplyItem>(Context.getService(LabManagementService.class).getAllLabSupplyItems(false), context);
+		return new NeedsPaging<LabSupplyItem>(Context.getService(LabManagementService.class).getAllLabSupplyItems(context.getIncludeAll()), context);
 	}
 	
 	/**

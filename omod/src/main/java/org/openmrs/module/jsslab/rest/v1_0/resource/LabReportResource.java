@@ -19,7 +19,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("labReport")
+@Resource("labreport")
 @Handler(supports = LabReport.class, order = 0)
 public class LabReportResource extends MetadataDelegatingCrudResource<LabReport>{
 
@@ -117,7 +117,7 @@ public class LabReportResource extends MetadataDelegatingCrudResource<LabReport>
 	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
-		return  new NeedsPaging<LabReport>(Context.getService(LabTestingService.class).getLabReports("",false,null,null), context);
+		return new NeedsPaging<LabReport>(Context.getService(LabTestingService.class).getLabReports("", context.getIncludeAll(), null, null), context);
 	}
 	
 	@Override

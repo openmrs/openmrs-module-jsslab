@@ -19,7 +19,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("labTestPanel")
+@Resource("labtestpanel")
 @Handler(supports = LabTestPanel.class, order = 0)
 public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTestPanel>{
 
@@ -46,7 +46,7 @@ public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTest
 		if(labTestPanel!=null)
 		{
 			//
-			Context.getService(LabCatalogService.class).retireLabTestPanel(labTestPanel,reason);
+			Context.getService(LabCatalogService.class).retireLabTestPanel(labTestPanel, reason);
 		}		
 		
 	}
@@ -65,58 +65,63 @@ public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTest
 	@Override
 	public DelegatingResourceDescription getRepresentationDescription(
 			Representation rep) {
-		DelegatingResourceDescription Descri=new DelegatingResourceDescription();
+		DelegatingResourceDescription description = new DelegatingResourceDescription();
 		if(rep instanceof DefaultRepresentation)
 		{
 			//			
-			Descri.addProperty("uuid");
-			Descri.addProperty("labLocation",Representation.REF);
-			Descri.addProperty("testGroupConcept",Representation.REF);
-			Descri.addProperty("testPanelConcept",Representation.REF);
-			Descri.addProperty("retired");
-			Descri.addSelfLink();
-			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
-			return Descri;
+			description.addProperty("uuid");
+			description.addProperty("labLocation", Representation.REF);
+			description.addProperty("testGroupConcept", Representation.REF);
+			description.addProperty("testPanelConcept", Representation.REF);
+			description.addProperty("retired");
+			description.addSelfLink();
+			description.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
+			return description;
 		}
 		else if(rep instanceof FullRepresentation)
 		{
 			//
-			Descri.addProperty("uuid");
-			Descri.addProperty("labLocation",Representation.REF);
-			Descri.addProperty("testGroupConcept",Representation.REF);
-			Descri.addProperty("testPanelConcept",Representation.REF);
-			Descri.addProperty("receivedSpecimenTypeConcept",Representation.REF);
-			Descri.addProperty("analysisSpecimenTypeConcept",Representation.REF);
-			Descri.addProperty("cost");
-			Descri.addProperty("turnaround");
-			Descri.addProperty("holdTime");
-			Descri.addProperty("retired");
-			Descri.addSelfLink();
-			Descri.addProperty("auditInfo",findMethod("getAuditInfo"));
-			return Descri;
+			description.addProperty("uuid");
+			description.addProperty("labLocation", Representation.REF);
+			description.addProperty("testGroupConcept", Representation.REF);
+			description.addProperty("testPanelConcept", Representation.REF);
+			description.addProperty("receivedSpecimenTypeConcept", Representation.REF);
+			description.addProperty("analysisSpecimenTypeConcept", Representation.REF);
+			description.addProperty("cost");
+			description.addProperty("testPanelCode");
+			description.addProperty("turnaround");
+			description.addProperty("holdTime");
+			description.addProperty("preconditions", Representation.REF);
+			description.addProperty("specimenTemplates", Representation.DEFAULT);
+			description.addProperty("tests", Representation.REF);
+			description.addProperty("retired");
+			
+			description.addSelfLink();
+			description.addProperty("auditInfo", findMethod("getAuditInfo"));
+			return description;
 		}
 		return null;
 	}
 	
 	@Override
 	public DelegatingResourceDescription getCreatableProperties() {
-		DelegatingResourceDescription d = new DelegatingResourceDescription();
-		d.addRequiredProperty("labLocation");
+		DelegatingResourceDescription description = new DelegatingResourceDescription();
+		description.addRequiredProperty("labLocation");
 //		d.addRequiredProperty("labLocationName");
-		d.addRequiredProperty("testGroupConcept");
+		description.addRequiredProperty("testGroupConcept");
 //		d.addProperty("testGroupName");
-		d.addRequiredProperty("testPanelConcept");
+		description.addRequiredProperty("testPanelConcept");
 //		d.addProperty("testPanelName");
-		d.addProperty("testPanelCode");
-		d.addProperty("receivedSpecimenTypeConcept");
-		d.addProperty("analysisSpecimenTypeConcept");
-		d.addProperty("cost");
-		d.addProperty("turnaround");
-		d.addProperty("holdTime");
-		d.addProperty("tests");
-		d.addProperty("preconditions");
-		d.addProperty("specimenTemplates");
-		return d;
+		description.addProperty("testPanelCode");
+		description.addProperty("receivedSpecimenTypeConcept");
+		description.addProperty("analysisSpecimenTypeConcept");
+		description.addProperty("cost");
+		description.addProperty("turnaround");
+		description.addProperty("holdTime");
+		description.addProperty("tests");
+		description.addProperty("preconditions");
+		description.addProperty("specimenTemplates");
+		return description;
 	}
 	
 	@Override
@@ -126,7 +131,7 @@ public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTest
 	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
-		return  new NeedsPaging<LabTestPanel>(Context.getService(LabCatalogService.class).getLabTestPanels("",false,null,null), context);
+		return new NeedsPaging<LabTestPanel>(Context.getService(LabCatalogService.class).getLabTestPanels("", context.getIncludeAll(), null, null), context);
 	}
 	
 	@Override

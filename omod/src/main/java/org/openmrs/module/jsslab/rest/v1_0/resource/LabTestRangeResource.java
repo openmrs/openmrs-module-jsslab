@@ -19,7 +19,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("labTestRange")
+@Resource("labtestrange")
 @Handler(supports = LabTestRange.class, order = 0)
 public class LabTestRangeResource extends DataDelegatingCrudResource<LabTestRange>{
 

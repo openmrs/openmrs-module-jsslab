@@ -19,7 +19,7 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("labSpecimenTemplate")
+@Resource("labSpecimentemplate")
 @Handler(supports = LabSpecimenTemplate.class, order = 0)
 public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<LabSpecimenTemplate>{
 
@@ -65,35 +65,36 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 	@Override
 	public DelegatingResourceDescription getRepresentationDescription(
 			Representation rep) {
-		DelegatingResourceDescription Descri=new DelegatingResourceDescription();
+		DelegatingResourceDescription description = new DelegatingResourceDescription();
 		if(rep instanceof DefaultRepresentation)
 		{
 			//			
-			Descri.addProperty("uuid");
-			Descri.addProperty("testPanel",Representation.REF);
-			Descri.addProperty("testRoleConcept",Representation.REF);
-			Descri.addProperty("parentSubId");
-			Descri.addProperty("specimenSubId");
-			Descri.addProperty("retired");
-			Descri.addSelfLink();
-			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
-			return Descri;
+			description.addProperty("uuid");
+			description.addProperty("display", findMethod("getDisplayString"));
+			description.addProperty("testPanel",Representation.REF);
+			description.addProperty("testRoleConcept",Representation.REF);
+			description.addProperty("parentSubId");
+			description.addProperty("specimenSubId");
+			description.addProperty("retired");
+			description.addSelfLink();
+			description.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
+			return description;
 		}
 		else if(rep instanceof FullRepresentation)
 		{
 			//
-			Descri.addProperty("uuid");
-			Descri.addProperty("testPanel",Representation.REF);
-			Descri.addProperty("testRoleConcept",Representation.REF);
-			Descri.addProperty("parentSubId");
-			Descri.addProperty("specimenSubId");
-			Descri.addProperty("parentRelationConcept",Representation.REF);
-			Descri.addProperty("analysisSpecimenTypeConcept",Representation.REF);
-			Descri.addProperty("parentRoleConcept",Representation.REF);
-			Descri.addProperty("retired");
-			Descri.addSelfLink();
-			Descri.addProperty("auditInfo",findMethod("getAuditInfo"));
-			return Descri;
+			description.addProperty("uuid");
+			description.addProperty("testPanel",Representation.REF);
+			description.addProperty("testRoleConcept",Representation.REF);
+			description.addProperty("parentSubId");
+			description.addProperty("specimenSubId");
+			description.addProperty("parentRelationConcept",Representation.REF);
+			description.addProperty("analysisSpecimenTypeConcept",Representation.REF);
+			description.addProperty("parentRoleConcept",Representation.REF);
+			description.addProperty("retired");
+			description.addSelfLink();
+			description.addProperty("auditInfo",findMethod("getAuditInfo"));
+			return description;
 		}
 		return null;
 	}
@@ -125,7 +126,7 @@ public class LabSpecimenTemplateResource extends MetadataDelegatingCrudResource<
 	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
-		return  new NeedsPaging<LabSpecimenTemplate>(Context.getService(LabCatalogService.class).getLabSpecimenTemplate("",false,null,null), context);
+		return new NeedsPaging<LabSpecimenTemplate>(Context.getService(LabCatalogService.class).getLabSpecimenTemplate("", context.getIncludeAll(), null, null), context);
 	}
 	
 	@Override

@@ -18,13 +18,13 @@ import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.resource.impl.ServiceSearcher;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 
-@Resource("labTest")
+@Resource("labtest")
 @Handler(supports = LabTest.class, order = 0)
 public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 
 	@Override
 	public LabTest getByUniqueId(String uniqueId) {
-		LabTest labTest=Context.getService(LabCatalogService.class).getLabTestByUUID(uniqueId);
+		LabTest labTest = Context.getService(LabCatalogService.class).getLabTestByUUID(uniqueId);
 		return labTest;
 	}
 
@@ -35,7 +35,7 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 
 	@Override
 	public LabTest save(LabTest delegate) {
-		LabTest labTest=Context.getService(LabCatalogService.class).saveLabTest(delegate);
+		LabTest labTest = Context.getService(LabCatalogService.class).saveLabTest(delegate);
 		return labTest;
 	}
 
@@ -43,8 +43,7 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	@Override
 	public void delete(LabTest labTest, String reason,
 			RequestContext context) throws ResponseException {
-		if(labTest!=null)
-		{
+		if(labTest != null) {
 			//
 			Context.getService(LabCatalogService.class).retireLabTest(labTest,reason);
 		}			
@@ -53,8 +52,7 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	@Override
 	public void purge(LabTest labTest, RequestContext context)
 			throws ResponseException {
-		if(labTest!=null)
-		{
+		if(labTest!=null) {
 			//
 			Context.getService(LabCatalogService.class).purgeLabTest(labTest);
 		}
@@ -63,7 +61,7 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	
 	@Override
 	protected PageableResult doGetAll(RequestContext context) {
-		return  new NeedsPaging<LabTest>(Context.getService(LabCatalogService.class).getAllLabTests(false), context);
+		return new NeedsPaging<LabTest>(Context.getService(LabCatalogService.class).getAllLabTests(context.getIncludeAll()), context);
 	}
 	
 	@Override
@@ -119,5 +117,10 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	@Override
 	protected String getNamespacePrefix() {
 		return "jsslab";
+	}
+	
+	@Override
+	public String getDisplayString(LabTest delegate) {
+		return delegate.getName();
 	}
 }
