@@ -26,8 +26,8 @@
 			<column name="location_id" type="INT"/>
 			<column name="received_date" type="DATE"/>
 			<column name="received_from" type="VARCHAR(45)"/>
-			<column name="received_cost" type="DECIMAL(10,0)"/>
-			<column name="received_value" type="DECIMAL(10,0)"/>
+			<column name="received_cost" type="DECIMAL(14,5)"/>
+			<column name="received_value" type="DECIMAL(14,5)"/>
 			<column name="condition_date" type="DATE"/>
 			<column name="condition_concept" type="INT"/>
 			<column name="maintenance_vendor" type="VARCHAR(45)"/>
@@ -74,9 +74,7 @@
 			</column>
 			<column name="retest_of" type="INT"/>
 			<column name="physician_retest" remarks="true=physician retest, false=lab retest, null=not a retest" type="SMALLINT"/>
-			<column defaultValue="" name="retest_reason" type="VARCHAR(255)">
-				<constraints nullable="false"/>
-			</column>
+			<column defaultValue="" name="retest_reason" type="VARCHAR(255)" />
 		</createTable>
 	</changeSet>
 
@@ -438,13 +436,9 @@
 				<constraints nullable="false"/>
 			</column>
 			<column defaultValue="" name="test_panel_code" type="VARCHAR(5)"/>
-			<column name="received_specimen_concept" remarks="This is the concept ID of the concept for the specimen type collected." type="INT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="analysis_specimen_concept" remarks="This is the concept ID of the concept analyzed after processing." type="INT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="cost" type="DECIMAL(10,0)"/>
+			<column name="received_specimen_concept" remarks="This is the concept ID of the concept for the specimen type collected." type="INT" />
+			<column name="analysis_specimen_concept" remarks="This is the concept ID of the concept analyzed after processing." type="INT" />
+			<column name="cost" type="DECIMAL(14,5)"/>
 			<column name="turnaround" remarks="Target turnaround time in hours (standard orders)" type="double precision"/>
 			<column name="hold_time" type="double precision"/>
 			<column defaultValueNumeric="0" name="creator" type="INT">
@@ -526,7 +520,7 @@
 		</comment>
 
 		<createTable tableName="jsslab_test_result">
-			<column name="test_result_id" type="INT">
+			<column name="test_result_id" type="INT" autoIncrement="true">
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="test_specimen_id" type="INT">

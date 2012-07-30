@@ -12,8 +12,8 @@
 		<many-to-one name="testGroupConcept" class="org.openmrs.Concept" column="test_group_concept" not-null="true" />
 		<many-to-one name="testPanelConcept" class="org.openmrs.Concept" column="test_panel_concept" not-null="true" />
 		<property name="testPanelCode" type="java.lang.String" column="test_panel_code" length="5" not-null="false" />
-		<many-to-one name="receivedSpecimenTypeConcept" class="org.openmrs.Concept" column="received_specimen_concept" not-null="true" />
-		<many-to-one name="analysisSpecimenTypeConcept" class="org.openmrs.Concept" column="analysis_specimen_concept" not-null="true" />
+		<many-to-one name="receivedSpecimenTypeConcept" class="org.openmrs.Concept" column="received_specimen_concept" not-null="false" />
+		<many-to-one name="analysisSpecimenTypeConcept" class="org.openmrs.Concept" column="analysis_specimen_concept" not-null="false" />
 		<property name="cost" type="java.math.BigDecimal" not-null="false" column="cost" />
 		<property name="turnaround" type="java.lang.Double" not-null="false" column="turnaround" />
 		<property name="holdTime" type="java.lang.Double" not-null="false" column="hold_time" />

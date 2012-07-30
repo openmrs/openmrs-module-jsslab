@@ -16,7 +16,7 @@
 			<column name="received_date" valueDate="2009-01-01"/>
 			<column name="received_from" value="CARE"/>
 			<column name="received_cost"/>
-			<column name="received_value" valueNumeric="120000"/>
+			<column name="received_value" valueNumeric="120000.00000"/>
 			<column name="condition_date" valueDate="2011-09-10"/>
 			<column name="condition_concept"/>
 			<column name="maintenance_vendor" value="All-India Medical Supplies"/>
@@ -43,7 +43,7 @@
 			<column name="test_panel_code" value="WBC"/>
 			<column name="received_specimen_concept" valueNumeric="33333112"/>
 			<column name="analysis_specimen_concept" valueNumeric="33333112"/>
-			<column name="cost" valueNumeric="12"/>
+			<column name="cost" valueNumeric="12.00000"/>
 			<column name="turnaround" valueNumeric="0.5"/>
 			<column name="hold_time" valueNumeric="4.0"/>
 			<column name="creator" valueNumeric="1"/>
@@ -64,7 +64,7 @@
 			<column name="test_panel_code" value="BCULT"/>
 			<column name="received_specimen_concept" valueNumeric="33333116"/>
 			<column name="analysis_specimen_concept" valueNumeric="33333113"/>
-			<column name="cost" valueNumeric="19"/>
+			<column name="cost" valueNumeric="19.00000"/>
 			<column name="turnaround" valueNumeric="72.0"/>
 			<column name="hold_time" valueNumeric="8.0"/>
 			<column name="creator" valueNumeric="1"/>
@@ -85,7 +85,7 @@
 			<column name="test_panel_code" value="URPRO"/>
 			<column name="received_specimen_concept" valueNumeric="33333114"/>
 			<column name="analysis_specimen_concept" valueNumeric="33333115"/>
-			<column name="cost" valueNumeric="2"/>
+			<column name="cost" valueNumeric="2.00000"/>
 			<column name="turnaround" valueNumeric="2.0"/>
 			<column name="hold_time" valueNumeric="1.0"/>
 			<column name="creator" valueNumeric="1"/>
@@ -106,7 +106,7 @@
 			<column name="test_panel_code" value="URPRO"/>
 			<column name="received_specimen_concept" valueNumeric="33333114"/>
 			<column name="analysis_specimen_concept" valueNumeric="33333115"/>
-			<column name="cost" valueNumeric="8"/>
+			<column name="cost" valueNumeric="8.00000"/>
 			<column name="turnaround" valueNumeric="4.0"/>
 			<column name="hold_time" valueNumeric="4.0"/>
 			<column name="creator" valueNumeric="1"/>
