@@ -162,6 +162,18 @@ public interface LabCatalogService extends OpenmrsService {
 	 */
 	public List<LabTest> getLabTests(String displayFragment, Boolean ifVoided, Integer index, Integer length);
 
+	/**
+	 * Get count of LabTest, only showing ones not marked as retired if includeVoided is true
+	 * 
+	 * @param includeVoided true/false whether to include retired LabTestPanels in this list
+	 * @return LabTest list
+	 * @throws APIException
+	 * @should get number of LabTest
+	 */
+	@Transactional(readOnly = true)
+	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
+	public Integer getCountOfLabTest(Boolean includeVoided) throws APIException;
+	
 	
 	
 	/*

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Controller for REST web service access to the LabInstrument. Supports CRUD on the resource itself.
  */
 @Controller
-@RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/order/{parentUuid}/orderSpecimen")
+@RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/order/{parentUuid}/orderspecimen")
 public class LabOrderSpecimenController extends BaseSubResourceController<LabOrderSpecimenResource> {
 
 }

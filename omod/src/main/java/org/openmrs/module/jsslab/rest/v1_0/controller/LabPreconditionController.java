@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value= "/rest/"+RestConstants.VERSION_1+"/jsslab/labPrecondition")
+@RequestMapping(value= "/rest/"+RestConstants.VERSION_1+"/jsslab/labprecondition")
 public class LabPreconditionController extends BaseCrudController<LabPreconditionResource> {
 
 	private static final Log log=LogFactory.getLog(LabPreconditionController.class);

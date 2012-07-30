@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value= "/rest/"+RestConstants.VERSION_1+"/jsslab/labTestSpecimen")
+@RequestMapping(value= "/rest/"+RestConstants.VERSION_1+"/jsslab/labtestspecimen")
 public class LabTestSpecimenController extends BaseCrudController<LabTestSpecimenResource>{
 
 	private static final Log log=LogFactory.getLog(LabTestSpecimenController.class);

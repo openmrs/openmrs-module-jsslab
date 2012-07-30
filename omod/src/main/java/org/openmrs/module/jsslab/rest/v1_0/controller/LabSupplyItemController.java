@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Controller for REST web service access to the LabSupplyItem. Supports CRUD on the resource itself.
  */
 @Controller
-@RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/jsslab/labSupplyItem")
+@RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/jsslab/labsupplyitem")
 public class LabSupplyItemController extends BaseCrudController<LabSupplyItemResource> {
 
 	private static final Log log = LogFactory.getLog(LabSupplyItemController.class);

@@ -14,6 +14,12 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabOrder;
 import org.openmrs.module.jsslab.db.LabOrderSpecimen;
 import org.openmrs.module.jsslab.db.LabSpecimen;
+<<<<<<< .mine
+import org.openmrs.module.jsslab.db.LabReport;
+import org.openmrs.module.jsslab.impl.LabOrderServiceImpl;
+//import org.openmrs.module.webservices.rest.test.Util;
+=======
+>>>>>>> .r28715
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.openmrs.test.SkipBaseSetup;
 import org.openmrs.test.TestUtil;
@@ -247,6 +253,7 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest {
 	 */
 	@Test
 	@SkipBaseSetup
+	@Ignore
 	public void saveLabOrderSpecimen_ShouldAddToOrderSpecimen() throws Exception {
 		LabOrderService los = Context.getService(LabOrderService.class);
 		

@@ -100,6 +100,12 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 				ifVoided, index, length);
 	}
 
+	@Override
+	public Integer getCountOfLabTest(Boolean includeRetired)
+			throws APIException {
+		return labTestPanelDAO.getLabTestPanels("", includeRetired, null, null).size();
+	}
+
 //------------------------------------------------------------	
 	
 	public LabPrecondition getLabPrecondition(Integer labPrecondition) {
