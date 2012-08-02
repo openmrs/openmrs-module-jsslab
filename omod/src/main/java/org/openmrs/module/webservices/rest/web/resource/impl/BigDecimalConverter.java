@@ -1,7 +1,8 @@
 package org.openmrs.module.webservices.rest.web.resource.impl;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.text.ParseException;
 
 import org.openmrs.annotation.Handler;
@@ -13,6 +14,8 @@ import org.openmrs.module.webservices.rest.web.response.ConversionException;
 @Handler(supports = BigDecimal.class, order = 0)
 public class BigDecimalConverter implements Converter<BigDecimal> {
 
+	NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+	
 	@Override
 	public BigDecimal newInstance(String type) {
 		return new BigDecimal(0);
@@ -20,21 +23,40 @@ public class BigDecimalConverter implements Converter<BigDecimal> {
 
 	@Override
 	public BigDecimal getByUniqueId(String string) {
-		DecimalFormat df = new DecimalFormat();
-		df.setParseBigDecimal(true);
+		BigDecimal bd = null;
 		try {
-			return (BigDecimal) df.parse(string);
+			Number n = currencyFormatter.parse(string);
+			bd = new BigDecimal(n.toString());
 		} catch (ParseException e) {
-			e.printStackTrace();
-			return null;
+			try {
+				NumberFormat formatter = NumberFormat.getInstance();
+				Number n = formatter.parse(string);
+				bd = new BigDecimal(n.toString());
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
 		}
+
+		return bd;
+		
+//		DecimalFormat df = new DecimalFormat();
+//		df.setParseBigDecimal(true);
+//		try {
+//			return (BigDecimal) df.parse(string);
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//			return null;
+//		}
 	}
 
 	@Override
 	public SimpleObject asRepresentation(BigDecimal instance, Representation rep)
 			throws ConversionException {
+
+		BigDecimal displayVal = instance.setScale(2, RoundingMode.HALF_UP);
+
 		SimpleObject obj = new SimpleObject();
-		obj.add("value", instance.toString());
+		obj.add("value", currencyFormatter.format(displayVal.doubleValue()));
 		return obj;
 	}
 

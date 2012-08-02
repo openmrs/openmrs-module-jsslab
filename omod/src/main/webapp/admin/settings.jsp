@@ -15,7 +15,6 @@
 	<%@ include file="localHeader.jsp" %>
 	
 	<openmrs:require privilege="Manage Global Properties" otherwise="/login.htm" redirect="/module/jsslab/admin/settings.form" />
-	
 	<openmrs:requireConfiguration propertyList="jsslab.setup" configurationPage="/module/jsslab/admin/setup.form?targetView=module/jsslab/admin/settings" />
 	
 	<openmrs:htmlInclude file="/scripts/jquery/jsTree/jquery.tree.min.js" />
@@ -24,13 +23,13 @@
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			jQuery('#hierarchyTree').tree({
-				data: {
-					type: "json",
-					opts: {
+				"data": {
+					"type": "json",
+					"opts": {
 						static: ${json}
 					}
 				},
-				types: {
+				"types": {
 					"default" : {
 						clickable	: false,
 						renameable	: false,
@@ -42,7 +41,7 @@
 						valid_children	: "all"
 					}
 				},
-				ui: {
+				"ui": {
 					theme_name: "classic"
 				}
 			});
@@ -50,8 +49,8 @@
 		});
 		
 		var jsslab = {
-			i18n : {
-				'settings.codelists.codetable.empty' : "<spring:message code='jsslab.settings.codelists.codetable.empty' javaScriptEscape='true' />",
+			"i18n" : {
+				"settings.codelists.codetable.empty" : "<spring:message code='jsslab.settings.codelists.codetable.empty' javaScriptEscape='true' />",
 			},
 		};
 	</script>
@@ -186,7 +185,7 @@
 		</div>
 	</div>
 	
-	<div id="codeTablePanel">
+	<div id="codeTablePanel" class="selectionTable">
 		<table id="codeTable">
 			<thead><tr>
 				<th><spring:message code="jsslab.settings.codelists.codetable.head.text" /></th>

@@ -2,6 +2,30 @@
 	CSS styles for the JSS Lab Module admin pages
 */
 
+/* 
+ *	=============================================
+ *	JSSLab wide styles
+ *	=============================================
+ */
+
+.selectionTable {
+	border-spacing: 0;
+}
+.selectionTable tbody tr {
+	cursor: pointer;
+}
+.selectionTable tbody tr:nth-child(even) {
+	background-color: white;
+}
+.selectionTable tbody tr:nth-child(odd) {
+	background-color: #E2E4FF;
+}
+.selectionTable tbody tr:hover, .selectionTable tbody tr.selected {
+	background-color: khaki;
+}
+.selectionTable td {
+	padding: 0 5px 0 5px;
+}
 
 /* 
  *	=============================================
@@ -28,7 +52,16 @@
 	width: 200px;
 }
 
-
+.error {
+	border: 1px dashed darkRed;
+	background-color: lightPink;
+	padding: 0 2px 0 2px;
+}
+.success {
+	border: 1px dashed darkGreen;
+	background-color: lightGreen;
+	padding: 0 2px 0 2px;
+}
 
 
 #codeListSelection {
@@ -45,26 +78,6 @@
 	float:left;
 	margin-right: 20px;
 }
-#codeTable {
-	border-spacing: 0;
-}
-
-#codeTable tbody tr {
-	cursor: pointer;
-}
-
-#codeTable tbody tr:nth-child(even) {
-	background-color: white;
-}
-#codeTable tbody tr:nth-child(odd) {
-	background-color: #E2E4FF;
-}
-#codeTable tbody tr:hover, #codeTable tbody tr.selected {
-	background-color: khaki;
-}
-#codeTable td {
-	padding: 0 5px 0 5px;
-}
 
 #codeEditPanel {
 	float:left;
@@ -78,6 +91,37 @@
 	width: 250px;
 }
 
+/* 
+ *	=============================================
+ *	Catalog Screen
+ *	=============================================
+ */
+ 
+#investigationEditPanel {
+	display: none;
+	margin: 0 0 0 10px;
+}
+
+#preconditionList {
+	width: 95%;
+}
+
+#testEditPanel {
+	display: none;
+	margin: 0 0 0 10px;
+}
+ 
+/* 
+ *	=============================================
+ *	Specimen Templates Screen
+ *	=============================================
+ */
+ 
+#specimenEditPanel {
+	display: none;
+}
+ 
+ 
 /* 
  *	=============================================
  *	Instruments and Supplies Screen

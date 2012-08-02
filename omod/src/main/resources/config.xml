@@ -53,6 +53,11 @@
 		<description>Whether the initial setup for this module has been run</description>
 	</globalProperty>
 
+	<globalProperty>
+		<property>jsslab.setup.sampleData</property>
+		<description>Specifies whether sample data for this module has been installed.</description>
+	</globalProperty>
+
 	<!-- Privileges -->
 	<permission>
 		<name>Add LabManagement Records</name>

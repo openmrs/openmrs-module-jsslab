@@ -13,7 +13,6 @@
 	<%@ include file="localHeader.jsp" %>
 	
 	<openmrs:require privilege="Manage Global Properties" otherwise="/login.htm" redirect="/module/jsslab/admin/instruments.form" />
-	
 	<openmrs:requireConfiguration propertyList="jsslab.setup" configurationPage="/module/jsslab/admin/setup.form?targetView=module/jsslab/admin/instruments" />
 	
 	<openmrs:htmlInclude file="/scripts/calendar/calendar.js" />
@@ -73,7 +72,7 @@
 		<div class="box">
 			<table>
 				<tr>
-					<td><spring:message code="jsslab.instruments.list.propertyTag" /></td>
+					<td><spring:message code="jsslab.instruments.field.propertyTag" /></td>
 					<td><spring:message code="jsslab.instruments.field.manufacturer" /></dh>
 					<td><spring:message code="jsslab.instruments.field.model" /></td>
 					<td><spring:message code="jsslab.instruments.field.serialNumber" /></td>
@@ -123,7 +122,7 @@
 			
 			<div>
 				<input type="submit" id="buttonSaveInstrument" value="<spring:message code="jsslab.instruments.edit.save" />" />
-				<input type="submit" id="buttonCancelEditingInstrument" value="<spring:message code="jsslab.instruments.cancel" />" />
+				<input type="submit" id="buttonCancelEditingInstrument" value="<spring:message code="jsslab.instruments.edit.cancel" />" />
 			</div>
 		</div>
 	</div>

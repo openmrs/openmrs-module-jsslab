@@ -1,3 +1,16 @@
+/**
+ * The contents of this file are subject to the OpenMRS Public License
+ * Version 1.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at
+ * http://license.openmrs.org
+ *
+ * Software distributed under the License is distributed on an "AS IS"
+ * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+ * License for the specific language governing rights and limitations
+ * under the License.
+ *
+ * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
+ */
 package org.openmrs.module.jsslab.web.controller;
 
 import java.io.IOException;
@@ -19,6 +32,13 @@ import org.openmrs.GlobalProperty;
 import org.openmrs.Location;
 import org.openmrs.LocationTag;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.webservices.rest.SimpleObject;
+import org.openmrs.module.webservices.rest.web.RequestContext;
+import org.openmrs.module.webservices.rest.web.RestUtil;
+import org.openmrs.module.webservices.rest.web.representation.Representation;
+import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
+import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
+import org.openmrs.module.webservices.rest.web.response.ResponseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,25 +57,8 @@ public class JssLabAdminSettingsController {
 	/** Success form view name */
 	private final String SUCCESS_FORM_VIEW = "/module/jsslab/admin/settings";
 	
-	@PostConstruct
-	public void init() {
-		
-	}
-//	@ModelAttribute("instrument")
-//	public LabInstrument formBackingObject(WebRequest request) {
-//		String instrumentId = request.getParameter("instrumentId");
-//		LabInstrument instrument = null;
-//		instrument = labManagementService.getLabInstrument(instrumentId);
-//
-//		if (instrument == null) {
-//			instrument = new LabInstrument();
-//		}
-//		return instrument;
-//	}
-	
 	/**
-	 * Initially called after the formBackingObject method to get the landing form name  
-	 * @return String form view name
+	 * Initially called to fill the model with relevant data  
 	 * @throws IOException 
 	 */
 	@RequestMapping(method = RequestMethod.GET)
@@ -77,14 +80,15 @@ public class JssLabAdminSettingsController {
 		model.addAttribute("gpReportIdPattern", gpReportIdPattern);
 	}
 	
-	@RequestMapping(value = "/saveGlobalProperties.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveGlobalProperties", method = RequestMethod.POST)
 	@ResponseBody
-	public String saveGlobalProperties(HttpServletRequest request, 
+	public SimpleObject saveGlobalProperties(HttpServletRequest request, 
 			@RequestParam(value = "labOrderType", required = false) String labOrderType,
 			@RequestParam(value = "labOrderIdPattern", required = false) String labOrderIdPattern,
 			@RequestParam(value = "labSpecimenIdPattern", required = false) String labSpecimenIdPattern,
 			@RequestParam(value = "labReportIdPattern", required = false) String labReportIdPattern) {
 
+		SimpleObject o = new SimpleObject();
 		for (Object param : request.getParameterMap().entrySet()) {
 				Map.Entry<String, String[]> entry = (Map.Entry<String, String[]>) param;
 				GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(entry.getKey());
@@ -92,10 +96,28 @@ public class JssLabAdminSettingsController {
 					gp.setPropertyValue(entry.getValue()[0]);
 					Context.getAdministrationService().saveGlobalProperty(gp);
 				} else {
-					return "failed";
+					o.put("code", "failure");
+					o.put("message", Context.getMessageSourceService().getMessage("jsslab.settings.globalproperties.result.failed"));
+					return o;
 				}
 		}
-		return "success";
+		o.put("code", "success");
+		o.put("message", Context.getMessageSourceService().getMessage("jsslab.settings.globalproperties.result.success"));
+		return o;
+	}
+	
+	
+	@RequestMapping(value = "/getConceptsByConceptSet", method = RequestMethod.GET)
+	@ResponseBody
+	public SimpleObject getConceptsBySet(HttpServletRequest request,
+			@RequestParam(value = "setUuid") String uuid) throws ResponseException {
+		
+		Concept memberOf = Context.getConceptService().getConceptByUuid(uuid);
+//		memberOf.getSetMembers()
+		List<Concept> setMembers = Context.getConceptService().getConceptsByConceptSet(memberOf);
+		RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
+		PageableResult result = new NeedsPaging<Concept>(setMembers, context);
+		return result.toSimpleObject();
 	}
 	
 	/**

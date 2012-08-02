@@ -12,6 +12,12 @@ instrumentPage = {
 	supplyItemTypes : null,
 	radioBtnId : -1,
 	
+	/**
+	 * Checks whether the given UUID is valid, based on the length of the string.
+	 * 
+	 * @param uuid The string that is to be checked
+	 * @returns {Boolean}
+	 */
 	isValidUuid : function(uuid) {
 		return uuid.length >= 36;
 	},
@@ -31,7 +37,7 @@ instrumentPage = {
 	
 	deleteInstrument : function(uuid, reason) {
 		jQuery.ajax({
-			url : openmrsContextPath + "/ws/rest/v1/jsslab/labInstrument/" + uuid + "?reason="+reason,
+			url : openmrsContextPath + "/ws/rest/v1/jsslab/labinstrument/" + uuid + "?reason="+reason,
 			type : "DELETE",
 			success : function() {
 				updateInstrumentsTable();
@@ -40,7 +46,7 @@ instrumentPage = {
 	},
 	deleteSupplyItem : function(uuid, reason) {
 		jQuery.ajax({
-			url : openmrsContextPath + "/ws/rest/v1/jsslab/labSupplyItem/" + uuid + "?reason="+reason,
+			url : openmrsContextPath + "/ws/rest/v1/jsslab/labsupplyitem/" + uuid + "?reason="+reason,
 			type : "DELETE",
 			success : function() {
 				updateSupplyItemsTable();
@@ -127,7 +133,7 @@ jQuery(document).ready(function() {
 		var uuid = getSelectedSupplyItemUuid();
 		
 		jQuery.ajax({
-			url : openmrsContextPath + "/ws/rest/v1/jsslab/labSupplyItem/" + uuid + "?v=full",
+			url : openmrsContextPath + "/ws/rest/v1/jsslab/labsupplyitem/" + uuid + "?v=full",
 			success : function(data) {
 				var supplyItem = data;
 
@@ -187,7 +193,7 @@ jQuery(document).ready(function() {
 			
 			for (var i = 0; i < instrumentPage.instrumentLocations.length; i++) {
 				var instrLoc = instrumentPage.instrumentLocations[i];
-				jQuery('#instrumentLocation').append('<option value=' + instrLoc.uuid + '>' + instrLoc.display + '</option>');
+				jQuery('#instrumentLocation').append('<option value="' + instrLoc.uuid + '">' + instrLoc.display + '</option>');
 			}
 			
 			
@@ -275,7 +281,7 @@ function onRadioButtonClick(event) {
  */
 function updateInstrumentsTable() {
 	jQuery.ajax({
-		url : openmrsContextPath + "/ws/rest/v1/jsslab/labInstrument?v=full",
+		url : openmrsContextPath + "/ws/rest/v1/jsslab/labinstrument?v=full&includeAll=true",
 		success : function(data) {
 				
 			jQuery('#tableInstruments tr').filter(function() {
@@ -304,7 +310,7 @@ function showInstrumentForm(uuid) {
 		updateInstrumentForm({});
 	} else {
 		jQuery.ajax({
-			url : openmrsContextPath + "/ws/rest/v1/jsslab/labInstrument/" + uuid + "?v=full",
+			url : openmrsContextPath + "/ws/rest/v1/jsslab/labinstrument/" + uuid + "?v=full",
 			success : function(data) {
 				var instrument = data;
 				updateInstrumentForm(instrument);
@@ -376,8 +382,6 @@ function getInstrumentFromForm() {
 		location : jQuery('#instrumentLocation').val(),
 		conditionConcept : jQuery('#instrumentCondition').val(),
 	
-		//TODO
-		retired : false,
 	};
 		
 	return instrument;
@@ -388,7 +392,7 @@ function getInstrumentFromForm() {
  * @param instrument
  */
 function saveInstrument(instrument, uuid) {
-	var url = openmrsContextPath + "/ws/rest/v1/jsslab/labInstrument";
+	var url = openmrsContextPath + "/ws/rest/v1/jsslab/labinstrument";
 	if (instrumentPage.isValidUuid(uuid)) {
 		url += "/" + uuid;
 	}
@@ -420,7 +424,7 @@ function getSelectedInstrumentUuid() {
  */
 function updateSupplyItemsTable() {
 	jQuery.ajax({
-		url : openmrsContextPath + "/ws/rest/v1/jsslab/labSupplyItem?v=full",
+		url : openmrsContextPath + "/ws/rest/v1/jsslab/labsupplyitem?v=full",
 		success : function(data) {
 				
 			jQuery('#tableSupplyItems tr').filter(function() {
@@ -451,7 +455,7 @@ function showSupplyItemForm(uuid) {
 		jQuery('#buttonDuplicateSupplyItem').attr('disabled', 'disabled');
 	} else {
 		jQuery.ajax({
-			url : openmrsContextPath + "/ws/rest/v1/jsslab/labSupplyItem/" + uuid + "?v=full",
+			url : openmrsContextPath + "/ws/rest/v1/jsslab/labsupplyitem/" + uuid + "?v=full",
 			success : function(data) {
 				var supplyItem = data;
 				updateSupplyItemForm(supplyItem);
@@ -509,8 +513,6 @@ function getSupplyItemFromForm() {
 		
 		itemClassConcept : jQuery('#supplyItemType').val(),
 		
-		//TODO
-		retired : false,
 	};
 	
 }
@@ -520,7 +522,7 @@ function getSupplyItemFromForm() {
  * @param supplyItem
  */
 function saveSupplyItem(supplyItem, uuid) {
-	var url = openmrsContextPath + "/ws/rest/v1/jsslab/labSupplyItem";
+	var url = openmrsContextPath + "/ws/rest/v1/jsslab/labsupplyitem";
 	if (instrumentPage.isValidUuid(uuid)) {
 		url += "/" + uuid;
 	}
