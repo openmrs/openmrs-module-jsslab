@@ -8,18 +8,14 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.jsslab.LabTestingService;
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabTestResult;
-import org.openmrs.module.jsslab.db.LabSpecimen;
-import org.openmrs.module.jsslab.db.LabReport;
-import org.openmrs.module.jsslab.db.LabTestRange;
-import org.openmrs.module.jsslab.db.LabTestRangeDAO;
-import org.openmrs.module.jsslab.db.LabTestSpecimen;
-import org.openmrs.module.jsslab.db.LabTestSpecimenDAO;
 import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabReportDAO;
+import org.openmrs.module.jsslab.db.LabTestRange;
+import org.openmrs.module.jsslab.db.LabTestRangeDAO;
 import org.openmrs.module.jsslab.db.LabTestResult;
 import org.openmrs.module.jsslab.db.LabTestResultDAO;
+import org.openmrs.module.jsslab.db.LabTestSpecimen;
+import org.openmrs.module.jsslab.db.LabTestSpecimenDAO;
 
 
 

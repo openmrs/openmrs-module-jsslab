@@ -3,15 +3,12 @@ package org.openmrs.module.jsslab;
 import java.util.List;
 
 import org.openmrs.Patient;
-import org.openmrs.module.jsslab.db.LabOrder;
-import org.openmrs.module.jsslab.db.LabOrderSpecimen;
-import org.openmrs.module.jsslab.db.LabSpecimen;
-import org.openmrs.module.jsslab.db.LabSupplyItem;
-import org.openmrs.module.jsslab.db.LabOrder;
-import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
+import org.openmrs.module.jsslab.db.LabOrder;
+import org.openmrs.module.jsslab.db.LabOrderSpecimen;
+import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional

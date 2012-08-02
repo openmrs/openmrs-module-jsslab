@@ -5,11 +5,10 @@ import java.util.List;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
-import org.openmrs.module.jsslab.db.LabInstrument;
-import org.openmrs.module.jsslab.db.LabTestResult;
 import org.openmrs.module.jsslab.db.LabReport;
-import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.openmrs.module.jsslab.db.LabTestRange;
+import org.openmrs.module.jsslab.db.LabTestResult;
+import org.openmrs.module.jsslab.db.LabTestSpecimen;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
@@ -181,21 +180,21 @@ public interface LabTestingService extends OpenmrsService {
 	
 	/**
 	 * Returns a specified number of labReports starting with a given string from the specified index
-	 * @should return LabReport by String nameFragment, Boolean includeVoided, Integer start, Integer length
+	 * @should return LabReport by String nameFragment, Boolean includeRetired, Integer start, Integer length
 	 */
-	public List<LabReport> getLabReports(String nameFragment, Boolean includeVoided, Integer start, Integer length);
+	public List<LabReport> getLabReports(String nameFragment, Boolean includeRetired, Integer start, Integer length);
 	
 	/**
 	 * Get count of LabReport, only showing ones not marked as retired if includeVoided is true
 	 * 
-	 * @param includeVoided true/false whether to include retired LabReports in this list
+	 * @param includeRetired true/false whether to include retired LabReports in this list
 	 * @return LabReports list
 	 * @throws APIException
 	 * @should get number of LabReport
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_TEST)
-	public Integer getCountOfLabReports(Boolean includeVoided) throws APIException;
+	public Integer getCountOfLabReports(Boolean includeRetired) throws APIException;
 
 //--------------------------------------------------------------------------------------------------
 

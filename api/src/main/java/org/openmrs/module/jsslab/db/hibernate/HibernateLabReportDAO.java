@@ -3,21 +3,16 @@
  */
 package org.openmrs.module.jsslab.db.hibernate;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.hibernate.SessionFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.openmrs.module.jsslab.db.LabReport;
 import org.openmrs.module.jsslab.db.LabReportDAO;
-import org.openmrs.module.jsslab.db.LabTest;
 
 /**
  *

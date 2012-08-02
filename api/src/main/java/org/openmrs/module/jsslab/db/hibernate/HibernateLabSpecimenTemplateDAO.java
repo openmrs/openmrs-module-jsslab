@@ -18,17 +18,13 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
-
-import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
+import org.hibernate.criterion.Restrictions;
 import org.openmrs.api.APIException;
-import org.openmrs.api.context.Context;
-import org.openmrs.api.ConceptService;
+import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
 import org.openmrs.module.jsslab.db.LabSpecimenTemplateDAO;
-import org.openmrs.module.jsslab.db.LabTest;
 
 /**
  * Hibernate lab labSpecimenTemplate related database functions

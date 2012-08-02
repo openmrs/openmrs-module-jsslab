@@ -14,19 +14,15 @@
 package org.openmrs.module.jsslab.db;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Concept;
 import org.openmrs.api.context.Context;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -198,4 +194,8 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable {
 		return testName;
 	}
 	
+	@Override
+	public String getName() {
+		return getTestName();
+	}
 }

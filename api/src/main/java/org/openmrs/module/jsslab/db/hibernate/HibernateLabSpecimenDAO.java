@@ -14,7 +14,6 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.module.jsslab.db.LabSpecimen;
 import org.openmrs.module.jsslab.db.LabSpecimenDAO;
-import org.openmrs.module.jsslab.db.LabTestSpecimen;
 
 /**
  *

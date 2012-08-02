@@ -33,6 +33,8 @@ import org.simpleframework.xml.Root;
 @Root(strict = false)
 public class LabOrder extends Order {
 	
+	private static final Log log = LogFactory.getLog(LabOrder.class);
+
 //	private static final String LAB_ORDER_TYPE_PROPERTY_NAME = "anNzbGFiLkxhYk9yZGVy";   
 	private static final String LAB_ORDER_TYPE_PROPERTY_NAME = "jsslab.LabOrder";   
 
@@ -40,7 +42,6 @@ public class LabOrder extends Order {
 	
 	public static final long serialVersionUID = 4334343L;
 	
-	private static final Log log = LogFactory.getLog(LabOrder.class);
 	
 	private String labOrderId;
 

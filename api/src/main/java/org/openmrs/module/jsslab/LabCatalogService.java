@@ -2,15 +2,13 @@ package org.openmrs.module.jsslab;
 
 import java.util.List;
 
-import org.openmrs.module.jsslab.db.LabPrecondition;
-import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
-import org.openmrs.module.jsslab.db.LabTestPanel;
-import org.openmrs.module.jsslab.db.LabTest;
-import org.openmrs.module.jsslab.db.LabTestPanel;
-import org.openmrs.module.jsslab.PrivilegeConstants;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
+import org.openmrs.module.jsslab.db.LabPrecondition;
+import org.openmrs.module.jsslab.db.LabSpecimenTemplate;
+import org.openmrs.module.jsslab.db.LabTest;
+import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
