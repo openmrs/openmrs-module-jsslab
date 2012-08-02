@@ -1009,5 +1009,18 @@
 			<column name="uuid" value="36fbc925-21d4-11e1-9815-00265e639063"/>
 		</insert>
 	</changeSet>
+	
+	<changeSet id="jsslab-test-panel-test-data" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="jsslab_test_panel_test"/>
+		</preConditions>
+		<comment>
+			Creating the test panel-test table data
+		</comment>
+		<sql>
+			INSERT INTO jsslab_test_panel_test (test_panel_test_id, test_panel_id, test_id)
+  			SELECT test_id AS test_panel_test_id, test_panel_id, test_id FROM jsslab_test;
+		</sql>
+	</changeSet>
 
 </databaseChangeLog>

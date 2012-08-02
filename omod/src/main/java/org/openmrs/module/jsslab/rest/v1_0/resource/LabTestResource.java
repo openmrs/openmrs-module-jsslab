@@ -78,7 +78,7 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 		{
 			//			
 			Descri.addProperty("uuid");
-			Descri.addProperty("testPanel",Representation.REF);
+			Descri.addProperty("testPanels",Representation.REF);
 			Descri.addProperty("testConcept",Representation.REF);
 			Descri.addProperty("retired");
 			Descri.addSelfLink();
@@ -89,7 +89,7 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 		{
 			//
 			Descri.addProperty("uuid");
-			Descri.addProperty("testPanel",Representation.REF);
+			Descri.addProperty("testPanels",Representation.REF);
 			Descri.addProperty("testConcept",Representation.REF);
 			Descri.addProperty("confirmTest",Representation.REF);
 			Descri.addProperty("sortWeight");
@@ -104,9 +104,7 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	@Override
 	public DelegatingResourceDescription getCreatableProperties() {
 		DelegatingResourceDescription d = new DelegatingResourceDescription();
-		d.addRequiredProperty("testPanel");
 		d.addRequiredProperty("testConcept");
-//		d.addProperty("testName");
 		d.addProperty("resultFormat");
 		d.addProperty("confirmTest");
 		d.addProperty("sortWeight");
@@ -121,6 +119,6 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	
 	@Override
 	public String getDisplayString(LabTest delegate) {
-		return delegate.getName();
+		return delegate.getTestName();
 	}
 }

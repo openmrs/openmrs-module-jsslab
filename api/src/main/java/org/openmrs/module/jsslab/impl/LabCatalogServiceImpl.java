@@ -52,10 +52,6 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 
 	
 	public LabTest saveLabTest(LabTest labTest) throws APIException {
-		if (labTest.getTestPanel() == null) {
-			throw new APIException(Context.getMessageSourceService().getMessage("JSSLab.LabCatalogServiceImpl.saveLabTest.TestPanelRequired", null,
-			    "Reference to a LabTestPanel is required", Context.getLocale()));
-		}
 		if (labTest.getTestConcept() == null) {
 			throw new APIException(Context.getMessageSourceService().getMessage("JSSLab.LabCatalogServiceImpl.saveLabTest.TestConceptRequired", null,
 				"Reference to a Concept is required", Context.getLocale()));

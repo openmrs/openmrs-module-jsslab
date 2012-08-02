@@ -43,9 +43,7 @@ public class HibernateLabTestDAO implements LabTestDAO {
 	
 	public class LabTestComparator implements Comparator<LabTest> {
 		  public int compare(LabTest lt1, LabTest lt2) {
-			  int i = lt1.getTestPanel().getTestPanelConcept().getId().compareTo(lt2.getTestPanel().getTestPanelConcept().getId());
-			  if (i != 0)
-				  return i;
+			  if (lt1.equals(lt2)) return 0;
 			  return lt1.getSortWeight().compareTo(lt2.getSortWeight());
 		  }
 		}

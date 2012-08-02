@@ -32,9 +32,9 @@
             <key column="test_panel_id" not-null="true" />
             <one-to-many class="org.openmrs.module.jsslab.db.LabPrecondition" />
         </set>
-        <set name="tests" inverse="true" >
+        <set name="tests" inverse="true" table="jsslab_test_panel_test">
             <key column="test_panel_id" not-null="true" />
-            <one-to-many class="org.openmrs.module.jsslab.db.LabTest" />
+            <many-to-many column="test_id" class="org.openmrs.module.jsslab.db.LabTest" />
         </set>
         <set name="specimenTemplates" inverse="true" >
         	<key column="test_panel_id" not-null="true" />

@@ -107,11 +107,8 @@ public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTest
 	public DelegatingResourceDescription getCreatableProperties() {
 		DelegatingResourceDescription description = new DelegatingResourceDescription();
 		description.addRequiredProperty("labLocation");
-//		d.addRequiredProperty("labLocationName");
 		description.addRequiredProperty("testGroupConcept");
-//		d.addProperty("testGroupName");
 		description.addRequiredProperty("testPanelConcept");
-//		d.addProperty("testPanelName");
 		description.addProperty("testPanelCode");
 		description.addProperty("receivedSpecimenTypeConcept");
 		description.addProperty("analysisSpecimenTypeConcept");

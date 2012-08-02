@@ -53,6 +53,8 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable {
 	
 	private Set<LabTestRange> testRanges = new HashSet<LabTestRange>();
 	
+	private Set<LabTestPanel> testPanels = new HashSet<LabTestPanel>();
+	
 	public LabTest() {
 		this.setUuid(UUID.randomUUID().toString());
 	}
@@ -91,7 +93,24 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable {
 	/**
 	 * @return Returns testPanel.
 	 */
-	@Attribute(required = true)
+	@Attribute(required = false)
+	public Set<LabTestPanel> getTestPanels() {
+		return testPanels;
+	}
+	
+	/**
+	 * @param testPanels.  The testPanels to set.
+	 */
+	@Attribute(required = false)
+	public void setTestPanel(Set<LabTestPanel> testPanels) {
+		this.testPanels = testPanels;
+	}
+
+	/**
+	 * @return Returns testPanel.
+	 */
+	@Deprecated
+	@Attribute(required = false)
 	public LabTestPanel getTestPanel() {
 		return testPanel;
 	}
@@ -99,7 +118,8 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable {
 	/**
 	 * @param testPanel.  The testPanel to set.
 	 */
-	@Attribute(required = true)
+	@Deprecated
+	@Attribute(required = false)
 	public void setTestPanel(LabTestPanel testPanel) {
 		this.testPanel = testPanel;
 	}
@@ -196,6 +216,6 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable {
 	
 	@Override
 	public String getName() {
-		return getTestName();
+		return this.getTestName();
 	}
 }

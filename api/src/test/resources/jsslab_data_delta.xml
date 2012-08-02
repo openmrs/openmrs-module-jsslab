@@ -809,6 +809,30 @@
   <jsslab_test_panel test_panel_id="33333067" lab_location_id="33333005" test_group_concept="33333064" test_panel_concept="33333067" test_panel_code="URPRO" received_specimen_concept="33333114" analysis_specimen_concept="33333115" cost="2" turnaround="2.0" hold_time="1.0" creator="1" date_created="2012-01-01 00:00:00.0" retired="0" uuid="05df00e1-46d9-11e1-99f4-0024e8c61285"/>
   <jsslab_test_panel test_panel_id="33333167" lab_location_id="33333011" test_group_concept="33333064" test_panel_concept="33333067" test_panel_code="UPRO2" received_specimen_concept="33333114" analysis_specimen_concept="33333115" cost="8" turnaround="4.0" hold_time="4.0" creator="1" date_created="2012-01-01 00:00:00.0" retired="0" uuid="05df4577-46d9-11e1-99f4-0024e8c61285"/>
   <jsslab_test_panel test_panel_id="33333168" lab_location_id="33333011" test_group_concept="33333065" test_panel_concept="33333068" test_panel_code="WBC2" received_specimen_concept="33333116" analysis_specimen_concept="33333113" cost="18" turnaround="6.0" hold_time="3.0" creator="1" date_created="2012-01-01 00:00:00.0" retired="0" uuid="1b2d91f0-d3dd-11e1-9b23-0800200c9a66"/>
+  <jsslab_test_panel_test test_panel_test_id="33333001" test_id="33333001" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333002" test_id="33333002" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333003" test_id="33333003" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333004" test_id="33333004" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333005" test_id="33333005" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333006" test_id="33333006" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333007" test_id="33333007" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333008" test_id="33333008" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333009" test_id="33333009" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333010" test_id="33333010" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333011" test_id="33333011" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333012" test_id="33333012" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333013" test_id="33333013" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333014" test_id="33333014" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333015" test_id="33333015" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333016" test_id="33333016" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333017" test_id="33333017" test_panel_id="33333065" />
+  <jsslab_test_panel_test test_panel_test_id="33333101" test_id="33333101" test_panel_id="33333066" />
+  <jsslab_test_panel_test test_panel_test_id="33333102" test_id="33333102" test_panel_id="33333066" />
+  <jsslab_test_panel_test test_panel_test_id="33333103" test_id="33333103" test_panel_id="33333066" />
+  <jsslab_test_panel_test test_panel_test_id="33333104" test_id="33333104" test_panel_id="33333066" />
+  <jsslab_test_panel_test test_panel_test_id="33333105" test_id="33333105" test_panel_id="33333066" />
+  <jsslab_test_panel_test test_panel_test_id="33333106" test_id="33333106" test_panel_id="33333066" />
+  <jsslab_test_panel_test test_panel_test_id="33333201" test_id="33333201" test_panel_id="33333067" />
   <jsslab_test_result test_result_id="33333001" test_specimen_id="33333001" test_result_concept="33333068" test_result_type="NUMERIC" test_answer_numeric="333.0" test_answer_note="Notional data" approved="2010" approved_by="3" hidden="0" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="ace6f816-49c1-11e1-812a-0024e8c61285"/>
   <jsslab_test_result test_result_id="33333002" test_specimen_id="33333001" test_result_concept="33333069" test_result_type="NUMERIC" test_answer_numeric="33.0" test_answer_note="Also notional data" approved="2010" approved_by="3" hidden="0" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="ace74370-49c1-11e1-812a-0024e8c61285"/>
   <jsslab_test_specimen test_specimen_id="33333001" specimen_id="33333001" specimen_sub_id="0" parent_sub_id="0" parent_relation_concept="33333054" analysis_specimen_concept="33333112" test_panel_id="33333065" test_role_concept="33333104" prep_tech_id="3" prep_date="2012-01-01 10:00:00.0" lab_tech_id="3" test_date="2012-01-01 10:05:00.0" creator="1" date_created="2012-01-01 00:00:00.0" retired="0" uuid="df4988f9-49bf-11e1-812a-0024e8c61285"/>

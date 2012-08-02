@@ -887,4 +887,77 @@
 		<addForeignKeyConstraint baseColumnNames="test_run_id" baseTableName="jsslab_test_specimen" constraintName="test_spec_run" referencedColumnNames="test_run_id" referencedTableName="jsslab_test_run"/>
 	</changeSet>
 
+	<changeSet id="jsslab-test-redo-constraints-1" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="jsslab_test"/>
+		</preConditions>
+		<comment>
+			Drop all constraints, make test_panel_id nullable, add back remaining constraints
+			Done this way because that's what MySQL workbench generated
+			Step 1 of 3
+		</comment>
+		<dropAllForeignKeyConstraints baseTableName="jsslab_test" />
+	</changeSet>
+
+	<changeSet id="jsslab-test-redo-constraints-2" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="jsslab_test"/>
+		</preConditions>
+		<comment>
+			Drop all constraints, make test_panel_id nullable, add back remaining constraints
+			Done this way because that's what MySQL workbench generated
+			Step 2 of 3
+		</comment>
+		<dropNotNullConstraint tableName="jsslab_test" columnName="test_panel_id" columnDataType="INT" />
+	</changeSet>
+
+	<changeSet id="jsslab-test-redo-constraints-3" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="jsslab_test"/>
+		</preConditions>
+		<comment>
+			Drop all constraints, make test_panel_id nullable, add back remaining constraints
+			Done this way because that's what MySQL workbench generated
+			New constraints must have new names to avoid MySQL error 121
+			Step 3 of 3
+		</comment>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test" constraintName="user_who_changed_lab_test2" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="confirm_test_id" baseTableName="jsslab_test" constraintName="test_confirm2" referencedColumnNames="test_id" referencedTableName="jsslab_test"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_test" constraintName="user_who_created_lab_test2" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_test" constraintName="user_who_retired_lab_test2" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="test_concept" baseTableName="jsslab_test" constraintName="test_concept2" referencedColumnNames="concept_id" referencedTableName="concept"/>
+	</changeSet>
+
+	<changeSet id="jsslab-test-panel-test" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_test_panel_test"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test panel-test table
+		</comment>
+		<createTable tableName="jsslab_test_panel_test">
+			<column autoIncrement="true" name="test_panel_test_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column defaultValueNumeric="0" name="test_panel_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="test_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="r.friedman" id="foreign_key_constraints-jsslab_test_panel_test">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="test_panel_test_panel" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="test_id" baseTableName="jsslab_test_panel_test" constraintName="test_panel_test_test" referencedColumnNames="test_id" referencedTableName="jsslab_test"/>
+		<addForeignKeyConstraint baseColumnNames="test_panel_id" baseTableName="jsslab_test_panel_test" constraintName="test_panel_test_panel" referencedColumnNames="test_panel_id" referencedTableName="jsslab_test_panel"/>
+	</changeSet>
+
 </databaseChangeLog>
