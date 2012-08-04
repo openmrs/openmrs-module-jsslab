@@ -87,7 +87,7 @@ public class LabReportResource extends MetadataDelegatingCrudResource<LabReport>
 			Descri.addProperty("comments");
 			Descri.addProperty("resultDeliveryDate");
 			Descri.addProperty("resultDeliveryConcept",Representation.REF);
-			Descri.addProperty("specimens",Representation.REF);
+			Descri.addProperty("specimens",Representation.FULL);
 			Descri.addProperty("retired");
 			Descri.addSelfLink();
 			Descri.addProperty("auditInfo",findMethod("getAuditInfo"));

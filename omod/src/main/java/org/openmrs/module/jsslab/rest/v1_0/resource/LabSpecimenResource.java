@@ -83,8 +83,8 @@ public class LabSpecimenResource extends MetadataDelegatingCrudResource<LabSpeci
 			description.addProperty("clientSpecimenId");
 			description.addProperty("orderedBy",Representation.REF);
 			description.addProperty("orderedByFacility",Representation.REF);
-			description.addProperty("person",Representation.REF);
-			description.addProperty("patient",Representation.REF);
+			description.addProperty("person");
+			description.addProperty("patient");
 			description.addProperty("specimenDate");
 			description.addProperty("receivedDate");
 			description.addProperty("receivedConditionConcept",Representation.REF);
