@@ -21,7 +21,7 @@
 			<column name="description" value="Laboratories"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -693,7 +693,7 @@
 			<column name="description" value="Order for lab test"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -711,13 +711,13 @@
 			<column name="instructions" value="This is a test order"/>
 			<column name="start_date" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="auto_expire_date"/>
-			<column name="discontinued" valueNumeric="0"/>
+			<column name="discontinued" valueBoolean="false"/>
 			<column name="discontinued_date"/>
 			<column name="discontinued_by"/>
 			<column name="discontinued_reason"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -730,7 +730,7 @@
 	<changeSet author="martingielow" id="samples_concept">
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333001"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="LAB: JSS"/>
 			<column name="description" value="JSS Hospital Lab Test Catalog"/>
 			<column name="form_text"/>
@@ -749,7 +749,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333002"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="SPECIMEN TYPE"/>
 			<column name="description" value="Specimen Type Codes"/>
 			<column name="form_text"/>
@@ -768,7 +768,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333003"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="REPORT STATUS"/>
 			<column name="description" value="Report Status Codes"/>
 			<column name="form_text"/>
@@ -787,7 +787,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333004"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="REPORT DELIVERY"/>
 			<column name="description" value="Report Delivery Codes"/>
 			<column name="form_text"/>
@@ -806,7 +806,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333005"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="REJECT REASON"/>
 			<column name="description" value="Specimen Condition Codes"/>
 			<column name="form_text"/>
@@ -825,7 +825,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333006"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="ASSET CONDITION"/>
 			<column name="description" value="Asset Condition Codes"/>
 			<column name="form_text"/>
@@ -844,7 +844,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333007"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="SUPPLY ITEM CLASS"/>
 			<column name="description" value="Supply Item Class Codes"/>
 			<column name="form_text"/>
@@ -863,7 +863,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333008"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="SPECIMEN RELATION"/>
 			<column name="description" value="Parent-Child Specimen Codes"/>
 			<column name="form_text"/>
@@ -882,7 +882,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333009"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="TEST ROLE"/>
 			<column name="description" value="Test role codes"/>
 			<column name="form_text"/>
@@ -901,7 +901,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333010"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="ABNORMAL FLAGS"/>
 			<column name="description" value="Abnormal flags"/>
 			<column name="form_text"/>
@@ -920,7 +920,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333011"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="PRECONDITIONS"/>
 			<column name="description" value="Precondition questions"/>
 			<column name="form_text"/>
@@ -939,13 +939,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333012"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Broken container"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RB"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -958,13 +958,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333013"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Clotting"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RC"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -977,13 +977,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333014"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Contamination"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RN"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -996,13 +996,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333015"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Expired"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="EX"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1015,13 +1015,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333016"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Hemolysis"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RH"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1034,13 +1034,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333017"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Identification problem"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RI"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1053,13 +1053,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333018"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Improper storage"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RR"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1072,13 +1072,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333019"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Labeling"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RM"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1091,13 +1091,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333020"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Missing collection date"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RD"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1110,13 +1110,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333021"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Missing patient ID number"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RA"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1129,13 +1129,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333022"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Missing patient name"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RE"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1148,13 +1148,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333023"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Missing phlebotomist ID"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RP"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1167,13 +1167,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333024"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Name misspelling"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="RS"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1186,13 +1186,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333025"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Quantity not sufficient"/>
 			<column name="description" value="REJECT REASON"/>
 			<column name="form_text" value="QS"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1205,13 +1205,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333026"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Preliminary"/>
 			<column name="description" value="REPORT STATUS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1224,13 +1224,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333027"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Final"/>
 			<column name="description" value="REPORT STATUS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1243,13 +1243,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333028"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Revised"/>
 			<column name="description" value="REPORT STATUS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1262,13 +1262,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333029"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Internal electronic transfer"/>
 			<column name="description" value="REPORT DELIVERY"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1281,13 +1281,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333030"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="HL7 electronic transfer"/>
 			<column name="description" value="REPORT DELIVERY"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1300,13 +1300,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333031"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Given to patient"/>
 			<column name="description" value="REPORT DELIVERY"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1319,13 +1319,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333032"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Given to hospital staff"/>
 			<column name="description" value="REPORT DELIVERY"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1338,13 +1338,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333033"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Given to courier"/>
 			<column name="description" value="REPORT DELIVERY"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1357,13 +1357,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333034"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Phone/fax delivery"/>
 			<column name="description" value="REPORT DELIVERY"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1376,13 +1376,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333035"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Other"/>
 			<column name="description" value="REPORT DELIVERY"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1395,13 +1395,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333036"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="New"/>
 			<column name="description" value="ASSET CONDITION"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1414,13 +1414,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333037"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Good"/>
 			<column name="description" value="ASSET CONDITION"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1433,13 +1433,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333038"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Fair"/>
 			<column name="description" value="ASSET CONDITION"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1452,13 +1452,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333039"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Needs repair"/>
 			<column name="description" value="ASSET CONDITION"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1471,13 +1471,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333040"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Needs replacement"/>
 			<column name="description" value="ASSET CONDITION"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1490,13 +1490,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333041"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Surplus"/>
 			<column name="description" value="ASSET CONDITION"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1509,13 +1509,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333042"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Scrapped"/>
 			<column name="description" value="ASSET CONDITION"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1528,13 +1528,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333043"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Abnormal (applies to non-numeric results)"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="A"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1547,13 +1547,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333044"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Above absolute high-off instrument scale"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="&gt;"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1566,13 +1566,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333045"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Above high normal"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="H"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1585,13 +1585,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333046"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Above upper panic limits"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="HH"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1604,13 +1604,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333047"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Anti-complementary substances present"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="AC"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1623,13 +1623,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333048"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Below absolute low-off instrument scale"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="&lt;"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1642,13 +1642,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333049"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Below low normal"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="L"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1661,13 +1661,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333050"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Below lower panic limits"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="LL"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1680,13 +1680,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333051"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Quality Control Failure"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="QCF"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1699,13 +1699,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333052"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Very abnormal (applies to non-numeric units, analogous to panic limits for numeric units)"/>
 			<column name="description" value="ABNORMAL FLAGS"/>
 			<column name="form_text" value="AA"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1718,13 +1718,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333053"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Aliquot"/>
 			<column name="description" value="SPECIMEN RELATION"/>
 			<column name="form_text" value="A"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1737,13 +1737,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333054"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Component"/>
 			<column name="description" value="SPECIMEN RELATION"/>
 			<column name="form_text" value="C"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1756,13 +1756,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333055"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Modified from original specimen"/>
 			<column name="description" value="SPECIMEN RELATION"/>
 			<column name="form_text" value="M"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1775,13 +1775,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333056"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Reagents, controls, calibrators"/>
 			<column name="description" value="SUPPLY ITEM CLASS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1794,13 +1794,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333057"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Glassware and containers"/>
 			<column name="description" value="SUPPLY ITEM CLASS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1813,13 +1813,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333058"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Phlebotomy supplies"/>
 			<column name="description" value="SUPPLY ITEM CLASS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1832,13 +1832,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333059"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Personal protective equipment"/>
 			<column name="description" value="SUPPLY ITEM CLASS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1851,13 +1851,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333060"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Cleaning and maintenance supplies"/>
 			<column name="description" value="SUPPLY ITEM CLASS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1870,13 +1870,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333061"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Miscellaneous"/>
 			<column name="description" value="SUPPLY ITEM CLASS"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1889,7 +1889,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333062"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Hematology"/>
 			<column name="description" value="LAB: JSS"/>
 			<column name="form_text"/>
@@ -1908,7 +1908,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333063"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Microbiology"/>
 			<column name="description" value="LAB: JSS"/>
 			<column name="form_text"/>
@@ -1927,7 +1927,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333064"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Urine"/>
 			<column name="description" value="LAB: JSS"/>
 			<column name="form_text"/>
@@ -1946,7 +1946,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333065"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Hematology Panel"/>
 			<column name="description" value="Hematology"/>
 			<column name="form_text"/>
@@ -1965,7 +1965,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333066"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Blood Culture"/>
 			<column name="description" value="Microbiology"/>
 			<column name="form_text"/>
@@ -1984,7 +1984,7 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333067"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Urine Protein Test"/>
 			<column name="description" value="Urine"/>
 			<column name="form_text"/>
@@ -2003,13 +2003,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333068"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="White Blood Cell count"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2022,13 +2022,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333069"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Lymphocyte number"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2041,13 +2041,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333070"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Mid-sized cell number"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2060,13 +2060,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333071"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Granulocyte number"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2079,13 +2079,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333072"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Lymphocyte percentage"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2098,13 +2098,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333073"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Mid-sized cell percentage"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2117,13 +2117,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333074"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Granulocyte percentage"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2136,13 +2136,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333075"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Red Blood Cell count"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2155,13 +2155,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333076"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Hemoglobin concentration"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2174,13 +2174,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333077"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Mean corpuscular volume"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2193,13 +2193,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333078"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Mean corpuscular hemoglobin"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2212,13 +2212,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333079"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Hematocrit"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2231,13 +2231,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333080"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Platelet count"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2250,13 +2250,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333081"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Mean platelet volume"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2269,13 +2269,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333082"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Plateletcrit"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2288,13 +2288,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333083"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Platelet large cell ratio"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2307,13 +2307,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333084"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Platelet large cell count"/>
 			<column name="description" value="Hematology Panel"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="1"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2326,13 +2326,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333085"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Salmonella"/>
 			<column name="description" value="Blood Culture"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2345,13 +2345,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333086"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Brucella"/>
 			<column name="description" value="Blood Culture"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2364,13 +2364,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333087"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Other Gram-negative rods"/>
 			<column name="description" value="Blood Culture"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2383,13 +2383,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333088"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Staphylococcus aureas"/>
 			<column name="description" value="Blood Culture"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2402,13 +2402,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333089"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Streptococcus peumoniae"/>
 			<column name="description" value="Blood Culture"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2421,13 +2421,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333090"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Haemophilus influenza"/>
 			<column name="description" value="Blood Culture"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2440,13 +2440,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333091"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Detected"/>
 			<column name="description" value="Blood Culture"/>
 			<column name="form_text" value="DET"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2459,13 +2459,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333092"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Not Detected"/>
 			<column name="description" value="Blood Culture"/>
 			<column name="form_text" value="ND"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2478,13 +2478,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333093"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Urine Protein"/>
 			<column name="description" value="Urine Protein Test"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2497,13 +2497,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333094"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Absent"/>
 			<column name="description" value="Urine Protein"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2516,13 +2516,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333095"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Trace"/>
 			<column name="description" value="Urine Protein"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2535,13 +2535,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333096"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="+"/>
 			<column name="description" value="Urine Protein"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2554,13 +2554,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333097"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="++"/>
 			<column name="description" value="Urine Protein"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2573,13 +2573,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333098"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="+++"/>
 			<column name="description" value="Urine Protein"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2592,13 +2592,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333099"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Blind Sample"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="B"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2611,13 +2611,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333100"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Calibrator"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="C"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2630,13 +2630,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333101"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Control specimen"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="Q"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2649,13 +2649,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333102"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Electronic QC, used with manufactured reference providing signals that simulate QC  results"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="E"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2668,13 +2668,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333103"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Group (where a specimen consists of multiple individual elements that are not individually identified)"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="G"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2687,13 +2687,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333104"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Patient (default if blank component value)"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="P"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2706,13 +2706,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333105"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Pool (aliquots of individual specimens combined to form a single specimen representing all of the components.)"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="L"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2725,13 +2725,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333106"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Replicate (of patient sample as a control)"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="R"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2744,13 +2744,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333107"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Specimen used for testing Operator Proficiency"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="O"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2763,13 +2763,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333108"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Specimen used for testing proficiency of the organization performing the testing (Filler)"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="F"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2782,13 +2782,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333109"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Verifying Calibrator, used for periodic calibration checks"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="V"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2801,13 +2801,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333110"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Patient first sample"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="P1"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2820,13 +2820,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333111"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Patient second sample"/>
 			<column name="description" value="TEST ROLE"/>
 			<column name="form_text" value="P2"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2839,13 +2839,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333112"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Vacutainer -- light yellow"/>
 			<column name="description" value="SPECIMEN TYPE"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2858,13 +2858,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333113"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Culture bottle"/>
 			<column name="description" value="SPECIMEN TYPE"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2877,13 +2877,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333114"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Urine collection bottle"/>
 			<column name="description" value="SPECIMEN TYPE"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2896,13 +2896,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333115"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Test tube, 12x100 mm"/>
 			<column name="description" value="SPECIMEN TYPE"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2915,13 +2915,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333116"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="Vacutainer -- lavendar"/>
 			<column name="description" value="SPECIMEN TYPE"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2934,13 +2934,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333117"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="How long ago did you collect this specimen?"/>
 			<column name="description" value="Urine Protein Precondition Q"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="7"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2953,13 +2953,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333118"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="0-2 hours"/>
 			<column name="description" value="Urine Protein Precondition A+"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2972,13 +2972,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333119"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="2-8 hours"/>
 			<column name="description" value="Urine Protein Precondition A-"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2991,13 +2991,13 @@
 		</insert>
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333120"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="&gt;8 hours"/>
 			<column name="description" value="Urine Protein Precondition A-"/>
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="11"/>
-			<column name="is_set" valueNumeric="0"/>
+			<column name="is_set" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -3020,7 +3020,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="10^9/L"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333069"/>
@@ -3031,7 +3031,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="10^9/L"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333070"/>
@@ -3042,7 +3042,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="10^9/L"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333071"/>
@@ -3053,7 +3053,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="10^9/L"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333072"/>
@@ -3064,7 +3064,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="%"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333073"/>
@@ -3075,7 +3075,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="%"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333074"/>
@@ -3086,7 +3086,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="%"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333075"/>
@@ -3097,7 +3097,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="10^12/L"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333076"/>
@@ -3108,7 +3108,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="g/L"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333077"/>
@@ -3119,7 +3119,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="fL"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333078"/>
@@ -3130,7 +3130,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="pg"/>
-			<column name="precise" valueNumeric="0"/>
+			<column name="precise" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333080"/>
@@ -3141,7 +3141,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="10^9/L"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333081"/>
@@ -3152,7 +3152,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="fL"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333082"/>
@@ -3163,7 +3163,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="mL/L"/>
-			<column name="precise" valueNumeric="0"/>
+			<column name="precise" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333084"/>
@@ -3174,7 +3174,7 @@
 			<column name="low_critical"/>
 			<column name="low_normal"/>
 			<column name="units" value="10^9/L"/>
-			<column name="precise" valueNumeric="1"/>
+			<column name="precise" valueBoolean="true"/>
 		</insert>
 	</changeSet>
 	
@@ -4233,7 +4233,7 @@
 		
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333121"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="short_name" value="JSS Lab Concept Sets"/>
 			<column name="description" value="A super set containing all concept sets of the JSSLab module"/>
 			<column name="form_text"/>
@@ -4464,7 +4464,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333001"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4479,7 +4479,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333002"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4494,7 +4494,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333003"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4509,7 +4509,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333004"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4524,7 +4524,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333005"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4539,7 +4539,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333006"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4554,7 +4554,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333007"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4569,7 +4569,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333008"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4584,7 +4584,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333009"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4599,7 +4599,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333010"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4614,7 +4614,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333011"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4629,7 +4629,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333012"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4644,7 +4644,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333013"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4659,7 +4659,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333014"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4674,7 +4674,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333015"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4689,7 +4689,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333016"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4704,7 +4704,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333017"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4719,7 +4719,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333018"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4734,7 +4734,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333019"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4749,7 +4749,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333020"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4764,7 +4764,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333021"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4779,7 +4779,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333022"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4794,7 +4794,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333023"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4809,7 +4809,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333024"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4824,7 +4824,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333025"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4839,7 +4839,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333026"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4854,7 +4854,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333027"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4869,7 +4869,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333028"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4884,7 +4884,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333029"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4899,7 +4899,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333030"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4914,7 +4914,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333031"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4929,7 +4929,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333032"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4944,7 +4944,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333033"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4959,7 +4959,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333034"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4974,7 +4974,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333035"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -4989,7 +4989,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333036"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5004,7 +5004,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333037"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5019,7 +5019,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333038"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5034,7 +5034,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333039"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5049,7 +5049,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333040"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5064,7 +5064,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333041"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5079,7 +5079,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333042"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5094,7 +5094,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333043"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5109,7 +5109,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333044"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5124,7 +5124,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333045"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5139,7 +5139,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333046"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5154,7 +5154,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333047"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5169,7 +5169,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333048"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5184,7 +5184,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333049"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5199,7 +5199,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333050"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5214,7 +5214,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333051"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5229,7 +5229,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333052"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5244,7 +5244,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333053"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5259,7 +5259,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333054"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5274,7 +5274,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333055"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5289,7 +5289,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333056"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5304,7 +5304,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333057"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5319,7 +5319,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333058"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5334,7 +5334,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333059"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5349,7 +5349,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333060"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5364,7 +5364,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333061"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5379,7 +5379,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333062"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5394,7 +5394,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333063"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5409,7 +5409,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333064"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5424,7 +5424,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333065"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5439,7 +5439,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333066"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5454,7 +5454,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333067"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5469,7 +5469,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333068"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5484,7 +5484,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333069"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5499,7 +5499,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333070"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5514,7 +5514,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333071"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5529,7 +5529,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333072"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5544,7 +5544,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333073"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5559,7 +5559,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333074"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5574,7 +5574,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333075"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5589,7 +5589,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333076"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5604,7 +5604,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333077"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5619,7 +5619,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333078"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5634,7 +5634,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333079"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5649,7 +5649,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333080"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5664,7 +5664,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333081"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5679,7 +5679,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333082"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5694,7 +5694,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333083"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5709,7 +5709,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333084"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5724,7 +5724,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333085"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5739,7 +5739,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333086"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5754,7 +5754,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333087"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5769,7 +5769,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333088"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5784,7 +5784,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333089"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5799,7 +5799,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333090"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5814,7 +5814,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333091"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5829,7 +5829,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333092"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5844,7 +5844,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333093"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5859,7 +5859,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333094"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5874,7 +5874,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333095"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5889,7 +5889,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333096"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5904,7 +5904,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333097"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5919,7 +5919,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333098"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5934,7 +5934,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333099"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5949,7 +5949,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333100"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5964,7 +5964,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333101"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5979,7 +5979,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333102"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -5994,7 +5994,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333103"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6009,7 +6009,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333104"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6024,7 +6024,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333105"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6039,7 +6039,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333106"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6054,7 +6054,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333107"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6069,7 +6069,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333108"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6084,7 +6084,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333109"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6099,7 +6099,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333110"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6114,7 +6114,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333111"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6129,7 +6129,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333112"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6144,7 +6144,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333113"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6159,7 +6159,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333114"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6174,7 +6174,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333115"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6189,7 +6189,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333116"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6204,7 +6204,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333117"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6219,7 +6219,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333118"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6234,7 +6234,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333119"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6249,7 +6249,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333120"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6264,7 +6264,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333121"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6279,7 +6279,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333122"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6294,7 +6294,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333123"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6309,7 +6309,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333124"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6324,7 +6324,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333125"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6339,7 +6339,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333126"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6354,7 +6354,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333127"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6369,7 +6369,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333128"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6384,7 +6384,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333129"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6399,7 +6399,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333130"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6414,7 +6414,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333131"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6429,7 +6429,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333132"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6444,7 +6444,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333133"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6459,7 +6459,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333134"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6474,7 +6474,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333135"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6489,7 +6489,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333136"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6504,7 +6504,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333137"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6519,7 +6519,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333138"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6534,7 +6534,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333139"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6549,7 +6549,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333140"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6564,7 +6564,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333141"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6579,7 +6579,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333142"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6594,7 +6594,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333143"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6609,7 +6609,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333144"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6624,7 +6624,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333145"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6639,7 +6639,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333146"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6654,7 +6654,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333147"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6669,7 +6669,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333148"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6684,7 +6684,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333149"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6699,7 +6699,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333150"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6714,7 +6714,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333151"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6729,7 +6729,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333152"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6744,7 +6744,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333153"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6759,7 +6759,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333154"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6774,7 +6774,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333155"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6789,7 +6789,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333156"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6804,7 +6804,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333157"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6819,7 +6819,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333158"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6834,7 +6834,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333159"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6849,7 +6849,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333160"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6864,7 +6864,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333161"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -6879,7 +6879,7 @@
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="concept_name_id" valueNumeric="33333162"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>

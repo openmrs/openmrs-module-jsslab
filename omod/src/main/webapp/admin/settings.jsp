@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <%@ include file="/WEB-INF/template/include.jsp"%>
 <%@ include file="/WEB-INF/template/header.jsp"%>
-
 
 <div id="jsslabSettings" 
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
@@ -10,7 +11,7 @@
 	xmlns:openmrs="urn:jsptld:/WEB-INF/taglibs/openmrs.tld"
 	version="2.0">
 	
-	<spring:message var="pageTitle" code="..." scope="page" />
+	<spring:message var="pageTitle" code="jsslab.settings.link" scope="page" />
 	
 	<%@ include file="localHeader.jsp" %>
 	

@@ -26,7 +26,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -50,7 +50,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -71,7 +71,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -92,7 +92,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -113,7 +113,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -125,7 +125,7 @@
 		<insert tableName="jsslab_order">
 			<column name="order_id" valueNumeric="33333001"/>
 			<column name="lab_order_id" value="2012.01/0001"/>
-			<column name="urgent" valueNumeric="0"/>
+			<column name="urgent" valueBoolean="false"/>
 			<column name="retest_of"/>
 			<column name="physician_retest"/>
 			<column name="retest_reason" value=""/>
@@ -146,7 +146,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -164,7 +164,7 @@
 			<column name="date_created" valueDate="0002-11-30T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -183,7 +183,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -210,12 +210,12 @@
 			<column name="test_critical_high"/>
 			<column name="approved" valueNumeric="2010"/>
 			<column name="approved_by" valueNumeric="3"/>
-			<column name="hidden" valueNumeric="0"/>
+			<column name="hidden" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -239,12 +239,12 @@
 			<column name="test_critical_high"/>
 			<column name="approved" valueNumeric="2010"/>
 			<column name="approved_by" valueNumeric="3"/>
-			<column name="hidden" valueNumeric="0"/>
+			<column name="hidden" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="voided" valueNumeric="0"/>
+			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
@@ -264,7 +264,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -281,7 +281,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -298,7 +298,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -315,7 +315,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -332,7 +332,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -349,7 +349,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -366,7 +366,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -383,7 +383,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -400,7 +400,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -417,7 +417,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -434,7 +434,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -451,7 +451,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -468,7 +468,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -485,7 +485,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -502,7 +502,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -519,7 +519,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -536,7 +536,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -553,7 +553,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -570,7 +570,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -587,7 +587,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -604,7 +604,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -621,7 +621,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -638,7 +638,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -655,7 +655,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -685,7 +685,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -707,14 +707,14 @@
 			<column name="received_condition_concept"/>
 			<column name="received_specimen_concept" valueNumeric="33333012"/>
 			<column name="report_id" valueNumeric="33333001"/>
-			<column name="urgent" valueNumeric="0"/>
+			<column name="urgent" valueBoolean="false"/>
 			<column name="physician_retest"/>
-			<column name="hidden" valueNumeric="0"/>
+			<column name="hidden" valueBoolean="false"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -738,7 +738,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -759,7 +759,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -780,7 +780,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -801,7 +801,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -822,7 +822,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -843,7 +843,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -864,7 +864,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -885,7 +885,7 @@
 			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -907,7 +907,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -926,7 +926,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -945,7 +945,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -964,7 +964,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -983,7 +983,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
@@ -1002,7 +1002,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
-			<column name="retired" valueNumeric="0"/>
+			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>

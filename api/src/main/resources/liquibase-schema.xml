@@ -41,7 +41,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column name="retired" type="SMALLINT" defaultValueNumeric="0">
+			<column name="retired" type="BOOLEAN" defaultValueBoolean="false">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
@@ -69,11 +69,11 @@
 				<constraints nullable="false" primaryKey="true"/>
 			</column>
 			<column name="lab_order_id" remarks="Hospital order sequence number. Multiple panels on a single hospital order will share the same lab_order_id." type="VARCHAR(45)"/>
-			<column defaultValueNumeric="0" name="urgent" type="SMALLINT">
+			<column defaultValueBoolean="false" name="urgent" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retest_of" type="INT"/>
-			<column name="physician_retest" remarks="true=physician retest, false=lab retest, null=not a retest" type="SMALLINT"/>
+			<column name="physician_retest" remarks="true=physician retest, false=lab retest, null=not a retest" type="BOOLEAN"/>
 			<column defaultValue="" name="retest_reason" type="VARCHAR(255)" />
 		</createTable>
 	</changeSet>
@@ -107,7 +107,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="voided" type="SMALLINT">
+			<column defaultValueBoolean="false" name="voided" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="voided_by" type="INT"/>
@@ -153,7 +153,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="voided" type="SMALLINT">
+			<column defaultValueBoolean="false" name="voided" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="voided_by" type="INT"/>
@@ -194,7 +194,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="retired" type="SMALLINT">
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
@@ -247,11 +247,11 @@
 			<column name="report_id" type="INT">
 				<constraints nullable="false"/>
 			</column>
-			<column defaultValueNumeric="0" name="urgent" type="SMALLINT">
+			<column defaultValueBoolean="false" name="urgent" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
-			<column name="physician_retest" type="SMALLINT"/>
-			<column defaultValueNumeric="0" name="hidden" type="SMALLINT">
+			<column name="physician_retest" type="BOOLEAN"/>
+			<column defaultValueBoolean="false" name="hidden" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column defaultValueNumeric="0" name="creator" type="INT">
@@ -262,7 +262,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="retired" type="SMALLINT">
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
@@ -311,7 +311,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="retired" type="SMALLINT">
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
@@ -356,7 +356,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column name="retired" type="SMALLINT" defaultValueNumeric="0">
+			<column name="retired" type="BOOLEAN" defaultValueBoolean="false">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
@@ -400,7 +400,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="retired" type="SMALLINT">
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
@@ -449,7 +449,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="retired" type="SMALLINT">
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
@@ -497,7 +497,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="voided" type="SMALLINT">
+			<column defaultValueBoolean="false" name="voided" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="voided_by" type="INT"/>
@@ -543,9 +543,9 @@
 			<column name="test_normal_high" type="double precision"/>
 			<column name="test_critical_low" type="double precision"/>
 			<column name="test_critical_high" type="double precision"/>
-			<column name="approved" type="SMALLINT"/>
+			<column name="approved" type="BOOLEAN"/>
 			<column name="approved_by" type="INT"/>
-			<column name="hidden" type="SMALLINT"/>
+			<column name="hidden" type="BOOLEAN"/>
 			<column defaultValueNumeric="0" name="creator" type="INT">
 				<constraints nullable="false"/>
 			</column>
@@ -554,7 +554,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="voided" type="SMALLINT">
+			<column defaultValueBoolean="false" name="voided" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="voided_by" type="INT"/>
@@ -592,7 +592,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="retired" type="SMALLINT">
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
@@ -645,7 +645,7 @@
 			</column>
 			<column name="changed_by" type="INT"/>
 			<column name="date_changed" type="DATETIME"/>
-			<column defaultValueNumeric="0" name="retired" type="SMALLINT">
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
 				<constraints nullable="false"/>
 			</column>
 			<column name="retired_by" type="INT"/>
