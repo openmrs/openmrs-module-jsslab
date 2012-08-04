@@ -5,10 +5,6 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
 	
-	<changeSet author="martingielow" id="jsslab_data_disable-foreign-key-checks-mysql" runAlways="true" dbms="mysql">
-		<comment>Disables foreign key checks to enable batch insertion of data - MySQL</comment>
-		<sql>SET FOREIGN_KEY_CHECKS=0;</sql>
-	</changeSet>
 	
 	<!-- Adds sample data to the regular OpenMRS tables -->
 	<include file="liquibase-sample-data-regular.xml" relativeToChangelogFile="false" />
@@ -16,9 +12,4 @@
 	<!-- Adds sample data to the JSSLab tables -->
 	<include file="liquibase-sample-data-jsslab.xml" relativeToChangelogFile="false" />
 
-	<changeSet author="martingielow" id="jsslab_data_enable-foreign-key-checks-mysql" runAlways="true" dbms="mysql">
-		<comment>Reenables foreign key checks after batch insertion - MySQL</comment>
-		<sql>SET FOREIGN_KEY_CHECKS=1;</sql>
-	</changeSet>
-		
 </databaseChangeLog>

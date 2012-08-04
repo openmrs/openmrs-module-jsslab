@@ -154,6 +154,35 @@
 		</insert>
 	</changeSet>
 	
+	<changeSet author="martingielow" id="samples_jsslab_specimen">
+		<insert tableName="jsslab_specimen">
+			<column name="specimen_id" valueNumeric="33333001"/>
+			<column name="lab_specimen_id" value="33 WBC 20120101"/>
+			<column name="client_specimen_id" value="33 WBC 20120101"/>
+			<column name="ordered_by" valueNumeric="3"/>
+			<column name="ordered_by_facility" valueNumeric="33333006"/>
+			<column name="person_id" valueNumeric="33"/>
+			<column name="patient_id" valueNumeric="33"/>
+			<column name="specimen_date" valueDate="2012-01-01T15:00:00.0"/>
+			<column name="received_date" valueDate="2012-01-01T15:01:00.0"/>
+			<column name="received_condition_concept"/>
+			<column name="received_specimen_concept" valueNumeric="33333012"/>
+			<column name="report_id" valueNumeric="33333001"/>
+			<column name="urgent" valueBoolean="false"/>
+			<column name="physician_retest"/>
+			<column name="hidden" valueBoolean="false"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="retired" valueBoolean="false"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="cbbf4eae-49bc-11e1-812a-0024e8c61285"/>
+		</insert>
+	</changeSet>
+	
 	<changeSet author="martingielow" id="samples_jsslab_order_specimen">
 		<insert tableName="jsslab_order_specimen">
 			<column name="order_specimen_id" valueNumeric="33333001"/>
@@ -188,67 +217,6 @@
 			<column name="date_voided"/>
 			<column name="void_reason"/>
 			<column name="uuid" value="0100dc0a-46da-11e1-99f4-0024e8c61285"/>
-		</insert>
-	</changeSet>
-	
-	<changeSet author="martingielow" id="samples_jsslab_test_result">
-		<insert tableName="jsslab_test_result">
-			<column name="test_result_id" valueNumeric="33333001"/>
-			<column name="test_specimen_id" valueNumeric="33333001"/>
-			<column name="test_result_concept" valueNumeric="33333068"/>
-			<column name="test_result_type" value="NUMERIC"/>
-			<column name="test_answer_concept"/>
-			<column name="test_answer_duration"/>
-			<column name="test_answer_titer"/>
-			<column name="test_answer_numeric" valueNumeric="333.0"/>
-			<column name="test_answer_string"/>
-			<column name="test_answer_flag"/>
-			<column name="test_answer_note" value="Notional data"/>
-			<column name="test_normal_low"/>
-			<column name="test_normal_high"/>
-			<column name="test_critical_low"/>
-			<column name="test_critical_high"/>
-			<column name="approved" valueNumeric="2010"/>
-			<column name="approved_by" valueNumeric="3"/>
-			<column name="hidden" valueBoolean="false"/>
-			<column name="creator" valueNumeric="1"/>
-			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
-			<column name="changed_by"/>
-			<column name="date_changed"/>
-			<column name="voided" valueBoolean="false"/>
-			<column name="voided_by"/>
-			<column name="date_voided"/>
-			<column name="void_reason"/>
-			<column name="uuid" value="ace6f816-49c1-11e1-812a-0024e8c61285"/>
-		</insert>
-		<insert tableName="jsslab_test_result">
-			<column name="test_result_id" valueNumeric="33333002"/>
-			<column name="test_specimen_id" valueNumeric="33333001"/>
-			<column name="test_result_concept" valueNumeric="33333069"/>
-			<column name="test_result_type" value="NUMERIC"/>
-			<column name="test_answer_concept"/>
-			<column name="test_answer_duration"/>
-			<column name="test_answer_titer"/>
-			<column name="test_answer_numeric" valueNumeric="33.0"/>
-			<column name="test_answer_string"/>
-			<column name="test_answer_flag"/>
-			<column name="test_answer_note" value="Also notional data"/>
-			<column name="test_normal_low"/>
-			<column name="test_normal_high"/>
-			<column name="test_critical_low"/>
-			<column name="test_critical_high"/>
-			<column name="approved" valueNumeric="2010"/>
-			<column name="approved_by" valueNumeric="3"/>
-			<column name="hidden" valueBoolean="false"/>
-			<column name="creator" valueNumeric="1"/>
-			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
-			<column name="changed_by"/>
-			<column name="date_changed"/>
-			<column name="voided" valueBoolean="false"/>
-			<column name="voided_by"/>
-			<column name="date_voided"/>
-			<column name="void_reason"/>
-			<column name="uuid" value="ace74370-49c1-11e1-812a-0024e8c61285"/>
 		</insert>
 	</changeSet>
 	
@@ -693,35 +661,6 @@
 		</insert>
 	</changeSet>
 
-	<changeSet author="martingielow" id="samples_jsslab_specimen">
-		<insert tableName="jsslab_specimen">
-			<column name="specimen_id" valueNumeric="33333001"/>
-			<column name="lab_specimen_id" value="33 WBC 20120101"/>
-			<column name="client_specimen_id" value="33 WBC 20120101"/>
-			<column name="ordered_by" valueNumeric="3"/>
-			<column name="ordered_by_facility" valueNumeric="33333006"/>
-			<column name="person_id" valueNumeric="33"/>
-			<column name="patient_id" valueNumeric="33"/>
-			<column name="specimen_date" valueDate="2012-01-01T15:00:00.0"/>
-			<column name="received_date" valueDate="2012-01-01T15:01:00.0"/>
-			<column name="received_condition_concept"/>
-			<column name="received_specimen_concept" valueNumeric="33333012"/>
-			<column name="report_id" valueNumeric="33333001"/>
-			<column name="urgent" valueBoolean="false"/>
-			<column name="physician_retest"/>
-			<column name="hidden" valueBoolean="false"/>
-			<column name="creator" valueNumeric="1"/>
-			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
-			<column name="changed_by"/>
-			<column name="date_changed"/>
-			<column name="retired" valueBoolean="false"/>
-			<column name="retired_by"/>
-			<column name="date_retired"/>
-			<column name="retire_reason"/>
-			<column name="uuid" value="cbbf4eae-49bc-11e1-812a-0024e8c61285"/>
-		</insert>
-	</changeSet>
-
 	<changeSet author="martingielow" id="samples_jsslab_specimen_template">
 		<insert tableName="jsslab_specimen_template">
 			<column name="specimen_template_id" valueNumeric="33333001"/>
@@ -890,6 +829,67 @@
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
 			<column name="uuid" value="35790ec9-49b7-11e1-812a-0024e8c61285"/>
+		</insert>
+	</changeSet>
+
+	<changeSet author="martingielow" id="samples_jsslab_test_result">
+		<insert tableName="jsslab_test_result">
+			<column name="test_result_id" valueNumeric="33333001"/>
+			<column name="test_specimen_id" valueNumeric="33333001"/>
+			<column name="test_result_concept" valueNumeric="33333068"/>
+			<column name="test_result_type" value="NUMERIC"/>
+			<column name="test_answer_concept"/>
+			<column name="test_answer_duration"/>
+			<column name="test_answer_titer"/>
+			<column name="test_answer_numeric" valueNumeric="333.0"/>
+			<column name="test_answer_string"/>
+			<column name="test_answer_flag"/>
+			<column name="test_answer_note" value="Notional data"/>
+			<column name="test_normal_low"/>
+			<column name="test_normal_high"/>
+			<column name="test_critical_low"/>
+			<column name="test_critical_high"/>
+			<column name="approved" valueNumeric="2010"/>
+			<column name="approved_by" valueNumeric="3"/>
+			<column name="hidden" valueBoolean="false"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="voided_by"/>
+			<column name="date_voided"/>
+			<column name="void_reason"/>
+			<column name="uuid" value="ace6f816-49c1-11e1-812a-0024e8c61285"/>
+		</insert>
+		<insert tableName="jsslab_test_result">
+			<column name="test_result_id" valueNumeric="33333002"/>
+			<column name="test_specimen_id" valueNumeric="33333001"/>
+			<column name="test_result_concept" valueNumeric="33333069"/>
+			<column name="test_result_type" value="NUMERIC"/>
+			<column name="test_answer_concept"/>
+			<column name="test_answer_duration"/>
+			<column name="test_answer_titer"/>
+			<column name="test_answer_numeric" valueNumeric="33.0"/>
+			<column name="test_answer_string"/>
+			<column name="test_answer_flag"/>
+			<column name="test_answer_note" value="Also notional data"/>
+			<column name="test_normal_low"/>
+			<column name="test_normal_high"/>
+			<column name="test_critical_low"/>
+			<column name="test_critical_high"/>
+			<column name="approved" valueNumeric="2010"/>
+			<column name="approved_by" valueNumeric="3"/>
+			<column name="hidden" valueBoolean="false"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="voided_by"/>
+			<column name="date_voided"/>
+			<column name="void_reason"/>
+			<column name="uuid" value="ace74370-49c1-11e1-812a-0024e8c61285"/>
 		</insert>
 	</changeSet>
 

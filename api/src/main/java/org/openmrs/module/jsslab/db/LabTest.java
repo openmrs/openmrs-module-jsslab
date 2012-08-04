@@ -102,7 +102,7 @@ public class LabTest extends BaseOpenmrsMetadata implements Serializable {
 	 * @param testPanels.  The testPanels to set.
 	 */
 	@Attribute(required = false)
-	public void setTestPanel(Set<LabTestPanel> testPanels) {
+	public void setTestPanels(Set<LabTestPanel> testPanels) {
 		this.testPanels = testPanels;
 	}
 

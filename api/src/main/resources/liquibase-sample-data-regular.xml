@@ -14,32 +14,6 @@
 		</insert>
 	</changeSet>
 
-	<changeSet author="martingielow" id="samples_location_tag">
-		<insert tableName="location_tag">
-			<column name="location_tag_id" valueNumeric="33333001"/>
-			<column name="name" value="Lab"/>
-			<column name="description" value="Laboratories"/>
-			<column name="creator" valueNumeric="1"/>
-			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
-			<column name="retired" valueBoolean="false"/>
-			<column name="retired_by"/>
-			<column name="date_retired"/>
-			<column name="retire_reason"/>
-			<column name="uuid" value="a0f71212-24d1-11e1-a648-0024e8dbd743"/>
-		</insert>
-	</changeSet>
-
-	<changeSet author="martingielow" id="samples_location_tag_map">
-		<insert tableName="location_tag_map">
-			<column name="location_id" valueNumeric="33333005"/>
-			<column name="location_tag_id" valueNumeric="33333001"/>
-		</insert>
-		<insert tableName="location_tag_map">
-			<column name="location_id" valueNumeric="33333011"/>
-			<column name="location_tag_id" valueNumeric="33333001"/>
-		</insert>
-	</changeSet>
-
 	<changeSet author="martingielow" id="samples_location">
 		<insert tableName="location">
 			<column name="location_id" valueNumeric="33333001"/>
@@ -482,6 +456,32 @@
 			<column name="retire_reason"/>
 			<column name="parent_location" valueNumeric="33333016"/>
 			<column name="uuid" value="e68a7d43-2292-11e1-ba72-00265e639063"/>
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_location_tag">
+		<insert tableName="location_tag">
+			<column name="location_tag_id" valueNumeric="33333001"/>
+			<column name="name" value="Lab"/>
+			<column name="description" value="Laboratories"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="retired" valueBoolean="false"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="a0f71212-24d1-11e1-a648-0024e8dbd743"/>
+		</insert>
+	</changeSet>
+
+	<changeSet author="martingielow" id="samples_location_tag_map">
+		<insert tableName="location_tag_map">
+			<column name="location_id" valueNumeric="33333005"/>
+			<column name="location_tag_id" valueNumeric="33333001"/>
+		</insert>
+		<insert tableName="location_tag_map">
+			<column name="location_id" valueNumeric="33333011"/>
+			<column name="location_tag_id" valueNumeric="33333001"/>
 		</insert>
 	</changeSet>
 
@@ -4343,6 +4343,22 @@
 		</insert>
 	</changeSet>
 
+	<changeSet author="martingielow" id="samples_concept_source">
+		<insert tableName="concept_source">
+			<column name="concept_source_id" valueNumeric="33333001"/>
+			<column name="name" value="jsslab"/>
+			<column name="description" value="Parameters for JSS Lab module"/>
+			<column name="hl7_code"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
+			<column name="retired" valueBoolean="false"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="bb06c2cc-4877-11e1-b5ed-0024e8c61285"/>
+		</insert>
+	</changeSet>
+
 	<changeSet author="martingielow" id="samples_concept_map">
 		<insert tableName="concept_map">
 			<column name="concept_map_id" valueNumeric="33333001"/>
@@ -6886,22 +6902,6 @@
 			<column name="uuid" value="be7a6dab-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
 			<column name="locale_preferred" valueNumeric="0"/>
-		</insert>
-	</changeSet>
-	
-	<changeSet author="martingielow" id="samples_concept_source">
-		<insert tableName="concept_source">
-			<column name="concept_source_id" valueNumeric="3333301"/>
-			<column name="name" value="jsslab"/>
-			<column name="description" value="Parameters for JSS Lab module"/>
-			<column name="hl7_code"/>
-			<column name="creator" valueNumeric="1"/>
-			<column name="date_created" valueDate="2012-01-01T00:00:00.0"/>
-			<column name="retired" valueBoolean="false"/>
-			<column name="retired_by"/>
-			<column name="date_retired"/>
-			<column name="retire_reason"/>
-			<column name="uuid" value="bb06c2cc-4877-11e1-b5ed-0024e8c61285"/>
 		</insert>
 	</changeSet>
 	

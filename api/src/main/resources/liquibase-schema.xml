@@ -543,7 +543,7 @@
 			<column name="test_normal_high" type="double precision"/>
 			<column name="test_critical_low" type="double precision"/>
 			<column name="test_critical_high" type="double precision"/>
-			<column name="approved" type="BOOLEAN"/>
+			<column name="approved" type="SMALLINT"/>
 			<column name="approved_by" type="INT"/>
 			<column name="hidden" type="BOOLEAN"/>
 			<column defaultValueNumeric="0" name="creator" type="INT">
