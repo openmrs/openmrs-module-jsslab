@@ -728,8 +728,8 @@
 		<insert tableName="jsslab_specimen_template">
 			<column name="specimen_template_id" valueNumeric="33333013"/>
 			<column name="parent_role_concept" valueNumeric="33333110"/>
-			<column name="specimen_sub_id" valueNumeric="0"/>
-			<column name="parent_sub_id" valueNumeric="1"/>
+			<column name="specimen_sub_id" valueNumeric="1"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
 			<column name="parent_relation_concept" valueNumeric="33333053"/>
 			<column name="analysis_specimen_concept" valueNumeric="33333113"/>
 			<column name="test_panel_id" valueNumeric="33333066"/>
@@ -749,8 +749,8 @@
 		<insert tableName="jsslab_specimen_template">
 			<column name="specimen_template_id" valueNumeric="33333014"/>
 			<column name="parent_role_concept" valueNumeric="33333111"/>
-			<column name="specimen_sub_id" valueNumeric="0"/>
-			<column name="parent_sub_id" valueNumeric="1"/>
+			<column name="specimen_sub_id" valueNumeric="1"/>
+			<column name="parent_sub_id" valueNumeric="0"/>
 			<column name="parent_relation_concept" valueNumeric="33333053"/>
 			<column name="analysis_specimen_concept" valueNumeric="33333113"/>
 			<column name="test_panel_id" valueNumeric="33333066"/>

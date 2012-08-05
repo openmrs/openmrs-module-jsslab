@@ -23,31 +23,13 @@
 	<activator>org.openmrs.module.jsslab.jsslabActivator</activator>
 
 	<!-- Global Properties -->
-	<globalProperty>
-		<property>jsslab.homeLab</property>
-		<description>Location id of lab supported by this instance</description>
-	</globalProperty>
-
-	<globalProperty>
-		<property>jsslab.laborder.type</property>
-		<description>The id of the type of order that is associated with LabOrder objects</description>
-	</globalProperty>
-
-	<globalProperty>
-		<property>jsslab.laborder.idPattern</property>
-		<description>The pattern that is used for IDs of LabOrder objects</description>
-	</globalProperty>
-
-	<globalProperty>
-		<property>jsslab.labspecimen.idPattern</property>
-		<description>The pattern that is used for IDs of LabSpecimen objects</description>
-	</globalProperty>
-
-	<globalProperty>
-		<property>jsslab.labreport.idPattern</property>
-		<description>The pattern that is used for IDs of LabReport objects</description>
-	</globalProperty>
-
+	<!-- 
+		Global Properties prefixed with jsslab.string are simple String properties that 
+		should be listed on the settings page.
+		Those prefixed with jsslab.object should also be on the settings page, but will
+		be autocompleted from particular objects.
+	-->
+	
 	<globalProperty>
 		<property>jsslab.setup</property>
 		<description>Whether the initial setup for this module has been run</description>
@@ -57,7 +39,43 @@
 		<property>jsslab.setup.sampleData</property>
 		<description>Specifies whether sample data for this module has been installed.</description>
 	</globalProperty>
+	
+	<globalProperty>
+		<property>jsslab.object.location.homeLab</property>
+		<description>Location id of lab supported by this instance</description>
+	</globalProperty>
 
+	<globalProperty>
+		<property>jsslab.object.orderType.labOrder</property>
+		<description>The id of the OrderType that is associated with LabOrder objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.object.conceptSet.allConcepts</property>
+		<description>The id of the ConceptSet that contains all JSSLab specific ConceptSets</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.object.concept.report.internalElectronicDelivery</property>
+		<description>Internal Electronic Delivery Concept</description>
+	</globalProperty>
+	
+	<globalProperty>
+		<property>jsslab.string.laborder.idPattern</property>
+		<description>The pattern that is used for IDs of LabOrder objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.string.labspecimen.idPattern</property>
+		<description>The pattern that is used for IDs of LabSpecimen objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.string.labreport.idPattern</property>
+		<description>The pattern that is used for IDs of LabReport objects</description>
+	</globalProperty>
+
+	
 	<!-- Privileges -->
 	<permission>
 		<name>Add LabManagement Records</name>

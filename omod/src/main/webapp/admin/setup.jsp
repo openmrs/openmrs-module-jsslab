@@ -26,10 +26,40 @@
 	<!--   LAB SETUP SECTION    --> 
 	<!-- ====================== --> 
 	
-	<h2><spring:message code="jsslab.setup.globalproperties.title" /></h2>
+	<h2><spring:message code="" /></h2>
 	<div>
 	
 	</div>	
+	
+	<br />
+	
+	<!-- ====================== --> 
+	<!-- Global Properties --> 
+	<!-- ====================== --> 
+
+	<h2><spring:message code="jsslab.setup.globalproperties.title" /></h2>
+
+	<table>
+		<c:forEach var="gp" items="${globalPropertiesObject}" varStatus="loop">
+			<tr>
+				<td>
+					<label for="globalPropertyObjectSelect_${loop.index}">${gp.description}</label>
+				</td><td>
+					<input type="text" name="${gp.property}" id="globalPropertyObjectSelect_${loop.index}" value="${gp.propertyValue}" />
+				</td><td>
+					<input type="submit" class="globalPropertyObjectSubmit" id="globalPropertyObjectSubmit_${loop.index}" value="<spring:message code='jsslab.setup.globalproperties.save' />" />
+				</td><td>
+					<span id="globalPropertyObjectResult_${loop.index}"></span>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+	
+	<br />
+	
+	<!-- ====================== --> 
+	<!--   LAB SETUP SECTION    --> 
+	<!-- ====================== --> 
 	
 	<h2><spring:message code="jsslab.setup.databasetables.title" /></h2>
 	<div>

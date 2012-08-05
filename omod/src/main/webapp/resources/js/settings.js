@@ -15,41 +15,6 @@ jsslab.settingsPage = {
 
 	
 	/**
-	 * Displays feedback information on whether a save operation has completed successfully.
-	 * 
-	 * @param element The element to display the feedback information in
-	 * @param result A result object containing a <code>code</code> and a <code>message</code> field
-	 */
-	setSaveResult : function(element, result) {
-		if (result.code == "success") {
-			element.attr('class', 'success');
-		} else {
-			element.attr('class', 'error');
-		}
-		element.text(result.message);
-		element.fadeIn();
-		setTimeout( function(){ element.fadeOut(); }, 2000 );
-	},
-	
-	/**
-	 * @returns The UUID of the currently selected ConceptSet
-	 */
-	getSelectedConceptSetUuid : function() {
-		if (jQuery('.radioSpecimenTypeCode:checked') == null) return null;
-		
-		var btnId = jQuery('.radioSpecimenTypeCode:checked').attr('id');
-		return btnId.substring(btnId.lastIndexOf("_")+1);
-	},
-	
-	/**
-	 * @returns The UUID of the currently selected Concept
-	 */
-	getSelectedConceptUuid : function() {
-		var rowId = jQuery('#codeTable tbody tr.selected').attr('id');
-		return rowId.substring(rowId.lastIndexOf("_")+1);
-	},
-	
-	/**
 	 * Updates the Code Table Panel with the given Concept objects.
 	 * 
 	 * @param concepts The Concept objects to be displayed in the Code Table Panel.
@@ -241,19 +206,54 @@ jsslab.settingsPage = {
 	 */
 	saveGlobalProperty : function(property, value, resultElement) {
 		jQuery.ajax({
-			url : "settings/saveGlobalProperties.htm",
+			url : openmrsContextPath + "/ws/rest/v1/jsslab?saveGlobalProperty",
 			type : "POST",
 			contentType : "application/x-www-form-urlencoded",
-			data: property + "=" + value,
+			data: "property=" + property + "&value=" + value,
 			success : function(result) {
 				jsslab.settingsPage.setSaveResult(resultElement, result);
 			}
 		});
 	},
 	
+	/**
+	 * Displays feedback information on whether a save operation has completed successfully.
+	 * 
+	 * @param element The element to display the feedback information in
+	 * @param result A result object containing a <code>code</code> and a <code>message</code> field
+	 */
+	setSaveResult : function(element, result) {
+		if (result.code == "success") {
+			element.attr('class', 'success');
+		} else {
+			element.attr('class', 'error');
+		}
+		element.text(result.message);
+		element.fadeIn();
+		setTimeout( function(){ element.fadeOut(); }, 2000 );
+	},
+	
 	// ======================
 	// util methods
 	// ======================
+	
+	/**
+	 * @returns The UUID of the currently selected ConceptSet
+	 */
+	getSelectedConceptSetUuid : function() {
+		if (jQuery('.radioSpecimenTypeCode:checked') == null) return null;
+		
+		var btnId = jQuery('.radioSpecimenTypeCode:checked').attr('id');
+		return btnId.substring(btnId.lastIndexOf("_")+1);
+	},
+	
+	/**
+	 * @returns The UUID of the currently selected Concept
+	 */
+	getSelectedConceptUuid : function() {
+		var rowId = jQuery('#codeTable tbody tr.selected').attr('id');
+		return rowId.substring(rowId.lastIndexOf("_")+1);
+	},
 	
 	/**
 	 * Checks whether the given UUID is valid, based on the length of the string.
@@ -316,22 +316,29 @@ jQuery(document).ready(function() {
 	// global properties
 	// ======================
 	
-	jQuery('#orderTypeSubmit').click(function(event) {
+	jQuery('.globalPropertyStringSubmit').click(function(event) {
 		event.preventDefault();
-		jsslab.settingsPage.saveGlobalProperty( jQuery('#orderTypeSelect').attr('name'), jQuery('#orderTypeSelect').val(), jQuery('#orderTypeResult'));
+		var btnId = jQuery(this).attr('id');
+		var gpId = btnId.substring(btnId.lastIndexOf("_")+1);
+		var textFieldSelector = '#globalPropertyStringSelect_'+gpId;
+		
+		var gpName = jQuery(textFieldSelector).attr('name');
+		var gpValue = jQuery(textFieldSelector).val();
+		
+		jsslab.settingsPage.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyStringResult_'+gpId) );
 	});
-	jQuery('#orderIdPatternSubmit').click(function(event) {
+	jQuery('.globalPropertyObjectSubmit').click(function(event) {
 		event.preventDefault();
-		jsslab.settingsPage.saveGlobalProperty( jQuery('#orderIdPatternSelect').attr('name'), jQuery('#orderIdPatternSelect').val(), jQuery('#orderIdPatternResult') );
+		var btnId = jQuery(this).attr('id');
+		var gpId = btnId.substring(btnId.lastIndexOf("_")+1);
+		var textFieldSelector = '#globalPropertyObjectSelect_'+gpId;
+		
+		var gpName = jQuery(textFieldSelector).attr('name');
+		var gpValue = jQuery(textFieldSelector).val();
+		
+		jsslab.settingsPage.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyObjectResult_'+gpId) );
 	});
-	jQuery('#specimenIdPatternSubmit').click(function(event) {
-		event.preventDefault();
-		jsslab.settingsPage.saveGlobalProperty( jQuery('#specimenIdPatternSelect').attr('name'), jQuery('#specimenIdPatternSelect').val(), jQuery('#specimenIdPatternResult') );
-	});
-	jQuery('#reportIdPatternSubmit').click(function(event) {
-		event.preventDefault();
-		jsslab.settingsPage.saveGlobalProperty( jQuery('#reportIdPatternSelect').attr('name'), jQuery('#reportIdPatternSelect').val(), jQuery('#reportIdPatternResult') );
-	});
+	
 	
 	// ======================
 	// code lists
@@ -341,7 +348,8 @@ jQuery(document).ready(function() {
 		var uuid = jsslab.settingsPage.getSelectedConceptSetUuid();
 		
 		jQuery.ajax({
-			"url" : "settings/getConceptsByConceptSet.htm?setUuid=" + uuid,
+			"url" : openmrsContextPath + "/ws/rest/v1/jsslab?getConceptsByConceptSet",
+			"data" : "setUuid=" + uuid,
 			"success" : function(data) {
 				var concepts = data.results;
 				jsslab.settingsPage.updateCodeTable(concepts);

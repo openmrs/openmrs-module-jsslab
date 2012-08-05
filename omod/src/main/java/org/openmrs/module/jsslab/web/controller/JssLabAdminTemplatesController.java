@@ -27,10 +27,14 @@ public class JssLabAdminTemplatesController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void showForm(ModelMap model) throws IOException {
 		
-		Concept labSet = Context.getConceptService().getConcept("33333121");
-		List<Concept> conceptSets = labSet.getSetMembers();
+		String gpConceptSets = Context.getAdministrationService().getGlobalProperty("jsslab.concept.conceptSet.allConcepts");
 		
-		model.addAttribute("conceptSets", conceptSets);
+		if (gpConceptSets != null && !gpConceptSets.isEmpty()) {
+			List<Concept> conceptSets = Context.getConceptService()
+					.getConcept(gpConceptSets).getSetMembers();
+			
+			model.addAttribute("conceptSets", conceptSets);
+		}
 	}
 
 	

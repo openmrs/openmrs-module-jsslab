@@ -13,6 +13,9 @@
  */
 package org.openmrs.module.jsslab.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
@@ -51,15 +54,18 @@ public class JssLabAdminSetupController {
 			@RequestParam(required = false, defaultValue = "admin/index") String targetView) {
 		this.targetView = targetView;
 
+		GlobalProperty gpOrderType = Context.getAdministrationService().getGlobalPropertyObject("jsslab.object.orderType.labOrder");
+		GlobalProperty gpAllConcepts = Context.getAdministrationService().getGlobalPropertyObject("jsslab.object.conceptSet.allConcepts");
+		List<GlobalProperty> globalProperties = new ArrayList<GlobalProperty>();
+		globalProperties.add(gpOrderType);
+		globalProperties.add(gpAllConcepts);
+		
+		model.put("globalPropertiesObject", globalProperties);
+
 		String sampleDataInstalled = Context.getAdministrationService().getGlobalProperty("jsslab.setup.sampleData");
 		boolean isSampleDataInstalled = sampleDataInstalled != null && !sampleDataInstalled.isEmpty();
 		
 		model.put("sampleDataInstalled", isSampleDataInstalled);
-	}
-	
-	@RequestMapping(value = "/saveGlobalProperties", method = RequestMethod.GET)
-	public String saveGlobalProperties() {
-		return successFormView;
 	}
 	
 	@RequestMapping(value = "/installSampleData", method = RequestMethod.GET)

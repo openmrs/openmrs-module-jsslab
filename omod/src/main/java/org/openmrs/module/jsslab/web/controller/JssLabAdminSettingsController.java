@@ -21,9 +21,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -32,19 +29,10 @@ import org.openmrs.GlobalProperty;
 import org.openmrs.Location;
 import org.openmrs.LocationTag;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.webservices.rest.SimpleObject;
-import org.openmrs.module.webservices.rest.web.RequestContext;
-import org.openmrs.module.webservices.rest.web.RestUtil;
-import org.openmrs.module.webservices.rest.web.representation.Representation;
-import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
-import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
-import org.openmrs.module.webservices.rest.web.response.ResponseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "module/jsslab/admin/settings")
@@ -64,61 +52,24 @@ public class JssLabAdminSettingsController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void showForm(ModelMap model) throws IOException {
 		
-		Concept labSet = Context.getConceptService().getConcept("33333121");
-		List<Concept> conceptSets = labSet.getSetMembers();
+		String gpConceptSets = Context.getAdministrationService().getGlobalProperty("jsslab.object.conceptSet.allConcepts");
 		
-		GlobalProperty gpOrderType = Context.getAdministrationService().getGlobalPropertyObject("jsslab.laborder.type");
-		GlobalProperty gpOrderIdPattern = Context.getAdministrationService().getGlobalPropertyObject("jsslab.laborder.idPattern");
-		GlobalProperty gpSpecimenIdPattern = Context.getAdministrationService().getGlobalPropertyObject("jsslab.labspecimen.idPattern");
-		GlobalProperty gpReportIdPattern= Context.getAdministrationService().getGlobalPropertyObject("jsslab.labreport.idPattern");
-		
-		model.addAttribute("conceptSets", conceptSets);
-		model.addAttribute("json", getHierarchyAsJson());
-		model.addAttribute("gpOrderType", gpOrderType);
-		model.addAttribute("gpOrderIdPattern", gpOrderIdPattern);
-		model.addAttribute("gpSpecimenIdPattern", gpSpecimenIdPattern);
-		model.addAttribute("gpReportIdPattern", gpReportIdPattern);
-	}
-	
-	@RequestMapping(value = "/saveGlobalProperties", method = RequestMethod.POST)
-	@ResponseBody
-	public SimpleObject saveGlobalProperties(HttpServletRequest request, 
-			@RequestParam(value = "labOrderType", required = false) String labOrderType,
-			@RequestParam(value = "labOrderIdPattern", required = false) String labOrderIdPattern,
-			@RequestParam(value = "labSpecimenIdPattern", required = false) String labSpecimenIdPattern,
-			@RequestParam(value = "labReportIdPattern", required = false) String labReportIdPattern) {
-
-		SimpleObject o = new SimpleObject();
-		for (Object param : request.getParameterMap().entrySet()) {
-				Map.Entry<String, String[]> entry = (Map.Entry<String, String[]>) param;
-				GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(entry.getKey());
-				if (gp != null) {
-					gp.setPropertyValue(entry.getValue()[0]);
-					Context.getAdministrationService().saveGlobalProperty(gp);
-				} else {
-					o.put("code", "failure");
-					o.put("message", Context.getMessageSourceService().getMessage("jsslab.settings.globalproperties.result.failed"));
-					return o;
-				}
+		if (gpConceptSets != null && !gpConceptSets.isEmpty()) {
+			List<Concept> conceptSets = Context.getConceptService()
+					.getConcept(gpConceptSets).getSetMembers();
+			
+			model.addAttribute("conceptSets", conceptSets);
 		}
-		o.put("code", "success");
-		o.put("message", Context.getMessageSourceService().getMessage("jsslab.settings.globalproperties.result.success"));
-		return o;
-	}
-	
-	
-	@RequestMapping(value = "/getConceptsByConceptSet", method = RequestMethod.GET)
-	@ResponseBody
-	public SimpleObject getConceptsBySet(HttpServletRequest request,
-			@RequestParam(value = "setUuid") String uuid) throws ResponseException {
 		
-		Concept memberOf = Context.getConceptService().getConceptByUuid(uuid);
-//		memberOf.getSetMembers()
-		List<Concept> setMembers = Context.getConceptService().getConceptsByConceptSet(memberOf);
-		RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
-		PageableResult result = new NeedsPaging<Concept>(setMembers, context);
-		return result.toSimpleObject();
+		model.addAttribute("json", getHierarchyAsJson());
+
+		List<GlobalProperty> globalPropertiesString = Context.getAdministrationService().getGlobalPropertiesByPrefix("jsslab.string");
+		List<GlobalProperty> globalPropertiesObject = Context.getAdministrationService().getGlobalPropertiesByPrefix("jsslab.object");
+		model.addAttribute("globalPropertiesString", globalPropertiesString);
+		model.addAttribute("globalPropertiesObject", globalPropertiesObject);
 	}
+	
+
 	
 	/**
 	 * Gets JSON formatted for jstree jquery plugin
