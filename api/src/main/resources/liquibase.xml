@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+	
+	<!-- Deletes test data from previous versions of JSSLab if there is any -->
+	<include file="liquibase-delete-testdata.xml" relativeToChangelogFile="false" />
+
+	<!-- 
+		Updates OpenMRS as required for JSSLab
+		Adds module specific tables or updates them if a new version is installed  
+	-->
+	<include file="liquibase-schema.xml" relativeToChangelogFile="false" />
+	
+	<!-- Installs minimum metadata that is required to operate the module -->
+	<include file="liquibase-minimum-metadata.xml" relativeToChangelogFile="false" />
+	
+</databaseChangeLog>

@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+	<changeSet id="jsslab-instrument" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_instrument"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the instruments table
+		</comment>
+
+		<createTable tableName="jsslab_instrument">
+			<column name="instrument_id" type="INT" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="property_tag" type="VARCHAR(45)"/>
+			<column name="manufacturer" type="VARCHAR(45)"/>
+			<column name="model" type="VARCHAR(45)"/>
+			<column name="serial_number" type="VARCHAR(45)"/>
+			<column name="location_id" type="INT"/>
+			<column name="received_date" type="DATE"/>
+			<column name="received_from" type="VARCHAR(45)"/>
+			<column name="received_cost" type="DECIMAL(14,5)"/>
+			<column name="received_value" type="DECIMAL(14,5)"/>
+			<column name="condition_date" type="DATE"/>
+			<column name="condition_concept" type="INT"/>
+			<column name="maintenance_vendor" type="VARCHAR(45)"/>
+			<column name="maintenance_phone" type="VARCHAR(45)"/>
+			<column name="maintenance_description" type="VARCHAR(225)"/>
+			<column name="creator" type="INT" defaultValueNumeric="0" >
+				<constraints nullable="false"/>
+			</column>
+			<column name="date_created" type="DATETIME" defaultValueDate="2005-01-01T00:00:00.0">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column name="retired" type="BOOLEAN" defaultValueBoolean="false">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+
+	</changeSet> 
+
+	<changeSet id="jsslab-order" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_order"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the order table
+		</comment>
+
+		<createTable tableName="jsslab_order">
+			<column name="order_id" remarks="Same as order_id in order" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="lab_order_id" remarks="Hospital order sequence number. Multiple panels on a single hospital order will share the same lab_order_id." type="VARCHAR(45)"/>
+			<column defaultValueBoolean="false" name="urgent" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retest_of" type="INT"/>
+			<column name="physician_retest" remarks="true=physician retest, false=lab retest, null=not a retest" type="BOOLEAN"/>
+			<column defaultValue="" name="retest_reason" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-order-specimen" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_order_specimen"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the order-specimen table
+		</comment>
+
+		<createTable tableName="jsslab_order_specimen">
+			<column autoIncrement="true" name="order_specimen_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="order_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="specimen_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="specimen_role_concept" type="INT"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="voided" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="voided_by" type="INT"/>
+			<column name="date_voided" type="DATETIME"/>
+			<column name="void_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-precondition" author="martingielow" >
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_precondition"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the precondition table
+		</comment>
+
+		<createTable tableName="jsslab_precondition">
+			<column autoIncrement="true" name="precondition_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column defaultValueNumeric="0" name="test_panel_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="precondition_question_concept" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="precondition_answer_concept" remarks="This is the OK answer" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="sort_weight" type="double precision">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="voided" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="voided_by" type="INT"/>
+			<column name="date_voided" type="DATETIME"/>
+			<column name="void_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-report" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_report"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the report table
+		</comment>
+
+		<createTable tableName="jsslab_report">
+			<column autoIncrement="true" name="report_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="lab_report_id" type="VARCHAR(12)"/>
+			<column name="report_status_concept" type="INT"/>
+			<column name="approved_by" type="INT"/>
+			<column name="approved_date" type="TIMESTAMP"/>
+			<column name="comments" type="VARCHAR(255)"/>
+			<column name="result_delivery_date" type="TIMESTAMP"/>
+			<column name="result_delivery_concept" type="INT"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-specimen" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_specimen"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the specimen table
+		</comment>
+
+		<createTable tableName="jsslab_specimen">
+			<column autoIncrement="true" name="specimen_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="lab_specimen_id" type="VARCHAR(45)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="client_specimen_id" type="VARCHAR(45)"/>
+			<column name="ordered_by" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="ordered_by_facility" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="person_id" type="INT"/>
+			<column name="patient_id" type="INT"/>
+
+			<!-- TODO: add defaultValueComputed or similar to this timestamp -->
+			<column name="specimen_date" type="TIMESTAMP">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValue="2005-01-01 00:00:00" name="received_date" type="TIMESTAMP">
+				<constraints nullable="false"/>
+			</column>
+			<column name="received_condition_concept" type="INT"/>
+			<column name="received_specimen_concept" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="report_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueBoolean="false" name="urgent" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="physician_retest" type="BOOLEAN"/>
+			<column defaultValueBoolean="false" name="hidden" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-specimen-template" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_specimen_template"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the specimen template table
+		</comment>
+
+		<createTable tableName="jsslab_specimen_template">
+			<column autoIncrement="true" name="specimen_template_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="parent_role_concept" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="specimen_sub_id" remarks="received specimen is 0 (or 1)" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="parent_sub_id" remarks="for received specimen, same as sub_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="parent_relation_concept" remarks="parent, aliquot, supernatant, ball, wet-mount slide, slide with reagent x, slide with reagent y, etc." type="INT"/>
+			<column name="analysis_specimen_concept" type="INT"/>
+			<column name="test_panel_id" type="INT"/>
+			<column name="test_role_concept" remarks="positive control, negative control, specimen, fasting specimen, acute specimen, etc." type="INT"/>
+			<column name="supply_item_id" type="INT"/>
+			<column name="instructions" type="VARCHAR(255)"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab_supply_item" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_supply_item"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the supply item table
+		</comment>
+
+		<createTable tableName="jsslab_supply_item">
+			<column name="supply_item_id" type="INT" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="lab_stock_number" type="VARCHAR(45)"/>
+			<column name="manufacturer" type="VARCHAR(45)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="manufacturer_stock_number" type="VARCHAR(45)"/>
+			<column name="item_name" type="VARCHAR(45)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="item_class_concept" type="INT"/>
+			<column name="lot_number" type="VARCHAR(45)"/>
+			<column name="expiration_date" type="TIMESTAMP"/>
+			<column name="creator" type="INT" defaultValueNumeric="0">
+				<constraints nullable="false"/>
+			</column>
+			<column name="date_created" type="DATETIME" defaultValueDate="2005-01-01T00:00:00.0">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column name="retired" type="BOOLEAN" defaultValueBoolean="false">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-test" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_test"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test table
+		</comment>
+		<createTable tableName="jsslab_test">
+			<column autoIncrement="true" name="test_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column defaultValueNumeric="0" name="test_panel_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="test_concept" remarks="This is the concept ID of the LabTest whose member tests constitute the offering." type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="result_format" type="VARCHAR(24)"/>
+			<column name="sort_weight" type="double precision">
+				<constraints nullable="false"/>
+			</column>
+			<column name="confirm_test_id" type="INT"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-test-panel" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_test_panel"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test panel table
+		</comment>
+
+		<createTable tableName="jsslab_test_panel">
+			<column autoIncrement="true" name="test_panel_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="lab_location_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="test_group_concept" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="test_panel_concept" remarks="This is the concept ID of the TestSet whose member tests constitute the offering." type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValue="" name="test_panel_code" type="VARCHAR(5)"/>
+			<column name="received_specimen_concept" remarks="This is the concept ID of the concept for the specimen type collected." type="INT" />
+			<column name="analysis_specimen_concept" remarks="This is the concept ID of the concept analyzed after processing." type="INT" />
+			<column name="cost" type="DECIMAL(14,5)"/>
+			<column name="turnaround" remarks="Target turnaround time in hours (standard orders)" type="double precision"/>
+			<column name="hold_time" type="double precision"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-test-range" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_test_range"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test range table
+		</comment>
+
+		<createTable tableName="jsslab_test_range">
+			<column autoIncrement="true" name="test_range_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="test_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="sort_weight" type="double precision">
+				<constraints nullable="false"/>
+			</column>
+			<column name="range_sex" type="CHAR(1)"/>
+			<column name="range_age_min" type="double precision"/>
+			<column name="range_age_max" type="double precision"/>
+			<column name="logic_rule_id" type="INT"/>
+			<column name="range_normal_low" type="double precision"/>
+			<column name="range_normal_high" type="double precision"/>
+			<column name="range_critical_low" type="double precision"/>
+			<column name="range_critical_high" type="double precision"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="voided" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="voided_by" type="INT"/>
+			<column name="date_voided" type="DATETIME"/>
+			<column name="void_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-test-result" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_test_result"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test result table
+		</comment>
+
+		<createTable tableName="jsslab_test_result">
+			<column name="test_result_id" type="INT" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="test_specimen_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="test_result_concept" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="test_result_type" type="CHAR(12)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="test_answer_concept" type="INT"/>
+			<column name="test_answer_duration" type="double precision"/>
+			<column name="test_answer_titer" type="INT"/>
+			<column name="test_answer_numeric" type="double precision"/>
+			<column name="test_answer_string" type="VARCHAR(255)"/>
+			<column name="test_answer_flag" type="VARCHAR(5)"/>
+			<column name="test_answer_note" type="VARCHAR(45)"/>
+			<column name="test_normal_low" type="double precision"/>
+			<column name="test_normal_high" type="double precision"/>
+			<column name="test_critical_low" type="double precision"/>
+			<column name="test_critical_high" type="double precision"/>
+			<column name="approved" type="SMALLINT"/>
+			<column name="approved_by" type="INT"/>
+			<column name="hidden" type="BOOLEAN"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="voided" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="voided_by" type="INT"/>
+			<column name="date_voided" type="DATETIME"/>
+			<column name="void_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-test-run" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_test_run"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test run table
+		</comment>
+
+		<createTable tableName="jsslab_test_run">
+			<column autoIncrement="true" name="test_run_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="instrument_id" type="INT"/>
+			<column name="lab_tech_id" type="INT"/>
+			<column name="run_start" type="TIMESTAMP"/>
+			<column name="run_end" type="TIMESTAMP"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="jsslab-test-specimen" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_test_specimen"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test specimen table
+		</comment>
+
+		<createTable tableName="jsslab_test_specimen">
+			<column autoIncrement="true" name="test_specimen_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column name="specimen_id" type="INT"/>
+			<column defaultValueNumeric="0" name="specimen_sub_id" remarks="received specimen is 0 (or 1)" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="parent_sub_id" remarks="for received specimen, same as sub_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="parent_relation_concept" remarks="parent, aliquot, supernatant, ball, wet-mount slide, slide with reagent x, slide with reagent y, etc." type="INT"/>
+			<column name="analysis_specimen_concept" type="INT"/>
+			<column name="test_panel_id" type="INT"/>
+			<column name="test_role_concept" remarks="positive control, negative control, specimen, fasting specimen, acute specimen, etc." type="INT"/>
+			<column name="supply_item_id" type="INT"/>
+			<column name="prep_tech_id" type="INT"/>
+			<column name="rack_position" type="VARCHAR(5)"/>
+			<column name="prep_date" type="TIMESTAMP"/>
+			<column name="lab_tech_id" type="INT"/>
+			<column name="test_date" type="TIMESTAMP"/>
+			<column name="test_run_id" type="INT"/>
+			<column name="well_position" type="VARCHAR(5)"/>
+			<column defaultValueNumeric="0" name="creator" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueDate="2005-01-01T00:00:00.0" name="date_created" type="DATETIME">
+				<constraints nullable="false"/>
+			</column>
+			<column name="changed_by" type="INT"/>
+			<column name="date_changed" type="DATETIME"/>
+			<column defaultValueBoolean="false" name="retired" type="BOOLEAN">
+				<constraints nullable="false"/>
+			</column>
+			<column name="retired_by" type="INT"/>
+			<column name="date_retired" type="DATETIME"/>
+			<column name="retire_reason" type="VARCHAR(255)"/>
+			<column name="uuid" type="CHAR(38)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="view_jsslab-catalog" author="martingielow">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<viewExists viewName="jsslab_catalog"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test specimen table
+		</comment>
+		<createView viewName="jsslab_catalog">
+        	select p.lab_location_id AS lab_location_id,l.name AS location,p.test_group_concept AS test_group_concept,
+        	c1.short_name AS lab_section,p.test_panel_concept AS test_panel_concept,c2.short_name AS investigation,
+        	p.test_panel_code AS test_panel_code,p.received_specimen_concept AS received_specimen_concept,
+        	c3.short_name AS received_specimen,p.analysis_specimen_concept AS analysis_specimen_concept,
+        	c4.short_name AS analysis_specimen,p.cost AS cost,p.turnaround AS turnaround,p.hold_time AS hold_time,
+        	t.test_concept AS test_concept,c5.short_name AS test,t.result_format AS result_format,n.units AS units,
+        	s.concept_id AS result_concept,c6.short_name AS result 
+        	from ((((((((((jsslab_test_panel p left join jsslab_test t on((p.test_panel_id = t.test_panel_id))) 
+        	left join concept_set s on((t.test_concept = s.concept_set))) 
+        	left join location l on((p.lab_location_id = l.location_id)))
+        	left join concept c1 on((p.test_group_concept = c1.concept_id))) 
+        	left join concept c2 on((p.test_panel_concept = c2.concept_id))) 
+        	left join concept c3 on((p.received_specimen_concept = c3.concept_id)))
+        	left join concept c4 on((p.analysis_specimen_concept = c4.concept_id))) 
+        	left join concept c5 on((t.test_concept = c5.concept_id))) 
+        	left join concept c6 on((s.concept_id = c6.concept_id))) 
+        	left join concept_numeric n on((t.test_concept = n.concept_id))) 
+        	order by p.lab_location_id,p.test_group_concept,p.test_panel_concept,t.sort_weight,s.sort_weight
+		</createView>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_instrument">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_instrument" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_instrument" constraintName="user_who_changed_lab_instrument" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="condition_concept" baseTableName="jsslab_instrument" constraintName="inst_cond" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_instrument" constraintName="user_who_created_lab_instrument" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="location_id" baseTableName="jsslab_instrument" constraintName="inst_location" referencedColumnNames="location_id" referencedTableName="location"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_instrument" constraintName="user_who_retired_lab_instrument" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_order">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="order_id_UNIQUE" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="order_id" baseTableName="jsslab_order" constraintName="order_id_UNIQUE" referencedColumnNames="order_id" referencedTableName="orders"/>
+		<addForeignKeyConstraint baseColumnNames="retest_of" baseTableName="jsslab_order" constraintName="lab_order_retest" referencedColumnNames="order_id" referencedTableName="jsslab_order"/>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_order_specimen" constraintName="user_who_changed_lab_order_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_order_specimen">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="user_who_created_lab_order_specimen" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_order_specimen" constraintName="user_who_created_lab_order_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="order_id" baseTableName="jsslab_order_specimen" constraintName="order_specimen_order" referencedColumnNames="order_id" referencedTableName="jsslab_order"/>
+		<addForeignKeyConstraint baseColumnNames="specimen_id" baseTableName="jsslab_order_specimen" constraintName="order_specimen_specimen" referencedColumnNames="specimen_id" referencedTableName="jsslab_specimen"/>
+		<addForeignKeyConstraint baseColumnNames="specimen_role_concept" baseTableName="jsslab_order_specimen" constraintName="order_specimen_role" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="voided_by" baseTableName="jsslab_order_specimen" constraintName="user_who_voided_lab_order_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_precondition">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_precondition" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_precondition" constraintName="user_who_changed_lab_precondition" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_precondition" constraintName="user_who_created_lab_precondition" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="precondition_question_concept" baseTableName="jsslab_precondition" constraintName="precond_question" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="test_panel_id" baseTableName="jsslab_precondition" constraintName="precond_catalog_id" referencedColumnNames="test_panel_id" referencedTableName="jsslab_test_panel"/>
+		<addForeignKeyConstraint baseColumnNames="voided_by" baseTableName="jsslab_precondition" constraintName="user_who_voided_lab_precondition" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_report">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="lab_report_provider" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="approved_by" baseTableName="jsslab_report" constraintName="lab_report_provider" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_report" constraintName="user_who_changed_lab_report" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_report" constraintName="user_who_created_lab_report" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="report_status_concept" baseTableName="jsslab_report" constraintName="lab_report_finality" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="result_delivery_concept" baseTableName="jsslab_report" constraintName="lab_report_concept" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_report" constraintName="user_who_retired_lab_report" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_specimen">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_specimen" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_specimen" constraintName="user_who_changed_lab_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_specimen" constraintName="user_who_created_lab_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="ordered_by" baseTableName="jsslab_specimen" constraintName="specimen_ordered_by" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="ordered_by_facility" baseTableName="jsslab_specimen" constraintName="specimen_location" referencedColumnNames="location_id" referencedTableName="location"/>
+		<addForeignKeyConstraint baseColumnNames="patient_id" baseTableName="jsslab_specimen" constraintName="specimen_patient" referencedColumnNames="patient_id" referencedTableName="patient"/>
+		<addForeignKeyConstraint baseColumnNames="person_id" baseTableName="jsslab_specimen" constraintName="specimen_person" referencedColumnNames="person_id" referencedTableName="person"/>
+		<addForeignKeyConstraint baseColumnNames="received_condition_concept" baseTableName="jsslab_specimen" constraintName="specimen_recd_cond" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="received_specimen_concept" baseTableName="jsslab_specimen" constraintName="specimen_in_type" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="report_id" baseTableName="jsslab_specimen" constraintName="specimen_report" referencedColumnNames="report_id" referencedTableName="jsslab_report"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_specimen" constraintName="user_who_retired_lab_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_specimen_template">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="spec_template_type" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="analysis_specimen_concept" baseTableName="jsslab_specimen_template" constraintName="spec_template_type" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_specimen_template" constraintName="user_who_changed_lab_specimen_template" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_specimen_template" constraintName="user_who_created_lab_specimen_template" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="parent_relation_concept" baseTableName="jsslab_specimen_template" constraintName="spec_template_relation" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_specimen_template" constraintName="user_who_retired_lab_specimen_template" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="supply_item_id" baseTableName="jsslab_specimen_template" constraintName="spec_template_supply_item" referencedColumnNames="supply_item_id" referencedTableName="jsslab_supply_item"/>
+		<addForeignKeyConstraint baseColumnNames="test_panel_id" baseTableName="jsslab_specimen_template" constraintName="spec_template_panel" referencedColumnNames="test_panel_id" referencedTableName="jsslab_test_panel"/>
+		<addForeignKeyConstraint baseColumnNames="test_role_concept" baseTableName="jsslab_specimen_template" constraintName="spec_template_parent" referencedColumnNames="concept_id" referencedTableName="concept"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_supply_item">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_supply_item" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_supply_item" constraintName="user_who_changed_lab_supply_item" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_supply_item" constraintName="user_who_created_lab_supply_item" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="item_class_concept" baseTableName="jsslab_supply_item" constraintName="supply_item_class" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_supply_item" constraintName="user_who_retired_lab_supply_item" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_test" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test" constraintName="user_who_changed_lab_test" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="confirm_test_id" baseTableName="jsslab_test" constraintName="test_confirm" referencedColumnNames="test_id" referencedTableName="jsslab_test"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_test" constraintName="user_who_created_lab_test" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_test" constraintName="user_who_retired_lab_test" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="test_concept" baseTableName="jsslab_test" constraintName="test_concept" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="test_panel_id" baseTableName="jsslab_test" constraintName="test_panel" referencedColumnNames="test_panel_id" referencedTableName="jsslab_test_panel"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_panel">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="test_anal_concept" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="analysis_specimen_concept" baseTableName="jsslab_test_panel" constraintName="test_anal_concept" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test_panel" constraintName="user_who_changed_lab_test_panel" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_test_panel" constraintName="user_who_created_lab_test_panel" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="lab_location_id" baseTableName="jsslab_test_panel" constraintName="test_lab_id" referencedColumnNames="location_id" referencedTableName="location"/>
+		<addForeignKeyConstraint baseColumnNames="received_specimen_concept" baseTableName="jsslab_test_panel" constraintName="test_in_concept" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_test_panel" constraintName="user_who_retired_lab_test_panel" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="test_panel_concept" baseTableName="jsslab_test_panel" constraintName="test_panel_concept" referencedColumnNames="concept_id" referencedTableName="concept"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_range">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_test_range" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test_range" constraintName="user_who_changed_lab_test_range" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_test_range" constraintName="user_who_created_lab_test_range" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="logic_rule_id" baseTableName="jsslab_test_range" constraintName="range_logic" referencedColumnNames="id" referencedTableName="logic_rule_definition"/>
+		<addForeignKeyConstraint baseColumnNames="test_id" baseTableName="jsslab_test_range" constraintName="range_test" referencedColumnNames="test_id" referencedTableName="jsslab_test"/>
+		<addForeignKeyConstraint baseColumnNames="voided_by" baseTableName="jsslab_test_range" constraintName="user_who_voided_lab_test_range" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_result">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="test_result_approver" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="approved_by" baseTableName="jsslab_test_result" constraintName="test_result_approver" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test_result" constraintName="user_who_changed_lab_test_result" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_test_result" constraintName="user_who_created_lab_test_result" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="test_answer_concept" baseTableName="jsslab_test_result" constraintName="test_answer_concept" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="test_result_concept" baseTableName="jsslab_test_result" constraintName="test_result_concept" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="test_specimen_id" baseTableName="jsslab_test_result" constraintName="test_result_spec_id" referencedColumnNames="test_specimen_id" referencedTableName="jsslab_test_specimen"/>
+		<addForeignKeyConstraint baseColumnNames="voided_by" baseTableName="jsslab_test_result" constraintName="user_who_voided_lab_test_result" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_run">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_test_run" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test_run" constraintName="user_who_changed_lab_test_run" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_test_run" constraintName="user_who_created_lab_test_run" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="instrument_id" baseTableName="jsslab_test_run" constraintName="test_run_inst" referencedColumnNames="instrument_id" referencedTableName="jsslab_instrument"/>
+		<addForeignKeyConstraint baseColumnNames="lab_tech_id" baseTableName="jsslab_test_run" constraintName="test_run_provider" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_test_run" constraintName="user_who_retired_lab_test_run" referencedColumnNames="user_id" referencedTableName="users"/>
+	</changeSet>
+
+	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_specimen">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="test_spec_type" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="analysis_specimen_concept" baseTableName="jsslab_test_specimen" constraintName="test_spec_type" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test_specimen" constraintName="user_who_changed_lab_test_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_test_specimen" constraintName="user_who_created_lab_test_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="lab_tech_id" baseTableName="jsslab_test_specimen" constraintName="test_spec_lab_tech" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="parent_relation_concept" baseTableName="jsslab_test_specimen" constraintName="test_spec_relation" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="prep_tech_id" baseTableName="jsslab_test_specimen" constraintName="test_spec_prep_tech" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_test_specimen" constraintName="user_who_retired_lab_test_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="supply_item_id" baseTableName="jsslab_test_specimen" constraintName="test_spec_supply_item" referencedColumnNames="supply_item_id" referencedTableName="jsslab_supply_item"/>
+		<addForeignKeyConstraint baseColumnNames="test_panel_id" baseTableName="jsslab_test_specimen" constraintName="test_spec_panel" referencedColumnNames="test_panel_id" referencedTableName="jsslab_test_panel"/>
+		<addForeignKeyConstraint baseColumnNames="test_role_concept" baseTableName="jsslab_test_specimen" constraintName="test_spec_role" referencedColumnNames="concept_id" referencedTableName="concept"/>
+		<addForeignKeyConstraint baseColumnNames="test_run_id" baseTableName="jsslab_test_specimen" constraintName="test_spec_run" referencedColumnNames="test_run_id" referencedTableName="jsslab_test_run"/>
+	</changeSet>
+
+	<changeSet id="jsslab-test-redo-constraints-1" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="jsslab_test"/>
+		</preConditions>
+		<comment>
+			Drop all constraints, make test_panel_id nullable, add back remaining constraints
+			Done this way because that's what MySQL workbench generated
+			Step 1 of 3
+		</comment>
+		<dropAllForeignKeyConstraints baseTableName="jsslab_test" />
+	</changeSet>
+
+	<changeSet id="jsslab-test-redo-constraints-2" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="jsslab_test"/>
+		</preConditions>
+		<comment>
+			Drop all constraints, make test_panel_id nullable, add back remaining constraints
+			Done this way because that's what MySQL workbench generated
+			Step 2 of 3
+		</comment>
+		<dropNotNullConstraint tableName="jsslab_test" columnName="test_panel_id" columnDataType="INT" />
+	</changeSet>
+
+	<changeSet id="jsslab-test-redo-constraints-3" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<tableExists tableName="jsslab_test"/>
+		</preConditions>
+		<comment>
+			Drop all constraints, make test_panel_id nullable, add back remaining constraints
+			Done this way because that's what MySQL workbench generated
+			New constraints must have new names to avoid MySQL error 121
+			Step 3 of 3
+		</comment>
+		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test" constraintName="user_who_changed_lab_test2" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="confirm_test_id" baseTableName="jsslab_test" constraintName="test_confirm2" referencedColumnNames="test_id" referencedTableName="jsslab_test"/>
+		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_test" constraintName="user_who_created_lab_test2" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="retired_by" baseTableName="jsslab_test" constraintName="user_who_retired_lab_test2" referencedColumnNames="user_id" referencedTableName="users"/>
+		<addForeignKeyConstraint baseColumnNames="test_concept" baseTableName="jsslab_test" constraintName="test_concept2" referencedColumnNames="concept_id" referencedTableName="concept"/>
+	</changeSet>
+
+	<changeSet id="jsslab-test-panel-test" author="r.friedman">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsslab_test_panel_test"/>
+			</not>
+		</preConditions>
+		<comment>
+			Creating the test panel-test table
+		</comment>
+		<createTable tableName="jsslab_test_panel_test">
+			<column autoIncrement="true" name="test_panel_test_id" type="INT">
+				<constraints nullable="false" primaryKey="true"/>
+			</column>
+			<column defaultValueNumeric="0" name="test_panel_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column defaultValueNumeric="0" name="test_id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="r.friedman" id="foreign_key_constraints-jsslab_test_panel_test">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<foreignKeyConstraintExists foreignKeyName="test_panel_test_panel" />
+			</not>
+		</preConditions>
+		<addForeignKeyConstraint baseColumnNames="test_id" baseTableName="jsslab_test_panel_test" constraintName="test_panel_test_test" referencedColumnNames="test_id" referencedTableName="jsslab_test"/>
+		<addForeignKeyConstraint baseColumnNames="test_panel_id" baseTableName="jsslab_test_panel_test" constraintName="test_panel_test_panel" referencedColumnNames="test_panel_id" referencedTableName="jsslab_test_panel"/>
+	</changeSet>
+
+</databaseChangeLog>

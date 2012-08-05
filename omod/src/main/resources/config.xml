@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+	
+    <!-- Module Properties -->
+	<id>jsslab</id>
+	<name>JSSLab Module</name>
+	<version>1.8.0-SNAPSHOT</version>
+	<package>org.openmrs.module.jsslab</package>
+	<author>jss raxa lab rats</author>
+	<description>
+			Specimen-based lab module for JSS
+	</description>
+	
+	<!-- / Module Properties -->
+	
+	<require_version>1.8.0.00</require_version>
+	<require_modules>
+		<require_module>org.openmrs.module.webservices.rest</require_module> 
+	</require_modules>
+
+    <!-- Module Activator -->
+	<activator>org.openmrs.module.jsslab.jsslabActivator</activator>
+
+	<!-- Global Properties -->
+	<globalProperty>
+		<property>jsslab.homeLab</property>
+		<description>Location id of lab supported by this instance</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.laborder.type</property>
+		<description>The id of the type of order that is associated with LabOrder objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.laborder.idPattern</property>
+		<description>The pattern that is used for IDs of LabOrder objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.labspecimen.idPattern</property>
+		<description>The pattern that is used for IDs of LabSpecimen objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.labreport.idPattern</property>
+		<description>The pattern that is used for IDs of LabReport objects</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.setup</property>
+		<description>Whether the initial setup for this module has been run</description>
+	</globalProperty>
+
+	<globalProperty>
+		<property>jsslab.setup.sampleData</property>
+		<description>Specifies whether sample data for this module has been installed.</description>
+	</globalProperty>
+
+	<!-- Privileges -->
+	<permission>
+		<name>Add LabManagement Records</name>
+		<description>Add LabManagement Records</description>
+	</permission>
+	<permission>
+		<name>Edit LabManagement Records</name>
+		<description>Edit LabManagement Records</description>
+	</permission>
+	<permission>
+		<name>View LabManagement Records</name>
+		<description>View LabManagement Records</description>
+	</permission>
+	<permission>
+		<name>Retire/Void LabManagement Records</name>
+		<description>Retire/Void LabManagement Records</description>
+	</permission>
+	<permission>
+		<name>Purge LabManagement Records</name>
+		<description>Purge LabManagement Records</description>
+	</permission>
+	<permission>
+		<name>Add LabCatalog Records</name>
+		<description>Add LabCatalog Records</description>
+	</permission>
+	<permission>
+		<name>Edit LabCatalog Records</name>
+		<description>Edit LabManagement Records</description>
+	</permission>
+	<permission>
+		<name>View LabCatalog Records</name>
+		<description>View LabCatalog Records</description>
+	</permission>
+	<permission>
+		<name>Retire/Void LabCatalog Records</name>
+		<description>Retire/Void LabCatalog Records</description>
+	</permission>
+	<permission>
+		<name>Purge LabCatalog Records</name>
+		<description>Purge LabCatalog Records</description>
+	</permission>
+	<permission>
+		<name>Add LabOrder Records</name>
+		<description>Add LabOrder Records</description>
+	</permission>
+	<permission>
+		<name>Edit LabOrder Records</name>
+		<description>Edit LabOrder Records</description>
+	</permission>
+	<permission>
+		<name>View LabOrder Records</name>
+		<description>View LabOrder Records</description>
+	</permission>
+	<permission>
+		<name>Retire/Void LabOrder Records</name>
+		<description>Retire/Void LabOrder Records</description>
+	</permission>
+	<permission>
+		<name>Purge LabOrder Records</name>
+		<description>Purge LabOrder Records</description>
+	</permission>
+	<permission>
+		<name>Add LabTesting Records</name>
+		<description>Add LabTesting Records</description>
+	</permission>
+	<permission>
+		<name>Edit LabTesting Records</name>
+		<description>Edit LabTesting Records</description>
+	</permission>
+	<permission>
+		<name>View LabTesting Records</name>
+		<description>View LabTesting Records</description>
+	</permission>
+	<permission>
+		<name>Retire/Void LabTesting Records</name>
+		<description>Retire/Void LabTesting Records</description>
+	</permission>
+	<permission>
+		<name>Purge LabTesting Records</name>
+		<description>Purge LabTesting Records</description>
+	</permission>
+
+	<!-- Add link to admin page --> 
+	<extension>
+		<point>org.openmrs.admin.list</point>
+		<class>org.openmrs.module.jsslab.extension.html.JSSLabAdmExt</class>
+	</extension>    
+  	  	
+  	<!-- Maps hibernate file's , if present -->   	
+   	<mappingFiles>
+LabInstrument.hbm.xml
+LabSupplyItem.hbm.xml
+LabTestPanel.hbm.xml
+LabTest.hbm.xml
+LabPrecondition.hbm.xml
+LabSpecimenTemplate.hbm.xml
+LabTestRange.hbm.xml
+LabReport.hbm.xml
+LabSpecimen.hbm.xml
+LabTestSpecimen.hbm.xml
+LabTestRange.hbm.xml
+LabSpecimen.hbm.xml
+LabTestRun.hbm.xml
+LabTestResult.hbm.xml
+LabOrderSpecimen.hbm.xml
+LabOrder.hbm.xml
+	</mappingFiles>
+
+	
+	<!-- Internationalization -->
+	<!-- All message codes should start with @MODULE_ID@.* -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>es</lang>
+		<file>messages_es.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+	
+</module>
+

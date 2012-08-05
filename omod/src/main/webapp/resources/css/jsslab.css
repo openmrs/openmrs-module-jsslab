@@ -1,0 +1,149 @@
+/*
+	CSS styles for the JSS Lab Module admin pages
+*/
+
+/* 
+ *	=============================================
+ *	JSSLab wide styles
+ *	=============================================
+ */
+
+.selectionTable {
+	border-spacing: 0;
+}
+.selectionTable tbody tr {
+	cursor: pointer;
+}
+.selectionTable tbody tr:nth-child(even) {
+	background-color: white;
+}
+.selectionTable tbody tr:nth-child(odd) {
+	background-color: #E2E4FF;
+}
+.selectionTable tbody tr:hover, .selectionTable tbody tr.selected {
+	background-color: khaki;
+}
+.selectionTable td {
+	padding: 0 5px 0 5px;
+}
+
+/* 
+ *	=============================================
+ *	Settings Screen
+ *	=============================================
+ */
+
+#locationTreePanel {
+	float: left;
+	max-height: 350px;
+	overflow-y: scroll;
+}
+#locationTreePanel fieldset {
+}
+
+#addLocationPanel {
+}
+#editLocationPanel {
+	display:none;
+	margin: 10px 0 0 0;
+}
+
+.locationsLabel {
+	width: 200px;
+}
+
+.error {
+	border: 1px dashed darkRed;
+	background-color: lightPink;
+	padding: 0 2px 0 2px;
+}
+.success {
+	border: 1px dashed darkGreen;
+	background-color: lightGreen;
+	padding: 0 2px 0 2px;
+}
+
+
+#codeListSelection {
+	float:left;
+	margin-right: 20px;
+}
+
+#codeListSelection #radioPanel {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#codeTablePanel {
+	float:left;
+	margin-right: 20px;
+}
+
+#codeEditPanel {
+	float:left;
+	display: none;
+}
+
+#editTextConcept {
+	width: 250px;
+}
+#editCode {
+	width: 250px;
+}
+
+/* 
+ *	=============================================
+ *	Catalog Screen
+ *	=============================================
+ */
+ 
+#investigationEditPanel {
+	display: none;
+	margin: 0 0 0 10px;
+}
+
+#preconditionList {
+	width: 95%;
+}
+
+#testEditPanel {
+	display: none;
+	margin: 0 0 0 10px;
+}
+ 
+/* 
+ *	=============================================
+ *	Specimen Templates Screen
+ *	=============================================
+ */
+ 
+#specimenEditPanel {
+	display: none;
+}
+ 
+ 
+/* 
+ *	=============================================
+ *	Instruments and Supplies Screen
+ *	=============================================
+ */ 
+
+#instrumentsTable {
+	margin: 10px 0 10px 0;
+}
+
+#instrumentsTable td {
+	margin: 2px;
+}
+
+#instrumentEditForm {
+	display: none;
+}
+
+#instrumentAdd {
+	margin: 5px 0 0 0
+}
+
+#supplyItemEditForm {
+	display: none;
+}

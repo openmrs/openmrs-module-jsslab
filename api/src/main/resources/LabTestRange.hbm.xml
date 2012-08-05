@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.openmrs.module.jsslab.db.LabTestRange" table="jsslab_test_range">
+        <id name="testRangeId" type="int">
+            <column name="test_range_id" />
+            <generator class="native" />
+        </id>
+
+		<many-to-one name="test" class="org.openmrs.module.jsslab.db.LabTest" column="test_id" not-null="true" />
+		<property name="sortWeight" type="java.lang.Double" column="sort_weight" not-null="false" />
+		<property name="rangeSex" type="java.lang.String" column="range_sex" length="1" not-null="false" />
+		<property name="rangeAgeMin" type="java.lang.Double" column="range_age_min" not-null="false" />
+		<property name="rangeAgeMax" type="java.lang.Double" column="range_age_max" not-null="false" />
+		<many-to-one name="logicRule" class="org.openmrs.logic.rule.definition.RuleDefinition" column="logic_rule_id" not-null="false" />
+		<property name="rangeNormalLow" type="java.lang.Double" column="range_normal_low" not-null="false" />
+		<property name="rangeNormalHigh" type="java.lang.Double" column="range_normal_high" not-null="false" />
+		<property name="rangeCriticalLow" type="java.lang.Double" column="range_critical_low" not-null="false" />
+		<property name="rangeCriticalHigh" type="java.lang.Double" column="range_critical_high" not-null="false" />
+
+      	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>
+		<property name="dateCreated" type="java.util.Date" column="date_created" not-null="true" length="19" />
+		<many-to-one name="changedBy" class="org.openmrs.User" column="changed_by" />
+		<property name="dateChanged" type="java.util.Date" column="date_changed" />		
+		<property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true" />
+		<many-to-one name="voidedBy" class="org.openmrs.User" column="voided_by" />
+		<property name="dateVoided" type="java.util.Date" column="date_voided" length="19" />
+		<property name="voidReason" type="java.lang.String" column="void_reason" length="255" />
+		<property name="uuid" type="java.lang.String" column="uuid" length="38" unique="true" />
+
+    </class>
+</hibernate-mapping>
