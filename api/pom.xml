@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.openmrs.module</groupId>
 		<artifactId>jsslab</artifactId>
-		<version>1.8.0-SNAPSHOT</version>
+		<version>1.9.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>jsslab-api</artifactId>
@@ -49,6 +49,16 @@
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>webservices.rest-omod</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>webservices.rest19ext-api</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>webservices.rest19ext-omod</artifactId>
 		</dependency>
 
 		<dependency>
