@@ -22,7 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Concept;
-import org.openmrs.User;
+import org.openmrs.Provider;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -55,13 +55,13 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	
 	private LabSupplyItem supplyItem;
 	
-	private User prepTech;
+	private Provider prepTech;
 	
 	private Date prepTime;
 	
 	private String rackPosition;
 	
-	private User testTech;
+	private Provider testTech;
 	
 	private Date testTime;
 	
@@ -220,7 +220,7 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public User getPrepTech() {
+	public Provider getPrepTech() {
 		return prepTech;
 	}
 	
@@ -229,7 +229,7 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public void setPrepTech(User prepTech) {
+	public void setPrepTech(Provider prepTech) {
 		this.prepTech = prepTech;
 	}
 	
@@ -270,7 +270,7 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public User getTestTech() {
+	public Provider getTestTech() {
 		return testTech;
 	}
 	
@@ -279,7 +279,7 @@ public class LabTestSpecimen extends BaseOpenmrsMetadata implements Serializable
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public void setTestTech(User testTech) {
+	public void setTestTech(Provider testTech) {
 		this.testTech = testTech;
 	}
 	

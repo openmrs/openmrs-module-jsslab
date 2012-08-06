@@ -9,7 +9,7 @@
         </id>
 
 		<many-to-one name="instrument" class="org.openmrs.module.jsslab.db.LabInstrument" column="instrument_id" not-null="false" />
-      	<many-to-one name="labTech" class="org.openmrs.User" not-null="false" column="lab_tech_id" />
+      	<many-to-one name="labTech" class="org.openmrs.Provider" not-null="false" column="lab_tech_id" />
 		<property name="runStart" type="java.util.Date" not-null="false" column="run_start" />
 		<property name="runEnd" type="java.util.Date" not-null="false" column="run_end" />
 				

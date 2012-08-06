@@ -31,7 +31,7 @@ UNTIL PROBLEM IS RESOLVED
 		<property name="testCriticalLow" type="java.lang.Double" not-null="false" column="test_critical_low" />
 		<property name="testCriticalHigh" type="java.lang.Double" not-null="false" column="test_critical_high" />
 		<property name="approved" type="java.lang.Boolean" length="1" not-null="false" column="approved" />
-		<many-to-one name="approvedBy" class="org.openmrs.User" column="approved_by" />
+		<many-to-one name="approvedBy" class="org.openmrs.Provider" column="approved_by" />
 		<property name="hidden" type="java.lang.Boolean" not-null="false" column="hidden" />
 				
       	<many-to-one name="creator" class="org.openmrs.User" not-null="true" column="creator"/>

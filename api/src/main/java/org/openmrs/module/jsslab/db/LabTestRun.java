@@ -9,7 +9,7 @@ import java.util.UUID;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsMetadata;
-import org.openmrs.User;
+import org.openmrs.Provider;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -28,7 +28,7 @@ public class LabTestRun extends BaseOpenmrsMetadata implements Serializable {
 	
 	private LabInstrument instrument;
 	
-	private User labTech;
+	private Provider labTech;
 	
 	private Date runStart;
 	
@@ -98,7 +98,7 @@ public class LabTestRun extends BaseOpenmrsMetadata implements Serializable {
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public User getLabTech() {
+	public Provider getLabTech() {
 		return labTech;
 	}
 	
@@ -107,7 +107,7 @@ public class LabTestRun extends BaseOpenmrsMetadata implements Serializable {
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public void setLabTech(User labTech) {
+	public void setLabTech(Provider labTech) {
 		this.labTech = labTech;
 	}
 	

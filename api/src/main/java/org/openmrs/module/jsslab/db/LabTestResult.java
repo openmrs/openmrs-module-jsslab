@@ -22,7 +22,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Concept;
-import org.openmrs.User;
+import org.openmrs.Provider;
 import org.openmrs.api.context.Context;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
@@ -70,7 +70,7 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	
 	private Boolean approved;
 	
-	private User approvedBy;
+	private Provider approvedBy;
 	
 	private Boolean hidden;
 	
@@ -385,7 +385,7 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	 * @return Returns the approvedBy.
 	 */
 	@Attribute(required = false)
-	public User getApprovedBy() {
+	public Provider getApprovedBy() {
 		return approvedBy;
 	}
 	
@@ -393,7 +393,7 @@ public class LabTestResult extends BaseOpenmrsData implements Serializable {
 	 * @param approvedBy.  The approvedBy value to set.
 	 */
 	@Attribute(required = false)
-	public void setApprovedBy(User approvedBy) {
+	public void setApprovedBy(Provider approvedBy) {
 		this.approvedBy = approvedBy;
 	}
 	

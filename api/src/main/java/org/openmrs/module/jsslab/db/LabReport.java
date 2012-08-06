@@ -23,7 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsMetadata;
 import org.openmrs.Concept;
-import org.openmrs.User;
+import org.openmrs.Provider;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -46,7 +46,7 @@ public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 	
 	private Concept reportStatusConcept;
 	
-	private User approvedBy;
+	private Provider approvedBy;
 	
 	private Date approvedDate;
 	
@@ -133,7 +133,7 @@ public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public User getApprovedBy() {
+	public Provider getApprovedBy() {
 		return approvedBy;
 	}
 	
@@ -142,7 +142,7 @@ public class LabReport extends BaseOpenmrsMetadata implements Serializable {
 	 * TODO: change to provider
 	 */
 	@Attribute(required = false)
-	public void setApprovedBy(User approvedBy) {
+	public void setApprovedBy(Provider approvedBy) {
 		this.approvedBy = approvedBy;
 	}
 	

@@ -26,7 +26,7 @@ import org.openmrs.Concept;
 import org.openmrs.Location;
 import org.openmrs.Patient;
 import org.openmrs.Person;
-import org.openmrs.User;
+import org.openmrs.Provider;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -47,7 +47,7 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	
 	private String clientSpecimenId;
 	
-	private User orderedBy;
+	private Provider orderedBy;
 	
 	private Location orderedByFacility;
 	
@@ -154,7 +154,7 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	 * TODO: change to provider
 	 */
 	@Attribute(required = true)
-	public User getOrderedBy() {
+	public Provider getOrderedBy() {
 		return orderedBy;
 	}
 	
@@ -163,7 +163,7 @@ public class LabSpecimen extends BaseOpenmrsMetadata implements Serializable {
 	 * TODO: change to provider
 	 */
 	@Attribute(required = true)
-	public void setOrderedBy(User orderedBy) {
+	public void setOrderedBy(Provider orderedBy) {
 		this.orderedBy = orderedBy;
 	}
 	
