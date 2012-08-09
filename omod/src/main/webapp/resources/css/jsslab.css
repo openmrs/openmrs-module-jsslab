@@ -35,6 +35,8 @@
 
 #locationTreePanel {
 	float: left;
+}
+#locationTree {
 	max-height: 350px;
 	overflow-y: scroll;
 }
@@ -69,7 +71,7 @@
 	margin-right: 20px;
 }
 
-#codeListSelection #radioPanel {
+#codeListSelection #codeLists {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -89,6 +91,9 @@
 }
 #editCode {
 	width: 250px;
+}
+#panelRetireReason {
+	display: none;
 }
 
 /* 

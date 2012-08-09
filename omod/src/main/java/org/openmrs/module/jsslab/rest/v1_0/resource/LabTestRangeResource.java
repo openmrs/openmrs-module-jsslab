@@ -4,7 +4,9 @@ import org.openmrs.annotation.Handler;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.LabCatalogService;
 import org.openmrs.module.jsslab.LabTestingService;
+import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabTestRange;
+import org.openmrs.module.jsslab.db.LabTestResult;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.annotation.Resource;
@@ -128,4 +130,7 @@ public class LabTestRangeResource extends DataDelegatingCrudResource<LabTestRang
 				.search(query, context);
 	}
 
+	public String getDisplayString(LabTestRange labTestRange) {
+		return labTestRange.getDisplayString();
+	}
 }

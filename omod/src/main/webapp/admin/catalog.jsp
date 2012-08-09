@@ -14,15 +14,15 @@
 	<openmrs:require privilege="Manage Global Properties" otherwise="/login.htm" redirect="/module/jsslab/admin/catalog.form" />
 	<openmrs:requireConfiguration propertyList="jsslab.setup" configurationPage="/module/jsslab/admin/setup.form?targetView=module/jsslab/admin/catalog" />
 	
-	<script type="text/javascript">
-		var jsslab = {
-			"i18n" : {
-				"catalog.investigations.investigationTable.empty" : "<spring:message code='jsslab.catalog.investigations.investigationTable.empty' javaScriptEscape='true' />",
-			},
-		};
-	</script>
+	<openmrs:htmlInclude file="/moduleResources/jsslab/js/jsslab.js"/>
 	<openmrs:htmlInclude file="/moduleResources/jsslab/js/catalog.js"/>
 	<openmrs:htmlInclude file="/moduleResources/jsslab/css/jsslab.css"/>
+	
+	<script type="text/javascript">
+		jsslab.i18n.settings = {
+			"catalog.investigations.investigationTable.empty" : "<spring:message code='jsslab.catalog.investigations.investigationTable.empty' javaScriptEscape='true' />"
+		};
+	</script>
 	
 	<!-- ====================== --> 
 	<!-- Investigations --> 

@@ -250,5 +250,7 @@ public class LabTestRange extends BaseOpenmrsData implements Serializable {
 		this.rangeCriticalHigh = rangeCriticalHigh;
 	}
 	
-	
+	public String getDisplayString() {
+		return "TestRange " + this.getId();
+	}
 }

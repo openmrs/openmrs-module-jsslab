@@ -14,13 +14,13 @@
 	
 	<openmrs:require privilege="Manage Global Properties" otherwise="/login.htm" redirect="/module/jsslab/admin/setup.form" />
 	
-	<script type="text/javascript">
-		var jsslab = {
-			"sampleDataInstalled" : ${sampleDataInstalled}
-		};
-	</script>
-	<openmrs:htmlInclude file="/moduleResources/jsslab/css/jsslab.css"/>
+	<openmrs:htmlInclude file="/moduleResources/jsslab/js/jsslab.js"/>
 	<openmrs:htmlInclude file="/moduleResources/jsslab/js/setup.js"/>
+	<openmrs:htmlInclude file="/moduleResources/jsslab/css/jsslab.css"/>
+	
+	<script type="text/javascript">
+		jsslab.sampleDataInstalled = ${sampleDataInstalled};
+	</script>
 	
 	<!-- ====================== --> 
 	<!--   LAB SETUP SECTION    --> 
@@ -45,11 +45,11 @@
 				<td>
 					<label for="globalPropertyObjectSelect_${loop.index}">${gp.description}</label>
 				</td><td>
-					<input type="text" name="${gp.property}" id="globalPropertyObjectSelect_${loop.index}" value="${gp.propertyValue}" />
+					<input type="text" name="${gp.property}" id="globalPropertySelect_${loop.index}" value="${gp.propertyValue}" />
 				</td><td>
-					<input type="submit" class="globalPropertyObjectSubmit" id="globalPropertyObjectSubmit_${loop.index}" value="<spring:message code='jsslab.setup.globalproperties.save' />" />
+					<input type="submit" class="globalPropertySubmit" id="globalPropertySubmit_${loop.index}" value="<spring:message code='jsslab.setup.globalproperties.save' />" />
 				</td><td>
-					<span id="globalPropertyObjectResult_${loop.index}"></span>
+					<span id="globalPropertyResult_${loop.index}"></span>
 				</td>
 			</tr>
 		</c:forEach>

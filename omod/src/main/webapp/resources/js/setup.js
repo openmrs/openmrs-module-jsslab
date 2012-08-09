@@ -14,6 +14,7 @@ jQuery(document).ready(function() {
 				element.attr('class', 'success');
 			} else {
 				element.attr('class', 'error');
+				jQuery('#installSampleData').removeAttr('disabled');
 			}
 			element.text(result.message);
 			element.fadeIn();
@@ -37,7 +38,7 @@ jQuery(document).ready(function() {
 				contentType : "application/x-www-form-urlencoded",
 				data: "property=" + property + "&value=" + value,
 				success : function(result) {
-					jsslab.settingsPage.setSaveResult(resultElement, result);
+					jsslab.setupPage.setSaveResult(resultElement, result);
 				}
 			});
 		},
@@ -47,16 +48,26 @@ jQuery(document).ready(function() {
 
 jQuery(document).ready(function() {
 	
-	
+	jQuery('.globalPropertySubmit').click(function(event) {
+		event.preventDefault();
+		var btnId = jQuery(this).attr('id');
+		var gpId = btnId.substring(btnId.lastIndexOf("_")+1);
+		var textFieldSelector = '#globalPropertySelect_'+gpId;
+		
+		var gpName = jQuery(textFieldSelector).attr('name');
+		var gpValue = jQuery(textFieldSelector).val();
+		
+		jsslab.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyResult_'+gpId) );
+	});
 	
 	jQuery('#installSampleData').click(function(event) {
 		event.preventDefault();
+		jQuery('#installSampleData').attr('disabled', 'disabled');
 		jQuery.ajax({
 			"url" : "setup/installSampleData.htm",
 			"type" : "GET",
 			"success" : function(result) {
 				jsslab.setupPage.setSaveResult(jQuery('#installationResult'), result);
-				jQuery('#installSampleData').attr('disabled', 'disabled');
 			},
 		});
 	});

@@ -35,10 +35,7 @@ public class LabOrder extends Order {
 	
 	private static final Log log = LogFactory.getLog(LabOrder.class);
 
-//	private static final String LAB_ORDER_TYPE_PROPERTY_NAME = "anNzbGFiLkxhYk9yZGVy";   
-	private static final String LAB_ORDER_TYPE_PROPERTY_NAME = "jsslab.LabOrder";   
-
-	private static final String LAB_ORDER_TYPE_PROPERTY_DESCRIPTION = "Order type for lab orders";
+	private static final String LAB_ORDER_TYPE_PROPERTY_NAME = "jsslab.object.orderType.labOrder";   
 	
 	public static final long serialVersionUID = 4334343L;
 	
@@ -62,7 +59,7 @@ public class LabOrder extends Order {
 		GlobalProperty gpx = null;
 		List<GlobalProperty> gpList = Context.getAdministrationService().getAllGlobalProperties();
 		for (GlobalProperty g : gpList)
-			if (g.getDescription().equals(LAB_ORDER_TYPE_PROPERTY_DESCRIPTION)) {
+			if (LAB_ORDER_TYPE_PROPERTY_NAME.equals(g.getProperty())) {
 				gpx = g;
 				break;
 			}

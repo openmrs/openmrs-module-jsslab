@@ -1,12 +1,18 @@
 package org.openmrs.module.jsslab.rest.v1_0.controller;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Concept;
+import org.openmrs.ConceptSet;
 import org.openmrs.GlobalProperty;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.webservices.rest.SimpleObject;
@@ -54,15 +60,70 @@ public class JsslabController {
 	public SimpleObject getConceptsBySet(HttpServletRequest request,
 			@RequestParam(value = "setUuid", required = true) String uuid) throws ResponseException {
 		
-		Concept memberOf = Context.getConceptService().getConceptByUuid(uuid);
-		List<Concept> setMembers = Context.getConceptService().getConceptsByConceptSet(memberOf);
+		Concept conceptSet = Context.getConceptService().getConceptByUuid(uuid);
+		List<Concept> setMembers = conceptSet.getSetMembers();
 		RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
 		PageableResult result = new NeedsPaging<Concept>(setMembers, context);
 		return result.toSimpleObject();
 	}
+
+    @RequestMapping(method = RequestMethod.GET, params = "addConceptToConceptSet")
+    @ResponseBody
+    public String addConceptToConceptSet(HttpServletRequest request,
+		    		@RequestParam(value = "setUuid", required = true) String setUuid,
+		    		@RequestParam(value = "conceptUuid", required = true) String conceptUuid
+    		) throws ResponseException {
+    	
+    	Concept conceptSet = Context.getConceptService().getConceptByUuid(setUuid);
+    	conceptSet.addSetMember( 
+			Context.getConceptService().getConceptByUuid(conceptUuid)
+		);
+    	Context.getConceptService().saveConcept(conceptSet);
+    	return null;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, params = "substituteConceptSet")
+    @ResponseBody
+    public String substituteConceptSet(HttpServletRequest request,
+		    		@RequestParam(value = "oldUuid", required = true) String oldUuid,
+		    		@RequestParam(value = "newUuid", required = true) String newUuid
+			) throws ResponseException {
+    	
+    	String gpConceptSets = Context.getAdministrationService().getGlobalProperty("jsslab.object.conceptSet.allConcepts");
+    	
+    	
+    	if (gpConceptSets != null && !gpConceptSets.isEmpty()) {
+			Concept rootSet = Context.getConceptService().getConceptByUuid(gpConceptSets);
+
+			Collection<ConceptSet> conceptSets = rootSet.getConceptSets();
+			Set<ConceptSet> newConceptSets = new HashSet<ConceptSet>();
+			
+			for (ConceptSet cs : conceptSets) {
+				String conceptUuid = cs.getConcept().getUuid();
+				if (!conceptUuid.equals(oldUuid)) {
+					newConceptSets.add(cs);
+				}
+			}
+			// Create a ConceptSet of the Concept to be added
+			Concept newConcept = Context.getConceptService().getConceptByUuid(newUuid);
+			ConceptSet cs = new ConceptSet(newConcept, 0.0);
+			cs.setConceptSet(rootSet);
+
+			newConceptSets.add(cs);
+			
+			conceptSets.clear();
+			conceptSets.addAll(newConceptSets);
+			
+			Context.getConceptService().saveConcept(rootSet);
+		}
+    	return null;
+    }
+
+    
     
     /**
-     * Allows saving a GlobalProperty via REST 
+     * Allows saving a GlobalProperty via REST
+     * 
      * @param request
      * @param property The name of the GlobalProperty to be saved
      * @param value The value of the GlobalProperty to be saved

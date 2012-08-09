@@ -19,8 +19,9 @@
 	<openmrs:requireConfiguration propertyList="jsslab.setup" configurationPage="/module/jsslab/admin/setup.form?targetView=module/jsslab/admin/instruments" />
 	
 	<openmrs:htmlInclude file="/scripts/calendar/calendar.js" />
-	<openmrs:htmlInclude file="/moduleResources/jsslab/css/jsslab.css"/>
+	<openmrs:htmlInclude file="/moduleResources/jsslab/js/jsslab.js"/>
 	<openmrs:htmlInclude file="/moduleResources/jsslab/js/instruments.js"/>
+	<openmrs:htmlInclude file="/moduleResources/jsslab/css/jsslab.css"/>
 	
 	<!-- ====================== --> 
 	<!-- LAB INSTRUMENT SECTION --> 
