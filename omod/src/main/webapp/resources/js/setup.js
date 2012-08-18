@@ -3,6 +3,52 @@ editing = true;
 jQuery(document).ready(function() {
 	jsslab.setupPage = {
 		
+		autocomplete : {
+			orderTypes : [],
+			conceptSets : [],
+		},
+		
+		initAutoCompletes : function() {
+			var url = openmrsContextPath + "/ws/rest/v1/jsslab?getAllOrderTypes"
+			jQuery.ajax({
+				"url" : url,
+				"success" : function(data) {
+					var orderTypes = data.results;
+					for (var i = 0; i < orderTypes.length; i++) {
+						jsslab.setupPage.autocomplete.orderTypes[i] = {
+								label: orderTypes[i].display,
+								uuid: orderTypes[i].uuid
+						}
+					}
+					jQuery('#globalPropertySelect_orderType').autocomplete({
+						source : jsslab.setupPage.autocomplete.orderTypes,
+						select : function(event, ui) { 
+							jQuery('#globalPropertyUuid_orderType').val(ui.item.uuid);
+						}
+					});
+				}
+			});
+			url = openmrsContextPath + "/ws/rest/v1/jsslab?getAllConceptSets"
+			jQuery.ajax({
+				"url" : url,
+				"success" : function(data) {
+					var concepts = data.results;
+					for (var i = 0; i < concepts.length; i++) {
+						jsslab.setupPage.autocomplete.conceptSets[i] = {
+								label: concepts[i].display,
+								uuid: concepts[i].uuid
+						}
+					}
+					jQuery('#globalPropertySelect_conceptSets').autocomplete({
+						source : jsslab.setupPage.autocomplete.conceptSets,
+						select : function(event, ui) { 
+							jQuery('globalPropertyUuid_conceptSets').val(ui.item.uuid);
+						}
+					});
+				}
+			});
+		},
+		
 		/**
 		 * Displays feedback information on whether a save operation has completed successfully.
 		 * 
@@ -21,43 +67,17 @@ jQuery(document).ready(function() {
 			setTimeout( function(){ element.fadeOut(); }, 2000 );
 		},
 		
-		/**
-		 * Saves a global property.
-		 * 
-		 * A result is be passed to the callback function containing a result code ("success" or other) and
-		 * a message explaining the code.
-		 * 
-		 * @param property
-		 * @param value
-		 * @param resultElement
-		 */
-		saveGlobalProperty : function(property, value, resultElement) {
-			jQuery.ajax({
-				url : openmrsContextPath + "/ws/rest/v1/jsslab?saveGlobalProperty",
-				type : "POST",
-				contentType : "application/x-www-form-urlencoded",
-				data: "property=" + property + "&value=" + value,
-				success : function(result) {
-					jsslab.setupPage.setSaveResult(resultElement, result);
-				}
-			});
-		},
-		
 	};
-});
-
-jQuery(document).ready(function() {
 	
 	jQuery('.globalPropertySubmit').click(function(event) {
 		event.preventDefault();
 		var btnId = jQuery(this).attr('id');
 		var gpId = btnId.substring(btnId.lastIndexOf("_")+1);
-		var textFieldSelector = '#globalPropertySelect_'+gpId;
 		
-		var gpName = jQuery(textFieldSelector).attr('name');
-		var gpValue = jQuery(textFieldSelector).val();
+		var gpName  = jQuery('#globalPropertyName_'+gpId).val();
+		var gpValue = jQuery('#globalPropertyUuid_'+gpId).val();
 		
-		jsslab.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyResult_'+gpId) );
+		jsslab.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyResult_'+gpId), jsslab.setupPage.setSaveResult );
 	});
 	
 	jQuery('#installSampleData').click(function(event) {
@@ -83,5 +103,6 @@ jQuery(document).ready(function() {
 		});
 	});
 	
+	jsslab.setupPage.initAutoCompletes();
 });
 

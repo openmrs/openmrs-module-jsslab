@@ -16,6 +16,7 @@ package org.openmrs.module.jsslab.db;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.openmrs.Location;
 import org.openmrs.api.APIException;
 import org.openmrs.module.jsslab.LabManagementService;
 
@@ -78,6 +79,15 @@ public interface LabTestPanelDAO {
 	 * @see LabManagementService#getLabTestPanels(String, Boolean, Integer, Integer)
 	 */
 	public List<LabTestPanel> getLabTestPanels(String nameFragment, Boolean includeRetired, Integer start, Integer length);
+
+	/**
+	 * Returns a specified number of labTestPanels starting with a given string from the specified index
+	 * 
+	 * Returns only those TestPanels that belong to the given Location
+	 * 
+	 * @see LabManagementService#getLabTestPanels(Location, Boolean, Integer, Integer)
+	 */
+	public List<LabTestPanel> getLabTestPanelsByLocation(Location location, Boolean includeRetired, Integer start, Integer length);
 	
 	/**
 	 * Completely remove the labTestPanel from the database.

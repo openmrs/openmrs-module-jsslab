@@ -2,6 +2,7 @@ package org.openmrs.module.jsslab;
 
 import java.util.List;
 
+import org.openmrs.Location;
 import org.openmrs.annotation.Authorized;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
@@ -77,18 +78,27 @@ public interface LabCatalogService extends OpenmrsService {
 		 * @should return LabTestPanel by String nameFragment, Boolean includeVoided, Integer start, Integer length
 		 */
 		public List<LabTestPanel> getLabTestPanels(String nameFragment, Boolean includeVoided, Integer start, Integer length);
+
+		/**
+		 * Returns a specified number of labTestPanels starting with a given string from the specified index
+		 * 
+		 * Will return only those that belong to the given Location
+		 * 
+		 * @should return LabTestPanel by Location location, Boolean includeVoided, Integer start, Integer length
+		 */
+		public List<LabTestPanel> getLabTestPanelsByLocation(Location location, Boolean includeVoided, Integer start, Integer length);
 		
 		/**
 		 * Get count of LabTestPanel, only showing ones not marked as retired if includeVoided is true
 		 * 
-		 * @param includeVoided true/false whether to include retired LabTestPanels in this list
+		 * @param includeRetired true/false whether to include retired LabTestPanels in this list
 		 * @return LabTestPanels list
 		 * @throws APIException
 		 * @should get number of LabTestPanel
 		 */
 		@Transactional(readOnly = true)
 		@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
-		public Integer getCountOfLabTestPanels(Boolean includeVoided) throws APIException;
+		public Integer getCountOfLabTestPanels(Boolean includeRetired) throws APIException;
 		
 	
 	/**
@@ -166,7 +176,7 @@ public interface LabCatalogService extends OpenmrsService {
 	 * @param includeVoided true/false whether to include retired LabTestPanels in this list
 	 * @return LabTest list
 	 * @throws APIException
-	 * @should get number of LabTest
+	 * @should get number of LabTest by voided
 	 */
 	@Transactional(readOnly = true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
@@ -330,6 +340,6 @@ public interface LabCatalogService extends OpenmrsService {
 	 */
 	@Transactional(readOnly=true)
 	@Authorized(PrivilegeConstants.VIEW_LAB_CAT)
-	public Integer getCountOfLabSpecimenTemplate(String search,Boolean ifVoided)throws APIException;
+	public Long getCountOfLabSpecimenTemplate(String search,Boolean ifVoided)throws APIException;
 	
 }

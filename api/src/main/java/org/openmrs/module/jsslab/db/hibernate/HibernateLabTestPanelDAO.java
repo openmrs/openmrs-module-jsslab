@@ -23,6 +23,7 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.openmrs.Location;
 import org.openmrs.api.APIException;
 import org.openmrs.module.jsslab.db.LabTest;
 import org.openmrs.module.jsslab.db.LabTestPanel;
@@ -167,6 +168,30 @@ public class HibernateLabTestPanelDAO implements LabTestPanelDAO {
 		}
 		return list;
 	}
+
+	/**
+	 * @see LabTestPanelDAO#getLabTestPanels(Location, Boolean, Integer, Integer)
+	 */
+	@SuppressWarnings("unchecked")
+	public List<LabTestPanel> getLabTestPanelsByLocation(Location location, Boolean includeRetired, Integer start, Integer length) {
+		Criteria criteria = sessionFactory.getCurrentSession()
+				.createCriteria(LabTestPanel.class)
+				.add(Restrictions.eq("labLocation", location));
+		
+		if (!includeRetired)
+			criteria.add(Restrictions.ne("retired", true));
+		
+		criteria.addOrder(Order.asc("testPanelId"));
+		
+		if (start != null)
+			criteria.setFirstResult(start);
+		if (length != null && length > 0)
+			criteria.setMaxResults(length);
+		
+		return criteria.list();
+	}
+	
+	
 
 
 // TODO: replace stubs below with real methods in LabTestingService

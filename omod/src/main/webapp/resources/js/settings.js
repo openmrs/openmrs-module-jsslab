@@ -15,7 +15,101 @@ jsslab.settingsPage = {
 	concepts : null,
 	selectedConceptIndex : -1,
 
+	autocomplete : {
+		orderTypes : [],
+		conceptSets : [],
+		locations : [],
+		concepts : [],
+	},
 	
+	initAutoCompletes : function() {
+		var url = openmrsContextPath + "/ws/rest/v1/jsslab?getAllOrderTypes"
+		jQuery.ajax({
+			"url" : url,
+			"success" : function(data) {
+				var orderTypes = data.results;
+				for (var i = 0; i < orderTypes.length; i++) {
+					jsslab.settingsPage.autocomplete.orderTypes[i] = {
+							label: orderTypes[i].display,
+							uuid: orderTypes[i].uuid
+					}
+				}
+				jQuery('#gpLabOrderTypeSelect').autocomplete({
+					source : jsslab.settingsPage.autocomplete.orderTypes,
+					select : function(event, ui) { 
+						jQuery('#gpLabOrderTypeSelectVal').val(ui.item.uuid);
+					}
+				});
+			}
+		});
+		url = openmrsContextPath + "/ws/rest/v1/jsslab?getAllConceptSets"
+		jQuery.ajax({
+			"url" : url,
+			"success" : function(data) {
+				var concepts = data.results;
+				for (var i = 0; i < concepts.length; i++) {
+					jsslab.settingsPage.autocomplete.conceptSets[i] = {
+							label: concepts[i].display,
+							uuid: concepts[i].uuid
+					}
+				}
+				jQuery('#gpAllConceptsSelect').autocomplete({
+					source : jsslab.settingsPage.autocomplete.conceptSets,
+					select : function(event, ui) { 
+						jQuery('#gpAllConceptsSelectVal').val(ui.item.uuid);
+					}
+				});
+				jQuery('#editSubstituteConceptSet').autocomplete({
+					source : jsslab.settingsPage.autocomplete.conceptSets,
+					select : function(event, ui) { 
+						jQuery('#editSubstituteConceptSetVal').val(ui.item.uuid);
+					}
+				});
+			}
+		});
+		url = openmrsContextPath + "/ws/rest/v1/location"
+		jQuery.ajax({
+			"url" : url,
+			"success" : function(data) {
+				var locations = data.results;
+				for (var i = 0; i < locations.length; i++) {
+					jsslab.settingsPage.autocomplete.locations[i] = {
+							label: locations[i].display,
+							uuid: locations[i].uuid
+					}
+				}
+				jQuery('#gpHomeLabSelect').autocomplete({
+					source : jsslab.settingsPage.autocomplete.locations,
+					select : function(event, ui) { 
+						jQuery('#gpHomeLabSelectVal').val(ui.item.uuid);
+					}
+				});
+			}
+		});
+		
+		url = openmrsContextPath + "/ws/rest/v1/concept"
+		jQuery('#gpInternalElectronicSelect').autocomplete({
+			source : function(request, response) {
+				jQuery.ajax({
+					"url" : url + "?q=" + request.term,
+					"success" : function(data) {
+						var concepts = data.results;
+						for (var i = 0; i < concepts.length; i++) {
+							jsslab.settingsPage.autocomplete.concepts[i] = {
+									label: concepts[i].display,
+									uuid: concepts[i].uuid
+							}
+						}
+						response(jsslab.settingsPage.autocomplete.concepts);
+					}
+				});
+			},
+			select : function(event, ui) { 
+				jQuery('#gpInternalElectronicSelectVal').val(ui.item.uuid);
+			}
+		});
+	},
+
 	// =================================
 	// methods for lab selection section
 	// =================================
@@ -69,7 +163,7 @@ jsslab.settingsPage = {
 	},
 	
 	saveLocation : function() {
-		var location = jsslab.settingsPage.location;
+		var location = {};
 		
 		//TODO validate
 		location.name = jQuery('#editLocationName').val();
@@ -80,33 +174,44 @@ jsslab.settingsPage = {
 		
 		if (isManaged != jsslab.settingsPage.isManagedLocation) {
 			if (isManaged) {
-				DWRAdministrationService.setGlobalProperty("jsslab.object.location.homeLab", location.uuid); 
+				jsslab.saveGlobalProperty("jsslab.object.location.homeLab", jsslab.settingsPage.location.uuid, null, null);
 			} else {
-				DWRAdministrationService.setGlobalProperty("jsslab.object.location.homeLab", ""); 
+				jsslab.saveGlobalProperty("jsslab.object.location.homeLab", "", null, null);
 			}
 		}
 		
 		if (isReferral != jsslab.settingsPage.isReferralLocation) {
+			var tags = jsslab.settingsPage.location.tags;
+			location.tags = [];
+			if (tags != null) {
+				for (var i = 0; i < tags.length; i++) {
+					location.tags[i] = tags[i].uuid;
+				}
+			}
+			
 			if (isReferral) {
-				location.tags[tags.length] = {
-					"uuid" : jsslab.settingsPage.labLocationTag.uuid
-				};
+				location.tags[location.tags.length] = jsslab.settingsPage.labLocationTag.uuid;
 			} else {
+				//TODO find a mechanism to remove a locationTag from the location
 				for (var i = 0; i < location.tags.length; i++) {
-					if (labLocationTag.uuid == location.tags[i].uuid) {
+					if (jsslab.settingsPage.labLocationTag.uuid == location.tags[i].uuid) {
 						locations.tags.splice(i, 1);
 					}
 				}
 			}
+			
 		}
 		
-		locUuid = location.uuid;
+		
+		var locUuid = jsslab.settingsPage.location.uuid;
+		var url = openmrsContextPath + "/ws/rest/v1/location/";
+		if (jsslab.isValidUuid(locUuid)) url += "/" + locUuid;
 		
 		jQuery.ajax({
-			"url" : openmrsContextPath + "/ws/rest/v1/location/" + locUuid,
+			"url" : url,
 			"type" : "POST",
 			"contentType" : "application/json",
-			"data" : JSON.stringify( jsslab.settingsPage.getSaveableLocation(location) ),
+			"data" : JSON.stringify( location ),
 			"success" : function(result) {
 				//TODO update tree
 				//TODO display errors
@@ -114,18 +219,18 @@ jsslab.settingsPage = {
 		});
 	},
 	
-	getSaveableLocation : function(location) {
-		location.display = undefined;
-		location.uuid = undefined;
-		
-		var tags = []; 
-		for (var i = 0; i < location.tags.length; i++) {
-			tags[i] = location.tags[i].uuid;
-		}
-		location.tags = tags;
-		
-		return location;
-	},
+//	getSaveableLocation : function(location) {
+//		location.display = undefined;
+//		location.uuid = undefined;
+//		
+//		var tags = []; 
+//		for (var i = 0; i < location.tags.length; i++) {
+//			tags[i] = location.tags[i].uuid;
+//		}
+//		location.tags = tags;
+//		
+//		return location;
+//	},
 	
 	
 	
@@ -169,7 +274,7 @@ jsslab.settingsPage = {
 	},
 	
 	reloadCodeList : function() {
-		DWRAdministrationService.getGlobalProperty("jsslab.object.conceptSet.allConcepts", function(rootConceptUuid) {
+		DWRAdministrationService.getGlobalProperty("jsslab.object.concept.allConcepts", function(rootConceptUuid) {
 			jQuery.ajax({
 				"url" : openmrsContextPath + "/ws/rest/v1/jsslab?getConceptsByConceptSet",
 				"data" : "setUuid=" + rootConceptUuid,
@@ -251,7 +356,7 @@ jsslab.settingsPage = {
 			
 			//if the clicked table row is not the newly created one
 			var uuid = jsslab.settingsPage.getSelectedConceptUuid();
-			if (jsslab.settingsPage.isValidUuid(uuid)) {
+			if (jsslab.isValidUuid(uuid)) {
 				jsslab.settingsPage.removeUnsavedCodeTableRow();
 			}
 		});
@@ -293,8 +398,8 @@ jsslab.settingsPage = {
 		var concept = jsslab.settingsPage.concepts[idx];
 		concept.name = jQuery('#editTextConcept').val();
 		
-		jsslab.settingsPage.setConceptName(concept, jQuery('#editTextConcept').val(), "FULLY_SPECIFIED");
-		jsslab.settingsPage.setConceptName(concept, jQuery('#editCode').val(), "SHORT");
+		jsslab.setConceptName(concept, jQuery('#editTextConcept').val(), "FULLY_SPECIFIED");
+		jsslab.setConceptName(concept, jQuery('#editCode').val(), "SHORT");
 		
 		return concept;
 	},
@@ -330,112 +435,13 @@ jsslab.settingsPage = {
 		var lastRow = jQuery('#codeTable tbody tr:last');
 		var lastRowId = lastRow.attr('id');
 		var uuid = lastRowId.substring(lastRowId.lastIndexOf("_"+1));
-		if ( !jsslab.settingsPage.isValidUuid(uuid) ) {
+		if ( !jsslab.isValidUuid(uuid) ) {
 			lastRow.remove();
 			jQuery('#buttonAddNewCode').removeAttr('disabled');
 		}
 	},
 	
-	/**
-	 * Saves a Concept object
-	 * 
-	 * @param concept The Concept to be saved
-	 * @param uuid The UUID of the Concept if it is being updated or null if it is being added
-	 */
-	saveConcept : function(concept, uuid) {
-		var baseUrl = openmrsContextPath + "/ws/rest/v1/concept";
-		
-		// update existing concept
-		if (jsslab.settingsPage.isValidUuid(uuid)) {
-			// if the concept already exists save/update its names
-			baseUrl += "/" + uuid;
-			
-			var fullname = jsslab.settingsPage.getConceptName(concept, "FULLY_SPECIFIED");
-			var shortname = jsslab.settingsPage.getConceptName(concept, "SHORT");
-			
-			jsslab.settingsPage.saveConceptName(
-					uuid, 
-					fullname, 
-					fullname.uuid,
-					
-					//wait for the first call to return before starting the next, to avoid concurrency problems
-					jsslab.settingsPage.saveConceptName(
-							uuid,
-							shortname,
-							shortname.uuid,
-							null
-					)
-			);
-			jsslab.settingsPage.setConceptRetired(concept, jQuery('#checkboxRetireConcept').attr('checked'));
-		
-		// save new concept
-		} else {
-			// first save the concept and then its names
-			jQuery.ajax({
-				"url" : baseUrl,
-				"type" : "POST",
-				"contentType" : "application/json",
-				"data" : JSON.stringify(jsslab.settingsPage.getSaveableConcept(concept)),
-				"success" : function(savedConcept) {
-					var conceptName = jsslab.settingsPage.getConceptName(concept, "SHORT");
-					
-					jsslab.settingsPage.saveConceptName(savedConcept.uuid, conceptName, conceptName.uuid,
-							jsslab.settingsPage.updateCodeTable(jsslab.settingsPage.concepts)
-					);
-					
-					jsslab.settingsPage.addConceptToConceptSet(savedConcept);
-					jsslab.settingsPage.setConceptRetired(savedConcept, jQuery('#checkboxRetireConcept').attr('checked'));
-					
-				}
-			});
-		}
-
-	},
 	
-	addConceptToConceptSet : function(concept) {
-		jQuery.ajax({
-			url : openmrsContextPath + "/ws/rest/v1/jsslab?addConceptToConceptSet",
-			type : "POST",
-			contentType : "application/x-www-form-urlencoded",
-			data: "conceptUuid=" + concept.uuid + "&setUuid=" + jsslab.settingsPage.getSelectedConceptSetUuid(),
-		});
-	},
-	
-	setConceptRetired : function(concept, retired) {
-		if (retired) {
-			var retireReason = jQuery('#editConceptRetireReason').val();
-			var url = openmrsContextPath + "/ws/rest/v1/concept/" + concept.uuid + "?reason="+retireReason;
-			
-			jQuery.ajax({
-				"url" : url,
-				"type" : "DELETE",
-				"success" : function() {
-					jsslab.settingsPage.updateCodeTable(jsslab.settingsPage.concepts);
-				}
-			});
-		}
-	},
-	
-	/**
-	 * Saves a ConceptName object
-	 * 
-	 * @param conceptUuid The UUID of the Concept object to which the ConceptName belongs 
-	 * @param conceptName The ConceptName to be saved
-	 * @param conceptNameUuid The UUID of the ConceptName if is being updated or null if it is being added
-	 */
-	saveConceptName : function(conceptUuid, conceptName, conceptNameUuid, onSuccess) {
-		var url = openmrsContextPath + "/ws/rest/v1/concept/" + conceptUuid + "/name";
-//		if (jsslab.settingsPage.isValidUuid(conceptNameUuid)) {
-//			url += "/" + conceptNameUuid;
-//		}
-		jQuery.ajax({
-			"url" : url,
-			"type" : "POST",
-			"contentType" : "application/json",
-			"data" : JSON.stringify(jsslab.settingsPage.getSaveableConceptName(conceptName)),
-			"success" : onSuccess
-		});
-	},
 	
 	// ======================
 	// util methods
@@ -459,83 +465,11 @@ jsslab.settingsPage = {
 		return rowId.substring(rowId.lastIndexOf("_")+1);
 	},
 	
-	/**
-	 * Checks whether the given UUID is valid, based on the length of the string.
-	 * 
-	 * @param uuid The string that is to be checked
-	 * @returns {Boolean}
-	 */
-	isValidUuid : function(uuid) {
-		return uuid != undefined && uuid != null && uuid.length >= 36;
-	},
-	
-	/**
-	 * Retrieves the Code that is assigned to the given Concept object, if there is one, otherwise returns an empty String.
-	 * 
-	 * @param concept The Concept for which the Code is to be retrieved
-	 * @returns The Code assigned to the given Concept or an empty String if none is assigned
-	 */
-	getConceptName : function(concept, type) {
-		var name = null;
-		for (var i = 0; i < concept.names.length; i++) {
-			if (concept.names[i].conceptNameType == type) {
-				name = concept.names[i];
-				break;
-			}
-		}
-		return name;
-	},
-	
-	setConceptName : function(concept, name, type) {
-		var nameType = false;
-		for (var i = 0; i < concept.names.length; i++) {
-			if (concept.names[i].conceptNameType == type) {
-				concept.names[i].name = name;
-				nameType = true;
-				break;
-			}
-		}
-		if (!nameType) {
-			concept.names[concept.names.length] = {
-					"conceptNameType" : type,
-					"name" : name,
-					//TODO replace with user/system locale
-					"locale" : "EN"
-			}
-		}
-	},
-	
-	/**
-	 * Creates a Concept object from an existing one, removing any transiert fields that cannot be saved (e.g. display)
-	 * 
-	 * @param concept The Concept to be prepared for saving
-	 * @returns a Concept object that can be saved via REST
-	 */
-	getSaveableConcept : function(concept) {
-		concept.display = undefined;
-		concept.name = undefined;
-		concept.uuid = undefined;
-		concept.conceptClass = jsslab.constants.conceptClasses["misc"];
-		concept.datatype = jsslab.constants.datatypes["na"];
-		return concept;
-	},
-	
-	/**
-	 * Creates a ConceptName object from an existing one removing any transient fields that cannot be saved (e.g. display)
-	 * 
-	 * @param conceptName The ConceptName to be prepared for saving
-	 * @returns a ConceptName object that can be saved via REST
-	 */
-	getSaveableConceptName : function(conceptName) {
-		return {
-			"name" : conceptName.name,
-			"conceptNameType" : conceptName.conceptNameType,
-			"locale" : conceptName.locale,
-		};
-	},
 };
 
 jQuery(document).ready(function() {
+	
+	jsslab.settingsPage.initAutoCompletes();
 	
 	// ======================
 	// locations
@@ -587,20 +521,20 @@ jQuery(document).ready(function() {
 		var gpName = jQuery(textFieldSelector).attr('name');
 		var gpValue = jQuery(textFieldSelector).val();
 		
-		jsslab.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyStringResult_'+gpId) );
+		jsslab.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyStringResult_'+gpId), jsslab.settingsPage.setSaveResult );
 	});
-	jQuery('.globalPropertyObjectSubmit').click(function(event) {
+	jQuery('.gpObjectSubmit').click(function(event) {
 		event.preventDefault();
 		var btnId = jQuery(this).attr('id');
-		var gpId = btnId.substring(btnId.lastIndexOf("_")+1);
-		var textFieldSelector = '#globalPropertyObjectSelect_'+gpId;
+		var gpId = btnId.substring(0, btnId.indexOf("Submit"));
+		var textFieldSelector = '#' + gpId + 'SelectVal';
+		var resultSelector = '#' + gpId + 'Result';
 		
 		var gpName = jQuery(textFieldSelector).attr('name');
 		var gpValue = jQuery(textFieldSelector).val();
 		
-		jsslab.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyObjectResult_'+gpId) );
+		jsslab.saveGlobalProperty( gpName, gpValue, jQuery(resultSelector), jsslab.settingsPage.setSaveResult );
 	});
-	
 	
 	// ======================
 	// code lists
@@ -609,10 +543,10 @@ jQuery(document).ready(function() {
 	jQuery('.radioSpecimenTypeCode').click(jsslab.settingsPage.codeListSelectionHandler);
 	
 	jQuery('#btnSubstituteConceptSet').click(function(event) {
-		var newUuid = jQuery('#editSubstituteConceptSet').val();
+		var newUuid = jQuery('#editSubstituteConceptSetVal').val();
 		var oldUuid = jsslab.settingsPage.getSelectedConceptSetUuid();
 		
-		if (jsslab.settingsPage.isValidUuid(newUuid)) {
+		if (jsslab.isValidUuid(newUuid)) {
 			jQuery.ajax({
 				"url" : openmrsContextPath + "/ws/rest/v1/jsslab?substituteConceptSet",
 				"type" : "POST",
@@ -636,7 +570,9 @@ jQuery(document).ready(function() {
 		var concept = jsslab.settingsPage.getConceptFromEditPanel();
 		var uuid = jsslab.settingsPage.getSelectedConceptUuid();
 		
-		jsslab.settingsPage.saveConcept(concept, uuid);
+		jsslab.saveConcept(concept, uuid, jQuery('#checkboxRetireConcept').attr('checked'), 
+				jsslab.settingsPage.updateCodeTable(jsslab.settingsPage.concepts)
+		);
 		
 		jQuery('#codeEditPanel').fadeOut();
 		jQuery('#buttonAddNewCode').removeAttr('disabled');

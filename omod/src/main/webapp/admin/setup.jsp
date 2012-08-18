@@ -14,6 +14,7 @@
 	
 	<openmrs:require privilege="Manage Global Properties" otherwise="/login.htm" redirect="/module/jsslab/admin/setup.form" />
 	
+	<openmrs:htmlInclude file="/dwr/interface/DWRAdministrationService.js" />
 	<openmrs:htmlInclude file="/moduleResources/jsslab/js/jsslab.js"/>
 	<openmrs:htmlInclude file="/moduleResources/jsslab/js/setup.js"/>
 	<openmrs:htmlInclude file="/moduleResources/jsslab/css/jsslab.css"/>
@@ -40,7 +41,7 @@
 	<h2><spring:message code="jsslab.setup.globalproperties.title" /></h2>
 
 	<table>
-		<c:forEach var="gp" items="${globalPropertiesObject}" varStatus="loop">
+		<%-- <c:forEach var="gp" items="${globalPropertiesObject}" varStatus="loop">
 			<tr>
 				<td>
 					<label for="globalPropertyObjectSelect_${loop.index}">${gp.description}</label>
@@ -53,6 +54,33 @@
 				</td>
 			</tr>
 		</c:forEach>
+		--%>
+		<tr>
+			<td>
+				<label id="globalPropertyObjectLabel_orderType" for="globalPropertyObjectSelect_orderType">${gpOrderType.description}</label>
+			</td><td>
+				<input type="text" name="jsslab.object.orderType.labOrder" id="globalPropertySelect_orderType" value="${gpOrderType.propertyValue}" />
+				<input type="hidden" id="globalPropertyName_orderType" value="${gpOrderType.property}" />
+				<input type="hidden" id="globalPropertyUuid_orderType" value="${gpOrderType.propertyValue}" />
+			</td><td>
+				<input type="submit" class="globalPropertySubmit" id="globalPropertySubmit_orderType" value="<spring:message code='jsslab.setup.globalproperties.save' />" />
+			</td><td>
+				<span id="globalPropertyResult_orderType"></span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label id="globalPropertyObjectLabel_conceptSets" for="globalPropertyObjectSelect_conceptSets">${gpConceptSets.description}</label>
+			</td><td>
+				<input type="text" name="jsslab.object.concept.allConcepts" id="globalPropertySelect_conceptSets" value="${gpConceptSets.propertyValue}" />
+				<input type="hidden" id="globalPropertyName_conceptSets" value="${gpConceptSets.property}" />
+				<input type="hidden" id="globalPropertyUuid_conceptSets" value="${gpConceptSets.propertyValue}" />
+			</td><td>
+				<input type="submit" class="globalPropertySubmit" id="globalPropertySubmit_conceptSets" value="<spring:message code='jsslab.setup.globalproperties.save' />" />
+			</td><td>
+				<span id="globalPropertyResult_conceptSets"></span>
+			</td>
+		</tr>
 	</table>
 	
 	<br />

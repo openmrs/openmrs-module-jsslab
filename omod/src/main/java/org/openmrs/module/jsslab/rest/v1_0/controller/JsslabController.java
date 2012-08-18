@@ -1,26 +1,30 @@
 package org.openmrs.module.jsslab.rest.v1_0.controller;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Concept;
+import org.openmrs.ConceptDatatype;
 import org.openmrs.ConceptSet;
 import org.openmrs.GlobalProperty;
+import org.openmrs.Location;
+import org.openmrs.OrderType;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.jsslab.LabCatalogService;
+import org.openmrs.module.jsslab.db.LabTestPanel;
 import org.openmrs.module.webservices.rest.SimpleObject;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestConstants;
 import org.openmrs.module.webservices.rest.web.RestUtil;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
 import org.openmrs.module.webservices.rest.web.resource.api.PageableResult;
+import org.openmrs.module.webservices.rest.web.resource.impl.AlreadyPaged;
 import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 import org.springframework.stereotype.Controller;
@@ -67,6 +71,44 @@ public class JsslabController {
 		return result.toSimpleObject();
 	}
 
+    @RequestMapping(method = RequestMethod.GET, params = "getAllConceptSets")
+    @ResponseBody
+    public SimpleObject getAllConceptSets(HttpServletRequest request) throws ResponseException {
+    	
+    	List<Concept> conceptSets = Context.getConceptService().getAllConcepts();
+    	for (int i = 0; i < conceptSets.size(); ) {
+    		if (conceptSets.get(i).isSet()) {
+    			i++;
+    		} else {
+    			conceptSets.remove(i);
+    		}
+    	}
+    	
+    	RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
+    	PageableResult result = new AlreadyPaged<Concept>(context, conceptSets, false);
+    	return result.toSimpleObject();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, params = "getAllConceptQuestions")
+    @ResponseBody
+    public SimpleObject getAllConceptQuestions(HttpServletRequest request,
+    				@RequestParam(value = "q", required = false) String query
+    		) throws ResponseException {
+    	
+    	List<Concept> concepts = Context.getConceptService().getConceptsByName(query);
+    	for (int i = 0; i < concepts.size(); ) {
+    		if (concepts.get(i).getDatatype().equals(ConceptDatatype.CODED)) {
+    			i++;
+    		} else {
+    			concepts.remove(i);
+    		}
+    	}
+    	
+    	RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
+    	PageableResult result = new AlreadyPaged<Concept>(context, concepts, false);
+    	return result.toSimpleObject();
+    }
+
     @RequestMapping(method = RequestMethod.GET, params = "addConceptToConceptSet")
     @ResponseBody
     public String addConceptToConceptSet(HttpServletRequest request,
@@ -89,7 +131,7 @@ public class JsslabController {
 		    		@RequestParam(value = "newUuid", required = true) String newUuid
 			) throws ResponseException {
     	
-    	String gpConceptSets = Context.getAdministrationService().getGlobalProperty("jsslab.object.conceptSet.allConcepts");
+    	String gpConceptSets = Context.getAdministrationService().getGlobalProperty("jsslab.object.concept.allConcepts");
     	
     	
     	if (gpConceptSets != null && !gpConceptSets.isEmpty()) {
@@ -119,7 +161,18 @@ public class JsslabController {
     	return null;
     }
 
-    
+    @RequestMapping(method = RequestMethod.GET, params = "getGlobalProperty")
+	@ResponseBody
+	public Object getGlobalProperty(HttpServletRequest request, 
+			@RequestParam(value = "property", required = true) String property
+		) {
+
+		SimpleObject o = new SimpleObject();
+		
+		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject(property);
+		
+		return gp;
+	}
     
     /**
      * Allows saving a GlobalProperty via REST
@@ -133,7 +186,7 @@ public class JsslabController {
 	@ResponseBody
 	public SimpleObject saveGlobalProperty(HttpServletRequest request, 
 			@RequestParam(value = "property", required = true) String property,
-			@RequestParam(value = "value", required = true) String value
+			@RequestParam(value = "value", required = false) String value
 		) {
 
 		SimpleObject o = new SimpleObject();
@@ -152,6 +205,39 @@ public class JsslabController {
 		o.put("message", Context.getMessageSourceService().getMessage("jsslab.settings.globalproperties.result.success"));
 		return o;
 	}
+    
+    @RequestMapping(method = RequestMethod.GET, params = "getLabTestPanelsByLocation")
+    @ResponseBody
+    public SimpleObject getLabTestsByLocation(HttpServletRequest request,
+		    		@RequestParam(value = "locationUuid", required = true) String uuid,
+		    		@RequestParam(value = "includeAll", required = false, defaultValue = "false") boolean retired,
+		    		@RequestParam(value = "start", required = false, defaultValue = "0") int startIndex,
+    				@RequestParam(value = "length", required = false, defaultValue = "-1") int resultLength
+			) throws ResponseException {
+    	
+    	Location location = Context.getLocationService().getLocationByUuid(uuid);
+    	List<LabTestPanel> labTests = Context.getService(LabCatalogService.class).getLabTestPanelsByLocation(location, retired, startIndex, resultLength);
+    	
+    	boolean hasMoreResults = resultLength > 0 && Context.getService(LabCatalogService.class).getCountOfLabTestPanels(retired) > labTests.size();
+    	
+    	RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
+    	PageableResult result = new AlreadyPaged<LabTestPanel>(context, labTests, hasMoreResults);
+    	return result.toSimpleObject();
+    }
+    
+    @SuppressWarnings("deprecation")
+	@RequestMapping(method = RequestMethod.GET, params = "getAllOrderTypes")
+    @ResponseBody
+    public SimpleObject getAllOrderTypes(HttpServletRequest request) throws ResponseException {
+    	
+    	List<OrderType> orderTypes = Context.getOrderService().getAllOrderTypes();
+    	
+    	RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
+    	PageableResult result = new NeedsPaging<OrderType>(orderTypes, context);
+    	return result.toSimpleObject();
+    }
+    
+    
     
 //	@RequestMapping(method = RequestMethod.GET, params="method")
 //    @ResponseBody

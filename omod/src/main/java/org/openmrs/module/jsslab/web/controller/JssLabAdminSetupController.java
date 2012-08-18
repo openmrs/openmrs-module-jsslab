@@ -55,12 +55,10 @@ public class JssLabAdminSetupController {
 		this.targetView = targetView;
 
 		GlobalProperty gpOrderType = Context.getAdministrationService().getGlobalPropertyObject("jsslab.object.orderType.labOrder");
-		GlobalProperty gpAllConcepts = Context.getAdministrationService().getGlobalPropertyObject("jsslab.object.conceptSet.allConcepts");
-		List<GlobalProperty> globalProperties = new ArrayList<GlobalProperty>();
-		globalProperties.add(gpOrderType);
-		globalProperties.add(gpAllConcepts);
-		
-		model.put("globalPropertiesObject", globalProperties);
+		GlobalProperty gpConceptSets = Context.getAdministrationService().getGlobalPropertyObject("jsslab.object.concept.allConcepts");
+
+		model.put("gpOrderType", gpOrderType);
+		model.put("gpConceptSets", gpConceptSets);
 
 		String sampleDataInstalled = Context.getAdministrationService().getGlobalProperty("jsslab.setup.sampleData");
 		boolean isSampleDataInstalled = sampleDataInstalled != null && !sampleDataInstalled.isEmpty();

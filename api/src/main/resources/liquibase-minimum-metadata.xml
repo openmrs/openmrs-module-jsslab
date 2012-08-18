@@ -9,25 +9,25 @@
 	<changeSet author="martingielow" id="default_data_global_property">
 		<insert tableName="global_property">
 			<column name="property" value="jsslab.object.orderType.labOrder"/>
-			<column name="property_value" value="33333001"/>
+			<column name="property_value" value="417919b3-2721-11e1-9d19-0024e8dbd743"/>
 			<column name="description" value="The id of the OrderType that is associated with LabOrder objects"/>
 			<column name="uuid" value="c42c6abb-2722-11e1-9d19-0024e8dbd743"/>
 		</insert>
 		<insert tableName="global_property">
-			<column name="property" value="jsslab.object.conceptSet.allConcepts"/>
-			<column name="property_value" value="33333121"/>
+			<column name="property" value="jsslab.object.concept.allConcepts"/>
+			<column name="property_value" value="ecf14390-d049-11e1-9b23-0800200c9a66"/>
 			<column name="description" value="The id of the ConceptSet that contains all JSSLab specific ConceptSets"/>
 			<column name="uuid" value="741e2710-8ee1-4601-b8bf-4cd3821794c1"/>
 		</insert>
 		<insert tableName="global_property">
 			<column name="property" value="jsslab.object.concept.report.internalElectronicDelivery"/>
-			<column name="property_value" value="33333029"/>
+			<column name="property_value" value=""/>
 			<column name="description" value="Internal Electronic Delivery Concept"/>
 			<column name="uuid" value="fb722937-1671-4c0c-acfb-b6a0b3d914e9"/>
 		</insert>
 	</changeSet>
 	
-	<changeSet author="martingielow" id="default_data_samples_order_type">
+	<changeSet author="martingielow" id="minimum_metadata_order_type">
 		<insert tableName="order_type">
 			<column name="order_type_id" valueNumeric="33333001"/>
 			<column name="name" value="LabOrder"/>
@@ -42,7 +42,7 @@
 		</insert>
 	</changeSet>
 	
-	<changeSet author="martingielow" id="samples_concept">
+	<changeSet author="martingielow" id="minimum_metadata_concept">
 		<insert tableName="concept">
 			<column name="concept_id" valueNumeric="33333001"/>
 			<column name="retired" valueBoolean="false"/>
@@ -51,7 +51,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -70,7 +70,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -89,7 +89,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -108,7 +108,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -127,7 +127,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -146,7 +146,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -165,7 +165,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -184,7 +184,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -203,7 +203,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -222,7 +222,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -241,7 +241,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1210,7 +1210,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1229,7 +1229,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1248,7 +1248,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1267,7 +1267,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1286,7 +1286,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -1305,7 +1305,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -2325,7 +2325,7 @@
 		</insert>
 	</changeSet>
 
-	<changeSet author="martingielow" id="samples_concept_numeric">
+	<changeSet author="martingielow" id="minimum_metadata_concept_numeric">
 		<insert tableName="concept_numeric">
 			<column name="concept_id" valueNumeric="33333068"/>
 			<column name="hi_absolute"/>
@@ -2493,7 +2493,7 @@
 		</insert>
 	</changeSet>
 	
-	<changeSet author="martingielow" id="samples_concept_set">
+	<changeSet author="martingielow" id="minimum_metadata_concept_set">
 		<insert tableName="concept_set">
 			<column name="concept_set_id" valueNumeric="33333012"/>
 			<column name="concept_id" valueNumeric="33333012"/>
@@ -3540,9 +3540,10 @@
 		</insert>
 		
 	</changeSet>
-	<changeSet author="martingielow" id="samples_concept_set_temp">
+	
+	<changeSet author="martingielow" id="minimum_metadata_concept_set_all_concepts">
 		<comment>
-			This changeset contains the a Concept Set containing all other JSS Lab specific
+			This changeset contains a Concept Set containing all other JSS Lab specific
 			Concept Sets
 		</comment>
 		
@@ -3554,7 +3555,7 @@
 			<column name="form_text"/>
 			<column name="datatype_id" valueNumeric="4"/>
 			<column name="class_id" valueNumeric="8"/>
-			<column name="is_set" valueNumeric="1"/>
+			<column name="is_set" valueBoolean="true"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
 			<column name="version"/>
@@ -3564,6 +3565,33 @@
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
 			<column name="uuid" value="ecf14390-d049-11e1-9b23-0800200c9a66"/>
+		</insert>
+		
+		<insert tableName="concept_name">
+			<column name="concept_id" valueNumeric="33333121"/>
+			<column name="name" value="JSS Lab Concept Sets"/>
+			<column name="locale" value="EN"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="concept_name_id" valueNumeric="33333201"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="voided_by"/>
+			<column name="date_voided"/>
+			<column name="void_reason"/>
+			<column name="uuid" value="8eedbe80-e616-11e1-aff1-0800200c9a66"/>
+			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
+			<column name="locale_preferred" valueBoolean="false"/>
+		</insert>
+		<insert tableName="concept_description">
+			<column name="concept_description_id" valueNumeric="33333201"/>
+			<column name="concept_id" valueNumeric="33333121"/>
+			<column name="description" value="A super set containing all concept sets of the JSSLab module"/>
+			<column name="locale" value="EN"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="uuid" value="96e1df80-e621-11e1-aff1-0800200c9a66"/>
 		</insert>
 		
 		<insert tableName="concept_set">
@@ -3658,8 +3686,8 @@
 		</insert>
 	</changeSet>
 
-	<changeSet author="martingielow" id="samples_concept_source">
-		<insert tableName="concept_source">
+	<changeSet author="martingielow" id="minimum_metadata_concept_reference_source">
+		<insert tableName="concept_reference_source">
 			<column name="concept_source_id" valueNumeric="33333001"/>
 			<column name="name" value="jsslab"/>
 			<column name="description" value="Parameters for JSS Lab module"/>
@@ -3673,9 +3701,9 @@
 			<column name="uuid" value="bb06c2cc-4877-11e1-b5ed-0024e8c61285"/>
 		</insert>
 	</changeSet>
-
-	<changeSet author="martingielow" id="samples_concept_map">
-		<insert tableName="concept_map">
+	<!-- 
+	<changeSet author="martingielow" id="minimum_metadata_concept_reference_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333001"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="LAB: JSS"/>
@@ -3685,7 +3713,7 @@
 			<column name="concept_id" valueNumeric="33333001"/>
 			<column name="uuid" value="8b4872c5-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333002"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="SPECIMEN TYPE"/>
@@ -3695,7 +3723,7 @@
 			<column name="concept_id" valueNumeric="33333002"/>
 			<column name="uuid" value="9882690c-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333003"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="REPORT STATUS"/>
@@ -3705,7 +3733,7 @@
 			<column name="concept_id" valueNumeric="33333003"/>
 			<column name="uuid" value="98833789-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333004"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="REPORT DELIVERY"/>
@@ -3715,7 +3743,7 @@
 			<column name="concept_id" valueNumeric="33333004"/>
 			<column name="uuid" value="9883b9d0-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333005"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="REJECT REASON"/>
@@ -3725,7 +3753,7 @@
 			<column name="concept_id" valueNumeric="33333005"/>
 			<column name="uuid" value="988437a0-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333006"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="ASSET CONDITION"/>
@@ -3735,7 +3763,7 @@
 			<column name="concept_id" valueNumeric="33333006"/>
 			<column name="uuid" value="9884a91e-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333007"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="SUPPLY ITEM CLASS"/>
@@ -3745,7 +3773,7 @@
 			<column name="concept_id" valueNumeric="33333007"/>
 			<column name="uuid" value="98851b5f-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333008"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="SPECIMEN RELATION"/>
@@ -3755,7 +3783,7 @@
 			<column name="concept_id" valueNumeric="33333008"/>
 			<column name="uuid" value="98858e3a-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333009"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="TEST ROLE"/>
@@ -3765,7 +3793,7 @@
 			<column name="concept_id" valueNumeric="33333009"/>
 			<column name="uuid" value="9886054f-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333010"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="ABNORMAL FLAGS"/>
@@ -3775,7 +3803,7 @@
 			<column name="concept_id" valueNumeric="33333010"/>
 			<column name="uuid" value="9886754b-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
-		<insert tableName="concept_map">
+		<insert tableName="concept_reference_map">
 			<column name="concept_map_id" valueNumeric="33333011"/>
 			<column name="source" valueNumeric="33333001"/>
 			<column name="source_code" value="PRECONDITIONS"/>
@@ -3786,8 +3814,8 @@
 			<column name="uuid" value="9886e425-258f-11e1-956b-0024e8dbd743"/>
 		</insert>
 	</changeSet>
-	
-	<changeSet author="martingielow" id="samples_concept_name">
+	 -->
+	<changeSet author="martingielow" id="minimum_metadata_concept_name">
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333001"/>
 			<column name="name" value="LAB: JSS"/>
@@ -3801,7 +3829,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="784b972c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333002"/>
@@ -3816,7 +3844,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="955be88a-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333003"/>
@@ -3831,7 +3859,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="955ca161-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333004"/>
@@ -3846,7 +3874,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="955e5e0d-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333005"/>
@@ -3861,7 +3889,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="955eabfd-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333006"/>
@@ -3876,7 +3904,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="955f1557-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333007"/>
@@ -3891,7 +3919,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="955fa15d-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333008"/>
@@ -3906,7 +3934,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956005ba-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333009"/>
@@ -3921,7 +3949,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9560f575-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333010"/>
@@ -3936,7 +3964,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956149d8-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333011"/>
@@ -3951,7 +3979,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9561b1a2-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333012"/>
@@ -3966,7 +3994,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956203df-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333013"/>
@@ -3981,7 +4009,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956256a5-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333014"/>
@@ -3996,7 +4024,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9562a805-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333015"/>
@@ -4011,7 +4039,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9562fabb-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333016"/>
@@ -4026,7 +4054,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9563633b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333017"/>
@@ -4041,7 +4069,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9563b6d5-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333018"/>
@@ -4056,7 +4084,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95640976-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333019"/>
@@ -4071,7 +4099,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95645cf2-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333020"/>
@@ -4086,7 +4114,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9564a76c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333021"/>
@@ -4101,7 +4129,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95650057-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333022"/>
@@ -4116,7 +4144,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95654bb1-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333023"/>
@@ -4131,7 +4159,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956595fa-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333024"/>
@@ -4146,7 +4174,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9565e159-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333025"/>
@@ -4161,7 +4189,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95662b5c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333026"/>
@@ -4176,7 +4204,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95667903-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333027"/>
@@ -4191,7 +4219,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9566c439-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333028"/>
@@ -4206,7 +4234,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95670c59-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333029"/>
@@ -4221,7 +4249,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95682947-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333030"/>
@@ -4236,7 +4264,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9568550c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333031"/>
@@ -4251,7 +4279,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95688cbf-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333032"/>
@@ -4266,7 +4294,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9568b84f-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333033"/>
@@ -4281,7 +4309,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95696f10-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333034"/>
@@ -4296,7 +4324,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95699bce-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333035"/>
@@ -4311,7 +4339,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9569c746-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333036"/>
@@ -4326,7 +4354,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9569f26e-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333037"/>
@@ -4341,7 +4369,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956a1c8b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333038"/>
@@ -4356,7 +4384,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956ab57f-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333039"/>
@@ -4371,7 +4399,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956b0744-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333040"/>
@@ -4386,7 +4414,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956b3412-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333041"/>
@@ -4401,7 +4429,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956b5fd2-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333042"/>
@@ -4416,7 +4444,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956b8c7d-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333043"/>
@@ -4431,7 +4459,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956bb8dc-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333044"/>
@@ -4446,7 +4474,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956be4f2-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333045"/>
@@ -4461,7 +4489,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956c2f43-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333046"/>
@@ -4476,7 +4504,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956c5b21-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333047"/>
@@ -4491,7 +4519,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956c8fbb-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333048"/>
@@ -4506,7 +4534,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956cb911-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333049"/>
@@ -4521,7 +4549,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956d2239-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333050"/>
@@ -4536,7 +4564,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956d4cef-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333051"/>
@@ -4551,7 +4579,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956d8b58-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333052"/>
@@ -4566,7 +4594,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956dbc68-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333053"/>
@@ -4581,7 +4609,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956de8c7-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333054"/>
@@ -4596,7 +4624,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956e1362-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333055"/>
@@ -4611,7 +4639,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956e47f5-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333056"/>
@@ -4626,7 +4654,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956e71fc-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333057"/>
@@ -4641,7 +4669,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956fc88b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333058"/>
@@ -4656,7 +4684,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="956ff4ce-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333059"/>
@@ -4671,7 +4699,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95701e92-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333060"/>
@@ -4686,7 +4714,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9570472f-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333061"/>
@@ -4701,7 +4729,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9570790c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333062"/>
@@ -4716,7 +4744,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9570a5ab-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333063"/>
@@ -4731,7 +4759,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9570d106-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333064"/>
@@ -4746,7 +4774,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9570fae3-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333065"/>
@@ -4761,7 +4789,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95712529-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333066"/>
@@ -4776,7 +4804,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95725238-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333067"/>
@@ -4791,7 +4819,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95727d64-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333068"/>
@@ -4806,7 +4834,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9572a79a-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333069"/>
@@ -4821,7 +4849,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9572d192-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333070"/>
@@ -4836,7 +4864,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9573099e-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333071"/>
@@ -4851,7 +4879,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957396ad-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333072"/>
@@ -4866,7 +4894,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9573c61d-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333073"/>
@@ -4881,7 +4909,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9573f997-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333074"/>
@@ -4896,7 +4924,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95742a2f-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333075"/>
@@ -4911,7 +4939,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95745dae-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333076"/>
@@ -4926,7 +4954,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95748ca3-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333077"/>
@@ -4941,7 +4969,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9574ba09-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333078"/>
@@ -4956,7 +4984,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9574f463-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333079"/>
@@ -4971,7 +4999,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9576237f-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333080"/>
@@ -4986,7 +5014,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95765401-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333081"/>
@@ -5001,7 +5029,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9576833c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333082"/>
@@ -5016,7 +5044,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9576b223-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333083"/>
@@ -5031,7 +5059,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9576e28b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333084"/>
@@ -5046,7 +5074,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95777d1a-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333085"/>
@@ -5061,7 +5089,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9577abf6-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333086"/>
@@ -5076,7 +5104,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9577e8da-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333087"/>
@@ -5091,7 +5119,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95781ae3-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333088"/>
@@ -5106,7 +5134,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957849a1-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333089"/>
@@ -5121,7 +5149,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95787845-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333090"/>
@@ -5136,7 +5164,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9578a734-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333091"/>
@@ -5151,7 +5179,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9578d648-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333092"/>
@@ -5166,7 +5194,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95790524-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333093"/>
@@ -5181,7 +5209,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957933ce-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333094"/>
@@ -5196,7 +5224,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95796d1b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333095"/>
@@ -5211,7 +5239,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9579f374-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333096"/>
@@ -5226,7 +5254,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957a2396-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333097"/>
@@ -5241,7 +5269,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957a52aa-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333098"/>
@@ -5256,7 +5284,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957a8321-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333099"/>
@@ -5271,7 +5299,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957ab4f7-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333100"/>
@@ -5286,7 +5314,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957b4d44-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333101"/>
@@ -5301,7 +5329,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957b7c6b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333102"/>
@@ -5316,7 +5344,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957bae34-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333103"/>
@@ -5331,7 +5359,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957bdcab-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333104"/>
@@ -5346,7 +5374,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957c0ba0-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333105"/>
@@ -5361,7 +5389,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957c3a9b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333106"/>
@@ -5376,7 +5404,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957c6982-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333107"/>
@@ -5391,7 +5419,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957c9885-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333108"/>
@@ -5406,7 +5434,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957cca88-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333109"/>
@@ -5421,7 +5449,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957cf9df-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333110"/>
@@ -5436,7 +5464,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957d417e-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333111"/>
@@ -5451,7 +5479,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957dd1ca-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333112"/>
@@ -5466,7 +5494,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957e11e7-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333113"/>
@@ -5481,7 +5509,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957e4c5a-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333114"/>
@@ -5496,7 +5524,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957f0f9d-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333115"/>
@@ -5511,7 +5539,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957f4a6c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333116"/>
@@ -5526,7 +5554,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957f8278-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333117"/>
@@ -5541,7 +5569,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="957fbf11-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333118"/>
@@ -5556,7 +5584,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="95806a5d-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333119"/>
@@ -5571,7 +5599,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="9580a6eb-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333120"/>
@@ -5579,14 +5607,14 @@
 			<column name="locale" value="EN"/>
 			<column name="creator" valueNumeric="1"/>
 			<column name="date_created" valueDate="2011-12-11T00:00:00.0"/>
-			<column name="concept_name_id" valueNumeric="33333120"/>
+			<column name="concept_name_id" valueNumeric="33333202"/>
 			<column name="voided" valueBoolean="false"/>
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
 			<column name="uuid" value="9580df1b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="FULLY_SPECIFIED"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333012"/>
@@ -5601,7 +5629,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="a2d5f64a-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333013"/>
@@ -5616,7 +5644,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be685897-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333014"/>
@@ -5631,7 +5659,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be69065d-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333015"/>
@@ -5646,7 +5674,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be69627f-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333016"/>
@@ -5661,7 +5689,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be69c067-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333017"/>
@@ -5676,7 +5704,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be6a1968-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333018"/>
@@ -5691,7 +5719,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be6a7223-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333019"/>
@@ -5706,7 +5734,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be6adb2f-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333020"/>
@@ -5721,7 +5749,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be6b3693-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333021"/>
@@ -5736,7 +5764,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be6f7a9c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333022"/>
@@ -5751,7 +5779,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be6fcec5-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333023"/>
@@ -5766,7 +5794,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be701fce-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333024"/>
@@ -5781,7 +5809,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be714fae-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333025"/>
@@ -5796,7 +5824,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be71abc3-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333043"/>
@@ -5811,7 +5839,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be7214ab-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333044"/>
@@ -5826,7 +5854,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be726af7-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333045"/>
@@ -5841,7 +5869,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be72d653-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333046"/>
@@ -5856,7 +5884,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be734264-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333047"/>
@@ -5871,7 +5899,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be73e570-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333048"/>
@@ -5886,7 +5914,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be744772-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333049"/>
@@ -5901,7 +5929,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be74ac1d-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333050"/>
@@ -5916,7 +5944,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be750ba5-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333051"/>
@@ -5931,7 +5959,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be75a7df-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333052"/>
@@ -5946,7 +5974,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be75e5cd-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333053"/>
@@ -5961,7 +5989,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be765b4f-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333054"/>
@@ -5976,7 +6004,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be76a1aa-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333055"/>
@@ -5991,7 +6019,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be76e082-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333091"/>
@@ -6006,7 +6034,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be771c63-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333092"/>
@@ -6021,7 +6049,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be77567c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333099"/>
@@ -6036,7 +6064,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be77910b-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333100"/>
@@ -6051,7 +6079,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be77ccec-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333101"/>
@@ -6066,7 +6094,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be780852-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333102"/>
@@ -6081,7 +6109,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be786c18-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333103"/>
@@ -6096,7 +6124,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be78a544-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333104"/>
@@ -6111,7 +6139,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be78d98c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333105"/>
@@ -6126,7 +6154,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be790c6a-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333106"/>
@@ -6141,7 +6169,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be795c24-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333107"/>
@@ -6156,7 +6184,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be798fec-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333108"/>
@@ -6171,7 +6199,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be79c1df-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333109"/>
@@ -6186,7 +6214,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be79f534-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333110"/>
@@ -6201,7 +6229,7 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be7a397c-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 		<insert tableName="concept_name">
 			<column name="concept_id" valueNumeric="33333111"/>
@@ -6216,11 +6244,11 @@
 			<column name="void_reason"/>
 			<column name="uuid" value="be7a6dab-258e-11e1-956b-0024e8dbd743"/>
 			<column name="concept_name_type" value="SHORT"/>
-			<column name="locale_preferred" valueNumeric="0"/>
+			<column name="locale_preferred" valueBoolean="false"/>
 		</insert>
 	</changeSet>
 	
-	<changeSet author="martingielow" id="samples_concept_answer">
+	<changeSet author="martingielow" id="minimum_metadata_concept_answer">
 		<insert tableName="concept_answer">
 			<column name="concept_answer_id" valueNumeric="33333118"/>
 			<column name="concept_id" valueNumeric="33333117"/>
@@ -6253,7 +6281,7 @@
 		</insert>
 	</changeSet>
 	
-	<changeSet author="martingielow" id="samples_concept_description">
+	<changeSet author="martingielow" id="minimum_metadata_concept_description">
 		<insert tableName="concept_description">
 			<column name="concept_description_id" valueNumeric="33333001"/>
 			<column name="concept_id" valueNumeric="33333001"/>
@@ -7575,5 +7603,10 @@
 			<column name="uuid" value="efc4418e-258e-11e1-956b-0024e8dbd743"/>
 		</insert>
 	</changeSet>
-	
+	<changeSet author="martingielow" id="samples_default_data_concept_set_sortweights">
+		<update tableName="concept_set" >
+			<column name="sort_weight" value="0"/>
+			<where>sort_weight is null</where>
+		</update>
+	</changeSet>
 </databaseChangeLog>

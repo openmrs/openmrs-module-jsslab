@@ -101,21 +101,71 @@
  *	Catalog Screen
  *	=============================================
  */
- 
+
+#investigationSelectionPanel {
+	min-width: 400px
+}
+#investigationTable {
+	width: 100%;
+}
+
+
 #investigationEditPanel {
 	display: none;
 	margin: 0 0 0 10px;
+	min-width: 400px;
+}
+
+#investigationEditPanel fieldset {
+	margin: 10px 10px 10px 0;
 }
 
 #preconditionList {
 	width: 95%;
 }
 
+#editPreconditionDialog {
+}
+
+#testList {
+	min-width: 200px;
+	margin: 10px 5px 10px 0;
+}
 #testEditPanel {
 	display: none;
 	margin: 0 0 0 10px;
 }
- 
+
+#testEditPanel fieldset {
+	margin: 10px 10px 10px 0;
+}
+
+#editPreconditionDialog {
+	display: none;
+}
+
+#editPreconditionQuestion, .editConcept {
+	width: 100%;
+}
+#fieldSetPreconditionAnswers {
+	width: 100%;
+}
+
+
+#testSelectionPanel {
+	min-width: 400px;
+}
+#testEditPanel {
+	display: none;
+	margin: 0 0 0 10px;
+	min-width: 400px;
+}
+
+.testResultFormatPanel {
+	display: none;
+}
+
+
 /* 
  *	=============================================
  *	Specimen Templates Screen

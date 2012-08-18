@@ -84,7 +84,7 @@ public interface LabSpecimenTemplateDAO {
 	 * @see org.openmrs.api.LabCatalogService#getCountOfLabSpecimenTemplates(String,
 	 *      Boolean)
 	 */
-	public Integer getCountOfLabSpecimenTemplates(String search,
+	public Long getCountOfLabSpecimenTemplates(String search,
 			Boolean includeRetired);
 
 }

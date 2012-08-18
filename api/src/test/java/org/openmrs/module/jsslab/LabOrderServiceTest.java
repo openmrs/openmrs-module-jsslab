@@ -229,7 +229,7 @@ public class LabOrderServiceTest extends BaseModuleContextSensitiveTest {
 		ls.setUrgent(false);
 		ls.setHidden(false);
 		ls.setLabSpecimenId("33333333");
-		ls.setOrderedBy(Context.getUserService().getUser(33333001));
+		ls.setOrderedBy(Context.getProviderService().getProvider(33333001));
 		ls.setOrderedByFacility(Context.getLocationService().getLocation(33333001));
 		ls.setPatient(Context.getPatientService().getPatient(33333007));
 		ls.setPerson(Context.getPersonService().getPerson(ls.getPatient().getPersonId()));

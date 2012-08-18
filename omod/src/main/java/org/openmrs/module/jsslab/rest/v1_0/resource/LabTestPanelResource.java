@@ -25,7 +25,7 @@ public class LabTestPanelResource extends MetadataDelegatingCrudResource<LabTest
 
 	@Override
 	public LabTestPanel getByUniqueId(String uniqueId) {
-		LabTestPanel labTestPanel=Context.getService(LabCatalogService.class).getLabTestPanelByUuid(uniqueId);
+		LabTestPanel labTestPanel = Context.getService(LabCatalogService.class).getLabTestPanelByUuid(uniqueId);
 		return labTestPanel;
 	}
 

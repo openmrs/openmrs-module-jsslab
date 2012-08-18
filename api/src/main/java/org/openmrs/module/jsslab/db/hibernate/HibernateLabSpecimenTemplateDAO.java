@@ -119,7 +119,7 @@ public class HibernateLabSpecimenTemplateDAO implements LabSpecimenTemplateDAO {
 	/**
 	 * @see org.openmrs.api.db.LabSpecimenTemplateDAO#getCountOfLabSpecimenTemplates(String, Boolean)
 	 */
-	public Integer getCountOfLabSpecimenTemplates(String nameFragment, Boolean includeRetired) {
+	public Long getCountOfLabSpecimenTemplates(String nameFragment, Boolean includeRetired) {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(LabSpecimenTemplate.class);
 		if (!includeRetired)
 			criteria.add(Restrictions.eq("retired", false));
@@ -133,7 +133,7 @@ public class HibernateLabSpecimenTemplateDAO implements LabSpecimenTemplateDAO {
 		
 		criteria.setProjection(Projections.rowCount());
 		
-		return (Integer) criteria.uniqueResult();
+		return (Long) criteria.uniqueResult();
 	}
 
 	/**

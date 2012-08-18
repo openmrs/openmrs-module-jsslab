@@ -5,7 +5,7 @@
     <!-- Module Properties -->
 	<id>jsslab</id>
 	<name>JSSLab Module</name>
-	<version>1.8.0-SNAPSHOT</version>
+	<version>1.9.0-SNAPSHOT</version>
 	<package>org.openmrs.module.jsslab</package>
 	<author>jss raxa lab rats</author>
 	<description>
@@ -14,7 +14,7 @@
 	
 	<!-- / Module Properties -->
 	
-	<require_version>1.8.0.00</require_version>
+	<require_version>1.9.0.00</require_version>
 	<require_modules>
 		<require_module>org.openmrs.module.webservices.rest</require_module> 
 	</require_modules>
@@ -51,7 +51,7 @@
 	</globalProperty>
 
 	<globalProperty>
-		<property>jsslab.object.conceptSet.allConcepts</property>
+		<property>jsslab.object.concept.allConcepts</property>
 		<description>The id of the ConceptSet that contains all JSSLab specific ConceptSets</description>
 	</globalProperty>
 

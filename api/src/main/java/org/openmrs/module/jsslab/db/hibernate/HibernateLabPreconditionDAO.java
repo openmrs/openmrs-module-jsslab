@@ -3,6 +3,7 @@
  */
 package org.openmrs.module.jsslab.db.hibernate;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.openmrs.ConceptAnswer;
 import org.openmrs.module.jsslab.db.LabPrecondition;
 import org.openmrs.module.jsslab.db.LabPreconditionDAO;
 
@@ -60,9 +62,12 @@ public class HibernateLabPreconditionDAO implements LabPreconditionDAO {
 	 */
 	@Override
 	public LabPrecondition getLabPreconditionByUuid(String uuid) {
-		return (LabPrecondition) sessionFactory.getCurrentSession()
-			.createQuery("from LabPrecondition l where l.uuid = :uuid")
-			.setString("uuid", uuid).uniqueResult();
+		LabPrecondition labPrecondition = (LabPrecondition) sessionFactory.getCurrentSession()
+				.createQuery("from LabPrecondition l where l.uuid = :uuid")
+				.setString("uuid", uuid).uniqueResult();
+		Collection<ConceptAnswer> answers = labPrecondition.getPreconditionQuestionConcept().getAnswers();
+		
+		return labPrecondition;
 	}
 
 	/* (non-Javadoc)

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.Location;
 import org.openmrs.api.APIException;
 import org.openmrs.api.context.Context;
 import org.openmrs.api.impl.BaseOpenmrsService;
@@ -99,7 +100,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 	@Override
 	public Integer getCountOfLabTest(Boolean includeRetired)
 			throws APIException {
-		return labTestPanelDAO.getLabTestPanels("", includeRetired, null, null).size();
+		return labTestDAO.getCountOfLabTests("", includeRetired);
 	}
 
 //------------------------------------------------------------	
@@ -207,7 +208,7 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 					ifVoided, index, length);
 		}
 
-		public Integer getCountOfLabSpecimenTemplate(String search, Boolean ifVoided)
+		public Long getCountOfLabSpecimenTemplate(String search, Boolean ifVoided)
 				throws APIException {
 			//
 			return labSpecimenTemplateDAO.getCountOfLabSpecimenTemplates(search, ifVoided);
@@ -262,6 +263,13 @@ public class LabCatalogServiceImpl extends BaseOpenmrsService implements
 		public List<LabTestPanel> getLabTestPanels(String nameFragment,
 				Boolean includeVoided, Integer start, Integer length) {
 			return labTestPanelDAO.getLabTestPanels(nameFragment,
+					includeVoided, start, length);
+		}
+
+		@Override
+		public List<LabTestPanel> getLabTestPanelsByLocation(Location location,
+				Boolean includeVoided, Integer start, Integer length) {
+			return labTestPanelDAO.getLabTestPanelsByLocation(location,
 					includeVoided, start, length);
 		}
 

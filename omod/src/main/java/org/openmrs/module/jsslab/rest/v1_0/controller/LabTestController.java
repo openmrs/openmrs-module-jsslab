@@ -17,10 +17,10 @@ public class LabTestController extends BaseCrudController<LabTestResource>{
 	private static final Log log=LogFactory.getLog(LabTestController.class);
 	
 	@Override
-	public LabTestResource getResource()
-	{
+	public LabTestResource getResource() {
 		//
 		log.info("getting LabTest resource");
 		return Context.getService(RestService.class).getResource(LabTestResource.class);
 	}
+	
 }

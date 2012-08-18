@@ -6,6 +6,7 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openmrs.Location;
 import org.openmrs.api.APIException;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.jsslab.db.LabPrecondition;
@@ -265,7 +266,7 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 	@SkipBaseSetup
 	public void getCountOfLabSpecimenTemplate_shouldGetCountOfLabSpecimenTemplate()
 			throws Exception {
-		Integer count = Context.getService(LabCatalogService.class)
+		Long count = Context.getService(LabCatalogService.class)
 				.getCountOfLabSpecimenTemplate("", false);
 		Assert.assertNotNull(
 				"getCountOfLabSpecimenTemplate should not return null", count);
@@ -670,6 +671,49 @@ public class LabCatalogServiceTest extends BaseModuleContextSensitiveTest {
 			Assert.assertNull("purgeLabTestPanel should return null",
 					labTestPanel);
 		}
+	}
+
+	/**
+	 * @see LabCatalogService#getCountOfLabTest(Boolean)
+	 * @verifies get number of LabTest
+	 */
+	@Test
+	public void getCountOfLabTest_shouldGetNumberOfLabTestByVoided() throws Exception {
+
+		int count = Context.getService(LabCatalogService.class).getCountOfLabTest(false);
+		Assert.assertEquals("getCountOfLabTest(false) should return all non-retired LabTests", 24, count);
+		
+		List<LabTest> labTests = Context.getService(LabCatalogService.class).getAllLabTests(false);
+		labTests.get(0).setRetired(true);
+		labTests.get(1).setRetired(true);
+		Context.getService(LabCatalogService.class).saveLabTest(labTests.get(0));
+		Context.getService(LabCatalogService.class).saveLabTest(labTests.get(1));
+		
+		count = Context.getService(LabCatalogService.class).getCountOfLabTest(false);
+		Assert.assertEquals("getCountOfLabTest(false) should return all non-retired LabTests after retiring some LabTests", 22, count);
+
+		count = Context.getService(LabCatalogService.class).getCountOfLabTest(false);
+		Assert.assertEquals("getCountOfLabTest(true) should return all LabTests including retired ones", 24, count);
+		
+	}
+
+	/**
+	 * @see LabCatalogService#getLabTestPanelsByLocation(Location,Boolean,Integer,Integer)
+	 * @verifies return LabTestPanel by Location location, Boolean includeVoided, Integer start, Integer length
+	 */
+	@Test
+	public void getLabTestPanelsByLocation_shouldReturnLabTestPanelByLocationLocationBooleanIncludeVoidedIntegerStartIntegerLength()
+			throws Exception {
+		
+		Location jsslab = Context.getLocationService().getLocation(33333005);
+		Location extlab = Context.getLocationService().getLocation(33333011);
+		
+		List<LabTestPanel> testPanels = Context.getService(LabCatalogService.class).getLabTestPanelsByLocation(jsslab, true, 0, -1);
+		Assert.assertEquals(3, testPanels.size());
+		
+		testPanels = Context.getService(LabCatalogService.class).getLabTestPanelsByLocation(extlab, true, 0, -1);
+		Assert.assertEquals(2, testPanels.size());
+		
 	}
 
 }

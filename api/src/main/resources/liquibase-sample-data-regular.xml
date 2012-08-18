@@ -476,6 +476,266 @@
 		</insert>
 	</changeSet>
 
+	
+	<changeSet author="martingielow" id="samples_person">
+		<!-- 
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="1"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="0047814a-721b-11e1-9be3-00265e1c945c" />
+		</insert>
+		 -->
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333000"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="00478674-721b-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333001"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1974-02-04"/>
+			<column name="gender" value="F"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="39cfda0a-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333002"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1974-06-25"/>
+			<column name="gender" value="F"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="39cfe173-721a-11e1-9be3-00265e1c945c"/>
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333003"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1974-10-26"/>
+			<column name="gender" value="F"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="39cfe42b-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333004"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1969-04-23"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="1910dfe1-e61a-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333005"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1965-03-14"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="1910dfe2-e61a-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333006"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1965-12-27"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="1910dfe3-e61a-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333007"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1965-11-02"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="1910dfe4-e61a-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333008"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1950-06-16"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="1910dfe5-e61a-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333009"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1942-10-11"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="1910dfe6-e61a-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="person">
+			<column name="person_id" valueNumeric="33333010"/>
+			<column name="birthdate_estimated" valueNumeric="0"/>
+			<column name="birthdate" value="1951-01-01"/>
+			<column name="gender" value="M"/>
+			<column name="dead" valueNumeric="0"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="1910dfe7-e61a-11e1-aff1-0800200c9a66" />
+		</insert>
+	</changeSet>
+	
+	<changeSet author="martingielow" id="samples_person_name">
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333000"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333000"/>
+			<column name="given_name" value="roger"/>
+			<column name="family_name" value="friedman"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="f3ff013d-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333001"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333001"/>
+			<column name="given_name" value="Urmila"/>
+			<column name="family_name" value="Matondkar"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d59812b6-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333002"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333002"/>
+			<column name="given_name" value="Karisma"/>
+			<column name="family_name" value="Kapoor"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d598186e-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333003"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333003"/>
+			<column name="given_name" value="Raveena"/>
+			<column name="family_name" value="Tandon"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d5981b4d-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333004"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333004"/>
+			<column name="given_name" value="Manoj"/>
+			<column name="family_name" value="Bajpai"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d5981f8c-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333005"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333005"/>
+			<column name="given_name" value="Aamir"/>
+			<column name="family_name" value="Khan"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d598229f-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333006"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333006"/>
+			<column name="given_name" value="Salman"/>
+			<column name="family_name" value="Khan"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d5982581-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333007"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333007"/>
+			<column name="given_name" value="Shahrukh"/>
+			<column name="family_name" value="Khan"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d598281f-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333008"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333008"/>
+			<column name="given_name" value="Mithun"/>
+			<column name="family_name" value="Chakraborty"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d5982abb-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333009"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333009"/>
+			<column name="given_name" value="Amitabh"/>
+			<column name="family_name" value="Bachchan"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d5982d8c-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+		<insert tableName="person_name">
+			<column name="person_name_id" valueNumeric="33333010"/>
+			<column name="preferred" valueBoolean="true"/>
+			<column name="person_id" value="33333010"/>
+			<column name="given_name" value="Nana"/>
+			<column name="family_name" value="Patekar"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
+			<column name="voided" valueBoolean="false"/>
+			<column name="uuid" value="d59835c6-721a-11e1-9be3-00265e1c945c" />
+		</insert>
+	</changeSet>
+	
 	<changeSet author="martingielow" id="samples_users">
 		<insert tableName="users">
 			<column name="user_id" valueNumeric="3"/>
@@ -489,11 +749,31 @@
 			<column name="date_created" valueDate="2012-07-05T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="3" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
 			<column name="retire_reason"/>
 			<column name="uuid" value="63b59970-c629-11e1-9b21-0800200c9a66" />
+		</insert>
+		<insert tableName="users">
+			<column name="user_id" valueNumeric="33333000"/>
+			<column name="system_id" value="3-4"/>
+			<column name="username" value="roger"/>
+			<column name="password" value="12a1e130835374a8802325ec3e1a9775d6b9e9b7fbfec4b436ea5ca3d7ab1042b77b0cedb9eacab03ce7e093713c1c70cd88c917de3a79576168bf534eb39b53"/>
+			<column name="salt" value="f5c2bb460b1be19d31e63e21ef3b350a7bca5c850c2ab1824c71f8f68ca84aec1ed1da03a0b04eb60b1e93bef0bd1480c484f96f3f91528ebf46987332d0d47b"/>
+			<column name="secret_question"/>
+			<column name="secret_answer"/>
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="changed_by"/>
+			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333000" />
+			<column name="retired" valueBoolean="false"/>
+			<column name="retired_by"/>
+			<column name="date_retired"/>
+			<column name="retire_reason"/>
+			<column name="uuid" value="f6fe6186-c364-4fb4-a1c5-f8bf016d01eb" />
 		</insert>
 		<insert tableName="users">
 			<column name="user_id" valueNumeric="33333001"/>
@@ -507,6 +787,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333001" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -525,6 +806,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333002" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -543,6 +825,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333003" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -561,6 +844,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333004" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -579,6 +863,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333005" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -597,6 +882,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333006" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -615,6 +901,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333007" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -633,6 +920,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333008" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -651,6 +939,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333009" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -669,6 +958,7 @@
 			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
 			<column name="changed_by"/>
 			<column name="date_changed"/>
+			<column name="person_id" valueNumeric="33333010" />
 			<column name="retired" valueBoolean="false"/>
 			<column name="retired_by"/>
 			<column name="date_retired"/>
@@ -682,7 +972,7 @@
 			<column name="order_id" valueNumeric="33333001"/>
 			<column name="order_type_id" valueNumeric="33333001"/>
 			<column name="concept_id" valueNumeric="33333065"/>
-			<column name="orderer" valueNumeric="3"/>
+			<column name="orderer" valueNumeric="1"/>
 			<column name="encounter_id"/>
 			<column name="instructions" value="This is a test order"/>
 			<column name="start_date" valueDate="2012-01-01T00:00:00.0"/>
@@ -697,7 +987,7 @@
 			<column name="voided_by"/>
 			<column name="date_voided"/>
 			<column name="void_reason"/>
-			<column name="patient_id" valueNumeric="33"/>
+			<column name="patient_id" valueNumeric="3"/>
 			<column name="accession_number"/>
 			<column name="uuid" value="ee8b270c-49b9-11e1-812a-0024e8c61285"/>
 		</insert>

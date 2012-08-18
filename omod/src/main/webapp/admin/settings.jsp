@@ -110,12 +110,14 @@
 				</td>
 			</tr>
 		</c:forEach>
+		<!-- 
 		<c:forEach var="gp" items="${globalPropertiesObject}" varStatus="loop">
-			<tr>
+			<tr id="${gp.property}">
 				<td>
 					<label for="globalPropertyObjectSelect_${loop.index}">${gp.description}</label>
 				</td><td>
-					<input type="text" name="${gp.property}" id="globalPropertyObjectSelect_${loop.index}" value="${gp.propertyValue}" />
+					<input type="text" class="autoText" name="${gp.property}" id="globalPropertyObjectSelect_${loop.index}" value="${gp.propertyValue}" />
+					<input type="hidden" class="autoValue" name="${gp.property}" id="globalPropertyObjectSelect_${loop.index}" value="${gp.propertyValue}" />
 				</td><td>
 					<input type="submit" class="globalPropertyObjectSubmit" id="globalPropertyObjectSubmit_${loop.index}" value="<spring:message code='jsslab.settings.globalproperties.save' />" />
 				</td><td>
@@ -123,6 +125,55 @@
 				</td>
 			</tr>
 		</c:forEach>
+		 -->
+		<tr name="${gpHomeLab.property}">
+			<td>
+				<label for="gpHomeLabSelect">${gpHomeLab.description}</label>
+			</td><td>
+				<input type="text" class="autoText" name="${gpHomeLab.property}" id="gpHomeLabSelect" value="${homeLabDisplayString}" />
+				<input type="hidden" class="autoValue" name="${gpHomeLab.property}" id="gpHomeLabSelectVal" value="${gpHomeLab.propertyValue}" />
+			</td><td>
+				<input type="submit" class="gpObjectSubmit" id="gpHomeLabSubmit" value="<spring:message code='jsslab.settings.globalproperties.save' />" />
+			</td><td>
+				<span id="gpHomeLabResult"></span>
+			</td>
+		</tr>
+		<tr name="${gpLabOrderType.property}">
+			<td>
+				<label for="gpLabOrderTypeSelect">${gpLabOrderType.description}</label>
+			</td><td>
+				<input type="text" class="autoText" name="${gpLabOrderType.property}" id="gpLabOrderTypeSelect" value="${labOrderDisplayString}" />
+				<input type="hidden" class="autoValue" name="${gpLabOrderType.property}" id="gpLabOrderTypeSelectVal" value="${gpLabOrderType.propertyValue}" />
+			</td><td>
+				<input type="submit" class="gpObjectSubmit" id="gpLabOrderTypeSubmit" value="<spring:message code='jsslab.settings.globalproperties.save' />" />
+			</td><td>
+				<span id="gpLabOrderTypeResult"></span>
+			</td>
+		</tr>
+		<tr name="${gpAllConcepts.property}">
+			<td>
+				<label for="gpAllConceptsSelect">${gpAllConcepts.description}</label>
+			</td><td>
+				<input type="text" class="autoText" name="${gpAllConcepts.property}" id="gpAllConceptsSelect" value="${allConceptsDisplayString}" />
+				<input type="hidden" class="autoValue" name="${gpAllConcepts.property}" id="gpAllConceptsSelectVal" value="${gpAllConcepts.propertyValue}" />
+			</td><td>
+				<input type="submit" class="gpObjectSubmit" id="gpAllConceptsSubmit" value="<spring:message code='jsslab.settings.globalproperties.save' />" />
+			</td><td>
+				<span id="gpAllConceptsResult"></span>
+			</td>
+		</tr>
+		<tr name="${gpInternalElectronic.property}">
+			<td>
+				<label for="gpInternalElectronicSelect">${gpInternalElectronic.description}</label>
+			</td><td>
+				<input type="text" class="autoText" name="${gpInternalElectronic.property}" id="gpInternalElectronicSelect" value="${internalElectronicDisplayString}" />
+				<input type="hidden" class="autoValue" name="${gpInternalElectronic.property}" id="gpInternalElectronicSelectVal" value="${gpInternalElectronic.propertyValue}" />
+			</td><td>
+				<input type="submit" class="gpObjectSubmit" id="gpInternalElectronicSubmit" value="<spring:message code='jsslab.settings.globalproperties.save' />" />
+			</td><td>
+				<span id="gpInternalElectronicResult"></span>
+			</td>
+		</tr>
 	</table>
 	
 	<br />
@@ -149,6 +200,7 @@
 			<div>
 				<div><spring:message code="jsslab.settings.codelists.codelist.substitute" /></div>
 				<div><input type="text" id="editSubstituteConceptSet" /></div>
+				<div><input type="hidden" id="editSubstituteConceptSetVal" /></div>
 				<div><input type="submit" id="btnSubstituteConceptSet" value="<spring:message code="jsslab.settings.codelists.codelist.apply" />" /></div>
 			</div>
 		</div>

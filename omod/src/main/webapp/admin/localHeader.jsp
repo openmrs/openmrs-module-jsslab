@@ -7,21 +7,21 @@
 	
 	<openmrs:hasPrivilege privilege="">
 	<li <c:if test='<%= request.getRequestURI().contains("jsslab/admin/settings") %>'>class="active"</c:if>>
-		<a href="settings.htm">
+		<a href="settings.form">
 			<spring:message code="jsslab.settings.link"/>
 		</a>
 	</li>
 	</openmrs:hasPrivilege>
 	<openmrs:hasPrivilege privilege="">
 	<li <c:if test='<%= request.getRequestURI().contains("jsslab/admin/catalog") %>'>class="active"</c:if>>
-		<a href="catalog.htm">
+		<a href="catalog.form">
 			<spring:message code="jsslab.catalog.link"/>
 		</a>
 	</li>
 	</openmrs:hasPrivilege>
 	<openmrs:hasPrivilege privilege="">
 	<li <c:if test='<%= request.getRequestURI().contains("jsslab/admin/templates") %>'>class="active"</c:if>>
-		<a href="templates.htm">
+		<a href="templates.form">
 			<spring:message code="jsslab.templates.link"/>
 		</a>
 	</li>
@@ -35,7 +35,7 @@
 	</openmrs:hasPrivilege>
 	<openmrs:hasPrivilege privilege="">
 	<li <c:if test='<%= request.getRequestURI().contains("jsslab/admin/reports") %>'>class="active"</c:if>>
-		<a href="reports.htm">
+		<a href="reports.form">
 			<spring:message code="jsslab.reports.link"/>
 		</a>
 	</li>

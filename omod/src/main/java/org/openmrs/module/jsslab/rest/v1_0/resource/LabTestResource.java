@@ -71,32 +71,36 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 	}
 
 	@Override
-	public DelegatingResourceDescription getRepresentationDescription(
-			Representation rep) {
-		DelegatingResourceDescription Descri=new DelegatingResourceDescription();
-		if(rep instanceof DefaultRepresentation)
-		{
+	public DelegatingResourceDescription getRepresentationDescription(Representation rep) {
+		DelegatingResourceDescription description = new DelegatingResourceDescription();
+		if (rep instanceof DefaultRepresentation) {
 			//			
-			Descri.addProperty("uuid");
-			Descri.addProperty("testPanels",Representation.REF);
-			Descri.addProperty("testConcept",Representation.REF);
-			Descri.addProperty("retired");
-			Descri.addSelfLink();
-			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
-			return Descri;
-		}
-		else if(rep instanceof FullRepresentation)
-		{
+			description.addProperty("uuid");
+			description.addProperty("testPanels",Representation.REF);
+			description.addProperty("testConcept",Representation.REF);
+			description.addProperty("confirmTest",Representation.REF);
+			description.addProperty("testRanges",Representation.REF);
+			description.addProperty("testPanels",Representation.REF);
+			description.addProperty("resultFormat");
+			description.addProperty("retired");
+			description.addSelfLink();
+			description.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
+			return description;
+			
+		} else if (rep instanceof FullRepresentation) {
 			//
-			Descri.addProperty("uuid");
-			Descri.addProperty("testPanels",Representation.REF);
-			Descri.addProperty("testConcept",Representation.REF);
-			Descri.addProperty("confirmTest",Representation.REF);
-			Descri.addProperty("sortWeight");
-			Descri.addProperty("retired");
-			Descri.addSelfLink();
-			Descri.addProperty("auditInfo",findMethod("getAuditInfo"));
-			return Descri;
+			description.addProperty("uuid");
+			description.addProperty("testPanels",Representation.DEFAULT);
+			description.addProperty("testConcept",Representation.DEFAULT);
+			description.addProperty("confirmTest",Representation.DEFAULT);
+			description.addProperty("testRanges",Representation.DEFAULT);
+			description.addProperty("testPanels",Representation.DEFAULT);
+			description.addProperty("resultFormat");
+			description.addProperty("sortWeight");
+			description.addProperty("retired");
+			description.addSelfLink();
+			description.addProperty("auditInfo",findMethod("getAuditInfo"));
+			return description;
 		}
 		return null;
 	}

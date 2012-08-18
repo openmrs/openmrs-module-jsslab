@@ -197,6 +197,6 @@ public class HibernateLabTestDAO implements LabTestDAO {
 
 
 	// TODO: replace stubs below with real methods in LabTestingService
-		private LabTestRange saveLabTestRange(LabTestRange labTestRange) { return labTestRange; }
+	private LabTestRange saveLabTestRange(LabTestRange labTestRange) { return labTestRange; }
 
 }

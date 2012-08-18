@@ -397,6 +397,8 @@
   <concept_description concept_description_id="33333118" concept_id="33333118" description="0-2 hours" locale="EN" creator="1" date_created="2011-12-11 00:00:00.0" uuid="efc3ec16-258e-11e1-956b-0024e8dbd743"/>
   <concept_description concept_description_id="33333119" concept_id="33333119" description="2-8 hours" locale="EN" creator="1" date_created="2011-12-11 00:00:00.0" uuid="efc41641-258e-11e1-956b-0024e8dbd743"/>
   <concept_description concept_description_id="33333120" concept_id="33333120" description="&gt;8 hours" locale="EN" creator="1" date_created="2011-12-11 00:00:00.0" uuid="efc4418e-258e-11e1-956b-0024e8dbd743"/>
+
+<!-- 
   <concept_map concept_map_id="33333001" source="33333001" source_code="LAB: JSS" comment="JSS Hospital Lab Test Catalog" creator="1" date_created="2011-12-11 00:00:00.0" concept_id="33333001" uuid="8b4872c5-258f-11e1-956b-0024e8dbd743"/>
   <concept_map concept_map_id="33333002" source="33333001" source_code="SPECIMEN TYPE" comment="Specimen Type Codes" creator="1" date_created="2011-12-11 00:00:00.0" concept_id="33333002" uuid="9882690c-258f-11e1-956b-0024e8dbd743"/>
   <concept_map concept_map_id="33333003" source="33333001" source_code="REPORT STATUS" comment="Report Status Codes" creator="1" date_created="2011-12-11 00:00:00.0" concept_id="33333003" uuid="98833789-258f-11e1-956b-0024e8dbd743"/>
@@ -408,6 +410,8 @@
   <concept_map concept_map_id="33333009" source="33333001" source_code="TEST ROLE" comment="Test role codes" creator="1" date_created="2011-12-11 00:00:00.0" concept_id="33333009" uuid="9886054f-258f-11e1-956b-0024e8dbd743"/>
   <concept_map concept_map_id="33333010" source="33333001" source_code="ABNORMAL FLAGS" comment="Abnormal flags" creator="1" date_created="2011-12-11 00:00:00.0" concept_id="33333010" uuid="9886754b-258f-11e1-956b-0024e8dbd743"/>
   <concept_map concept_map_id="33333011" source="33333001" source_code="PRECONDITIONS" comment="Precondition questions" creator="1" date_created="2011-12-11 00:00:00.0" concept_id="33333011" uuid="9886e425-258f-11e1-956b-0024e8dbd743"/>
+  -->
+  
   <concept_name concept_id="33333001" name="LAB: JSS" locale="EN" creator="1" date_created="2011-12-11 00:00:00.0" concept_name_id="33333001" voided="0" uuid="784b972c-258e-11e1-956b-0024e8dbd743" concept_name_type="FULLY_SPECIFIED" locale_preferred="0"/>
   <concept_name concept_id="33333002" name="SPECIMEN TYPE" locale="EN" creator="1" date_created="2011-12-11 00:00:00.0" concept_name_id="33333002" voided="0" uuid="955be88a-258e-11e1-956b-0024e8dbd743" concept_name_type="FULLY_SPECIFIED" locale_preferred="0"/>
   <concept_name concept_id="33333003" name="REPORT STATUS" locale="EN" creator="1" date_created="2011-12-11 00:00:00.0" concept_name_id="33333003" voided="0" uuid="955ca161-258e-11e1-956b-0024e8dbd743" concept_name_type="FULLY_SPECIFIED" locale_preferred="0"/>
@@ -701,7 +705,11 @@
   <concept_set concept_set_id="33333492" concept_id="33333092" concept_set="33333089" sort_weight="2.0" creator="1" date_created="2011-12-11 00:00:00.0" uuid="2679bdc7-5a47-11e1-8dde-0024e8c61285"/>
   <concept_set concept_set_id="33333591" concept_id="33333091" concept_set="33333090" sort_weight="1.0" creator="1" date_created="2011-12-11 00:00:00.0" uuid="2679d917-5a47-11e1-8dde-0024e8c61285"/>
   <concept_set concept_set_id="33333592" concept_id="33333092" concept_set="33333090" sort_weight="2.0" creator="1" date_created="2011-12-11 00:00:00.0" uuid="2679f659-5a47-11e1-8dde-0024e8c61285"/>
+
+<!-- 
   <concept_source concept_source_id="33333001" name="jsslab" description="Parameters for JSS Lab module" creator="1" date_created="2012-01-01 00:00:00.0" retired="false" uuid="bb06c2cc-4877-11e1-b5ed-0024e8c61285"/>
+  -->
+  
   <global_property property="anNzbGFiLkxhYk9yZGVy" property_value="33333001" description="Order type for lab orders" uuid="c42c6abb-2722-11e1-9d19-0024e8dbd743"/>
   <location location_id="33333001" name="Chhattisgarh" description="State" state_province="Chhattisgarh" creator="1" date_created="2011-12-01 00:00:00.0" county_district="Bilaspur" retired="false" uuid="e686a658-2292-11e1-ba72-00265e639063"/>
   <location location_id="33333002" name="Bilaspur" description="District" state_province="Chhattisgarh" creator="1" date_created="2011-12-01 00:00:00.0" county_district="Bilaspur" retired="false" parent_location="33333001" uuid="e686e018-2292-11e1-ba72-00265e639063"/>
@@ -748,9 +756,11 @@
   <person_name person_name_id="33333008" preferred="1" person_id="33333008" given_name="Mithun" family_name="Chakraborty" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="d5982abb-721a-11e1-9be3-00265e1c945c"/>
   <person_name person_name_id="33333009" preferred="1" person_id="33333009" given_name="Amitabh" family_name="Bachchan" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="d5982d8c-721a-11e1-9be3-00265e1c945c"/>
   <person_name person_name_id="33333010" preferred="1" person_id="33333010" given_name="Nana" family_name="Patekar" creator="1" date_created="2012-01-01 00:00:00.0" voided="0" uuid="d59835c6-721a-11e1-9be3-00265e1c945c"/>
+<!-- 
   <users user_id="1" system_id="admin" username="admin" password="4a1750c8607dfa237de36c6305715c223415189" salt="c788c6ad82a157b712392ca695dfcf2eed193d7f" creator="1" date_created="2005-01-01 00:00:00.0" retired="0" retired_by="0" person_id="1" uuid="842f4bae-1692-11df-97a5-7038c432aabf"/>
   <users user_id="2" system_id="daemon" username="daemon" creator="1" date_created="2010-04-26 13:25:00.0" retired="0" retired_by="0" person_id="1" uuid="A4F30A1B-5EB9-11DF-A648-37A07F9C90FB"/>
   <users user_id="3" system_id="3-4" username="roger" password="12a1e130835374a8802325ec3e1a9775d6b9e9b7fbfec4b436ea5ca3d7ab1042b77b0cedb9eacab03ce7e093713c1c70cd88c917de3a79576168bf534eb39b53" salt="f5c2bb460b1be19d31e63e21ef3b350a7bca5c850c2ab1824c71f8f68ca84aec1ed1da03a0b04eb60b1e93bef0bd1480c484f96f3f91528ebf46987332d0d47b" creator="1" date_created="2011-12-29 13:35:32.0" changed_by="1" date_changed="2011-12-29 13:35:32.0" retired="0" retired_by="0" person_id="3" uuid="f6fe6186-c364-4fb4-a1c5-f8bf016d01eb"/>
+  -->
   <users user_id="33333001" system_id="" username="Urmila Matondkar" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333001" uuid="290d3fe4-7111-11e1-8cf8-00265e1c945c"/>
   <users user_id="33333002" system_id="" username="Karisma Kapoor" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333002" uuid="29110897-7111-11e1-8cf8-00265e1c945c"/>
   <users user_id="33333003" system_id="" username="Raveena Tandon" creator="1" date_created="2011-12-01 00:00:00.0" retired="0" person_id="33333003" uuid="29110a48-7111-11e1-8cf8-00265e1c945c"/>

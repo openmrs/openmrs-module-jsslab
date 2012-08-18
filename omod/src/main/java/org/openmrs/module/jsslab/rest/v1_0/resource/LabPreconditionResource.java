@@ -25,7 +25,7 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 
 	@Override
 	public LabPrecondition getByUniqueId(String uniqueId) {
-		LabPrecondition labPrecondition=Context.getService(LabCatalogService.class).getLabPreconditionByUuid(uniqueId);
+		LabPrecondition labPrecondition = Context.getService(LabCatalogService.class).getLabPreconditionByUuid(uniqueId);
 		return labPrecondition;
 	}
 
@@ -72,6 +72,7 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 			Descri.addProperty("uuid");
 			Descri.addProperty("testPanel",Representation.REF);
 			Descri.addProperty("preconditionQuestionConcept",Representation.REF);
+			Descri.addProperty("preconditionAnswerConcept",Representation.REF);
 			Descri.addProperty("voided");
 			Descri.addSelfLink();
 			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
@@ -82,8 +83,8 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 			//
 			Descri.addProperty("uuid");
 			Descri.addProperty("testPanel",Representation.REF);
-			Descri.addProperty("preconditionQuestionConcept",Representation.REF);
-			Descri.addProperty("preconditionAnswerConcept",Representation.REF);
+			Descri.addProperty("preconditionQuestionConcept",Representation.DEFAULT);
+			Descri.addProperty("preconditionAnswerConcept",Representation.DEFAULT);
 			Descri.addProperty("sortWeight");
 			Descri.addProperty("voided");
 			Descri.addSelfLink();
