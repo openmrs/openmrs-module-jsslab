@@ -23,6 +23,7 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.Location;
 import org.openmrs.LocationTag;
 import org.openmrs.api.context.Context;
+import org.openmrs.logic.rule.definition.RuleDefinitionService;
 import org.openmrs.module.webservices.rest.web.RequestContext;
 import org.openmrs.module.webservices.rest.web.RestUtil;
 import org.openmrs.module.webservices.rest.web.representation.Representation;
@@ -50,7 +51,9 @@ public class JssLabAdminCatalogController {
 		RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
 		PageableResult locationsResult = new AlreadyPaged<Location>(context, locations, false);
 		
-		model.put("locations", locations);
+		model.addAttribute("locations", locations);
+		model.addAttribute("rules", Context.getService(RuleDefinitionService.class).getAllRuleDefinitions(true));
+		
 //		model.put("locationsJSON", locationsResult.toSimpleObject());
 		
 	}

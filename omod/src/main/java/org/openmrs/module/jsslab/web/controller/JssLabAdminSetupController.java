@@ -60,10 +60,9 @@ public class JssLabAdminSetupController {
 		model.put("gpOrderType", gpOrderType);
 		model.put("gpConceptSets", gpConceptSets);
 
-		String sampleDataInstalled = Context.getAdministrationService().getGlobalProperty("jsslab.setup.sampleData");
-		boolean isSampleDataInstalled = sampleDataInstalled != null && !sampleDataInstalled.isEmpty();
+		String sampleDataStatus = Context.getAdministrationService().getGlobalProperty("jsslab.setup.sampleData");
 		
-		model.put("sampleDataInstalled", isSampleDataInstalled);
+		model.put("sampleDataInstalled", sampleDataStatus);
 	}
 	
 	@RequestMapping(value = "/installSampleData", method = RequestMethod.GET)

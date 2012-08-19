@@ -37,7 +37,7 @@
 
 	<globalProperty>
 		<property>jsslab.setup.sampleData</property>
-		<description>Specifies whether sample data for this module has been installed.</description>
+		<description>Specifies the installed sample data version</description>
 	</globalProperty>
 	
 	<globalProperty>

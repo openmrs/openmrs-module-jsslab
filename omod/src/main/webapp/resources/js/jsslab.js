@@ -6,7 +6,19 @@ if (typeof String.prototype.startsWith != 'function') {
 }
 
 var jsslab = {
+		
+	/** 
+	 * The base internationalisation object for JavaScript code in this module
+	 * 
+	 * If a locale specific String needs to be set via JavaScript it is stored in this object using a script-snippet in the
+	 * associated .jsp file. In the .jsp the String is retrieved from the messages*.properties using the spring:message 
+	 * taglib.
+	 */
 	"i18n" : {},
+	
+	/**
+	 * The base object containing constants that are referred to in the code of this module
+	 */
 	"constants" : {
 		"labTagName" : "Lab",
 		"conceptSets" : {
@@ -22,15 +34,34 @@ var jsslab = {
 		}
 	},
 	
+	"dao" : {
+		
+		getConcept : function(uuid, representation, callback) {
+			var baseUrl = openmrsContextPath + "/ws/rest/v1/concept/" + uuid;
+			if (representation) {
+				baseUrl += "?v="+representation;
+			}
+			jQuery.ajax({
+				"url" : baseUrl,
+				"success" : callback
+			});
+		},
+		
+	},
+	
 	/*
-	 * CONCEPTS
+	 * Methods for CONCEPTS
 	 */
 	
 	/**
-	 * Saves a Concept object
+	 * Saves a <code>Concept</code> object 
 	 * 
-	 * @param concept The Concept to be saved
-	 * @param uuid The UUID of the Concept if it is being updated or null if it is being added
+	 * Uses an XHR to the REST API
+	 * 
+	 * @param concept The <code>Concept</code> to be saved
+	 * @param uuid The UUID of the <code>Concept</code> if it is being updated or null if it is being added
+	 * @param retire Whether the <code>Concept</code> is to be retired
+	 * @param callback A function to be called when the XHR to save the <code>Concept</code> returns.
 	 * 
 	 * @return The uuid of the saved or updated <code>Concept</code>
 	 */
@@ -77,6 +108,17 @@ var jsslab = {
 
 	},
 	
+	/**
+	 * Adds a <code>Concept</code> object to the <code>ConceptSet</code> given by its UUID
+	 * 
+	 * Uses an XHR to the REST API
+	 * 
+	 * @param concept The <code>Concept</code> to be added to the <code>ConceptSet</code>
+	 * @param setUuid The UUID of the <code>ConceptSet</code>
+	 * @param callback A function to be called when the XHR returns.
+	 * 
+	 * @return The uuid of the saved or updated <code>Concept</code>
+	 */
 	addConceptToConceptSet : function(concept, setUuid, callback) {
 		jQuery.ajax({
 			"url" : openmrsContextPath + "/ws/rest/v1/jsslab?addConceptToConceptSet",
@@ -87,8 +129,19 @@ var jsslab = {
 		});
 	},
 	
-	setConceptRetired : function(concept, retired, callback) {
-		if (retired) {
+	/**
+	 * Retires a <code>Concept</code>
+	 * 
+	 * Uses an XHR to the REST API
+	 * 
+	 * @param concept The <code>Concept</code> to be added to the <code>ConceptSet</code>
+	 * @param retire The UUID of the <code>ConceptSet</code>
+	 * @param callback A function to be called when the XHR returns.
+	 * 
+	 * @return The uuid of the saved or updated <code>Concept</code>
+	 */
+	setConceptRetired : function(concept, retire, callback) {
+		if (retire) {
 			var retireReason = jQuery('#editConceptRetireReason').val();
 			var url = openmrsContextPath + "/ws/rest/v1/concept/" + concept.uuid + "?reason="+retireReason;
 			
@@ -97,6 +150,8 @@ var jsslab = {
 				"type" : "DELETE",
 				"success" : callback
 			});
+		} else {
+			//TODO unretire the concept
 		}
 	},
 	
@@ -229,7 +284,12 @@ var jsslab = {
 	 * GENERAL
 	 */
 	
-	
+	/**
+	 * Checks whether the given UUID is valid, based on the length of the string.
+	 * 
+	 * @param uuid The UUI that is to be checked for validity
+	 * @returns {Boolean}
+	 */
 	isValidUuid : function(uuid) {
 		return uuid != null && uuid.length >= 36;
 	},

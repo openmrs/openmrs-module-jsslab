@@ -230,5 +230,39 @@
 			</list>
 		</property>
 	</bean>
+	<bean parent="serviceContext">
+		<property name="moduleService">
+			<list>
+				<value>org.openmrs.module.jsslab.ExternalObjectsService</value>
+				<bean
+					class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+					<property name="transactionManager">
+						<ref bean="transactionManager" />
+					</property>
+					<property name="target">
+						<bean class="org.openmrs.module.jsslab.impl.ExternalObjectsServiceImpl">
+							<property name="externalObjectsDAO">
+								<bean class="org.openmrs.module.jsslab.db.hibernate.HibernateExternalObjectsDAO">
+									<property name="sessionFactory">
+										<ref bean="sessionFactory" />
+									</property>
+								</bean>
+							</property>
+						</bean>
+					</property>
+
+					<property name="preInterceptors">
+						<ref bean="serviceInterceptors" />
+					</property>
+					<property name="transactionAttributeSource">
+						<bean
+							class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource">
+						</bean>
+					</property>
+
+				</bean>
+			</list>
+		</property>
+	</bean>
 	
 </beans>

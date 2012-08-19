@@ -93,9 +93,13 @@
 	<div>
 <!-- 		<a href="#" id="liquibaseSampleData">run liquibase for sample data</a> -->
 		<c:choose>
-			<c:when test="${sampleDataInstalled}">
+			<c:when test="${sampleDataInstalled eq 'installed'}">
 				<span><spring:message code="jsslab.setup.database.sampledata.installed" /></span>
-				<input type="submit" value="Install Now" disabled="disabled" />
+				<input id="installSampleData" type="submit" value="Install Now" disabled="disabled" />
+			</c:when>
+			<c:when test="${sampleDataInstalled eq 'update'}">
+				<span><spring:message code="jsslab.setup.database.sampledata.updateAvailable" /></span>
+				<input id="installSampleData" type="submit" value="Update Now" />
 			</c:when>
 			<c:otherwise>
 				<span><spring:message code="jsslab.setup.database.sampledata.notinstalled" /></span>

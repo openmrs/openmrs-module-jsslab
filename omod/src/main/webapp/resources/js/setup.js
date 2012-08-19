@@ -1,13 +1,25 @@
-editing = true;
-
 jQuery(document).ready(function() {
+	
+	/**
+	 * Wraps all variables and functions used in this script
+	 */
 	jsslab.setupPage = {
 		
+		/**
+		 * Contains all static autocomplete data used throughout the page. The nested arrays represent their types by 
+		 * label (display attribute) and uuid (uuid attribute).
+		 * The arrays are filled by queries that will return only those objects that actually fit into the appropriate
+		 * field.
+		 */
 		autocomplete : {
 			orderTypes : [],
 			conceptSets : [],
 		},
 		
+		/**
+		 * Initializes all autocompletes used throughout the page. Loads the static autocomplete data into their
+		 * appropriate arrays and sets up callback functions for dynamic autocompletes.
+		 */
 		initAutoCompletes : function() {
 			var url = openmrsContextPath + "/ws/rest/v1/jsslab?getAllOrderTypes"
 			jQuery.ajax({
@@ -69,6 +81,14 @@ jQuery(document).ready(function() {
 		
 	};
 	
+	
+	/*
+	 * The calls below facilitate binding of various actions to click events
+	 */
+	
+	/**
+	 * Handles click events on all save buttons for global properties on this page
+	 */
 	jQuery('.globalPropertySubmit').click(function(event) {
 		event.preventDefault();
 		var btnId = jQuery(this).attr('id');
@@ -80,6 +100,11 @@ jQuery(document).ready(function() {
 		jsslab.saveGlobalProperty( gpName, gpValue, jQuery('#globalPropertyResult_'+gpId), jsslab.setupPage.setSaveResult );
 	});
 	
+	/**
+	 * Handles click events on the button to install sample data
+	 * 
+	 * Sends an XHR to invoke the installation process
+	 */
 	jQuery('#installSampleData').click(function(event) {
 		event.preventDefault();
 		jQuery('#installSampleData').attr('disabled', 'disabled');
@@ -92,6 +117,11 @@ jQuery(document).ready(function() {
 		});
 	});
 	
+	/**
+	 * Handles click events on the button to finish the initial setup
+	 * 
+	 * Sends an XHR to invoke the finishing process for the setup
+	 */
 	jQuery('#finishSetup').click(function(event) {
 		event.preventDefault();
 		jQuery.ajax({
@@ -104,5 +134,6 @@ jQuery(document).ready(function() {
 	});
 	
 	jsslab.setupPage.initAutoCompletes();
+	
 });
 

@@ -1,5 +1,6 @@
 package org.openmrs.module.jsslab.rest.v1_0.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +12,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Concept;
 import org.openmrs.ConceptDatatype;
+import org.openmrs.ConceptNumeric;
+import org.openmrs.ConceptSearchResult;
 import org.openmrs.ConceptSet;
 import org.openmrs.GlobalProperty;
 import org.openmrs.Location;
@@ -235,6 +238,27 @@ public class JsslabController {
     	RequestContext context = RestUtil.getRequestContext(request, Representation.FULL);
     	PageableResult result = new NeedsPaging<OrderType>(orderTypes, context);
     	return result.toSimpleObject();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, params = "getAllTestRangeUnits")
+    @ResponseBody
+    public SimpleObject getAllTestRangeUnits(HttpServletRequest request,
+    				@RequestParam(value = "q", required = true) String phrase
+    		) throws ResponseException {
+    	List<String> unitList = new ArrayList<String>();
+    	
+    	List<ConceptDatatype> dts = new ArrayList<ConceptDatatype>();
+    	dts.add( Context.getConceptService().getConceptDatatypeByName(ConceptDatatype.NUMERIC) );
+    	List<ConceptSearchResult> concepts = Context.getConceptService().getConcepts(phrase, null, true, null, null, dts, null, null, 0, -1);
+    	for (ConceptSearchResult csr : concepts) {
+    		if (csr.getConcept().isNumeric()) {
+    			unitList.add( ((ConceptNumeric) csr.getConcept()).getUnits() );
+    		}
+    	}
+    	
+    	SimpleObject retVal = new SimpleObject();
+    	retVal.put("results", unitList);
+    	return retVal;
     }
     
     

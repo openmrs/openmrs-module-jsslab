@@ -63,33 +63,29 @@ public class LabPreconditionResource extends DataDelegatingCrudResource<LabPreco
 	}
 
 	@Override
-	public DelegatingResourceDescription getRepresentationDescription(
-			Representation rep) {
-		DelegatingResourceDescription Descri=new DelegatingResourceDescription();
-		if(rep instanceof DefaultRepresentation)
-		{
+	public DelegatingResourceDescription getRepresentationDescription(Representation rep) {
+		DelegatingResourceDescription description = new DelegatingResourceDescription();
+		if (rep instanceof DefaultRepresentation) {
 			//			
-			Descri.addProperty("uuid");
-			Descri.addProperty("testPanel",Representation.REF);
-			Descri.addProperty("preconditionQuestionConcept",Representation.REF);
-			Descri.addProperty("preconditionAnswerConcept",Representation.REF);
-			Descri.addProperty("voided");
-			Descri.addSelfLink();
-			Descri.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
-			return Descri;
-		}
-		else if(rep instanceof FullRepresentation)
-		{
+			description.addProperty("uuid");
+			description.addProperty("testPanel",Representation.REF);
+			description.addProperty("preconditionQuestionConcept",Representation.REF);
+			description.addProperty("preconditionAnswerConcept",Representation.REF);
+			description.addProperty("voided");
+			description.addSelfLink();
+			description.addLink("full", ".?v="+RestConstants.REPRESENTATION_FULL);
+			return description ;
+		} else if(rep instanceof FullRepresentation) {
 			//
-			Descri.addProperty("uuid");
-			Descri.addProperty("testPanel",Representation.REF);
-			Descri.addProperty("preconditionQuestionConcept",Representation.DEFAULT);
-			Descri.addProperty("preconditionAnswerConcept",Representation.DEFAULT);
-			Descri.addProperty("sortWeight");
-			Descri.addProperty("voided");
-			Descri.addSelfLink();
-			Descri.addProperty("auditInfo",findMethod("getAuditInfo"));
-			return Descri;
+			description .addProperty("uuid");
+			description .addProperty("testPanel",Representation.REF);
+			description .addProperty("preconditionQuestionConcept",Representation.DEFAULT);
+			description .addProperty("preconditionAnswerConcept",Representation.DEFAULT);
+			description .addProperty("sortWeight");
+			description .addProperty("voided");
+			description .addSelfLink();
+			description .addProperty("auditInfo",findMethod("getAuditInfo"));
+			return description ;
 		}
 		return null;
 	}

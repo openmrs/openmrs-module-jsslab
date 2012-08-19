@@ -2492,6 +2492,32 @@
 			<column name="precise" valueBoolean="true"/>
 		</insert>
 	</changeSet>
+	<changeSet author="martingielow" id="minimum_metadata_concept_numeric_20120820">
+		<comment>Adds missing entries in concept_numeric for 2 numeric concepts</comment>
+		<insert tableName="concept_numeric">
+			<column name="concept_id" valueNumeric="33333079"/>
+			<column name="hi_absolute"/>
+			<column name="hi_critical"/>
+			<column name="hi_normal"/>
+			<column name="low_absolute"/>
+			<column name="low_critical"/>
+			<column name="low_normal"/>
+			<column name="units" value="%"/>
+			<column name="precise" valueBoolean="true"/>
+		</insert>
+		<insert tableName="concept_numeric">
+			<column name="concept_id" valueNumeric="33333083"/>
+			<column name="hi_absolute"/>
+			<column name="hi_critical"/>
+			<column name="hi_normal"/>
+			<column name="low_absolute"/>
+			<column name="low_critical"/>
+			<column name="low_normal"/>
+			<column name="units" value=""/>
+			<column name="precise" valueBoolean="true"/>
+		</insert>
+		
+	</changeSet>
 	
 	<changeSet author="martingielow" id="minimum_metadata_concept_set">
 		<insert tableName="concept_set">

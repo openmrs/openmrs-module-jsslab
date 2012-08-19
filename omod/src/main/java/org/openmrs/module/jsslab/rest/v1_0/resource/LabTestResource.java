@@ -91,7 +91,12 @@ public class LabTestResource extends MetadataDelegatingCrudResource<LabTest>{
 			//
 			description.addProperty("uuid");
 			description.addProperty("testPanels",Representation.DEFAULT);
+			
+			// The full representation of Concept is required to retrieve ConceptNumeric values which are likely to be 
+			// required when a full representation of LabTest is requested
+			// Using DEFAULT nevertheless, because FULL fails on trying to retrieve some fields of the testConcept
 			description.addProperty("testConcept",Representation.DEFAULT);
+			
 			description.addProperty("confirmTest",Representation.DEFAULT);
 			description.addProperty("testRanges",Representation.DEFAULT);
 			description.addProperty("testPanels",Representation.DEFAULT);

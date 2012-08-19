@@ -161,6 +161,9 @@
 	min-width: 400px;
 }
 
+#testRangeSelectionTable {
+	width: 100%;
+}
 .testResultFormatPanel {
 	display: none;
 }

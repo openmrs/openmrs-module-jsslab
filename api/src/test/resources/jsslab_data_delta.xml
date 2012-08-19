@@ -585,9 +585,11 @@
   <concept_numeric concept_id="33333076" units="g/L" precise="1"/>
   <concept_numeric concept_id="33333077" units="fL" precise="1"/>
   <concept_numeric concept_id="33333078" units="pg" precise="0"/>
+  <concept_numeric concept_id="33333079" units="%" precise="1"/>
   <concept_numeric concept_id="33333080" units="10^9/L" precise="1"/>
   <concept_numeric concept_id="33333081" units="fL" precise="1"/>
   <concept_numeric concept_id="33333082" units="mL/L" precise="0"/>
+  <concept_numeric concept_id="33333083" units="" precise="1"/>
   <concept_numeric concept_id="33333084" units="10^9/L" precise="1"/>
   <concept_set concept_set_id="33333012" concept_id="33333012" concept_set="33333005" sort_weight="0.0" creator="1" date_created="2011-12-11 00:00:00.0" uuid="0de546b0-258f-11e1-956b-0024e8dbd743"/>
   <concept_set concept_set_id="33333013" concept_id="33333013" concept_set="33333005" sort_weight="0.0" creator="1" date_created="2011-12-11 00:00:00.0" uuid="30d93046-258f-11e1-956b-0024e8dbd743"/>

@@ -3,7 +3,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
-                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
 
 	<changeSet author="martingielow" id="samples_jsslab_instrument">
 		<insert tableName="jsslab_instrument">
@@ -1023,4 +1023,116 @@
 		</sql>
 	</changeSet>
 
+	<changeSet id="jsslab-test-range-test-data" author="martingielow" >
+		<comment>Adds sample data to the jsslab_test_range table</comment>
+		
+		<insert tableName="jsslab_test_range">
+			<column name="test_range_id" valueNumeric="33333001" />
+			<column name="test_id" valueNumeric="33333001" />
+			<column name="sort_weight" valueNumeric="0" />
+			<column name="range_sex" value="m" />
+			<column name="range_age_min" valueNumeric="0" />
+			<column name="range_age_max" valueNumeric="15" />
+			<column name="range_critical_low" valueNumeric="5" />
+			<column name="range_normal_low" valueNumeric="15" />
+			<column name="range_normal_high" valueNumeric="25" />
+			<column name="range_critical_high" valueNumeric="35" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="uuid" value="e7ca15d0-e9c7-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="jsslab_test_range">
+			<column name="test_range_id" valueNumeric="33333002" />
+			<column name="test_id" valueNumeric="33333001" />
+			<column name="sort_weight" valueNumeric="0" />
+			<column name="range_sex" value="w" />
+			<column name="range_age_min" valueNumeric="0" />
+			<column name="range_age_max" valueNumeric="15" />
+			<column name="range_critical_low" valueNumeric="5" />
+			<column name="range_normal_low" valueNumeric="15" />
+			<column name="range_normal_high" valueNumeric="25" />
+			<column name="range_critical_high" valueNumeric="35" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="uuid" value="7126c4d0-e9c9-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="jsslab_test_range">
+			<column name="test_range_id" valueNumeric="33333003" />
+			<column name="test_id" valueNumeric="33333001" />
+			<column name="sort_weight" valueNumeric="0" />
+			<column name="range_sex" value="m" />
+			<column name="range_age_min" valueNumeric="15" />
+			<column name="range_age_max" valueNumeric="60" />
+			<column name="range_critical_low" valueNumeric="4" />
+			<column name="range_normal_low" valueNumeric="15" />
+			<column name="range_normal_high" valueNumeric="25" />
+			<column name="range_critical_high" valueNumeric="36" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="uuid" value="7126c4d1-e9c9-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="jsslab_test_range">
+			<column name="test_range_id" valueNumeric="33333004" />
+			<column name="test_id" valueNumeric="33333001" />
+			<column name="sort_weight" valueNumeric="0" />
+			<column name="range_sex" value="w" />
+			<column name="range_age_min" valueNumeric="15" />
+			<column name="range_age_max" valueNumeric="60" />
+			<column name="range_critical_low" valueNumeric="3" />
+			<column name="range_normal_low" valueNumeric="15" />
+			<column name="range_normal_high" valueNumeric="25" />
+			<column name="range_critical_high" valueNumeric="37" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="uuid" value="7126c4d2-e9c9-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="jsslab_test_range">
+			<column name="test_range_id" valueNumeric="33333005" />
+			<column name="test_id" valueNumeric="33333001" />
+			<column name="sort_weight" valueNumeric="0" />
+			<column name="range_sex" />
+			<column name="range_age_min" valueNumeric="60" />
+			<column name="range_age_max" />
+			<column name="range_critical_low" valueNumeric="5" />
+			<column name="range_normal_low" valueNumeric="15" />
+			<column name="range_normal_high" valueNumeric="25" />
+			<column name="range_critical_high" valueNumeric="35" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="uuid" value="fa75d4b0-e9c9-11e1-aff1-0800200c9a66" />
+		</insert>
+		
+		<insert tableName="jsslab_test_range">
+			<column name="test_range_id" valueNumeric="33333006" />
+			<column name="test_id" valueNumeric="33333002" />
+			<column name="sort_weight" valueNumeric="0" />
+			<column name="range_sex" />
+			<column name="range_age_min" valueNumeric="0" />
+			<column name="range_age_max" valueNumeric="60" />
+			<column name="range_critical_low" />
+			<column name="range_normal_low" />
+			<column name="range_normal_high" valueNumeric="5" />
+			<column name="range_critical_high" valueNumeric="15" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="uuid" value="fa75d4b1-e9c9-11e1-aff1-0800200c9a66" />
+		</insert>
+		<insert tableName="jsslab_test_range">
+			<column name="test_range_id" valueNumeric="33333007" />
+			<column name="test_id" valueNumeric="33333002" />
+			<column name="sort_weight" valueNumeric="0" />
+			<column name="range_sex" />
+			<column name="range_age_min" valueNumeric="60" />
+			<column name="range_age_max" />
+			<column name="range_critical_low" />
+			<column name="range_normal_low" />
+			<column name="range_normal_high" valueNumeric="10" />
+			<column name="range_critical_high" valueNumeric="25" />
+			<column name="creator" valueNumeric="1"/>
+			<column name="date_created" valueDate="2011-12-01T00:00:00.0"/>
+			<column name="uuid" value="fa75d4b2-e9c9-11e1-aff1-0800200c9a66" />
+		</insert>
+		
+	</changeSet>
+	
 </databaseChangeLog>

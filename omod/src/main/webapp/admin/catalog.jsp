@@ -33,7 +33,7 @@
 			},
 			"tests.editing.resultNumeric.noTestRanges" 				: "<spring:message code='jsslab.catalog.tests.editing.resultFormat.numeric.noTestRanges' />",
 			"tests.editing.resultNumeric.testRanges.dialog.title"	: "<spring:message code='jsslab.catalog.tests.editing.resultFormat.numeric.testRanges.dialog.title' />",
-		}
+		};
 	</script>
 	
 	<!-- ====================== --> 
@@ -147,8 +147,8 @@
 				
 				<div>
 					<input type="submit" id="buttonAddPrecondition" value="<spring:message code="jsslab.catalog.investigations.editing.preconditions.add" />" />
-					<input type="submit" id="buttonEditPrecondition" value="<spring:message code="jsslab.catalog.investigations.editing.preconditions.edit" />" />
-					<input type="submit" id="buttonRemovePrecondition" value="<spring:message code="jsslab.catalog.investigations.editing.preconditions.remove" />" />
+					<input type="submit" id="buttonEditPrecondition" disabled="disabled" value="<spring:message code="jsslab.catalog.investigations.editing.preconditions.edit" />" />
+					<input type="submit" id="buttonRemovePrecondition" disabled="disabled" value="<spring:message code="jsslab.catalog.investigations.editing.preconditions.remove" />" />
 				</div>
 			</fieldset>
 			
@@ -251,16 +251,16 @@
 					</select>
 				</div>
 				<div style="float: left;">
-					<input type="submit" value="<spring:message code="jsslab.catalog.tests.selection.moveUp" />" />
+					<input type="submit" id="btnMoveUpTest" value="<spring:message code="jsslab.catalog.tests.selection.moveUp" />" />
 					<br />
-					<input type="submit" value="<spring:message code="jsslab.catalog.tests.selection.moveDown" />" />
+					<input type="submit" id="btnMoveDownTest" value="<spring:message code="jsslab.catalog.tests.selection.moveDown" />" />
 				</div>
 				<div style="clear:both;"></div>
 			</div>
 			
 			<div>
-				<input type="submit" value="<spring:message code="jsslab.catalog.tests.selection.add" />" />
-				<input type="submit" value="<spring:message code="jsslab.catalog.tests.selection.remove" />" />
+				<input type="submit" id="btnAddTest" value="<spring:message code="jsslab.catalog.tests.selection.add" />" />
+				<input type="submit" id="btnRemoveTest" value="<spring:message code="jsslab.catalog.tests.selection.remove" />" />
 			</div>
 		</div>
 		
@@ -309,15 +309,26 @@
 			
 			<br />
 			
-			<fieldset>
+			<!-- result format -->
+			
+			<fieldset id="fieldsetResultFormat">
 				<legend id="testResultFormatHeading"><!-- Update based on selected result format --></legend>
 				
+				
 				<!-- Dynamically show panel for selected result format here -->
+				
 				<div id="testResultFormatPanel">
 					
-					<!-- result format panel for result format "CONCEPT" -->
-					<div class="testResultFormatPanel" id="testResultFormat_CONCEPT">
 					
+					<!-- result format panel for result format "CONCEPT" -->
+					
+					<div class="testResultFormatPanel" id="testResultFormat_CONCEPT">
+						
+						<table id="testRangeAnswers">
+						</table>
+						
+						<input type="submit" id="btnAddTestRangeAnswer" value="<spring:message code="jsslab.catalog.tests.editing.resultFormat.concept.addAnswer" />" />
+						<input type="submit" id="btnRemoveTestRangeAnswer" value="<spring:message code="jsslab.catalog.tests.editing.resultFormat.concept.removeAnswer" />" />
 					</div>
 					
 					<!-- result format panel for result format "NUMERIC" -->
@@ -327,10 +338,8 @@
 							<tr>
 								<td><label for="selectResultUnit" ><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.unit" /></label></td>
 								<td>
-									<select id="selectNumericResultUnit">
-										<option value="NONE">NONE</option>
-										<!-- add available result units here -->
-									</select></td>
+									<input type="text" id="selectNumericResultUnit" value="" />
+								</td>
 							</tr><tr>
 								<td><label for="selectResultUnit" ><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.showDecimals" /></label></td>
 								<td><input type="checkbox" id="checkboxNumericResultShowDecimals"/></td>
@@ -339,23 +348,31 @@
 						
 						<br />
 						
-						<!-- Required Specimens -->
+						<!-- test ranges -->
 				
-						<fieldset>
+						<fieldset id="fieldsetTestRange">
 							<legend><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.testRanges.title" /></legend>
 						
 						<div id="testRangeSelectionPanel">
-							<table id="testRangeSelectionTable" class="selectionTable">
-								<thead><tr>
-									<td><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.sex" /></td>
-									<td><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.minAge" /></td>
-									<td><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.maxAge" /></td>
-									<td><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.logicConditions" /></td>
-								</tr></thead>
-								<tbody>
-									<!-- Add result entries here -->							
-								</tbody>
-							</table>
+							<div style="float: left;">
+								<table id="testRangeSelectionTable" class="selectionTable">
+									<thead><tr>
+										<td><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.sex" /></td>
+										<td><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.minAge" /></td>
+										<td><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.maxAge" /></td>
+										<td><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.logicConditions" /></td>
+									</tr></thead>
+									<tbody>
+										<!-- Add result entries here -->							
+									</tbody>
+								</table>
+							</div>
+							<div style="float: left;">
+								<input type="submit" id="btnMoveUpTestRange" value="<spring:message code="jsslab.catalog.tests.selection.moveUp" />" />
+								<br />
+								<input type="submit" id="btnMoveDownTestRange" value="<spring:message code="jsslab.catalog.tests.selection.moveDown" />" />
+							</div>
+							<div style="clear:both;"></div>
 						</div>
 						<div id="testRangeButtons" >
 							<input type="submit" id="btnAddTestRange" value="<spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.testRanges.addRange" />" />
@@ -369,6 +386,18 @@
 								<tr>
 									<td><label for="textTestRangeSex" ><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.testRanges.dialog.sex" /></label></td>
 									<td><input type="text" id="textTestRangeSex"/></td>
+									<td><label for="selectTestRangeLogicRule" ><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.testRanges.dialog.logicRule" /></label></td>
+									<td>
+										<select id="selectTestRangeLogicRule">
+											<option value="null"> </option>
+											<c:forEach var="logicRule" items="${rules}">
+												<option value="${logicRule.uuid}">${logicRule.name}</option>
+											</c:forEach>
+											<!-- add available logic rules here -->
+										</select>
+										<br />
+										<span id=spanTestRangeLogicRuleDescription></span>
+									</td>
 								</tr><tr>
 									<td><label for="textTestRangeMinAge" ><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.testRanges.dialog.minAge" /></label></td>
 									<td><input type="text" id="textTestRangeMinAge"/></td>
@@ -384,16 +413,6 @@
 									<td><input type="text" id="textTestRangeCriticalLow"/></td>
 									<td><label for="textTestRangeCriticalHigh" ><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.testRanges.dialog.criticalHigh" /></label></td>
 									<td><input type="text" id="textTestRangeCriticalHigh"/></td>
-								</tr><tr>
-									<td><label for="selectTestRangeLogicRule" ><spring:message code="jsslab.catalog.tests.editing.resultFormat.numeric.testRanges.dialog.logicRule" /></label></td>
-									<td>
-										<select id="selectTestRangeLogicRule">
-											<option value="NONE">NONE</option>
-											<!-- add available logic rules here -->
-										</select>
-										<br />
-										<span id=spanTestRangeLogicRuleDescription></span>
-									</td>
 								</tr>
 							</table>
 							
@@ -402,8 +421,25 @@
 						</div>
 					</div>
 					
+					<!-- result format panel for result format "TITER" -->
+					
+					<div class="testResultFormatPanel" id="testResultFormat_TITER">
+					
+					</div>
+
+					<!-- result format panel for result format "DURATION" -->
+					
+					<div class="testResultFormatPanel" id="testResultFormat_DURATION">
+					
+					</div>
+					
 				</div>
 			</fieldset>
+			
+			<br />
+			
+			<input type="submit" id="btnSaveTest" value="<spring:message code="jsslab.catalog.tests.editing.save" />" />
+			<input type="submit" id="btnCancelTest" value="<spring:message code="jsslab.catalog.tests.editing.cancel" />" />
 		</div>
 		
 	</div>
