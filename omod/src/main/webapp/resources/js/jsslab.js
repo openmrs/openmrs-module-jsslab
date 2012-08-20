@@ -24,7 +24,7 @@ var jsslab = {
 		"labTagUuid" : "",
 		"conceptSets" : {
 			"conditions" : {
-				"ASSET CONDITION" : "a0f71212-24d1-11e1-a648-0024e8dbd743",
+				"ASSET CONDITION" : "b816ddc6-4873-11e1-b5ed-0024e8c61285",
 			}
 		},
 		"conceptClasses" : {
