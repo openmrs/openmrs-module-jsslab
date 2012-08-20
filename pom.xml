@@ -80,19 +80,19 @@
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-api</artifactId>
-				<version>1.0</version>
+				<version>1.1-SNAPSHOT</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-omod</artifactId>
-				<version>1.0</version>
+				<version>1.1-SNAPSHOT</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.openmrs.module</groupId>
 				<artifactId>webservices.rest-omod</artifactId>
-				<version>1.0</version>
+				<version>1.1-SNAPSHOT</version>
 				<scope>test</scope>
 				<classifier>tests</classifier>
 			</dependency>
@@ -174,7 +174,7 @@
 	</pluginRepositories>
 
 	<properties>
-		<openMRSVersion>1.9.0</openMRSVersion>
+		<openMRSVersion>[1.9.0,1.9.999)</openMRSVersion>
 	</properties>
 
 </project>

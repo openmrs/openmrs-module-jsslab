@@ -46,7 +46,7 @@
 			</fieldset>
 		</div>
 		<div id="addLocationPanel">
-			<input type="submit" value="<spring:message code="jsslab.settings.locations.addLocation" />" />
+			<input type="submit" id="btnAddLocation" value="<spring:message code="jsslab.settings.locations.addLocation" />" />
 		</div>
 	</div>
 	<div style="float:left; margin-left: 10px;">

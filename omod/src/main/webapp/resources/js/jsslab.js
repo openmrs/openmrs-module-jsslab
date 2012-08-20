@@ -21,9 +21,10 @@ var jsslab = {
 	 */
 	"constants" : {
 		"labTagName" : "Lab",
+		"labTagUuid" : "",
 		"conceptSets" : {
 			"conditions" : {
-				"ASSET CONDITION" : "b816ddc6-4873-11e1-b5ed-0024e8c61285",
+				"ASSET CONDITION" : "a0f71212-24d1-11e1-a648-0024e8dbd743",
 			}
 		},
 		"conceptClasses" : {
@@ -47,66 +48,194 @@ var jsslab = {
 			});
 		},
 		
-	},
-	
-	/*
-	 * Methods for CONCEPTS
-	 */
-	
-	/**
-	 * Saves a <code>Concept</code> object 
-	 * 
-	 * Uses an XHR to the REST API
-	 * 
-	 * @param concept The <code>Concept</code> to be saved
-	 * @param uuid The UUID of the <code>Concept</code> if it is being updated or null if it is being added
-	 * @param retire Whether the <code>Concept</code> is to be retired
-	 * @param callback A function to be called when the XHR to save the <code>Concept</code> returns.
-	 * 
-	 * @return The uuid of the saved or updated <code>Concept</code>
-	 */
-	saveConcept : function(concept, uuid, retire, callback) {
-		var baseUrl = openmrsContextPath + "/ws/rest/v1/concept";
+		/*
+		 * Methods for CONCEPTS
+		 */
 		
-		// update existing concept
-		if (jsslab.isValidUuid(uuid)) {
-			// if the concept already exists save/update its names
-			baseUrl += "/" + uuid;
+		/**
+		 * Saves a <code>Concept</code> object 
+		 * 
+		 * Uses an XHR to the REST API
+		 * 
+		 * @param concept The <code>Concept</code> to be saved
+		 * @param uuid The UUID of the <code>Concept</code> if it is being updated or null if it is being added
+		 * @param retire Whether the <code>Concept</code> is to be retired
+		 * @param callback A function to be called when the XHR to save the <code>Concept</code> returns.
+		 * 
+		 * @return The uuid of the saved or updated <code>Concept</code>
+		 */
+		saveConcept : function(concept, callback) {
+			var baseUrl = openmrsContextPath + "/ws/rest/v1/concept";
+			if (jsslab.isValidUuid(concept.uuid)) {
+				baseUrl += "/" + concept.uuid;
+			}
 			
-			var fullname = jsslab.getSaveableConceptName(jsslab.getConceptName(concept, "FULLY_SPECIFIED"));
-			var shortname = jsslab.getSaveableConceptName(jsslab.getConceptName(concept, "SHORT"));
+			var conceptUuid = concept.uuid;
+			var names = concept.names;
+			concept.uuid = undefined;
+			concept.names = undefined;
 			
-			jsslab.saveConceptName(uuid, fullname, 
-					//wait for the first call to return before starting the next, to avoid concurrency problems
-					jsslab.saveConceptName(uuid, shortname,
-							//invoke callback after last request has returned
-							jsslab.setConceptRetired(concept, retire, callback(concept.uuid))
-					)
-			);
-		
-		// save new concept
-		} else {
-			// first save the concept and then its names
 			jQuery.ajax({
 				"url" : baseUrl,
 				"type" : "POST",
 				"contentType" : "application/json",
-				"data" : JSON.stringify(jsslab.getSaveableConcept(concept)),
-				"success" : function(savedConcept) {
-					var conceptName = jsslab.getConceptName(concept, "SHORT");
+				"data" : JSON.stringify(concept),
+				"success" : function (savedConcept) {
+					if (savedConcept != null && jsslab.isValidUuid(savedConcept.uuid)) {
+						conceptUuid = savedConcept.uuid;
+					}
+					if (names != null) {
+						jsslab.dao.saveConceptNames(conceptUuid, names, 0);
+					}
 					
-					jsslab.saveConceptName(savedConcept.uuid, conceptName,
-							jsslab.addConceptToConceptSet(savedConcept, jsslab.settingsPage.getSelectedConceptSetUuid(),
-									jsslab.setConceptRetired(savedConcept, jQuery('#checkboxRetireConcept').attr('checked'),
-											callback(savedConcept.uuid)
-									)
-							)
-					);
 				}
 			});
-		}
-
+		},
+		
+		/**
+		 * Recursively saves all <code>ConceptName</code>s of the given array of names
+		 * 
+		 * @param conceptUuid
+		 * @param names
+		 * @param index
+		 */
+		saveConceptNames : function(conceptUuid, names, index) {
+			if (index < names.length) {
+				jsslab.dao.saveConceptName(conceptUuid, names[index], jsslab.dao.saveConceptNames(conceptUuid, names, index+1));
+			}
+		},
+		
+		/**
+		 * Saves a ConceptName object
+		 * 
+		 * @param conceptUuid The UUID of the Concept object to which the ConceptName belongs 
+		 * @param conceptName The ConceptName to be saved
+		 * @param conceptNameUuid The UUID of the ConceptName if is being updated or null if it is being added
+		 */
+		saveConceptName : function(conceptUuid, conceptName, callback) {
+			if (jsslab.isValidUuid(conceptName.uuid)) {
+				//update
+			} else {
+				//save new
+				var url = openmrsContextPath + "/ws/rest/v1/concept/" + conceptUuid + "/name";
+				jQuery.ajax({
+					"url" : url,
+					"type" : "POST",
+					"contentType" : "application/json",
+					"data" : JSON.stringify(conceptName),
+					"success" : callback
+				});
+			}
+		},
+		
+		/**
+		 * Retires a <code>Concept</code>
+		 * 
+		 * Uses an XHR to the REST API
+		 * 
+		 * @param uuid The UUID of the <code>Concept</code> to be retired
+		 * @param retire Whether the <code>Concept</code> is to be retired
+		 * @param callback A function to be called when the XHR returns.
+		 * 
+		 * @return The uuid of the saved or updated <code>Concept</code>
+		 */
+		setConceptRetired : function(uuid, retire, retireReason, callback) {
+			if (retire) {
+				var url = openmrsContextPath + "/ws/rest/v1/concept/" + uuid + "?reason="+retireReason;
+				
+				jQuery.ajax({
+					"url" : url,
+					"type" : "DELETE",
+					"success" : callback
+				});
+			} else {
+				//TODO unretire the concept
+			}
+		},
+		
+		/**
+		 * Retrieves the Code that is assigned to the given Concept object, if there is one, otherwise returns an empty String.
+		 * 
+		 * @param concept The Concept for which the Code is to be retrieved
+		 * @returns The Code assigned to the given Concept or an empty String if none is assigned
+		 */
+		getConceptName : function(concept, type) {
+			var name = null;
+			for (var i = 0; i < concept.names.length; i++) {
+				if (concept.names[i].conceptNameType == type) {
+					name = concept.names[i];
+					break;
+				}
+			}
+			return name;
+		},
+		
+		/*
+		 * Methods for Location
+		 */
+		
+		saveLocation : function(location, isManaged, callback) {
+			var locUuid = location.uuid;
+			location.uuid = undefined;
+			
+			if (isManaged != null) {
+				if (isManaged) {
+					jsslab.saveGlobalProperty("jsslab.object.location.homeLab", locUuid, null, null);
+				} else {
+					jsslab.saveGlobalProperty("jsslab.object.location.homeLab", "", null, null);
+				}
+			}
+			
+			var url = openmrsContextPath + "/ws/rest/v1/location/";
+			
+			if (jsslab.isValidUuid(locUuid)) url += "/" + locUuid;
+			
+			jQuery.ajax({
+				"url" : url,
+				"type" : "POST",
+				"contentType" : "application/json",
+				"data" : JSON.stringify( location ),
+				"success" : callback
+			});
+		},
+		
+		saveInvestigation : function(investigation, callback) {
+			var baseUrl = openmrsContextPath + "/ws/rest/v1/jsslab/labtestpanel";
+			if (jsslab.isValidUuid(investigation.uuid)) {
+				baseUrl += "/" + investigation.uuid;
+			}
+			
+			var investigationUuid = investigation.uuid;
+			investigation.uuid = undefined;
+			
+			jQuery.ajax({
+				"url" : baseUrl,
+				"type" : "POST",
+				"contentType" : "application/json",
+				"data" : JSON.stringify(investigation),
+				"success" : function (savedInvestigation) {
+					if (savedInvestigation != null && jsslab.isValidUuid(savedInvestigation.uuid)) {
+						investigationUuid = savedInvestigation.uuid;
+					}
+					callback(investigationUuid);
+				}
+			});
+		},
+		
+		/**
+		 * Removes the currently selected <code>Investigation/LabTestPanel</code> from the currently selected Lab and retires it.
+		 */
+		setInvestigationRetired : function(uuid, retire, reason, callback) {
+			if (jsslab.isValidUuid(uuid) && retire) {
+				jQuery.ajax({
+					"url" : openmrsContextPath + "/ws/rest/v1/jsslab/labtestpanel/" + uuid + "?reason="+reason,
+					"type" : "DELETE",
+					"success" : callback
+				});
+			}
+		},
 	},
+	
 	
 	/**
 	 * Adds a <code>Concept</code> object to the <code>ConceptSet</code> given by its UUID
@@ -129,71 +258,20 @@ var jsslab = {
 		});
 	},
 	
-	/**
-	 * Retires a <code>Concept</code>
-	 * 
-	 * Uses an XHR to the REST API
-	 * 
-	 * @param concept The <code>Concept</code> to be added to the <code>ConceptSet</code>
-	 * @param retire The UUID of the <code>ConceptSet</code>
-	 * @param callback A function to be called when the XHR returns.
-	 * 
-	 * @return The uuid of the saved or updated <code>Concept</code>
-	 */
-	setConceptRetired : function(concept, retire, callback) {
-		if (retire) {
-			var retireReason = jQuery('#editConceptRetireReason').val();
-			var url = openmrsContextPath + "/ws/rest/v1/concept/" + concept.uuid + "?reason="+retireReason;
-			
-			jQuery.ajax({
-				"url" : url,
-				"type" : "DELETE",
-				"success" : callback
-			});
-		} else {
-			//TODO unretire the concept
-		}
-	},
-	
-	/**
-	 * Saves a ConceptName object
-	 * 
-	 * @param conceptUuid The UUID of the Concept object to which the ConceptName belongs 
-	 * @param conceptName The ConceptName to be saved
-	 * @param conceptNameUuid The UUID of the ConceptName if is being updated or null if it is being added
-	 */
-	saveConceptName : function(conceptUuid, conceptName, callback) {
-		if (jsslab.isValidUuid(conceptName.uuid)) {
-			//update
-		} else {
-			//save new
-			var url = openmrsContextPath + "/ws/rest/v1/concept/" + conceptUuid + "/name";
-			jQuery.ajax({
-				"url" : url,
-				"type" : "POST",
-				"contentType" : "application/json",
-				"data" : JSON.stringify(conceptName),
-				"success" : callback
-			});
-		}
-	},
-	
-	/**
-	 * Retrieves the Code that is assigned to the given Concept object, if there is one, otherwise returns an empty String.
-	 * 
-	 * @param concept The Concept for which the Code is to be retrieved
-	 * @returns The Code assigned to the given Concept or an empty String if none is assigned
-	 */
-	getConceptName : function(concept, type) {
-		var name = null;
-		for (var i = 0; i < concept.names.length; i++) {
-			if (concept.names[i].conceptNameType == type) {
-				name = concept.names[i];
-				break;
-			}
-		}
-		return name;
-	},
+//	setConceptRetired : function(concept, retire, callback) {
+//		if (retire) {
+//			var retireReason = jQuery('#editConceptRetireReason').val();
+//			var url = openmrsContextPath + "/ws/rest/v1/concept/" + concept.uuid + "?reason="+retireReason;
+//			
+//			jQuery.ajax({
+//				"url" : url,
+//				"type" : "DELETE",
+//				"success" : callback
+//			});
+//		} else {
+//			//TODO unretire the concept
+//		}
+//	},
 	
 	/**
 	 * Creates a Concept object from an existing one, removing any transiert fields that cannot be saved (e.g. display)
@@ -229,7 +307,7 @@ var jsslab = {
 	 * 
 	 * @return The given <code>Concept</code> with the name added to it
 	 */
-	setConceptName : function(concept, name, type) {
+	setConceptName : function(concept, name, type, locale) {
 		var nameType = false;
 		for (var i = 0; i < concept.names.length; i++) {
 			if (concept.names[i].conceptNameType == type) {
@@ -242,8 +320,7 @@ var jsslab = {
 			concept.names[concept.names.length] = {
 					"conceptNameType" : type,
 					"name" : name,
-					//TODO replace with user/system locale
-					"locale" : "EN"
+					"locale" : locale != null ? locale : "EN"
 			}
 		}
 		return concept;

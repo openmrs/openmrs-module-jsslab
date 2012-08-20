@@ -3,17 +3,12 @@ jQuery(document).ready(function() {
 	var editing = true;
 	
 	jsslab.catalogPage = {
-		
+
 		/** Array of all available <code>Investigation</code>s (LabTestPanels) */
 		investigations : null,
 		
-		/** Array of all <code>LabTest</code>s that belong to the currently selected <code>Investigation</code> */
-		tests : null,
-
-		/** The currently selected <code>LabTest</code> */
-		selectedTest : null,
-
-		selectedTestRange : null,
+		/** The currently selected <code>Investigation/LabTestPanel</code> */
+		selectedInvestigation : null,
 		
 		/** Indicates whether an <code>Investigation</code> is currently selected and thus opened for editing */
 		editingInvestigation : false,
@@ -22,6 +17,15 @@ jQuery(document).ready(function() {
 		isNewInvestigation : false,
 		
 		selectedPreconditionUuid : null,
+
+		/** Array of all <code>LabTest</code>s that belong to the currently selected <code>Investigation</code> */
+		tests : null,
+
+		/** The currently selected <code>LabTest</code> */
+		selectedTest : null,
+
+		selectedTestRange : null,
+		
 		
 		/** Index to use for newly created <code>Investigation</code>s. Serves as dummy UUID. */
 		newInvestigationIndex : -1,
@@ -186,7 +190,7 @@ jQuery(document).ready(function() {
 		 * @param investigation The investigation to be added to the table. If null is passed an empty row is created.
 		 */
 		addInvestigationTableRow : function(investigation) {
-			var uuid = "";
+			var uuid;
 			var section = "&nbsp;";
 			var inv = "&nbsp;";
 			
@@ -216,20 +220,22 @@ jQuery(document).ready(function() {
 		 */
 		handleInvestigationSelection : function(tableRow) {
 			var currentTr = jQuery('#investigationTable tbody tr.selected');
+			currentTr.removeClass('selected');
+			tableRow.addClass('selected');
 	
 			if (currentTr != null && currentTr.length > 0) {
-				var currentTrUuid = currentTr.first().attr('id').substring(currentTr.first().attr('id').lastIndexOf('_')+1);
 				
-				if (!jsslab.isValidUuid(currentTrUuid)) {
+				var currentTrUuid = currentTr.first().attr('id').substring(currentTr.first().attr('id').lastIndexOf('_')+1);
+				var newTrUuid = tableRow.first().attr('id').substring(tableRow.first().attr('id').lastIndexOf('_')+1);
+				
+				if (!jsslab.isValidUuid(currentTrUuid) && newTrUuid != currentTrUuid) {
 					currentTr.remove();
 				}
 			}
-			jQuery('#investigationTable tbody tr').removeClass('selected');
 			
-			tableRow.addClass('selected');
 			
 			var idx = tableRow.index();
-			var investigation = null;
+			var investigation = {};
 			
 			if (idx < jsslab.catalogPage.investigations.length) {
 				investigation = jsslab.catalogPage.investigations[idx];
@@ -256,6 +262,8 @@ jQuery(document).ready(function() {
 		 * @param investigation The <code>Investigation/LabTestPanel</code> to be displayed/edited
 		 */
 		showInvestigationEditPanel : function(investigation) {
+			jsslab.catalogPage.selectedInvestigation = investigation;
+			
 			jQuery('#editInvestigationName'      ).val(investigation == null || investigation.testPanelConcept == null	? "" : investigation.testPanelConcept.display);
 			jQuery('#editInvestigationNameVal'   ).val(investigation == null || investigation.testPanelConcept == null	? "" : investigation.testPanelConcept.uuid);
 			jQuery('#editInvestigationSection'   ).val(investigation == null || investigation.testPanelConcept == null	? "" : investigation.testGroupConcept.display);
@@ -384,6 +392,56 @@ jQuery(document).ready(function() {
 			jQuery('#tablePreconditionAnswers tbody').append( tr );
 		},
 		
+		getInvestigationFromForm : function(callback) {
+			var investigationConceptName = jQuery('#editInvestigationName').val();
+			var investigationConceptUuid = jQuery('#editInvestigationNameVal').val();
+			var investigationSectionConceptName = jQuery('#editInvestigationCode').val();
+			var investigationSectionConceptUuid = jQuery('#editInvestigationSectionVal').val();
+			
+			jsslab.catalogPage.createConcept(investigationConceptUuid, investigationConceptName, "EN", "FULLY_SPECIFIED", function(investigationConcept) {
+			jsslab.catalogPage.createConcept(investigationSectionConceptUuid, investigationSectionConceptName, "EN", "FULLY_SPECIFIED", function(investigationSectionConcept) {
+			
+				var uuid = jsslab.catalogPage.selectedInvestigation.uuid;
+				var investigation = {
+					"testPanelConcept" : investigationConcept.uuid,
+					"testGroupConcept" : investigationSectionConcept.uuid,
+					"testPanelCode" : jQuery('#editInvestigationCode').val(),
+					"cost" : jQuery('#editInvestigationCost').val(),
+					"turnaround" : jQuery('#editInvestigationTurnaround').val(),
+					"holdTime" : jQuery('#editInvestigationHoldTime').val(),
+					"labLocation" : jQuery('#selectLaboratory').val(),
+				}
+				if (jsslab.isValidUuid(uuid)) {
+					investigation.uuid = uuid;
+				}
+				
+				callback(investigation);
+				
+			});
+			});
+			
+		},
+		
+		createConcept : function(uuid, name, locale, type, callback) {
+			var concept = {
+					"datatype" : "8d4a4c94-c2cc-11de-8d13-0010c6dffd0f",
+					"conceptClass" : "8d492774-c2cc-11de-8d13-0010c6dffd0f",
+					"names" : [{ 
+						"name" : name,
+						"locale" : locale,
+						"type" : type
+					}]
+			};
+			
+			if (jsslab.isValidUuid(uuid)) {
+				concept.uuid = uuid;
+				callback(concept);
+			} else {
+				jsslab.dao.saveConcept(concept, callback);
+			}
+			
+		},
+		
 		/**
 		 * Retrieves the values from the precondition edit panel and returns the updated <code>LabPrecondition</code> object
 		 * 
@@ -444,16 +502,22 @@ jQuery(document).ready(function() {
 		 * @param investigation The <code>Investigation/LabTestPanel</code> which tests are to be displayed in the list of tests adsfadfasdfadfv fdsfv
 		 */
 		updateTestList : function(investigation) {
-			var title = jsslab.i18n.catalog['tests.selection.heading']
-					.replace('{0}', investigation.testPanelConcept.display)
-					.replace('{1}', investigation.testGroupConcept.display);
-			var tests = investigation.tests;
+			jQuery('#testList option').remove();
+
+			//TOOD i18n / message code
+			var title = "No Tests available for the current Investigation";
+			var tests = null;
 			
-			jQuery('#testHeading span').html(title);
+			if (investigation != null) {
+				var title = jsslab.i18n.catalog['tests.selection.heading']
+				.replace('{0}', investigation.testPanelConcept.display)
+				.replace('{1}', investigation.testGroupConcept.display);
+				tests = investigation.tests;
+
+				jQuery('#testHeading span').html(title);
+			}
 			
 			jsslab.catalogPage.tests = tests;
-			
-			jQuery('#testList option').remove();
 			if (tests != null && tests.length > 0) {
 				for (var i = 0; i < tests.length; i++) {
 					tests[i].sortWeight = i;
@@ -769,8 +833,14 @@ jQuery(document).ready(function() {
 	jQuery('#buttonSaveInvestigation').click(function (event) {
 		event.preventDefault();
 		//TODO check whether there are any validation errors
-		//TODO save investigation
-		jQuery('#investigationEditPanel').fadeOut();
+		jsslab.catalogPage.getInvestigationFromForm(function(investigation) {
+		jsslab.dao.saveInvestigation(investigation, function(uuid) {
+			// will cause an update of the investigation table to refresh the contents 
+			jQuery('#investigationEditPanel').fadeOut();
+			jQuery('#selectLaboratory').change();
+		});
+		});
+		
 		jsslab.catalogPage.setEditingInvestigation(false, false);
 	});
 	

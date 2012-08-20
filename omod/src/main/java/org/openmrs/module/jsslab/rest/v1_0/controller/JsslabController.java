@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +14,6 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.Concept;
 import org.openmrs.ConceptDatatype;
 import org.openmrs.ConceptNumeric;
-import org.openmrs.ConceptSearchResult;
 import org.openmrs.ConceptSet;
 import org.openmrs.GlobalProperty;
 import org.openmrs.Location;
@@ -164,6 +164,15 @@ public class JsslabController {
     	return null;
     }
 
+    @RequestMapping(method = RequestMethod.POST, params = "getConceptNames")
+    @ResponseBody
+    public SimpleObject getConceptNames(HttpServletRequest request,
+		    		@RequestParam(value = "type", required = false) String type,
+		    		@RequestParam(value = "locale", required = false) String locale
+			) throws ResponseException {
+    	
+    	return null;
+    }
     @RequestMapping(method = RequestMethod.GET, params = "getGlobalProperty")
 	@ResponseBody
 	public Object getGlobalProperty(HttpServletRequest request, 
@@ -243,16 +252,37 @@ public class JsslabController {
     @RequestMapping(method = RequestMethod.GET, params = "getAllTestRangeUnits")
     @ResponseBody
     public SimpleObject getAllTestRangeUnits(HttpServletRequest request,
-    				@RequestParam(value = "q", required = true) String phrase
+    				@RequestParam(value = "q", required = false) String phrase
     		) throws ResponseException {
-    	List<String> unitList = new ArrayList<String>();
+    	Set<String> unitList = new TreeSet<String>();
     	
-    	List<ConceptDatatype> dts = new ArrayList<ConceptDatatype>();
-    	dts.add( Context.getConceptService().getConceptDatatypeByName(ConceptDatatype.NUMERIC) );
-    	List<ConceptSearchResult> concepts = Context.getConceptService().getConcepts(phrase, null, true, null, null, dts, null, null, 0, -1);
-    	for (ConceptSearchResult csr : concepts) {
-    		if (csr.getConcept().isNumeric()) {
-    			unitList.add( ((ConceptNumeric) csr.getConcept()).getUnits() );
+//    	List<ConceptDatatype> dts = new ArrayList<ConceptDatatype>();
+//    	dts.add( Context.getConceptService().getConceptDatatypeByUuid(ConceptDatatype.NUMERIC_UUID) );
+//    	List<ConceptSearchResult> concepts = Context.getConceptService().getConcepts(
+//    			phrase, 
+//    			Collections.singletonList(Locale.ENGLISH), 
+//    			true, 
+//    			new ArrayList<ConceptClass>(), 
+//    			new ArrayList<ConceptClass>(), 
+//    			dts, 
+//    			new ArrayList<ConceptDatatype>(), 
+//    			null, 
+//    			null, null);
+//    	for (ConceptSearchResult csr : concepts) {
+//    		if (csr.getConcept().isNumeric()) {
+//    			unitList.add( ((ConceptNumeric) csr.getConcept()).getUnits() );
+//    		}
+//    	}
+    	
+    	//TODO replace with a more specific service method call
+    	List<Concept> concepts = Context.getConceptService().getAllConcepts();
+    	for (Concept c : concepts) {
+    		if (c.isNumeric()) {
+    			ConceptNumeric cn = (ConceptNumeric) c;
+    			if (cn.getUnits() != null && !cn.getUnits().isEmpty()) {
+    				if (phrase == null || phrase.isEmpty() || cn.getUnits().startsWith(phrase))
+    					unitList.add(cn.getUnits());
+    			}
     		}
     	}
     	

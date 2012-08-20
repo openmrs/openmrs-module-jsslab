@@ -4,6 +4,10 @@ jQuery(document).ready(function() {
 	 * Wraps all variables and functions used in this script
 	 */
 	jsslab.settingsPage = {
+
+		newLocationIndex : 1,
+		
+		selectedLocationUuid : null,
 		
 		/** The currently selected <code>Location</code> */
 		location : null,
@@ -34,6 +38,8 @@ jQuery(document).ready(function() {
 			conceptSets : [],
 			locations : [],
 			concepts : [],
+			fullConceptNames : [],
+			shortConceptNames : [],
 		},
 		
 		/**
@@ -137,37 +143,46 @@ jQuery(document).ready(function() {
 		 * 
 		 * @param locationUuid The UUID of the currently selected <code>Location</code>
 		 */
-		showLocationEditPanel : function(locationUuid) {
-			jQuery.ajax({
-				"url" : openmrsContextPath + "/ws/rest/v1/location/" + locationUuid,
-				"type" : "GET",
-				"success" : function(location) {
-					jsslab.settingsPage.location = location;
-					jQuery('#editLocationName').val(location.name);
-					if (location.name) {
-						jQuery('editLocationName').attr('disabled', 'disabled');
-					}
-					jQuery('#editLocationAddress').val(location.address1);
-	
-					DWRAdministrationService.getGlobalProperty("jsslab.object.location.homeLab", function(managedHomeLabID) {
-						if (managedHomeLabID == location.uuid) {
-							jQuery('#editLocationManaged').attr('checked', 'checked');
-							jsslab.settingsPage.isManagedLocation = true;
-						} else {
-							jQuery('#editLocationManaged').removeAttr('checked');
-							jsslab.settingsPage.isManagedLocation = false;
+		showLocationEditPanel : function(locationUuid, parentUuid) {
+			if (jsslab.isValidUuid(locationUuid)) {
+				
+				jQuery.ajax({
+					"url" : openmrsContextPath + "/ws/rest/v1/location/" + locationUuid,
+					"type" : "GET",
+					"success" : function(location) {
+						jsslab.settingsPage.location = location;
+						jQuery('#editLocationName').val(location.name);
+						if (location.name) {
+							jQuery('editLocationName').attr('disabled', 'disabled');
 						}
-					});
-					
-					if (jsslab.settingsPage.checkIfReferral(location)) {
-						jQuery('#editLocationReferral').attr('checked', 'checked');
-					} else {
-						jQuery('#editLocationReferral').removeAttr('checked');
+						jQuery('#editLocationAddress').val(location.address1);
+		
+						DWRAdministrationService.getGlobalProperty("jsslab.object.location.homeLab", function(managedHomeLabID) {
+							if (managedHomeLabID == location.uuid) {
+								jQuery('#editLocationManaged').attr('checked', 'checked');
+								jsslab.settingsPage.isManagedLocation = true;
+							} else {
+								jQuery('#editLocationManaged').removeAttr('checked');
+								jsslab.settingsPage.isManagedLocation = false;
+							}
+						});
+						
+						if (jsslab.settingsPage.checkIfReferral(location)) {
+							jQuery('#editLocationReferral').attr('checked', 'checked');
+						} else {
+							jQuery('#editLocationReferral').removeAttr('checked');
+						}
+						
 					}
-					
-				}
-			});
-			
+				});
+				jsslab.settingsPage.parentLocationUuid = null;
+			} else {
+				jsslab.settingsPage.parentLocationUuid = parentUuid;
+				jQuery('#editLocationName').val("");
+				jQuery('#editLocationAddress').val("");
+				jQuery('#editLocationManaged').removeAttr('checked');
+				jQuery('#editLocationReferral').removeAttr('checked');
+			}
 			
 			jQuery('#editLocationPanel').fadeIn();
 		},
@@ -196,62 +211,23 @@ jQuery(document).ready(function() {
 			return jsslab.settingsPage.isReferralLocation;
 		},
 		
-		saveLocation : function() {
-			var location = {};
-			
-			//TODO validate
-			location.name = jQuery('#editLocationName').val();
-			location.address1 = jQuery('#editLocationAddress').val();
-			
-			var isManaged = jQuery('#editLocationManaged').attr('checked');
-			var isReferral = jQuery('#editLocationReferral').attr('checked');
-			
-			if (isManaged != jsslab.settingsPage.isManagedLocation) {
-				if (isManaged) {
-					jsslab.saveGlobalProperty("jsslab.object.location.homeLab", jsslab.settingsPage.location.uuid, null, null);
-				} else {
-					jsslab.saveGlobalProperty("jsslab.object.location.homeLab", "", null, null);
-				}
-			}
-			
-			if (isReferral != jsslab.settingsPage.isReferralLocation) {
-				var tags = jsslab.settingsPage.location.tags;
-				location.tags = [];
-				if (tags != null) {
-					for (var i = 0; i < tags.length; i++) {
-						location.tags[i] = tags[i].uuid;
-					}
-				}
-				
-				if (isReferral) {
-					location.tags[location.tags.length] = jsslab.settingsPage.labLocationTag.uuid;
-				} else {
-					//TODO find a mechanism to remove a locationTag from the location
-					for (var i = 0; i < location.tags.length; i++) {
-						if (jsslab.settingsPage.labLocationTag.uuid == location.tags[i].uuid) {
-							locations.tags.splice(i, 1);
-						}
-					}
-				}
-				
-			}
-			
-			
-			var locUuid = jsslab.settingsPage.location.uuid;
-			var url = openmrsContextPath + "/ws/rest/v1/location/";
-			if (jsslab.isValidUuid(locUuid)) url += "/" + locUuid;
-			
-			jQuery.ajax({
-				"url" : url,
-				"type" : "POST",
-				"contentType" : "application/json",
-				"data" : JSON.stringify( location ),
-				"success" : function(result) {
-					//TODO update tree
-					//TODO display errors
-				}
-			});
-		},
+//		saveLocation : function() {
+//			var location = {};
+//			
+//			//TODO validate
+//			location.name = jQuery('#editLocationName').val();
+//			location.address1 = jQuery('#editLocationAddress').val();
+//			location.uuid = jsslab.settingsPage.location.uuid;
+//			
+//			var isManaged = jQuery('#editLocationManaged').attr('checked');
+//			var isReferral = jQuery('#editLocationReferral').attr('checked');
+//			
+//			jsslab.dao.saveLocation(
+//					location, 
+//					isManaged != jsslab.settingsPage.isManagedLocation ? isManaged : null, 
+//					isReferral != jsslab.settingsPage.isReferralLocation ? isReferral : null
+//				);
+//		},
 		
 	//	getSaveableLocation : function(location) {
 	//		location.display = undefined;
@@ -387,8 +363,8 @@ jQuery(document).ready(function() {
 		addRowToCodeTable : function(concept) {
 			var tableRow = jQuery('<tr id="concept_' + concept.uuid + '"/>');
 	
-			var name = jsslab.getConceptName(concept, "FULLY_SPECIFIED");
-			var shortName = jsslab.getConceptName(concept, "SHORT");
+			var name = jsslab.dao.getConceptName(concept, "FULLY_SPECIFIED");
+			var shortName = jsslab.dao.getConceptName(concept, "SHORT");
 			
 			tableRow.append( jQuery("<td />").html( name != null ? name.name : " " ) );
 			tableRow.append( jQuery("<td />").html( shortName != null ? shortName.name : " " ) );
@@ -420,9 +396,10 @@ jQuery(document).ready(function() {
 		 * @param concept The Concept object to be edited
 		 */
 		showCodeEditPanel : function(concept) {
-			var shortName = jsslab.getConceptName(concept, "SHORT");
-			jQuery('#editTextConcept').val( concept.display );
-			jQuery('#editCode').val( shortName != null ? shortName.name : " " );
+			var fullName = jsslab.dao.getConceptName(concept, "FULLY_SPECIFIED");
+			var shortName = jsslab.dao.getConceptName(concept, "SHORT");
+			jQuery('#editTextConcept').val( fullName != null ? fullName.name : "" );
+			jQuery('#editCode').val( shortName != null ? shortName.name : "" );
 			if (concept.retired) {
 				jQuery('#checkboxRetireConcept').attr('checked', 'checked');
 			} else {
@@ -442,13 +419,24 @@ jQuery(document).ready(function() {
 			//TODO test if this works + test for new concept
 			var idx = jsslab.settingsPage.selectedConceptIndex;
 			
-			var concept = jsslab.settingsPage.concepts[idx];
-			concept.name = jQuery('#editTextConcept').val();
+			var oldConcept = jsslab.settingsPage.concepts[idx];
 			
-			jsslab.setConceptName(concept, jQuery('#editTextConcept').val(), "FULLY_SPECIFIED");
-			jsslab.setConceptName(concept, jQuery('#editCode').val(), "SHORT");
+			var newConcept = {
+					"uuid" : oldConcept.uuid,
+					"datatype" : oldConcept.datatype.uuid != null ? oldConcept.datatype.uuid : oldConcept.datatype,
+					"conceptClass" : oldConcept.conceptClass.uuid != null ? oldConcept.conceptClass.uuid : oldConcept.conceptClass,
+					"names" : [
+						
+					]
+			}
+			if (jsslab.dao.getConceptName(oldConcept, "FULLY_SPECIFIED") != jQuery('#editTextConcept').val()) {
+				jsslab.setConceptName(newConcept, jQuery('#editTextConcept').val(), "FULLY_SPECIFIED")
+			};
+			if (jsslab.dao.getConceptName(oldConcept, "SHORT") != jQuery('#editCode').val()) {
+				jsslab.setConceptName(newConcept, jQuery('#editCode').val(), "SHORT")
+			};
 			
-			return concept;
+			return newConcept;
 		},
 		
 		/**
@@ -512,6 +500,22 @@ jQuery(document).ready(function() {
 			return rowId.substring(rowId.lastIndexOf("_")+1);
 		},
 		
+		
+		reloadTreePanel : function() {
+			jQuery('#hierarchyTree').empty();
+			jQuery('#hierarchyTree').jstree({
+				"json_data" : {
+					"ajax" : {
+						"url" : "settings/getAllRootLocations.htm",
+					}
+				},
+				"plugins" : [ "themes", "json_data", "ui" ]
+			}).bind("select_node.jstree", function (e, data) { 
+				jsslab.settingsPage.selectedLocationUuid = data.rslt.obj.attr('id'); 
+				jsslab.settingsPage.showLocationEditPanel(jsslab.settingsPage.selectedLocationUuid, null);
+				
+			});
+		}
 	};
 
 	/*
@@ -524,10 +528,10 @@ jQuery(document).ready(function() {
 				"url" : "settings/getAllRootLocations.htm",
 			}
 		},
-		"plugins" : [ "themes", "json_data", "ui" ]
+		"plugins" : [ "themes", "json_data", "ui", "crrm" ]
 	}).bind("select_node.jstree", function (e, data) { 
-		var locationUuid = data.rslt.obj.attr('id'); 
-		jsslab.settingsPage.showLocationEditPanel(locationUuid);
+		jsslab.settingsPage.selectedLocationUuid = data.rslt.obj.attr('id'); 
+		jsslab.settingsPage.showLocationEditPanel(jsslab.settingsPage.selectedLocationUuid, null);
 		
 	});
 	
@@ -540,11 +544,59 @@ jQuery(document).ready(function() {
 	});
 	
 	
-	jQuery('#addLocation').click(function(event) {
-		jsslab.settingsPage.showLocationEditPanel(locationUuid);
+	jQuery('#btnAddLocation').click(function(event) {
+		
+		var selectedUuid = jsslab.isValidUuid(jsslab.settingsPage.selectedLocationUuid) ? jsslab.settingsPage.selectedLocationUuid : -1;
+		jQuery("#hierarchyTree").jstree("create", jQuery("#"+selectedUuid), "inside",  { "data" : "New Location", "attr" : { "id" : jsslab.settingsPage.newLocationIndex } }, function() {
+			jQuery("#hierarchyTree").jstree("select_node", "#"+jsslab.settingsPage.newLocationIndex++ );
+		}, true);
+		
+		jsslab.settingsPage.showLocationEditPanel(null, selectedUuid);
 	});
 	jQuery('#btnSaveLocation').click(function(event) {
-		jsslab.settingsPage.saveLocation();
+		var location = {
+			"name" : jQuery('#editLocationName').val(),
+			"address1" : jQuery('#editLocationAddress').val(),
+			"uuid" : jsslab.settingsPage.location.uuid,
+		};
+		
+		var isManaged = jQuery('#editLocationManaged').attr('checked');
+		var isReferral = jQuery('#editLocationReferral').attr('checked');
+		
+		if (jsslab.isValidUuid(jsslab.settingsPage.parentLocationUuid)) {
+			location.parentLocation = jsslab.settingsPage.parentLocationUuid;
+		}
+		if (isReferral != jsslab.settingsPage.isReferralLocation) {
+			var tags = jsslab.settingsPage.location.tags;
+			if (tags != null) {
+				location.tags = [];
+				var j = 0;
+				for (var i = 0; i < tags.length; i++) {
+					if (tags.uuid != jsslab.constants.labTagUuid) {
+						location.tags[j++] = tags[i].uuid;
+					}
+				}
+			}
+			
+			if (isReferral) {
+				location.tags[location.tags.length] = jsslab.constants.labTagUuid;
+			} 
+//			else {
+//				//TODO find a mechanism to remove a locationTag from the location
+//				for (var i = 0; i < location.tags.length; i++) {
+//					if (jsslab.settingsPage.labLocationTag.uuid == location.tags[i].uuid) {
+//						locations.tags.splice(i, 1);
+//					}
+//				}
+//			}
+		}
+		
+		jsslab.dao.saveLocation(
+				location, 
+				isManaged != jsslab.settingsPage.isManagedLocation ? isManaged : null,
+				jsslab.settingsPage.reloadTreePanel()
+			);
+
 		jQuery('#editLocationPanel').fadeOut();
 	});
 	jQuery('#btnCancelLocation').click(function(event) {
@@ -611,16 +663,19 @@ jQuery(document).ready(function() {
 		//TODO form validation
 		
 		var concept = jsslab.settingsPage.getConceptFromEditPanel();
-		var uuid = jsslab.settingsPage.getSelectedConceptUuid();
-		
-		jsslab.saveConcept(concept, uuid, jQuery('#checkboxRetireConcept').attr('checked'), 
-				jsslab.settingsPage.updateCodeTable(jsslab.settingsPage.concepts)
-		);
+//		var uuid = jsslab.settingsPage.getSelectedConceptUuid();
 		
 		jQuery('#codeEditPanel').fadeOut();
 		jQuery('#buttonAddNewCode').removeAttr('disabled');
+
+		jsslab.dao.saveConcept(concept, function() {
+		jsslab.dao.setConceptRetired(concept.uuid, jQuery('#checkboxRetireConcept').attr('checked'), "Retired in UI", function() {
+			
+			jsslab.settingsPage.updateCodeTable(jsslab.settingsPage.concepts);
+
+		});
+		});
 		
-		//TODO update table
 	});
 	
 	jQuery('#buttonCancelEditingCode').click(function(event) {
