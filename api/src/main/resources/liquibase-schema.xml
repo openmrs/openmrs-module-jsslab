@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
 	<changeSet id="jsslab-instrument" author="martingielow">
 		<preConditions onFail="MARK_RAN">
@@ -691,7 +692,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_instrument">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_instrument" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_instrument" foreignKeyName="user_who_changed_lab_instrument" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_instrument" constraintName="user_who_changed_lab_instrument" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -704,7 +705,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_order">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="order_id_UNIQUE" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_order" foreignKeyName="order_id_UNIQUE" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="order_id" baseTableName="jsslab_order" constraintName="order_id_UNIQUE" referencedColumnNames="order_id" referencedTableName="orders"/>
@@ -715,7 +716,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_order_specimen">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="user_who_created_lab_order_specimen" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_order_specimen" foreignKeyName="user_who_created_lab_order_specimen" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="creator" baseTableName="jsslab_order_specimen" constraintName="user_who_created_lab_order_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -728,7 +729,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_precondition">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_precondition" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_precondition" foreignKeyName="user_who_changed_lab_precondition" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_precondition" constraintName="user_who_changed_lab_precondition" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -741,7 +742,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_report">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="lab_report_provider" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_report" foreignKeyName="lab_report_provider" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="approved_by" baseTableName="jsslab_report" constraintName="lab_report_provider" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -755,7 +756,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_specimen">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_specimen" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_specimen" foreignKeyName="user_who_changed_lab_specimen" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_specimen" constraintName="user_who_changed_lab_specimen" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -773,7 +774,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_specimen_template">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="spec_template_type" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_specimen_template" foreignKeyName="spec_template_type" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="analysis_specimen_concept" baseTableName="jsslab_specimen_template" constraintName="spec_template_type" referencedColumnNames="concept_id" referencedTableName="concept"/>
@@ -789,7 +790,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_supply_item">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_supply_item" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_supply_item" foreignKeyName="user_who_changed_lab_supply_item" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_supply_item" constraintName="user_who_changed_lab_supply_item" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -801,7 +802,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_test" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_test" foreignKeyName="user_who_changed_lab_test" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test" constraintName="user_who_changed_lab_test" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -815,7 +816,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_panel">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="test_anal_concept" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_test_panel" foreignKeyName="test_anal_concept" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="analysis_specimen_concept" baseTableName="jsslab_test_panel" constraintName="test_anal_concept" referencedColumnNames="concept_id" referencedTableName="concept"/>
@@ -830,7 +831,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_range">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_test_range" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_test_range" foreignKeyName="user_who_changed_lab_test_range" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test_range" constraintName="user_who_changed_lab_test_range" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -843,7 +844,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_result">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="test_result_approver" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_test_result" foreignKeyName="test_result_approver" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="approved_by" baseTableName="jsslab_test_result" constraintName="test_result_approver" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -858,7 +859,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_run">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="user_who_changed_lab_test_run" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_test_run" foreignKeyName="user_who_changed_lab_test_run" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="changed_by" baseTableName="jsslab_test_run" constraintName="user_who_changed_lab_test_run" referencedColumnNames="user_id" referencedTableName="users"/>
@@ -871,7 +872,7 @@
 	<changeSet author="martingielow" id="foreign_key_constraints-jsslab_test_specimen">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="test_spec_type" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_test_specimen" foreignKeyName="test_spec_type" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="analysis_specimen_concept" baseTableName="jsslab_test_specimen" constraintName="test_spec_type" referencedColumnNames="concept_id" referencedTableName="concept"/>
@@ -953,7 +954,7 @@
 	<changeSet author="r.friedman" id="foreign_key_constraints-jsslab_test_panel_test">
 		<preConditions onFail="MARK_RAN">
 			<not>
-				<foreignKeyConstraintExists foreignKeyName="test_panel_test_panel" />
+				<foreignKeyConstraintExists foreignKeyTableName="jsslab_test_panel_test" foreignKeyName="test_panel_test_panel" />
 			</not>
 		</preConditions>
 		<addForeignKeyConstraint baseColumnNames="test_id" baseTableName="jsslab_test_panel_test" constraintName="test_panel_test_test" referencedColumnNames="test_id" referencedTableName="jsslab_test"/>
